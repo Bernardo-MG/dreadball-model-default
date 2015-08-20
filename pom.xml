@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.wandrell.tabletop.dreadball</groupId>
-	<artifactId>model-default</artifactId>
+	<artifactId>dreadball-model-default</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Dreadball Default Model Implementation</name>
 	<description>Default implementation of the Dreadball Model API.</description>
-	<url>https://github.com/bernardo-mg/dreadball-model</url>
+	<url>https://github.com/bernardo-mg/dreadball-model-default</url>
 	<inceptionYear>2015</inceptionYear>
 
 	<licenses>
@@ -23,20 +23,20 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:https://github.com/bernardo-mg/dreadball-model.git</connection>
-		<developerConnection>scm:git:https://github.com/bernardo-mg/dreadball-model.git</developerConnection>
+		<connection>scm:git:https://github.com/bernardo-mg/dreadball-model-default.git</connection>
+		<developerConnection>scm:git:https://github.com/bernardo-mg/dreadball-model-default.git</developerConnection>
 		<tag>head</tag>
-		<url>https://github.com/bernardo-mg/dreadball-model</url>
+		<url>https://github.com/bernardo-mg/dreadball-model-default</url>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/bernardo-mg/dreadball-model/issues</url>
+		<url>https://github.com/bernardo-mg/dreadball-model-default/issues</url>
 	</issueManagement>
 
 	<ciManagement>
 		<system>Travis CI</system>
-		<url>https://travis-ci.org/bernardo-mg/dreadball-model</url>
+		<url>https://travis-ci.org/bernardo-mg/dreadball-model-default</url>
 		<notifiers />
 	</ciManagement>
 
@@ -45,7 +45,7 @@
 			<uniqueVersion>false</uniqueVersion>
 			<id>releases</id>
 			<name>Releases Repository</name>
-			<url>https://api.bintray.com/maven/bernardo-mg/tabletop-toolkits/dreadball-model</url>
+			<url>https://api.bintray.com/maven/bernardo-mg/tabletop-toolkits/dreadball-model-default</url>
 		</repository>
 		<snapshotRepository>
 			<uniqueVersion>false</uniqueVersion>
@@ -65,7 +65,7 @@
 				<site>
 					<id>site</id>
 					<name>Project Documentation Site</name>
-					<url>ftp://docs.wandrell.com/dreadball-model</url>
+					<url>ftp://docs.wandrell.com/dreadball-model-default</url>
 				</site>
 			</distributionManagement>
 		</profile>
@@ -75,7 +75,7 @@
 				<site>
 					<id>site-development</id>
 					<name>Project Development Documentation Site</name>
-					<url>ftp://docs.wandrell.com/dreadball-model</url>
+					<url>ftp://docs.wandrell.com/dreadball-model-default</url>
 				</site>
 			</distributionManagement>
 		</profile>
@@ -150,7 +150,7 @@
 		<!-- Maven Site -->
 		<site.skin.version>0.1.0</site.skin.version>
 		<bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view</bintrayURL>
-		<mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/model-default</mavenURL>
+		<mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-default</mavenURL>
 	</properties>
 
 	<dependencies>
