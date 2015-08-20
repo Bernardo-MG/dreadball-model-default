@@ -1,0 +1,54 @@
+/**
+ * Copyright 2015 the original author or authors
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package com.wandrell.tabletop.dreadball.model.availability.unit;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import java.io.Serializable;
+
+import com.wandrell.tabletop.dreadball.model.faction.TeamType;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
+
+public final class DefaultTeamTypeMVPAvailability
+        implements TeamTypeMVPAvailability, Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -6082590958725417920L;
+    private final Unit        avaUnit;
+    private final TeamType    teamType;
+
+    public DefaultTeamTypeMVPAvailability(final TeamType team,
+            final Unit unit) {
+        super();
+
+        teamType = checkNotNull(team,
+                "Received a null pointer as the Team Type");
+        avaUnit = checkNotNull(unit, "Received a null pointer as the Unit");
+    }
+
+    @Override
+    public final TeamType getTeamType() {
+        return teamType;
+    }
+
+    @Override
+    public final Unit getUnit() {
+        return avaUnit;
+    }
+
+}
