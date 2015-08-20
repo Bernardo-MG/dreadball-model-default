@@ -14,6 +14,6 @@
  * the License.
  */
 /**
- * Provides classes for units.
+ * Provides classes for team assets availabilities.
  */
-package com.wandrell.tabletop.dreadball.model.unit;
+package com.wandrell.tabletop.dreadball.model.availability.team;

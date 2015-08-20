@@ -55,7 +55,6 @@ public final class DefaultUnitComponent implements UnitComponent, Serializable {
     private final String                   componentName;
     private final Collection<TeamPosition> componentPositions = new LinkedHashSet<TeamPosition>();
 
-
     public DefaultUnitComponent(final String name,
             final ComponentLocation location, final Integer cost,
             final Collection<TeamPosition> positions,

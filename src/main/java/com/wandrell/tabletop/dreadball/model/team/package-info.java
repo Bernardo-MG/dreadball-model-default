@@ -14,6 +14,6 @@
  * the License.
  */
 /**
- * Provides classes for teams and their assets.
+ * Provides classes for teams.
  */
 package com.wandrell.tabletop.dreadball.model.team;

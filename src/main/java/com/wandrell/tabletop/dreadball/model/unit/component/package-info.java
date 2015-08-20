@@ -14,6 +14,7 @@
  * the License.
  */
 /**
- * Provides classes for components used when creating composite units.
+ * Provides classes for components and composite units. These are such units as
+ * those from the Mechanite or Plague teams.
  */
 package com.wandrell.tabletop.dreadball.model.unit.component;

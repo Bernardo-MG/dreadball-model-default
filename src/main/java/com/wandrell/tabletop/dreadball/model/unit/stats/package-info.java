@@ -14,6 +14,6 @@
  * the License.
  */
 /**
- * Provides classes for units and related data.
+ * Provides classes for unit statistics.
  */
 package com.wandrell.tabletop.dreadball.model.unit.stats;

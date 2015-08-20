@@ -50,7 +50,6 @@ public abstract class AbstractUnit implements Unit {
      */
     private final Collection<Ability> unitAbilities = new LinkedHashSet<>();
 
-
     public AbstractUnit(final String name, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant) {

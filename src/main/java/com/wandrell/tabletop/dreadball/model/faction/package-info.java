@@ -14,6 +14,6 @@
  * the License.
  */
 /**
- * Provides classes for faction related classes.
+ * Provides classes for factions.
  */
 package com.wandrell.tabletop.dreadball.model.faction;
