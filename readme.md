@@ -76,10 +76,10 @@ The project has been released under version 2.0 of the [Apache License][license]
 [dreadball-model-api]: https://github.com/Bernardo-MG/dreadball-model-api
 [bintray-repo]: https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view
 [maven-repo]: http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-default
-[issues]: https://github.com/bernardo-mg/dreadball-model/issues
-[javadoc-develop]: http://docs.wandrell.com/development/maven/dreadball-model/apidocs
-[javadoc-release]: http://docs.wandrell.com/maven/dreadball-model/apidocs
+[issues]: https://github.com/bernardo-mg/dreadball-model-default/issues
+[javadoc-develop]: http://docs.wandrell.com/development/maven/dreadball-model-default/apidocs
+[javadoc-release]: http://docs.wandrell.com/maven/dreadball-model-default/apidocs
 [license]: http://www.apache.org/licenses/LICENSE-2.0
-[scm]: https://github.com/bernardo-mg/dreadball-model
-[site-develop]: http://docs.wandrell.com/development/maven/dreadball-model
-[site-release]: http://docs.wandrell.com/maven/dreadball-model
+[scm]: https://github.com/bernardo-mg/dreadball-model-default
+[site-develop]: http://docs.wandrell.com/development/maven/dreadball-model-default
+[site-release]: http://docs.wandrell.com/maven/dreadball-model-default
