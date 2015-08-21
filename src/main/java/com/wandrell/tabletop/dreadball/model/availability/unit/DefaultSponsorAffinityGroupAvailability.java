@@ -43,7 +43,7 @@ public final class DefaultSponsorAffinityGroupAvailability
     /**
      * Flag indicating if the availability allows increasing the rank.
      */
-    private final Boolean                   includesRankIncrease;
+    private final Boolean                   hasRankInc;
 
     /**
      * Constructs a {@code DefaultSponsorAffinityGroupAvailability} with the
@@ -63,7 +63,7 @@ public final class DefaultSponsorAffinityGroupAvailability
 
         avaName = checkNotNull(name,
                 "Received a null pointer as the availability name");
-        includesRankIncrease = checkNotNull(rankIncrease,
+        hasRankInc = checkNotNull(rankIncrease,
                 "Received a null pointer as the rank increase flag");
 
         checkNotNull(affinities,
@@ -90,7 +90,7 @@ public final class DefaultSponsorAffinityGroupAvailability
 
     @Override
     public final Boolean isIncludingRankIncrease() {
-        return includesRankIncrease;
+        return hasRankInc;
     }
 
     /**

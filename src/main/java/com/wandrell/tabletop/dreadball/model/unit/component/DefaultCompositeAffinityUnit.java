@@ -15,7 +15,11 @@
  */
 package com.wandrell.tabletop.dreadball.model.unit.component;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
@@ -31,13 +35,17 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
+public final class DefaultCompositeAffinityUnit
         implements CompositeAffinityUnit {
 
     /**
      * {@code AffinityUnit} used for inheritance through composition.
      */
-    private final AffinityUnit baseUnit;
+    private final AffinityUnit              baseUnit;
+    /**
+     * Components of the unit.
+     */
+    private final Collection<UnitComponent> unitComponents = new LinkedHashSet<UnitComponent>();
 
     /**
      * Constructs a {@code DefaultCompositeAffinityUnit} with the specified
@@ -45,8 +53,6 @@ public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
      * 
      * @param nameTemplate
      *            the unit's base template name
-     * @param cost
-     *            cost of the unit
      * @param position
      *            team position role of the unit
      * @param attributes
@@ -67,17 +73,26 @@ public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
      *            components which create this unit
      */
     public DefaultCompositeAffinityUnit(final String nameTemplate,
-            final Integer cost, final TeamPosition position,
-            final AttributesHolder attributes,
+            final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final Collection<AffinityGroup> affinities, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost,
             final Collection<UnitComponent> components) {
-        super(components);
+        super();
 
         baseUnit = new DefaultAffinityUnit(nameTemplate, position, attributes,
                 abilities, giant, affinities, allyCost, friendCost,
                 strangerCost);
+
+        checkNotNull(components,
+                "Received a null pointer as valoration the components");
+
+        for (final UnitComponent component : components) {
+            checkNotNull(component,
+                    "Received a null pointer as valoration a component");
+
+            unitComponents.add(component);
+        }
     }
 
     @Override
@@ -98,6 +113,16 @@ public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
     @Override
     public final AttributesHolder getAttributes() {
         return getBaseUnit().getAttributes();
+    }
+
+    /**
+     * Returns the components which make up the unit.
+     * 
+     * @return the components which make up the unit
+     */
+    @Override
+    public final Collection<UnitComponent> getComponents() {
+        return Collections.unmodifiableCollection(getComponentsModifiable());
     }
 
     @Override
@@ -139,6 +164,15 @@ public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
      */
     private final AffinityUnit getBaseUnit() {
         return baseUnit;
+    }
+
+    /**
+     * Returns a modifiable collection with the unit components.
+     * 
+     * @return a modifiable collection with the unit components
+     */
+    private final Collection<UnitComponent> getComponentsModifiable() {
+        return unitComponents;
     }
 
 }

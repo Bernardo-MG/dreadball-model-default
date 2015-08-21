@@ -34,15 +34,15 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     /**
      * Number of Medibots in the team.
      */
-    private Integer                                     teamMedibots         = 0;
+    private Integer                                     teamMedibots      = 0;
     /**
      * Number of Sabotage Cards in the team.
      */
-    private Integer                                     teamSabotageCards    = 0;
+    private Integer                                     teamSabotageCards = 0;
     /**
      * Number of Special Move Cards.
      */
-    private Integer                                     teamSpecialMoveCards = 0;
+    private Integer                                     teamSpMoveCards   = 0;
     /**
      * Team's sponsor.
      */
@@ -50,7 +50,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     /**
      * Number of Wagers in the team.
      */
-    private Integer                                     teamWagers           = 0;
+    private Integer                                     teamWagers        = 0;
     /**
      * Builder for calculating the valoration.
      */
@@ -106,7 +106,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
 
     @Override
     public final Integer getSpecialMoveCards() {
-        return teamSpecialMoveCards;
+        return teamSpMoveCards;
     }
 
     @Override
@@ -141,7 +141,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
 
     @Override
     public final void setSpecialMoveCards(final Integer cards) {
-        teamSpecialMoveCards = cards;
+        teamSpMoveCards = cards;
     }
 
     @Override

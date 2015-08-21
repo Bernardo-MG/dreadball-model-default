@@ -28,21 +28,6 @@ public final class DefaultTeamTypeAssetsAvailability
         implements TeamTypeAssetsAvailability {
 
     /**
-     * Flag indicating if this {@code TeamType} begins with a Defensive Coaching
-     * Staff.
-     */
-    private final Boolean  beginsDefensiveCoach;
-    /**
-     * Flag indicating if this {@code TeamType} begins with an Offensive
-     * Coaching Staff.
-     */
-    private final Boolean  beginsOffensiveCoach;
-    /**
-     * Flag indicating if this {@code TeamType} begins with a Support Coaching
-     * Staff.
-     */
-    private final Boolean  beginsSupportCoach;
-    /**
      * Cost of a Dreadball card.
      */
     private final Integer  costCard;
@@ -65,11 +50,26 @@ public final class DefaultTeamTypeAssetsAvailability
     /**
      * Initial number of Cheerleaders for this {@code TeamType}.
      */
-    private final Integer  initialCheerleader;
+    private final Integer  initialCheer;
+    /**
+     * Flag indicating if this {@code TeamType} begins with a Defensive Coaching
+     * Staff.
+     */
+    private final Boolean  initialDefCoach;
     /**
      * Initial number of Coaching Dice for this {@code TeamType}.
      */
     private final Integer  initialDie;
+    /**
+     * Flag indicating if this {@code TeamType} begins with an Offensive
+     * Coaching Staff.
+     */
+    private final Boolean  initialOffCoach;
+    /**
+     * Flag indicating if this {@code TeamType} begins with a Support Coaching
+     * Staff.
+     */
+    private final Boolean  initialSupCoach;
     /**
      * Maximum number of Dreadball Cards for this {@code TeamType}.
      */
@@ -139,7 +139,7 @@ public final class DefaultTeamTypeAssetsAvailability
 
         costCheerleader = checkNotNull(cheerleaderCost,
                 "Received a null pointer as the Cheerleader cost");
-        initialCheerleader = checkNotNull(cheerleaderInitial,
+        initialCheer = checkNotNull(cheerleaderInitial,
                 "Received a null pointer as initial Cheerleaders");
         maxCheerleader = checkNotNull(cheerleaderMax,
                 "Received a null pointer as maximum Cheerleaders");
@@ -160,11 +160,11 @@ public final class DefaultTeamTypeAssetsAvailability
 
         costCoaching = checkNotNull(coachingCost,
                 "Received a null pointer as the Coaching Staff cost");
-        beginsOffensiveCoach = checkNotNull(initialOffensiveCoach,
+        initialOffCoach = checkNotNull(initialOffensiveCoach,
                 "Received a null pointer as the initial Offensive Coach flag");
-        beginsDefensiveCoach = checkNotNull(initialDefensiveCoach,
+        initialDefCoach = checkNotNull(initialDefensiveCoach,
                 "Received a null pointer as the initial Defensive Coach flag");
-        beginsSupportCoach = checkNotNull(initialSupportCoach,
+        initialSupCoach = checkNotNull(initialSupportCoach,
                 "Received a null pointer as the initial Support Coach flag");
     }
 
@@ -175,7 +175,7 @@ public final class DefaultTeamTypeAssetsAvailability
 
     @Override
     public final Integer getCheerleadersInitial() {
-        return initialCheerleader;
+        return initialCheer;
     }
 
     @Override
@@ -225,17 +225,17 @@ public final class DefaultTeamTypeAssetsAvailability
 
     @Override
     public final Boolean isStartingWithDefensiveCoachingStaff() {
-        return beginsDefensiveCoach;
+        return initialDefCoach;
     }
 
     @Override
     public final Boolean isStartingWithOffensiveCoachingStaff() {
-        return beginsOffensiveCoach;
+        return initialOffCoach;
     }
 
     @Override
     public final Boolean isStartingWithSupportCoachingStaff() {
-        return beginsSupportCoach;
+        return initialSupCoach;
     }
 
 }

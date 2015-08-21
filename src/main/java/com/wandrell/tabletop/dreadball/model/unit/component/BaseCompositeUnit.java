@@ -28,7 +28,7 @@ import java.util.LinkedHashSet;
  * 
  * @author Bernardo Martínez Garrido
  */
-public abstract class AbstractCompositeUnit {
+public class BaseCompositeUnit {
 
     /**
      * Components of the unit.
@@ -41,7 +41,7 @@ public abstract class AbstractCompositeUnit {
      * @param components
      *            the components which make up the unit
      */
-    public AbstractCompositeUnit(final Collection<UnitComponent> components) {
+    public BaseCompositeUnit(final Collection<UnitComponent> components) {
         super();
 
         checkNotNull(components,

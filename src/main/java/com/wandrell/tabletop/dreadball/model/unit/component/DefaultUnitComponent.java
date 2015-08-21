@@ -37,7 +37,7 @@ public final class DefaultUnitComponent implements UnitComponent {
     /**
      * Abilities given by this component.
      */
-    private final Collection<Ability>      abilitiesGiven     = new LinkedHashSet<Ability>();
+    private final Collection<Ability>      abilitiesGiven = new LinkedHashSet<Ability>();
     /**
      * Attributes given by this component.
      */
@@ -57,7 +57,7 @@ public final class DefaultUnitComponent implements UnitComponent {
     /**
      * Team position roles which can have this component.
      */
-    private final Collection<TeamPosition> componentPositions = new LinkedHashSet<TeamPosition>();
+    private final Collection<TeamPosition> componentPos   = new LinkedHashSet<TeamPosition>();
 
     /**
      * Constructs a {@code DefaultUnitComponent} with the specified arguments.
@@ -97,7 +97,7 @@ public final class DefaultUnitComponent implements UnitComponent {
         }
 
         for (final TeamPosition position : positions) {
-            componentPositions.add(checkNotNull(position,
+            componentPos.add(checkNotNull(position,
                     "Received a null pointer as position"));
         }
     }
@@ -149,7 +149,7 @@ public final class DefaultUnitComponent implements UnitComponent {
 
     @Override
     public final Collection<TeamPosition> getTeamPositions() {
-        return componentPositions;
+        return componentPos;
     }
 
     @Override

@@ -15,7 +15,11 @@
  */
 package com.wandrell.tabletop.dreadball.model.unit.component;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
@@ -31,13 +35,17 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
+public final class DefaultCompositeAdvancementUnit
         implements CompositeAdvancementUnit {
 
     /**
      * {@code AdvancementUnit} used for inheritance through composition.
      */
-    private final AdvancementUnit baseUnit;
+    private final AdvancementUnit           baseUnit;
+    /**
+     * Components of the unit.
+     */
+    private final Collection<UnitComponent> unitComponents = new LinkedHashSet<UnitComponent>();
 
     /**
      * Constructs a {@code DefaultCompositeAdvancementUnit} with the specified
@@ -66,10 +74,20 @@ public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
             final Collection<Ability> abilities, final Boolean giant,
             final UnitValorationCalculator<AdvancementUnit> valorator,
             final Collection<UnitComponent> components) {
-        super(components);
+        super();
 
         baseUnit = new DefaultAdvancementUnit(nameTemplate, cost, position,
                 attributes, abilities, giant, valorator);
+
+        checkNotNull(components,
+                "Received a null pointer as valoration the components");
+
+        for (final UnitComponent component : components) {
+            checkNotNull(component,
+                    "Received a null pointer as valoration a component");
+
+            unitComponents.add(component);
+        }
     }
 
     @Override
@@ -85,6 +103,16 @@ public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
     @Override
     public final AttributesHolder getAttributes() {
         return getBaseUnit().getAttributes();
+    }
+
+    /**
+     * Returns the components which make up the unit.
+     * 
+     * @return the components which make up the unit
+     */
+    @Override
+    public final Collection<UnitComponent> getComponents() {
+        return Collections.unmodifiableCollection(getComponentsModifiable());
     }
 
     @Override
@@ -166,6 +194,15 @@ public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
      */
     private final AdvancementUnit getBaseUnit() {
         return baseUnit;
+    }
+
+    /**
+     * Returns a modifiable collection with the unit components.
+     * 
+     * @return a modifiable collection with the unit components
+     */
+    private final Collection<UnitComponent> getComponentsModifiable() {
+        return unitComponents;
     }
 
 }

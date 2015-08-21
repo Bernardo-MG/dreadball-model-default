@@ -48,11 +48,11 @@ public final class DefaultSponsorAssetsAvailability
     /**
      * Cost of a Special Move Card.
      */
-    private final Integer costSpecialMoveCard;
+    private final Integer costSpMoveCard;
     /**
      * Cost for unlocking a Cheerleader.
      */
-    private final Integer costUnlockCheerleader;
+    private final Integer costUnlockCheer;
     /**
      * Cost of a Wager.
      */
@@ -103,9 +103,9 @@ public final class DefaultSponsorAssetsAvailability
                 "Received a null pointer as Coaching Dice cost");
         costSabotageCard = checkNotNull(sabotageCost,
                 "Received a null pointer as Sabotage Card cost");
-        costSpecialMoveCard = checkNotNull(specialMoveCost,
+        costSpMoveCard = checkNotNull(specialMoveCost,
                 "Received a null pointer as Special Move Card cost");
-        costUnlockCheerleader = checkNotNull(cheerleaderUnlock,
+        costUnlockCheer = checkNotNull(cheerleaderUnlock,
                 "Received a null pointer as Cheerleader unlocking cost");
         costCheerleader = checkNotNull(cheerleaderCost,
                 "Received a null pointer as Cheerleader cost");
@@ -133,7 +133,7 @@ public final class DefaultSponsorAssetsAvailability
 
     @Override
     public final Integer getCheerleaderUnlockCost() {
-        return costUnlockCheerleader;
+        return costUnlockCheer;
     }
 
     @Override
@@ -153,7 +153,7 @@ public final class DefaultSponsorAssetsAvailability
 
     @Override
     public final Integer getSpecialMovementCardCost() {
-        return costSpecialMoveCard;
+        return costSpMoveCard;
     }
 
     @Override
