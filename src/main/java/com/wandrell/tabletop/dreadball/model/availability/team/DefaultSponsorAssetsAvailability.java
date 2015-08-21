@@ -94,7 +94,7 @@ public final class DefaultSponsorAssetsAvailability
      *            cost of a Wager
      * @param teamMinCost
      *            minimum cost for a team
-     * @param maxWagerCount
+     * @param maxWagers
      *            maximum number of Wagers allowed
      */
     public DefaultSponsorAssetsAvailability(final Integer diceCost,

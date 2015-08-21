@@ -83,11 +83,11 @@ public final class DefaultAdvancementUnit extends AbstractUnit
      * @param valorator
      *            calculator for the valoration
      */
-    public DefaultAdvancementUnit(final String name, final Integer cost,
+    public DefaultAdvancementUnit(final String nameTemplate, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final UnitValorationCalculator<AdvancementUnit> valorator) {
-        super(name, cost, position, attributes, abilities, giant);
+        super(nameTemplate, cost, position, attributes, abilities, giant);
 
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");
