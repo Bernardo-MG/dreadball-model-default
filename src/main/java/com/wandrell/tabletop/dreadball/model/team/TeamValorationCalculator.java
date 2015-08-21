@@ -13,10 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.wandrell.tabletop.dreadball.model.unit;
+package com.wandrell.tabletop.dreadball.model.team;
 
-public interface UnitValorationBuilder {
+public interface TeamValorationCalculator<T extends Team<?>> {
 
-    public Integer getValoration(final Unit unit);
+    public Integer getValoration(final T team);
 
 }

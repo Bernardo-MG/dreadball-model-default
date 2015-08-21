@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
-import com.wandrell.tabletop.dreadball.model.team.TeamValorationBuilder;
+import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 public final class TestExceptionPlayersDefaultSponsorTeam {
@@ -18,9 +18,9 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
         super();
 
         final Sponsor sponsor;
-        final TeamValorationBuilder<SponsorTeam> valorator;
+        final TeamValorationCalculator<SponsorTeam> valorator;
 
-        valorator = Mockito.mock(TeamValorationBuilder.class);
+        valorator = Mockito.mock(TeamValorationCalculator.class);
         sponsor = Mockito.mock(Sponsor.class);
 
         this.team = new DefaultSponsorTeam(sponsor, valorator);

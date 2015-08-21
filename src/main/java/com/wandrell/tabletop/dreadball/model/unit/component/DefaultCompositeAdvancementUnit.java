@@ -21,7 +21,7 @@ import java.util.Collection;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.UnitValorationBuilder;
+import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
@@ -38,7 +38,7 @@ public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
             final Integer cost, final TeamPosition position,
             final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
-            final UnitValorationBuilder valorator,
+            final UnitValorationCalculator<AdvancementUnit> valorator,
             final Collection<UnitComponent> components) {
         super(components);
 

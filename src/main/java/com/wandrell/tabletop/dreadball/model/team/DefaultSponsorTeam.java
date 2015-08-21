@@ -35,22 +35,22 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     /**
      * Serialization ID.
      */
-    private static final long                        serialVersionUID     = 257447297729660690L;
-    private Integer                                  teamMedibots         = 0;
-    private Integer                                  teamSabotageCards    = 0;
-    private Integer                                  teamSpecialMoveCards = 0;
+    private static final long                           serialVersionUID     = 257447297729660690L;
+    private Integer                                     teamMedibots         = 0;
+    private Integer                                     teamSabotageCards    = 0;
+    private Integer                                     teamSpecialMoveCards = 0;
     /**
      * Team's sponsor.
      */
-    private final Sponsor                            teamSponsor;
-    private Integer                                  teamWagers           = 0;
+    private final Sponsor                               teamSponsor;
+    private Integer                                     teamWagers           = 0;
     /**
      * Builder for calculating the valoration.
      */
-    private final TeamValorationBuilder<SponsorTeam> valorationBuilder;
+    private final TeamValorationCalculator<SponsorTeam> valorationBuilder;
 
     public DefaultSponsorTeam(final Sponsor sponsor,
-            final TeamValorationBuilder<SponsorTeam> valorator) {
+            final TeamValorationCalculator<SponsorTeam> valorator) {
         super();
 
         this.teamSponsor = checkNotNull(sponsor,
@@ -140,7 +140,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
                 .add("players", getPlayers()).toString();
     }
 
-    private final TeamValorationBuilder<SponsorTeam> getValorationBuilder() {
+    private final TeamValorationCalculator<SponsorTeam> getValorationBuilder() {
         return valorationBuilder;
     }
 

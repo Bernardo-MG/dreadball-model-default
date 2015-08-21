@@ -40,12 +40,12 @@ public final class DefaultAdvancementUnit extends AbstractUnit
     /**
      * Serialization ID.
      */
-    private static final long           serialVersionUID = -6573589542322283909L;
+    private static final long                               serialVersionUID = -6573589542322283909L;
     /**
      * The unspent experience.
      */
-    private Integer                     experienceValue;
-    private UnitComponent               graftedImplant   = new DefaultUnitComponent(
+    private Integer                                         experienceValue;
+    private UnitComponent                                   graftedImplant   = new DefaultUnitComponent(
             "none", new DefaultComponentLocation("none"), 0,
             new LinkedList<TeamPosition>(),
             new ImmutableAttributesHolder(0, 0, 0, 0, 0),
@@ -53,16 +53,16 @@ public final class DefaultAdvancementUnit extends AbstractUnit
     /**
      * The unit's current rank.
      */
-    private Integer                     rankValue;
+    private Integer                                         rankValue;
     /**
      * Builder for calculating the valoration.
      */
-    private final UnitValorationBuilder valorationBuilder;
+    private final UnitValorationCalculator<AdvancementUnit> valorationBuilder;
 
     public DefaultAdvancementUnit(final String name, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
-            final UnitValorationBuilder valorator) {
+            final UnitValorationCalculator<AdvancementUnit> valorator) {
         super(name, cost, position, attributes, abilities, giant);
 
         valorationBuilder = checkNotNull(valorator,
@@ -140,7 +140,8 @@ public final class DefaultAdvancementUnit extends AbstractUnit
      * 
      * @return the valoration builder
      */
-    private final UnitValorationBuilder getValorationBuilder() {
+    private final UnitValorationCalculator<AdvancementUnit>
+            getValorationBuilder() {
         return valorationBuilder;
     }
 

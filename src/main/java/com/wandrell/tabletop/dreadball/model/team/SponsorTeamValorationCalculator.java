@@ -19,58 +19,54 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
-import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
-public final class AdvancementTeamValorationBuilder
-        implements TeamValorationBuilder<AdvancementTeam>, Serializable {
+public final class SponsorTeamValorationCalculator
+        implements TeamValorationCalculator<SponsorTeam>, Serializable {
 
     /**
      * 
      */
-    private static final long serialVersionUID = -5071274138826934377L;
-    private final Integer     costCard;
+    private static final long serialVersionUID = 6393436019086812727L;
     private final Integer     costCheerleader;
-    private final Integer     costCoaching;
     private final Integer     costDice;
+    private final Integer     costSabotage;
+    private final Integer     costSpecialMove;
+    private final Integer     costWager;
 
-    public AdvancementTeamValorationBuilder(final Integer diceCost,
-            final Integer cardCost, final Integer cheerleaderCost,
-            final Integer coachingCost) {
+    public SponsorTeamValorationCalculator(final Integer diceCost,
+            final Integer sabotageCost, final Integer specialMoveCost,
+            final Integer cheerleaderCost, final Integer wagerCost) {
         super();
 
         costDice = checkNotNull(diceCost,
                 "Received a null pointer as the dice cost");
-        costCard = checkNotNull(cardCost,
-                "Received a null pointer as the Dreadball card cost");
+        costSabotage = checkNotNull(sabotageCost,
+                "Received a null pointer as the sabotage card cost");
+        costSpecialMove = checkNotNull(specialMoveCost,
+                "Received a null pointer as the special move card cost");
         costCheerleader = checkNotNull(cheerleaderCost,
                 "Received a null pointer as the cheerleader cost");
-        costCoaching = checkNotNull(coachingCost,
-                "Received a null pointer as the coaching staff cost");
+        costWager = checkNotNull(wagerCost,
+                "Received a null pointer as the wager cost");
     }
 
     @Override
-    public final Integer getValoration(final AdvancementTeam team) {
+    public final Integer getValoration(final SponsorTeam team) {
         Integer valoration;
 
         checkNotNull(team, "Received a null pointer as the team");
 
-        valoration = team.getCash();
-        for (final AdvancementUnit unit : team.getPlayers().values()) {
-            valoration += unit.getValoration();
+        valoration = 0;
+        for (final Unit unit : team.getPlayers().values()) {
+            valoration += unit.getCost();
         }
 
         valoration += team.getDice() * costDice;
-        valoration += team.getDreadballCards() * costCard;
+        valoration += team.getSabotageCards() * costSabotage;
+        valoration += team.getSpecialMoveCards() * costSpecialMove;
         valoration += team.getCheerleaders() * costCheerleader;
-        if (team.hasDefensiveCoachingStaff()) {
-            valoration += costCoaching;
-        }
-        if (team.hasOffensiveCoachingStaff()) {
-            valoration += costCoaching;
-        }
-        if (team.hasSupportCoachingStaff()) {
-            valoration += costCoaching;
-        }
+        valoration += team.getWagers() * costWager;
 
         return valoration;
     }

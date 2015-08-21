@@ -35,27 +35,27 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     /**
      * Serialization ID.
      */
-    private static final long                            serialVersionUID = 1920177317770829466L;
-    private Boolean                                      defensiveCoach   = false;
-    private Boolean                                      offensiveCoach   = false;
-    private Boolean                                      supportCoach     = false;
-    private Integer                                      teamCards        = 0;
+    private static final long                               serialVersionUID = 1920177317770829466L;
+    private Boolean                                         defensiveCoach   = false;
+    private Boolean                                         offensiveCoach   = false;
+    private Boolean                                         supportCoach     = false;
+    private Integer                                         teamCards        = 0;
     /**
      * Unspent cash.
      */
-    private Integer                                      teamCash         = 0;
+    private Integer                                         teamCash         = 0;
     /**
      * Team's name.
      */
-    private String                                       teamName;
+    private String                                          teamName;
     /**
      * The base type of the team.
      */
-    private final TeamType                               teamType;
+    private final TeamType                                  teamType;
     /**
      * Builder for calculating the valoration.
      */
-    private final TeamValorationBuilder<AdvancementTeam> valorationBuilder;
+    private final TeamValorationCalculator<AdvancementTeam> valorationBuilder;
 
     /**
      * Constructs a {@code DefaultLicensedTeam} with the specified parameters.
@@ -68,7 +68,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
      *            valoration builder
      */
     public DefaultAdvancementTeam(final String name, final TeamType type,
-            final TeamValorationBuilder<AdvancementTeam> valorator) {
+            final TeamValorationCalculator<AdvancementTeam> valorator) {
         super();
 
         teamName = checkNotNull(name, "Received a null pointer as name");
@@ -181,7 +181,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
                 .add("players", getPlayers()).toString();
     }
 
-    private final TeamValorationBuilder<AdvancementTeam>
+    private final TeamValorationCalculator<AdvancementTeam>
             getValorationBuilder() {
         return valorationBuilder;
     }

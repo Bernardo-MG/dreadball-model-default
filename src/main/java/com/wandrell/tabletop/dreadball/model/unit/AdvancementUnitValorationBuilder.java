@@ -19,13 +19,18 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
-public final class DefaultUnitValorationBuilder
-        implements UnitValorationBuilder, Serializable {
+/**
+ * Default implementation of {@link UnitValorationCalculator}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public final class AdvancementUnitValorationBuilder
+        implements UnitValorationCalculator<AdvancementUnit>, Serializable {
 
     private static final long serialVersionUID = -1723086163134895663L;
     private final Integer     rankValue;
 
-    public DefaultUnitValorationBuilder(final Integer rankCostIncrease) {
+    public AdvancementUnitValorationBuilder(final Integer rankCostIncrease) {
         super();
 
         rankValue = checkNotNull(rankCostIncrease,
@@ -33,19 +38,15 @@ public final class DefaultUnitValorationBuilder
     }
 
     @Override
-    public final Integer getValoration(final Unit unit) {
-        final AdvancementUnit advUnit;
+    public final Integer getValoration(final AdvancementUnit unit) {
         Integer valoration;
 
         checkNotNull(unit, "Received a null pointer as the unit");
 
         valoration = unit.getCost();
-        if (unit instanceof AdvancementUnit) {
-            advUnit = (AdvancementUnit) unit;
 
-            valoration += advUnit.getGraftedImplant().getCost();
-            valoration += advUnit.getRank() * getRankCostIncrease();
-        }
+        valoration += unit.getGraftedImplant().getCost();
+        valoration += unit.getRank() * getRankCostIncrease();
 
         return valoration;
     }
