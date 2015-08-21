@@ -21,25 +21,60 @@ import java.io.Serializable;
 
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
+/**
+ * Serializable implementation of {@link TeamValorationCalculator} for
+ * {@link SponsorTeam}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class SponsorTeamValorationCalculator
         implements TeamValorationCalculator<SponsorTeam>, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long serialVersionUID = 6393436019086812727L;
+    /**
+     * Cost of a Cheerleader.
+     */
     private final Integer     costCheerleader;
-    private final Integer     costDice;
+    /**
+     * Cost of a Coaching Die.
+     */
+    private final Integer     costDie;
+    /**
+     * Cost of a Sabotage Card.
+     */
     private final Integer     costSabotage;
+    /**
+     * Cost of a Special Move Card.
+     */
     private final Integer     costSpecialMove;
+    /**
+     * Cost of a Wager.
+     */
     private final Integer     costWager;
 
-    public SponsorTeamValorationCalculator(final Integer diceCost,
+    /**
+     * Constructs a {@code SponsorTeamValorationCalculator}.
+     * 
+     * @param dieCost
+     *            cost of a Coaching Die
+     * @param sabotageCost
+     *            cost of a Sabotage Card
+     * @param specialMoveCost
+     *            cost of a Special Move Card
+     * @param cheerleaderCost
+     *            cost of a Cheerleader
+     * @param wagerCost
+     *            cost of a Wager
+     */
+    public SponsorTeamValorationCalculator(final Integer dieCost,
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderCost, final Integer wagerCost) {
         super();
 
-        costDice = checkNotNull(diceCost,
+        costDie = checkNotNull(dieCost,
                 "Received a null pointer as the dice cost");
         costSabotage = checkNotNull(sabotageCost,
                 "Received a null pointer as the sabotage card cost");
@@ -62,7 +97,7 @@ public final class SponsorTeamValorationCalculator
             valoration += unit.getCost();
         }
 
-        valoration += team.getDice() * costDice;
+        valoration += team.getDice() * costDie;
         valoration += team.getSabotageCards() * costSabotage;
         valoration += team.getSpecialMoveCards() * costSpecialMove;
         valoration += team.getCheerleaders() * costCheerleader;

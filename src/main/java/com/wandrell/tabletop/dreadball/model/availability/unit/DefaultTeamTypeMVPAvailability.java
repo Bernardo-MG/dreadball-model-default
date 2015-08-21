@@ -22,16 +22,36 @@ import java.io.Serializable;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
+/**
+ * Default serializable implementation of {@link TeamTypeMVPAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultTeamTypeMVPAvailability
         implements TeamTypeMVPAvailability, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long serialVersionUID = -6082590958725417920L;
+    /**
+     * {@code Unit} for which the availability applies.
+     */
     private final Unit        avaUnit;
+    /**
+     * {@code TeamType} for which the availability applies.
+     */
     private final TeamType    teamType;
 
+    /**
+     * Constructs a {@code DefaultTeamTypeMVPAvailability} with the specified
+     * arguments.
+     * 
+     * @param team
+     *            {@code TeamType} for which the availability applies
+     * @param unit
+     *            {@code Unit} for which the availability applies
+     */
     public DefaultTeamTypeMVPAvailability(final TeamType team,
             final Unit unit) {
         super();

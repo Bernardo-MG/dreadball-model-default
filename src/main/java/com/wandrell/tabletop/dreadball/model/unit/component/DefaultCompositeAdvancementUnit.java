@@ -25,16 +25,47 @@ import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
+/**
+ * Default serializable implementation of {@code CompositeAdvancementUnit}.
+ * <p>
+ * It uses composition to inherit from {@link DefaultAdvancementUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
         implements CompositeAdvancementUnit, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long     serialVersionUID = -321423729599012626L;
+    /**
+     * {@code AdvancementUnit} used for inheritance through composition.
+     */
     private final AdvancementUnit baseUnit;
 
-    public DefaultCompositeAdvancementUnit(final String name,
+    /**
+     * Constructs a {@code DefaultCompositeAdvancementUnit} with the specified
+     * arguments.
+     * 
+     * @param nameTemplate
+     *            the unit's base template name
+     * @param cost
+     *            cost of the unit
+     * @param position
+     *            team position role of the unit
+     * @param attributes
+     *            unit attributes
+     * @param abilities
+     *            unit abilities
+     * @param giant
+     *            flag indicating if this is a giant
+     * @param valorator
+     *            calculator for the valoration
+     * @param components
+     *            components which create this unit
+     */
+    public DefaultCompositeAdvancementUnit(final String nameTemplate,
             final Integer cost, final TeamPosition position,
             final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
@@ -42,8 +73,8 @@ public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
             final Collection<UnitComponent> components) {
         super(components);
 
-        baseUnit = new DefaultAdvancementUnit(name, cost, position, attributes,
-                abilities, giant, valorator);
+        baseUnit = new DefaultAdvancementUnit(nameTemplate, cost, position,
+                attributes, abilities, giant, valorator);
     }
 
     @Override
@@ -131,6 +162,13 @@ public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
         getBaseUnit().setUnspentExperience(experience);
     }
 
+    /**
+     * Returns the base unit class being used for inheritance through
+     * composition.
+     * 
+     * @return the base unit class being used for inheritance through
+     *         composition
+     */
     private final AdvancementUnit getBaseUnit() {
         return baseUnit;
     }

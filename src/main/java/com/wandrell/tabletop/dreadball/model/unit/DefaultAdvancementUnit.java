@@ -30,7 +30,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributesHolder;
 
 /**
- * Default implementation of {@code AdvancementUnit}.
+ * Default serializable implementation of {@code AdvancementUnit}.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -45,6 +45,12 @@ public final class DefaultAdvancementUnit extends AbstractUnit
      * The unspent experience.
      */
     private Integer                                         experienceValue;
+    /**
+     * Implant grafted to the unit. This is a {@code UnitComponent}, the same
+     * objects used for composite units.
+     * <p>
+     * Be default it will be a stub component.
+     */
     private UnitComponent                                   graftedImplant   = new DefaultUnitComponent(
             "none", new DefaultComponentLocation("none"), 0,
             new LinkedList<TeamPosition>(),
@@ -55,10 +61,28 @@ public final class DefaultAdvancementUnit extends AbstractUnit
      */
     private Integer                                         rankValue;
     /**
-     * Builder for calculating the valoration.
+     * Object used for calculating the unit valoration.
      */
     private final UnitValorationCalculator<AdvancementUnit> valorationBuilder;
 
+    /**
+     * Constructs a {@code DefaultAdvancementUnit} with the specified arguments.
+     * 
+     * @param nameTemplate
+     *            the unit's base template name
+     * @param cost
+     *            cost of the unit
+     * @param position
+     *            team position role of the unit
+     * @param attributes
+     *            unit attributes
+     * @param abilities
+     *            unit abilities
+     * @param giant
+     *            flag indicating if this is a giant
+     * @param valorator
+     *            calculator for the valoration
+     */
     public DefaultAdvancementUnit(final String name, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
@@ -91,7 +115,7 @@ public final class DefaultAdvancementUnit extends AbstractUnit
 
     @Override
     public final Integer getValoration() {
-        return getValorationBuilder().getValoration(this);
+        return getValorationCalculator().getValoration(this);
     }
 
     @Override
@@ -107,8 +131,7 @@ public final class DefaultAdvancementUnit extends AbstractUnit
 
     @Override
     public final void setAttributes(final AttributesHolder attributes) {
-        // TODO Auto-generated method stub
-
+        setUnitAttributes(attributes);
     }
 
     @Override
@@ -136,12 +159,12 @@ public final class DefaultAdvancementUnit extends AbstractUnit
     }
 
     /**
-     * Returns the valoration builder.
+     * Returns the valoration calculator.
      * 
-     * @return the valoration builder
+     * @return the valoration calculator
      */
     private final UnitValorationCalculator<AdvancementUnit>
-            getValorationBuilder() {
+            getValorationCalculator() {
         return valorationBuilder;
     }
 

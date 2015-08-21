@@ -21,24 +21,54 @@ import java.io.Serializable;
 
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
+/**
+ * Serializable implementation of {@link TeamValorationCalculator} for
+ * {@link AdvancementTeam}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class AdvancementTeamValorationCalculator
         implements TeamValorationCalculator<AdvancementTeam>, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long serialVersionUID = -5071274138826934377L;
+    /**
+     * Cost of a Dreadball Card.
+     */
     private final Integer     costCard;
+    /**
+     * Cost of a Cheerleader.
+     */
     private final Integer     costCheerleader;
+    /**
+     * Cost of a Coaching Staff.
+     */
     private final Integer     costCoaching;
-    private final Integer     costDice;
+    /**
+     * Cost of a Coaching Die.
+     */
+    private final Integer     costDie;
 
-    public AdvancementTeamValorationCalculator(final Integer diceCost,
+    /**
+     * Constructs a {@code AdvancementTeamValorationCalculator}.
+     * 
+     * @param dieCost
+     *            the cost of a Coaching Die
+     * @param cardCost
+     *            the cost of a Dreadball Card
+     * @param cheerleaderCost
+     *            the cost of a Cheerleader
+     * @param coachingCost
+     *            the cost of a Coaching Staff
+     */
+    public AdvancementTeamValorationCalculator(final Integer dieCost,
             final Integer cardCost, final Integer cheerleaderCost,
             final Integer coachingCost) {
         super();
 
-        costDice = checkNotNull(diceCost,
+        costDie = checkNotNull(dieCost,
                 "Received a null pointer as the dice cost");
         costCard = checkNotNull(cardCost,
                 "Received a null pointer as the Dreadball card cost");
@@ -59,7 +89,7 @@ public final class AdvancementTeamValorationCalculator
             valoration += unit.getValoration();
         }
 
-        valoration += team.getDice() * costDice;
+        valoration += team.getDice() * costDie;
         valoration += team.getDreadballCards() * costCard;
         valoration += team.getCheerleaders() * costCheerleader;
         if (team.hasDefensiveCoachingStaff()) {

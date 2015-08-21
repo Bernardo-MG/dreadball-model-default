@@ -27,9 +27,9 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
- * Default implementation of {@code Sponsor}.
+ * Default serializable implementation of {@link Sponsor}.
  * 
- * @author Bernardo Martíne Garrido
+ * @author Bernardo Martínez Garrido
  */
 public final class DefaultSponsor implements Sponsor, Serializable {
 
@@ -41,6 +41,10 @@ public final class DefaultSponsor implements Sponsor, Serializable {
      * Sponsor's player groups.
      */
     private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<>();
+    /**
+     * Sponsor's unspent cash.
+     */
+    private Integer                         sponsorCash      = 0;
     /**
      * Sponsor's name.
      */
@@ -76,9 +80,8 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     }
 
     @Override
-    public void addAfinityGroup(AffinityGroup arg0) {
-        // TODO Auto-generated method stub
-
+    public final void addAfinityGroup(final AffinityGroup affinity) {
+        getAffinityGroupsModifiable().add(affinity);
     }
 
     @Override
@@ -108,9 +111,8 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     }
 
     @Override
-    public Integer getCash() {
-        // TODO Auto-generated method stub
-        return null;
+    public final Integer getCash() {
+        return sponsorCash;
     }
 
     @Override
@@ -129,15 +131,13 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     }
 
     @Override
-    public void removeAfinityGroup(AffinityGroup arg0) {
-        // TODO Auto-generated method stub
-
+    public final void removeAfinityGroup(final AffinityGroup affinity) {
+        getAffinityGroupsModifiable().remove(affinity);
     }
 
     @Override
-    public void setCash(Integer arg0) {
-        // TODO Auto-generated method stub
-
+    public final void setCash(final Integer cash) {
+        sponsorCash = cash;
     }
 
     @Override

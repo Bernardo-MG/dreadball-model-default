@@ -32,14 +32,16 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 public abstract class AbstractUnit implements Unit {
 
     /**
-     * Unit's attributes.
+     * Base cost of the unit.
      */
-    private final AttributesHolder    attributesValues;
     private final Integer             baseCost;
     /**
      * Indicates if the unit is a giant.
      */
     private final Boolean             giantFlag;
+    /**
+     * Name of the template from which this unit has been created.
+     */
     private final String              templateName;
     /**
      * The unit's team position.
@@ -49,14 +51,19 @@ public abstract class AbstractUnit implements Unit {
      * The unit's abilities.
      */
     private final Collection<Ability> unitAbilities = new LinkedHashSet<>();
+    /**
+     * Unit's attributes.
+     */
+    private AttributesHolder          unitAttributes;
 
-    public AbstractUnit(final String name, final Integer cost,
+    public AbstractUnit(final String nameTemplate, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant) {
         super();
 
-        templateName = checkNotNull(name, "Received a null pointer as name");
-        attributesValues = checkNotNull(attributes,
+        templateName = checkNotNull(nameTemplate,
+                "Received a null pointer as the template name");
+        unitAttributes = checkNotNull(attributes,
                 "Received a null pointer as attributes");
         templatePosition = checkNotNull(position,
                 "Received a null pointer as position");
@@ -78,7 +85,7 @@ public abstract class AbstractUnit implements Unit {
 
     @Override
     public final AttributesHolder getAttributes() {
-        return attributesValues;
+        return unitAttributes;
     }
 
     @Override
@@ -108,6 +115,10 @@ public abstract class AbstractUnit implements Unit {
      */
     protected final Collection<Ability> getAbilitiesModifiable() {
         return unitAbilities;
+    }
+
+    protected final void setUnitAttributes(final AttributesHolder attributes) {
+        unitAttributes = attributes;
     }
 
 }

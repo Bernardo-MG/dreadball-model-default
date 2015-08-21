@@ -24,21 +24,65 @@ import java.util.LinkedList;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
+/**
+ * Default serializable implementation of {@link AffinityUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultAffinityUnit extends AbstractUnit
         implements AffinityUnit, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long               serialVersionUID = -7923136650997946968L;
+    /**
+     * The affinities of the unit.
+     */
     private final Collection<AffinityGroup> affinityGroups   = new LinkedList<AffinityGroup>();
+    /**
+     * Unit cost for an ally.
+     */
     private final Integer                   costAlly;
+    /**
+     * Unit cost for a friend.
+     */
     private final Integer                   costFriend;
+    /**
+     * Unit cost for a stranger.
+     */
     private final Integer                   costStranger;
 
-    public DefaultAffinityUnit(final String name, final Integer cost,
+    /**
+     * Constructs a {@code DefaultAffinityUnit} with the specified arguments.
+     * 
+     * @param nameTemplate
+     *            the unit's base template name
+     * @param cost
+     *            cost of the unit
+     * @param position
+     *            team position role of the unit
+     * @param attributes
+     *            unit attributes
+     * @param abilities
+     *            unit abilities
+     * @param giant
+     *            flag indicating if this is a giant
+     * @param affinities
+     *            the unit affinities
+     * @param allyCost
+     *            the unit cost for an ally
+     * @param friendCost
+     *            the unit cost for a friend
+     * @param strangerCost
+     *            the unit cost for a stranger
+     */
+    public DefaultAffinityUnit(final String nameTemplate, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final Collection<AffinityGroup> affinities, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost) {
-        super(name, cost, position, attributes, abilities, giant);
+        super(nameTemplate, cost, position, attributes, abilities, giant);
 
         costAlly = checkNotNull(allyCost,
                 "Received a null pointer as ally cost");

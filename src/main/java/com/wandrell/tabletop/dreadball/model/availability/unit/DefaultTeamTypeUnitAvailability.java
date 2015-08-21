@@ -22,18 +22,48 @@ import java.io.Serializable;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
+/**
+ * Default serializable implementation of {@link TeamTypeUnitAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultTeamTypeUnitAvailability
         implements TeamTypeUnitAvailability, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long serialVersionUID = 6800043495581560617L;
+    /**
+     * Initial number of units of this type for the team type.
+     */
     private final Integer     avaInitial;
+    /**
+     * Maximum number of units of this type for the team type.
+     */
     private final Integer     avaMax;
+    /**
+     * {@code Unit} for which the availability applies.
+     */
     private final Unit        avaUnit;
+    /**
+     * {@code TeamType} for which the availability applies.
+     */
     private final TeamType    teamType;
 
+    /**
+     * Constructs a {@code DefaultTeamTypeUnitAvailability} with the specified
+     * arguments.
+     * 
+     * @param team
+     *            {@code TeamType} for which the availability applies
+     * @param unit
+     *            {@code Unit} for which the availability applies
+     * @param initial
+     *            initial number of units of this type
+     * @param max
+     *            maximum number of units of this type
+     */
     public DefaultTeamTypeUnitAvailability(final TeamType team, final Unit unit,
             final Integer initial, final Integer max) {
         super();

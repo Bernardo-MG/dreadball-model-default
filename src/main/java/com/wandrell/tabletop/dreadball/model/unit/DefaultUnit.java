@@ -23,7 +23,9 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default implementation of {@code Unit}.
+ * Default serializable implementation of {@code Unit}.
+ * <p>
+ * It just creates a concrete class out of the {@link AbstractUnit} class.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -34,10 +36,26 @@ public final class DefaultUnit extends AbstractUnit implements Serializable {
      */
     private static final long serialVersionUID = -5871012498706537929L;
 
-    public DefaultUnit(final String name, final Integer cost,
+    /**
+     * Constructs a {@code DefaultUnit} with the specified arguments.
+     * 
+     * @param nameTemplate
+     *            the unit's base template name
+     * @param cost
+     *            cost of the unit
+     * @param position
+     *            team position role of the unit
+     * @param attributes
+     *            unit attributes
+     * @param abilities
+     *            unit abilities
+     * @param giant
+     *            flag indicating if this is a giant
+     */
+    public DefaultUnit(final String nameTemplate, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant) {
-        super(name, cost, position, attributes, abilities, giant);
+        super(nameTemplate, cost, position, attributes, abilities, giant);
     }
 
     @Override

@@ -25,7 +25,7 @@ import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Default implementation of {@code SponsorTeam}.
+ * Default serializable implementation of {@link SponsorTeam}.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -36,24 +36,44 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
      * Serialization ID.
      */
     private static final long                           serialVersionUID     = 257447297729660690L;
+    /**
+     * Number of Medibots in the team.
+     */
     private Integer                                     teamMedibots         = 0;
+    /**
+     * Number of Sabotage Cards in the team.
+     */
     private Integer                                     teamSabotageCards    = 0;
+    /**
+     * Number of Special Move Cards.
+     */
     private Integer                                     teamSpecialMoveCards = 0;
     /**
      * Team's sponsor.
      */
     private final Sponsor                               teamSponsor;
+    /**
+     * Number of Wagers in the team.
+     */
     private Integer                                     teamWagers           = 0;
     /**
      * Builder for calculating the valoration.
      */
     private final TeamValorationCalculator<SponsorTeam> valorationBuilder;
 
+    /**
+     * Constructs a {@code DefaultSponsorTeam} with the specified arguments.
+     * 
+     * @param sponsor
+     *            the team's sponsor
+     * @param valorator
+     *            valoration calculator for the team
+     */
     public DefaultSponsorTeam(final Sponsor sponsor,
             final TeamValorationCalculator<SponsorTeam> valorator) {
         super();
 
-        this.teamSponsor = checkNotNull(sponsor,
+        teamSponsor = checkNotNull(sponsor,
                 "Received a null pointer as sponsor");
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");
@@ -101,7 +121,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
 
     @Override
     public final Integer getValoration() {
-        return getValorationBuilder().getValoration(this);
+        return getValorationCalculator().getValoration(this);
     }
 
     @Override
@@ -140,7 +160,13 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
                 .add("players", getPlayers()).toString();
     }
 
-    private final TeamValorationCalculator<SponsorTeam> getValorationBuilder() {
+    /**
+     * Returns the valoration calculator.
+     * 
+     * @return the valoration calculator
+     */
+    private final TeamValorationCalculator<SponsorTeam>
+            getValorationCalculator() {
         return valorationBuilder;
     }
 

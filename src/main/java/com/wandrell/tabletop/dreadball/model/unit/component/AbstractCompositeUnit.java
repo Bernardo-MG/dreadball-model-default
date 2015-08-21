@@ -21,10 +21,26 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 
+/**
+ * Abstract root class for composite units.
+ * <p>
+ * It stores the unit components.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public abstract class AbstractCompositeUnit {
 
+    /**
+     * Components of the unit.
+     */
     private final Collection<UnitComponent> unitComponents = new LinkedHashSet<UnitComponent>();
 
+    /**
+     * Constructs an {@code AbstractCompositeUnit} with the specified arguments.
+     * 
+     * @param components
+     *            the components which make up the unit
+     */
     public AbstractCompositeUnit(final Collection<UnitComponent> components) {
         super();
 
@@ -39,10 +55,20 @@ public abstract class AbstractCompositeUnit {
         }
     }
 
+    /**
+     * Returns the components which make up the unit.
+     * 
+     * @return the components which make up the unit
+     */
     public final Collection<UnitComponent> getComponents() {
         return Collections.unmodifiableCollection(getComponentsModifiable());
     }
 
+    /**
+     * Returns a modifiable collection with the unit components.
+     * 
+     * @return a modifiable collection with the unit components
+     */
     private final Collection<UnitComponent> getComponentsModifiable() {
         return unitComponents;
     }

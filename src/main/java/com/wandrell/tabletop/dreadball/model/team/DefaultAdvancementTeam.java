@@ -25,7 +25,7 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Default implementation of {@code LicensedTeam}.
+ * Default serializable implementation of {@link AdvancementTeam}.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -36,12 +36,24 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
      * Serialization ID.
      */
     private static final long                               serialVersionUID = 1920177317770829466L;
+    /**
+     * Flag indicating if the team has a Defensive Coaching Staff.
+     */
     private Boolean                                         defensiveCoach   = false;
+    /**
+     * Flag indicating if the team has an Offensive Coaching Staff.
+     */
     private Boolean                                         offensiveCoach   = false;
+    /**
+     * Flag indicating if the team has a Support Coaching Staff.
+     */
     private Boolean                                         supportCoach     = false;
+    /**
+     * Number of Dreadball Cards in the team.
+     */
     private Integer                                         teamCards        = 0;
     /**
-     * Unspent cash.
+     * Team's unspent cash.
      */
     private Integer                                         teamCash         = 0;
     /**
@@ -119,7 +131,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
 
     @Override
     public final Integer getValoration() {
-        return getValorationBuilder().getValoration(this);
+        return getValorationCalculator().getValoration(this);
     }
 
     @Override
@@ -181,8 +193,13 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
                 .add("players", getPlayers()).toString();
     }
 
+    /**
+     * Returns a valoration calculator.
+     * 
+     * @return a valoration calculator
+     */
     private final TeamValorationCalculator<AdvancementTeam>
-            getValorationBuilder() {
+            getValorationCalculator() {
         return valorationBuilder;
     }
 

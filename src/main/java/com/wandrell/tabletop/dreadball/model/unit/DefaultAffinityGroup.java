@@ -23,7 +23,7 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@code UnitGroup}.
+ * Default serializable implementation of {@code UnitGroup}.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -39,7 +39,7 @@ public final class DefaultAffinityGroup implements AffinityGroup, Serializable {
     private final String      groupName;
 
     /**
-     * Constructs a {@code DefaultUnitGroup}.
+     * Constructs a {@code DefaultUnitGroup} with the specified arguments.
      * 
      * @param name
      *            the name of the group

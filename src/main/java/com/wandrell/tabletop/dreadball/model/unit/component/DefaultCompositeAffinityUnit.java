@@ -25,25 +25,63 @@ import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
+/**
+ * Default serializable implementation of {@code CompositeAffinityUnit}.
+ * <p>
+ * It uses composition to inherit from {@link DefaultAffinityUnit}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
         implements CompositeAffinityUnit, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long  serialVersionUID = -1404285761905647497L;
+    /**
+     * {@code AffinityUnit} used for inheritance through composition.
+     */
     private final AffinityUnit baseUnit;
 
-    public DefaultCompositeAffinityUnit(final String name, final Integer cost,
-            final TeamPosition position, final AttributesHolder attributes,
+    /**
+     * Constructs a {@code DefaultCompositeAffinityUnit} with the specified
+     * arguments.
+     * 
+     * @param nameTemplate
+     *            the unit's base template name
+     * @param cost
+     *            cost of the unit
+     * @param position
+     *            team position role of the unit
+     * @param attributes
+     *            unit attributes
+     * @param abilities
+     *            unit abilities
+     * @param giant
+     *            flag indicating if this is a giant
+     * @param affinities
+     *            the unit affinities
+     * @param allyCost
+     *            the unit cost for an ally
+     * @param friendCost
+     *            the unit cost for a friend
+     * @param strangerCost
+     *            the unit cost for a stranger
+     * @param components
+     *            components which create this unit
+     */
+    public DefaultCompositeAffinityUnit(final String nameTemplate,
+            final Integer cost, final TeamPosition position,
+            final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final Collection<AffinityGroup> affinities, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost,
             final Collection<UnitComponent> components) {
         super(components);
 
-        baseUnit = new DefaultAffinityUnit(name, cost, position, attributes,
-                abilities, giant, affinities, allyCost, friendCost,
+        baseUnit = new DefaultAffinityUnit(nameTemplate, cost, position,
+                attributes, abilities, giant, affinities, allyCost, friendCost,
                 strangerCost);
     }
 
@@ -97,6 +135,13 @@ public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
         return getBaseUnit().isGiant();
     }
 
+    /**
+     * Returns the base unit class being used for inheritance through
+     * composition.
+     * 
+     * @return the base unit class being used for inheritance through
+     *         composition
+     */
     private final AffinityUnit getBaseUnit() {
         return baseUnit;
     }

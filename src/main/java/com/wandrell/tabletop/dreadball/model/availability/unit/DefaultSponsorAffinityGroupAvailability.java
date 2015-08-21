@@ -24,17 +24,43 @@ import java.util.LinkedHashSet;
 
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
+/**
+ * Default serializable implementation of
+ * {@link SponsorAffinityGroupAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultSponsorAffinityGroupAvailability
         implements SponsorAffinityGroupAvailability, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long               serialVersionUID = 308700884293209100L;
+    /**
+     * Available affinities groups.
+     */
     private final Collection<AffinityGroup> avaAffinities    = new LinkedHashSet<AffinityGroup>();
+    /**
+     * Name of the affinities.
+     */
     private final String                    avaName;
+    /**
+     * Flag indicating if the availability allows increasing the rank.
+     */
     private final Boolean                   includesRankIncrease;
 
+    /**
+     * Constructs a {@code DefaultSponsorAffinityGroupAvailability} with the
+     * specified arguments.
+     * 
+     * @param name
+     *            name of the availability
+     * @param affinities
+     *            available affinities
+     * @param rankIncrease
+     *            flag indicating if a rank increase is available
+     */
     public DefaultSponsorAffinityGroupAvailability(final String name,
             final Collection<AffinityGroup> affinities,
             final Boolean rankIncrease) {
@@ -58,7 +84,8 @@ public final class DefaultSponsorAffinityGroupAvailability
 
     @Override
     public final Collection<AffinityGroup> getAffinityGroups() {
-        return Collections.unmodifiableCollection(getPlayerGroupsModifiable());
+        return Collections
+                .unmodifiableCollection(getAffinityGroupsModifiable());
     }
 
     @Override
@@ -71,7 +98,12 @@ public final class DefaultSponsorAffinityGroupAvailability
         return includesRankIncrease;
     }
 
-    private final Collection<AffinityGroup> getPlayerGroupsModifiable() {
+    /**
+     * Returns a modifiable collection with the available affinities.
+     * 
+     * @return a modifiable collection with the available affinities
+     */
+    private final Collection<AffinityGroup> getAffinityGroupsModifiable() {
         return avaAffinities;
     }
 

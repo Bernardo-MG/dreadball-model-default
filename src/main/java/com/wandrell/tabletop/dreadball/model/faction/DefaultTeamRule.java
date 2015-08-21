@@ -23,7 +23,7 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@code TeamRule}.
+ * Default serializable implementation of {@link TeamRule}.
  * 
  * @author Bernardo Martínez Garrido
  */

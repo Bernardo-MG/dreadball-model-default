@@ -26,7 +26,7 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@code TeamType}.
+ * Default serializable implementation of {@link TeamType}.
  * 
  * @author Bernardo Martínez Garrido
  */

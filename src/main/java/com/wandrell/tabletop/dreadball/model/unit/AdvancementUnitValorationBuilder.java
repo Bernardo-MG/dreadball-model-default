@@ -20,14 +20,29 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 
 /**
- * Default implementation of {@link UnitValorationCalculator}.
+ * Serializable implementation of {@link UnitValorationCalculator} for
+ * {@link AdvancementUnit}.
+ * <p>
+ * It uses the DBO's valoration formula, which consists on: [unit cost] + [unit
+ * rank]*[rank value] + [implant cost].
+ * <p>
+ * This means that the unit should have been grafted an implant, or have a
+ * working stub, for this formula to work.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class AdvancementUnitValorationBuilder
         implements UnitValorationCalculator<AdvancementUnit>, Serializable {
 
+    /**
+     * Serialization ID.
+     */
     private static final long serialVersionUID = -1723086163134895663L;
+    /**
+     * Value of each rank.
+     * <p>
+     * A unit's rank will be multiplied by this number to find its value.
+     */
     private final Integer     rankValue;
 
     public AdvancementUnitValorationBuilder(final Integer rankCostIncrease) {
@@ -51,6 +66,14 @@ public final class AdvancementUnitValorationBuilder
         return valoration;
     }
 
+    /**
+     * Returns the cost of each rank.
+     * <p>
+     * This value will be multiplied by the unit's rank to find the actual rank
+     * value.
+     * 
+     * @return the cost of each rank
+     */
     private final Integer getRankCostIncrease() {
         return rankValue;
     }

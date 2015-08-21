@@ -36,7 +36,13 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  */
 public abstract class AbstractTeam<U extends Unit> implements Team<U> {
 
+    /**
+     * Number of Cheerleaders on the team.
+     */
     private Integer               cheerleaders = 0;
+    /**
+     * Number of Coaching Dice in the team.
+     */
     private Integer               dice         = 0;
     /**
      * Team's players.

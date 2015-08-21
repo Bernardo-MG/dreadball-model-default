@@ -19,33 +19,93 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
+/**
+ * Default serializable implementation of {@link SponsorAssetsAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultSponsorAssetsAvailability
         implements SponsorAssetsAvailability, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long serialVersionUID = -2367219275396620712L;
+    /**
+     * Cost of an Affinity Group.
+     */
     private final Integer     costAffinityGroup;
+    /**
+     * Cost of a Cheerleader.
+     */
     private final Integer     costCheerleader;
-    private final Integer     costDice;
+    /**
+     * Cost of a Coaching Die.
+     */
+    private final Integer     costDie;
+    /**
+     * Cost of a Medibot.
+     */
     private final Integer     costMedibot;
+    /**
+     * Cost of a Sabotage Card.
+     */
     private final Integer     costSabotageCard;
+    /**
+     * Cost of a Special Move Card.
+     */
     private final Integer     costSpecialMoveCard;
+    /**
+     * Cost for unlocking a Cheerleader.
+     */
     private final Integer     costUnlockCheerleader;
+    /**
+     * Cost of a Wager.
+     */
     private final Integer     costWager;
+    /**
+     * Maximum number of Wagers allowed.
+     */
     private final Integer     maxWagerCount;
+    /**
+     * Minimum allowed cost for a team.
+     */
     private final Integer     minTeamCost;
 
+    /**
+     * Constructs a {@code DefaultSponsorAssetsAvailability} with the specified
+     * arguments.
+     * 
+     * @param diceCost
+     *            cost of a Coaching Die
+     * @param sabotageCost
+     *            cost of a Sabotage Card
+     * @param specialMoveCost
+     *            cost of a Special Move CArd
+     * @param cheerleaderUnlock
+     *            cost of unlocking Cheerleaders
+     * @param cheerleaderCost
+     *            cost of a Cheerleader
+     * @param affinityCost
+     *            cost of an Affinity Group
+     * @param medibotCost
+     *            cost of a Medibot
+     * @param wagerCost
+     *            cost of a Wager
+     * @param teamMinCost
+     *            minimum cost for a team
+     * @param maxWagerCount
+     *            maximum number of Wagers allowed
+     */
     public DefaultSponsorAssetsAvailability(final Integer diceCost,
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderUnlock, final Integer cheerleaderCost,
             final Integer affinityCost, final Integer medibotCost,
-            final Integer teamMinCost, final Integer wagerCost,
-            final Integer maxWageCount) {
+            final Integer wagerCost, final Integer teamMinCost,
+            final Integer maxWagers) {
         super();
 
-        costDice = checkNotNull(diceCost,
+        costDie = checkNotNull(diceCost,
                 "Received a null pointer as Coaching Dice cost");
         costSabotageCard = checkNotNull(sabotageCost,
                 "Received a null pointer as Sabotage Card cost");
@@ -63,7 +123,7 @@ public final class DefaultSponsorAssetsAvailability
                 "Received a null pointer as the team minimum cost cost");
         costWager = checkNotNull(wagerCost,
                 "Received a null pointer as the Wager cost");
-        maxWagerCount = checkNotNull(wagerCost,
+        maxWagerCount = checkNotNull(maxWagers,
                 "Received a null pointer as the maximum allowed number of Wagers");
     }
 
@@ -84,7 +144,7 @@ public final class DefaultSponsorAssetsAvailability
 
     @Override
     public final Integer getCoachingDieCost() {
-        return costDice;
+        return costDie;
     }
 
     @Override

@@ -29,7 +29,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default constructos for {@code UnitComponent}.
+ * Default serializable implementation of {@code UnitComponent}.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -47,14 +47,39 @@ public final class DefaultUnitComponent implements UnitComponent, Serializable {
      * Attributes given by this component.
      */
     private final AttributesHolder         attributesGiven;
+    /**
+     * Cost of the component.
+     */
     private final Integer                  componentCost;
+    /**
+     * Location where this component is applied.
+     */
     private final ComponentLocation        componentLocation;
     /**
      * Component's name.
      */
     private final String                   componentName;
+    /**
+     * Team position roles which can have this component.
+     */
     private final Collection<TeamPosition> componentPositions = new LinkedHashSet<TeamPosition>();
 
+    /**
+     * Constructs a {@code DefaultUnitComponent} with the specified arguments.
+     * 
+     * @param name
+     *            name of the component
+     * @param location
+     *            location where the component is applied
+     * @param cost
+     *            cost of the component
+     * @param positions
+     *            team position roles which can have this component
+     * @param attributes
+     *            attributes granted by the component
+     * @param abilities
+     *            abilities granted by the component
+     */
     public DefaultUnitComponent(final String name,
             final ComponentLocation location, final Integer cost,
             final Collection<TeamPosition> positions,

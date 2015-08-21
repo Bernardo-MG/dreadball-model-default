@@ -22,7 +22,7 @@ import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 /**
- * Mutable implementation of {@code AttributesHolder}.
+ * Mutable serializable implementation of {@code AttributesHolder}.
  * 
  * @author Bernardo Martínez Garrido
  */

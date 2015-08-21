@@ -23,7 +23,7 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@code ComponentLocation}.
+ * Default serializable implementation of {@code ComponentLocation}.
  * 
  * @author Bernardo Martínez Garrido
  */

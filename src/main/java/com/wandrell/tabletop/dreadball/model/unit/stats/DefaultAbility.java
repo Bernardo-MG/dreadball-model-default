@@ -23,7 +23,7 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@code Ability}.
+ * Default serializable implementation of {@code Ability}.
  * 
  * @author Bernardo Martínez Garrido
  */

@@ -21,28 +21,114 @@ import java.io.Serializable;
 
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
+/**
+ * Default serializable implementation of {@link TeamTypeAssetsAvailability}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultTeamTypeAssetsAvailability
         implements TeamTypeAssetsAvailability, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long serialVersionUID = -8736398538873453410L;
+    /**
+     * Flag indicating if this {@code TeamType} begins with a Defensive Coaching
+     * Staff.
+     */
     private final Boolean     beginsDefensiveCoach;
+    /**
+     * Flag indicating if this {@code TeamType} begins with an Offensive
+     * Coaching Staff.
+     */
     private final Boolean     beginsOffensiveCoach;
+    /**
+     * Flag indicating if this {@code TeamType} begins with a Support Coaching
+     * Staff.
+     */
     private final Boolean     beginsSupportCoach;
+    /**
+     * Cost of a Dreadball card.
+     */
     private final Integer     costCard;
+    /**
+     * Cost of a Cheerleader.
+     */
     private final Integer     costCheerleader;
+    /**
+     * Cost of a Coaching Staff.
+     */
     private final Integer     costCoaching;
+    /**
+     * Cost of a Coaching Die.
+     */
     private final Integer     costDie;
+    /**
+     * Initial number of Dreadball Cards for this {@code TeamType}.
+     */
     private final Integer     initialCard;
+    /**
+     * Initial number of Cheerleaders for this {@code TeamType}.
+     */
     private final Integer     initialCheerleader;
+    /**
+     * Initial number of Coaching Dice for this {@code TeamType}.
+     */
     private final Integer     initialDie;
+    /**
+     * Maximum number of Dreadball Cards for this {@code TeamType}.
+     */
     private final Integer     maxCard;
+    /**
+     * Maximum number of Cheerleaders for this {@code TeamType}.
+     */
     private final Integer     maxCheerleader;
+    /**
+     * Maximum number of Coaching Dice for this {@code TeamType}.
+     */
     private final Integer     maxDie;
+    /**
+     * {@code TeamType} to which this availability applies.
+     */
     private final TeamType    teamType;
 
+    /**
+     * Constructs a {@code DefaultTeamTypeAssetsAvailability} with the specified
+     * arguments.
+     * 
+     * @param team
+     *            {@code TeamType} to which this availability applies
+     * @param cheerleaderCost
+     *            cost of a Cheerleader
+     * @param cheerleaderInitial
+     *            initial number of Cheerleaders
+     * @param cheerleaderMax
+     *            maximum number of Cheerleaders
+     * @param diceCost
+     *            cost of a Coaching Die
+     * @param diceInitial
+     *            initial number of Coaching Dice
+     * @param diceMax
+     *            maximum number of Coaching Dice
+     * @param cardCost
+     *            cost of a Dreadball Card
+     * @param cardInitial
+     *            initial number of Dreadball Cards
+     * @param cardMax
+     *            maximum number of Dreadball Cards
+     * @param coachingCost
+     *            cost of a Coaching Staff
+     * @param initialOffensiveCoach
+     *            flag indicating if the {@code TeamType} begins with an
+     *            Offensive Coaching Staff
+     * @param initialDefensiveCoach
+     *            flag indicating if the {@code TeamType} begins with a
+     *            Defensive Coaching Staff
+     * @param initialSupportCoach
+     *            flag indicating if the {@code TeamType} begins with a Support
+     *            Coaching Staff
+     */
     public DefaultTeamTypeAssetsAvailability(final TeamType team,
             final Integer cheerleaderCost, final Integer cheerleaderInitial,
             final Integer cheerleaderMax, final Integer diceCost,

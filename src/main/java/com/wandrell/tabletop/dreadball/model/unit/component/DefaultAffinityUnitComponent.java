@@ -24,19 +24,62 @@ import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
+/**
+ * Default serializable implementation of {@code AffinityUnitComponent}.
+ * <p>
+ * It uses composition to inherit from {@link DefaultUnitComponent}.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class DefaultAffinityUnitComponent
         implements AffinityUnitComponent, Serializable {
 
     /**
-     * 
+     * Serialization ID.
      */
     private static final long   serialVersionUID = 3423113640593046333L;
+    /**
+     * {@code UnitComponent} used for inheritance through composition.
+     */
     private final UnitComponent baseComponent;
+    /**
+     * The actual cost of the component.
+     */
     private Integer             costActual       = 0;
+    /**
+     * Component cost for an ally.
+     */
     private final Integer       costAlly;
+    /**
+     * Component cost for a friend.
+     */
     private final Integer       costFriend;
+    /**
+     * Component cost for a stranger.
+     */
     private final Integer       costStranger;
 
+    /**
+     * Constructs a {@code DefaultAffinityUnitComponent} with the specified
+     * arguments.
+     * 
+     * @param name
+     *            name of the component
+     * @param location
+     *            location where the component is applied
+     * @param allyCost
+     *            cost of the component for an ally
+     * @param friendCost
+     *            cost of the component for a friend
+     * @param strangerCost
+     *            cost of the component for a stranger
+     * @param positions
+     *            team position roles which can have this component
+     * @param attributes
+     *            attributes granted by the component
+     * @param abilities
+     *            abilities granted by the component
+     */
     public DefaultAffinityUnitComponent(final String name,
             final ComponentLocation location, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost,
