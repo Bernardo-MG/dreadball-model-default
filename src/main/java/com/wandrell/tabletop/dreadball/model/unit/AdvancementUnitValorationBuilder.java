@@ -45,6 +45,13 @@ public final class AdvancementUnitValorationBuilder
      */
     private final Integer     rankValue;
 
+    /**
+     * Constructs a {@code AdvancementUnitValorationBuilder} with the specified
+     * arguments.
+     * 
+     * @param rankCostIncrease
+     *            the cost of each rank
+     */
     public AdvancementUnitValorationBuilder(final Integer rankCostIncrease) {
         super();
 

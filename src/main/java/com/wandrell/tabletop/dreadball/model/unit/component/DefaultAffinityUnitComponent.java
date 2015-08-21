@@ -146,18 +146,34 @@ public final class DefaultAffinityUnitComponent
         return getBaseComponent().getTeamPositions();
     }
 
-    public final void setPriceForAlly() {
+    /**
+     * Sets the cost as the ally cost.
+     */
+    public final void setCostForAlly() {
         costActual = getAllyCost();
     }
 
-    public final void setPriceForFriend() {
+    /**
+     * Sets the cost as the friend cost.
+     */
+    public final void setCostForFriend() {
         costActual = getFriendCost();
     }
 
-    public final void setPriceForStranger() {
+    /**
+     * Sets the cost as the stranger cost.
+     */
+    public final void setCostForStranger() {
         costActual = getStrangerCost();
     }
 
+    /**
+     * Returns the base component class being used for inheritance through
+     * composition.
+     * 
+     * @return the base component class being used for inheritance through
+     *         composition
+     */
     private final UnitComponent getBaseComponent() {
         return baseComponent;
     }

@@ -37,17 +37,17 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
 public abstract class AbstractTeam<U extends Unit> implements Team<U> {
 
     /**
+     * Team's players.
+     */
+    private final Map<Integer, U> playersMap       = new LinkedHashMap<>();
+    /**
      * Number of Cheerleaders on the team.
      */
-    private Integer               cheerleaders = 0;
+    private Integer               teamCheerleaders = 0;
     /**
      * Number of Coaching Dice in the team.
      */
-    private Integer               dice         = 0;
-    /**
-     * Team's players.
-     */
-    private final Map<Integer, U> playersMap   = new LinkedHashMap<>();
+    private Integer               teamDice         = 0;
 
     /**
      * Constructs an {@code AbstractTeam}.
@@ -70,12 +70,12 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
 
     @Override
     public final Integer getCheerleaders() {
-        return cheerleaders;
+        return teamCheerleaders;
     }
 
     @Override
     public final Integer getDice() {
-        return dice;
+        return teamDice;
     }
 
     @Override
@@ -95,12 +95,12 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
 
     @Override
     public final void setCheerleaders(final Integer cheerleaders) {
-        this.cheerleaders = cheerleaders;
+        teamCheerleaders = cheerleaders;
     }
 
     @Override
     public final void setDice(final Integer dice) {
-        this.dice = dice;
+        teamDice = dice;
     }
 
     /**

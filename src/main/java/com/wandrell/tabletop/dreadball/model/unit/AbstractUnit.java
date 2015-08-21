@@ -56,6 +56,22 @@ public abstract class AbstractUnit implements Unit {
      */
     private AttributesHolder          unitAttributes;
 
+    /**
+     * Constructs an {@code AbstractUnit} with the specified arguments.
+     * 
+     * @param nameTemplate
+     *            the unit's base template name
+     * @param cost
+     *            cost of the unit
+     * @param position
+     *            team position role of the unit
+     * @param attributes
+     *            unit attributes
+     * @param abilities
+     *            unit abilities
+     * @param giant
+     *            flag indicating if this is a giant
+     */
     public AbstractUnit(final String nameTemplate, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant) {
@@ -117,6 +133,14 @@ public abstract class AbstractUnit implements Unit {
         return unitAbilities;
     }
 
+    /**
+     * Sets the attributes of the unit.
+     * <p>
+     * This is a helper method for the {@code DefaultAdvancementUnit}.
+     * 
+     * @param attributes
+     *            the new attributes for the unit
+     */
     protected final void setUnitAttributes(final AttributesHolder attributes) {
         unitAttributes = attributes;
     }
