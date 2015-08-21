@@ -28,8 +28,6 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
  * Default serializable implementation of {@code Unit}.
- * <p>
- * It just creates a concrete class out of the {@link AbstractUnit} class.
  * 
  * @author Bernardo Martínez Garrido
  */
