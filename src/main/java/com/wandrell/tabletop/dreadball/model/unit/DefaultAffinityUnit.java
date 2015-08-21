@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -25,20 +24,16 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default serializable implementation of {@link AffinityUnit}.
+ * Default implementation of {@link AffinityUnit}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAffinityUnit implements AffinityUnit, Serializable {
+public final class DefaultAffinityUnit implements AffinityUnit {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long               serialVersionUID = -7923136650997946968L;
     /**
      * The affinities of the unit.
      */
-    private final Collection<AffinityGroup> affinityGroups   = new LinkedList<AffinityGroup>();
+    private final Collection<AffinityGroup> affinityGroups = new LinkedList<AffinityGroup>();
     /**
      * {@code Unit} used for inheritance through composition.
      */
@@ -46,7 +41,7 @@ public final class DefaultAffinityUnit implements AffinityUnit, Serializable {
     /**
      * The actual cost of the unit.
      */
-    private Integer                         costActual       = 0;
+    private Integer                         costActual     = 0;
     /**
      * Unit cost for an ally.
      */

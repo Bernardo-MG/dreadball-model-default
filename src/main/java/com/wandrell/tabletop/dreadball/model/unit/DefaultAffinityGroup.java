@@ -17,26 +17,21 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 
 /**
- * Default serializable implementation of {@code UnitGroup}.
+ * Default implementation of {@code UnitGroup}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAffinityGroup implements AffinityGroup, Serializable {
+public final class DefaultAffinityGroup implements AffinityGroup {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -3436817842178062817L;
     /**
      * Group's name.
      */
-    private final String      groupName;
+    private final String groupName;
 
     /**
      * Constructs a {@code DefaultUnitGroup} with the specified arguments.

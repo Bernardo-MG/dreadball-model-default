@@ -17,42 +17,35 @@ package com.wandrell.tabletop.dreadball.model.unit.stats;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
-
 import com.google.common.base.MoreObjects;
 
 /**
- * Immutable serializable implementation of {@code AttributesHolder}.
+ * Immutable implementation of {@code AttributesHolder}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class ImmutableAttributesHolder
-        implements AttributesHolder, Serializable {
+public final class ImmutableAttributesHolder implements AttributesHolder {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -2729608936571759122L;
     /**
      * Armor value.
      */
-    private final Integer     armorValue;
+    private final Integer armorValue;
     /**
      * Movement value.
      */
-    private final Integer     movementValue;
+    private final Integer movementValue;
     /**
      * Skill value.
      */
-    private final Integer     skillValue;
+    private final Integer skillValue;
     /**
      * Speed value.
      */
-    private final Integer     speedValue;
+    private final Integer speedValue;
     /**
      * Strength value.
      */
-    private final Integer     strengthValue;
+    private final Integer strengthValue;
 
     /**
      * Constructs a {@code ImmutableAttributesHolder}.

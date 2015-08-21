@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -36,13 +35,8 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributesHolde
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAdvancementUnit
-        implements AdvancementUnit, Serializable {
+public final class DefaultAdvancementUnit implements AdvancementUnit {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long                               serialVersionUID = -6573589542322283909L;
     /**
      * {@code Unit} used for inheritance through composition.
      */
@@ -57,7 +51,7 @@ public final class DefaultAdvancementUnit
      * <p>
      * Be default it will be a stub component.
      */
-    private UnitComponent                                   graftedImplant   = new DefaultUnitComponent(
+    private UnitComponent                                   graftedImplant = new DefaultUnitComponent(
             "none", new DefaultComponentLocation("none"), 0,
             new LinkedList<TeamPosition>(),
             new ImmutableAttributesHolder(0, 0, 0, 0, 0),
@@ -69,7 +63,7 @@ public final class DefaultAdvancementUnit
     /**
      * The unit's abilities.
      */
-    private final Collection<Ability>                       unitAbilities    = new LinkedHashSet<>();
+    private final Collection<Ability>                       unitAbilities  = new LinkedHashSet<>();
     /**
      * Unit's attributes.
      */

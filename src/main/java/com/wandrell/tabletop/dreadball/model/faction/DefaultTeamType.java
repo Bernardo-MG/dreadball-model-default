@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.faction;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -26,16 +25,12 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default serializable implementation of {@link TeamType}.
+ * Default implementation of {@link TeamType}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultTeamType implements TeamType, Serializable {
+public final class DefaultTeamType implements TeamType {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long          serialVersionUID = 7889893964089039381L;
     /**
      * Team type's name.
      */
@@ -43,7 +38,7 @@ public final class DefaultTeamType implements TeamType, Serializable {
     /**
      * Team type's rules.
      */
-    private final Collection<TeamRule> teamRules        = new LinkedHashSet<>();
+    private final Collection<TeamRule> teamRules = new LinkedHashSet<>();
 
     /**
      * Constructs a {@code DefaultTeamType} with the specified parameters.

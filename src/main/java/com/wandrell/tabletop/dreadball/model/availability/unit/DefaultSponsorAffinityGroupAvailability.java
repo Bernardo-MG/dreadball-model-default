@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.availability.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -31,16 +30,12 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultSponsorAffinityGroupAvailability
-        implements SponsorAffinityGroupAvailability, Serializable {
+        implements SponsorAffinityGroupAvailability {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long               serialVersionUID = 308700884293209100L;
     /**
      * Available affinities groups.
      */
-    private final Collection<AffinityGroup> avaAffinities    = new LinkedHashSet<AffinityGroup>();
+    private final Collection<AffinityGroup> avaAffinities = new LinkedHashSet<AffinityGroup>();
     /**
      * Name of the affinities.
      */

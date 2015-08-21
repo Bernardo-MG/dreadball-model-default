@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -27,16 +26,11 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default serializable implementation of {@code Unit}.
+ * Default implementation of {@code Unit}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultUnit implements Unit, Serializable {
-
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -5871012498706537929L;
+public final class DefaultUnit implements Unit {
 
     /**
      * Base cost of the unit.

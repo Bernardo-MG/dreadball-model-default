@@ -17,27 +17,21 @@ package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 
 /**
- * Default serializable implementation of {@code ComponentLocation}.
+ * Default implementation of {@code ComponentLocation}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultComponentLocation
-        implements ComponentLocation, Serializable {
+public final class DefaultComponentLocation implements ComponentLocation {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -5876022257243242111L;
     /**
      * Location name.
      */
-    private final String      locationName;
+    private final String locationName;
 
     /**
      * Constructs a {@code DefaultComponentLocation}.

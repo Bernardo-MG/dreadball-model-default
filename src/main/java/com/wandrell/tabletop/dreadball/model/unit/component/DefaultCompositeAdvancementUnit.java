@@ -15,7 +15,6 @@
  */
 package com.wandrell.tabletop.dreadball.model.unit.component;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
@@ -26,19 +25,15 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default serializable implementation of {@code CompositeAdvancementUnit}.
+ * Default implementation of {@code CompositeAdvancementUnit}.
  * <p>
  * It uses composition to inherit from {@link DefaultAdvancementUnit}.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultCompositeAdvancementUnit extends AbstractCompositeUnit
-        implements CompositeAdvancementUnit, Serializable {
+        implements CompositeAdvancementUnit {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long     serialVersionUID = -321423729599012626L;
     /**
      * {@code AdvancementUnit} used for inheritance through composition.
      */

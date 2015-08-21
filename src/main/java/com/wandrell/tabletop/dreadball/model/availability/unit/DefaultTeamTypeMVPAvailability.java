@@ -17,8 +17,6 @@ package com.wandrell.tabletop.dreadball.model.availability.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
-
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
@@ -28,20 +26,16 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultTeamTypeMVPAvailability
-        implements TeamTypeMVPAvailability, Serializable {
+        implements TeamTypeMVPAvailability {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -6082590958725417920L;
     /**
      * {@code Unit} for which the availability applies.
      */
-    private final Unit        avaUnit;
+    private final Unit     avaUnit;
     /**
      * {@code TeamType} for which the availability applies.
      */
-    private final TeamType    teamType;
+    private final TeamType teamType;
 
     /**
      * Constructs a {@code DefaultTeamTypeMVPAvailability} with the specified

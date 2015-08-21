@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -25,37 +24,32 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Default serializable implementation of {@link AdvancementTeam}.
+ * Default implementation of {@link AdvancementTeam}.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
-        implements AdvancementTeam, Serializable {
-
-    /**
-     * Serialization ID.
-     */
-    private static final long                               serialVersionUID = 1920177317770829466L;
+        implements AdvancementTeam {
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
-    private Boolean                                         defensiveCoach   = false;
+    private Boolean                                         defensiveCoach = false;
     /**
      * Flag indicating if the team has an Offensive Coaching Staff.
      */
-    private Boolean                                         offensiveCoach   = false;
+    private Boolean                                         offensiveCoach = false;
     /**
      * Flag indicating if the team has a Support Coaching Staff.
      */
-    private Boolean                                         supportCoach     = false;
+    private Boolean                                         supportCoach   = false;
     /**
      * Number of Dreadball Cards in the team.
      */
-    private Integer                                         teamCards        = 0;
+    private Integer                                         teamCards      = 0;
     /**
      * Team's unspent cash.
      */
-    private Integer                                         teamCash         = 0;
+    private Integer                                         teamCash       = 0;
     /**
      * Team's name.
      */

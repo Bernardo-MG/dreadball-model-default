@@ -17,60 +17,54 @@ package com.wandrell.tabletop.dreadball.model.availability.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
-
 /**
  * Default serializable implementation of {@link SponsorAssetsAvailability}.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultSponsorAssetsAvailability
-        implements SponsorAssetsAvailability, Serializable {
+        implements SponsorAssetsAvailability {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -2367219275396620712L;
     /**
      * Cost of an Affinity Group.
      */
-    private final Integer     costAffinityGroup;
+    private final Integer costAffinityGroup;
     /**
      * Cost of a Cheerleader.
      */
-    private final Integer     costCheerleader;
+    private final Integer costCheerleader;
     /**
      * Cost of a Coaching Die.
      */
-    private final Integer     costDie;
+    private final Integer costDie;
     /**
      * Cost of a Medibot.
      */
-    private final Integer     costMedibot;
+    private final Integer costMedibot;
     /**
      * Cost of a Sabotage Card.
      */
-    private final Integer     costSabotageCard;
+    private final Integer costSabotageCard;
     /**
      * Cost of a Special Move Card.
      */
-    private final Integer     costSpecialMoveCard;
+    private final Integer costSpecialMoveCard;
     /**
      * Cost for unlocking a Cheerleader.
      */
-    private final Integer     costUnlockCheerleader;
+    private final Integer costUnlockCheerleader;
     /**
      * Cost of a Wager.
      */
-    private final Integer     costWager;
+    private final Integer costWager;
     /**
      * Maximum number of Wagers allowed.
      */
-    private final Integer     maxWagerCount;
+    private final Integer maxWagerCount;
     /**
      * Minimum allowed cost for a team.
      */
-    private final Integer     minTeamCost;
+    private final Integer minTeamCost;
 
     /**
      * Constructs a {@code DefaultSponsorAssetsAvailability} with the specified

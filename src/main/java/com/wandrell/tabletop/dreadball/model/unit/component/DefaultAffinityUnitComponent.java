@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
@@ -25,19 +24,15 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default serializable implementation of {@code AffinityUnitComponent}.
+ * Default implementation of {@code AffinityUnitComponent}.
  * <p>
  * It uses composition to inherit from {@link DefaultUnitComponent}.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultAffinityUnitComponent
-        implements AffinityUnitComponent, Serializable {
+        implements AffinityUnitComponent {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long   serialVersionUID = 3423113640593046333L;
     /**
      * {@code UnitComponent} used for inheritance through composition.
      */
@@ -45,7 +40,7 @@ public final class DefaultAffinityUnitComponent
     /**
      * The actual cost of the component.
      */
-    private Integer             costActual       = 0;
+    private Integer             costActual = 0;
     /**
      * Component cost for an ally.
      */

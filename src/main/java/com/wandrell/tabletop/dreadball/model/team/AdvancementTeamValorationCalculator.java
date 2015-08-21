@@ -17,39 +17,33 @@ package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
-
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Serializable implementation of {@link TeamValorationCalculator} for
+ * Implementation of {@link TeamValorationCalculator} for
  * {@link AdvancementTeam}.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class AdvancementTeamValorationCalculator
-        implements TeamValorationCalculator<AdvancementTeam>, Serializable {
+        implements TeamValorationCalculator<AdvancementTeam> {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -5071274138826934377L;
     /**
      * Cost of a Dreadball Card.
      */
-    private final Integer     costCard;
+    private final Integer costCard;
     /**
      * Cost of a Cheerleader.
      */
-    private final Integer     costCheerleader;
+    private final Integer costCheerleader;
     /**
      * Cost of a Coaching Staff.
      */
-    private final Integer     costCoaching;
+    private final Integer costCoaching;
     /**
      * Cost of a Coaching Die.
      */
-    private final Integer     costDie;
+    private final Integer costDie;
 
     /**
      * Constructs a {@code AdvancementTeamValorationCalculator}.

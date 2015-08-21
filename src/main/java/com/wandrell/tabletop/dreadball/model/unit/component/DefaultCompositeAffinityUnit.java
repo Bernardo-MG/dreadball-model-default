@@ -15,7 +15,6 @@
  */
 package com.wandrell.tabletop.dreadball.model.unit.component;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
@@ -26,19 +25,15 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default serializable implementation of {@code CompositeAffinityUnit}.
+ * Default implementation of {@code CompositeAffinityUnit}.
  * <p>
  * It uses composition to inherit from {@link DefaultAffinityUnit}.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
-        implements CompositeAffinityUnit, Serializable {
+        implements CompositeAffinityUnit {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long  serialVersionUID = -1404285761905647497L;
     /**
      * {@code AffinityUnit} used for inheritance through composition.
      */

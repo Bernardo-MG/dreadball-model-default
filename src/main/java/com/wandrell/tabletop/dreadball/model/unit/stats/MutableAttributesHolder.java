@@ -17,42 +17,35 @@ package com.wandrell.tabletop.dreadball.model.unit.stats;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
-
 import com.google.common.base.MoreObjects;
 
 /**
- * Mutable serializable implementation of {@code AttributesHolder}.
+ * Mutable implementation of {@code AttributesHolder}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class MutableAttributesHolder
-        implements AttributesHolder, Serializable {
+public final class MutableAttributesHolder implements AttributesHolder {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = 2331951196827222162L;
     /**
      * Armor value.
      */
-    private Integer           armorValue       = 0;
+    private Integer armorValue    = 0;
     /**
      * Movement value.
      */
-    private Integer           movementValue    = 0;
+    private Integer movementValue = 0;
     /**
      * Skill value.
      */
-    private Integer           skillValue       = 0;
+    private Integer skillValue    = 0;
     /**
      * Speed value.
      */
-    private Integer           speedValue       = 0;
+    private Integer speedValue    = 0;
     /**
      * Strength value.
      */
-    private Integer           strengthValue    = 0;
+    private Integer strengthValue = 0;
 
     /**
      * Constructs a {@code MutableAttributesHolder}.

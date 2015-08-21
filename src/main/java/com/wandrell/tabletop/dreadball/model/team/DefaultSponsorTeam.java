@@ -17,7 +17,6 @@ package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -25,17 +24,13 @@ import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Default serializable implementation of {@link SponsorTeam}.
+ * Default implementation of {@link SponsorTeam}.
  * 
  * @author Bernardo Martínez Garrido
  */
 public final class DefaultSponsorTeam extends AbstractTeam<Unit>
-        implements SponsorTeam, Serializable {
+        implements SponsorTeam {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long                           serialVersionUID     = 257447297729660690L;
     /**
      * Number of Medibots in the team.
      */

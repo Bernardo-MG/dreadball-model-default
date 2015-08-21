@@ -17,10 +17,8 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.io.Serializable;
-
 /**
- * Serializable implementation of {@link UnitValorationCalculator} for
+ * Implementation of {@link UnitValorationCalculator} for
  * {@link AdvancementUnit}.
  * <p>
  * It uses the DBO's valoration formula, which consists on: [unit cost] + [unit
@@ -32,18 +30,14 @@ import java.io.Serializable;
  * @author Bernardo Martínez Garrido
  */
 public final class AdvancementUnitValorationBuilder
-        implements UnitValorationCalculator<AdvancementUnit>, Serializable {
+        implements UnitValorationCalculator<AdvancementUnit> {
 
-    /**
-     * Serialization ID.
-     */
-    private static final long serialVersionUID = -1723086163134895663L;
     /**
      * Value of each rank.
      * <p>
      * A unit's rank will be multiplied by this number to find its value.
      */
-    private final Integer     rankValue;
+    private final Integer rankValue;
 
     /**
      * Constructs a {@code AdvancementUnitValorationBuilder} with the specified
