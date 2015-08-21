@@ -19,6 +19,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 import com.google.common.base.MoreObjects;
@@ -34,13 +36,17 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributesHolde
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAdvancementUnit extends AbstractUnit
+public final class DefaultAdvancementUnit
         implements AdvancementUnit, Serializable {
 
     /**
      * Serialization ID.
      */
     private static final long                               serialVersionUID = -6573589542322283909L;
+    /**
+     * {@code Unit} used for inheritance through composition.
+     */
+    private final Unit                                      baseUnit;
     /**
      * The unspent experience.
      */
@@ -60,6 +66,14 @@ public final class DefaultAdvancementUnit extends AbstractUnit
      * The unit's current rank.
      */
     private Integer                                         rankValue;
+    /**
+     * The unit's abilities.
+     */
+    private final Collection<Ability>                       unitAbilities    = new LinkedHashSet<>();
+    /**
+     * Unit's attributes.
+     */
+    private AttributesHolder                                unitAttributes;
     /**
      * Object used for calculating the unit valoration.
      */
@@ -87,7 +101,10 @@ public final class DefaultAdvancementUnit extends AbstractUnit
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final UnitValorationCalculator<AdvancementUnit> valorator) {
-        super(nameTemplate, cost, position, attributes, abilities, giant);
+        super();
+
+        baseUnit = new DefaultUnit(nameTemplate, cost, position, attributes,
+                abilities, giant);
 
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");
@@ -99,13 +116,38 @@ public final class DefaultAdvancementUnit extends AbstractUnit
     }
 
     @Override
+    public final Collection<Ability> getAbilities() {
+        return Collections.unmodifiableCollection(getAbilitiesModifiable());
+    }
+
+    @Override
+    public final AttributesHolder getAttributes() {
+        return unitAttributes;
+    }
+
+    @Override
+    public final Integer getCost() {
+        return getBaseUnit().getCost();
+    }
+
+    @Override
     public final UnitComponent getGraftedImplant() {
         return graftedImplant;
     }
 
     @Override
+    public final TeamPosition getPosition() {
+        return getBaseUnit().getPosition();
+    }
+
+    @Override
     public final Integer getRank() {
         return rankValue;
+    }
+
+    @Override
+    public final String getTemplateName() {
+        return getBaseUnit().getTemplateName();
     }
 
     @Override
@@ -116,6 +158,11 @@ public final class DefaultAdvancementUnit extends AbstractUnit
     @Override
     public final Integer getValoration() {
         return getValorationCalculator().getValoration(this);
+    }
+
+    @Override
+    public final Boolean isGiant() {
+        return getBaseUnit().isGiant();
     }
 
     @Override
@@ -131,7 +178,7 @@ public final class DefaultAdvancementUnit extends AbstractUnit
 
     @Override
     public final void setAttributes(final AttributesHolder attributes) {
-        setUnitAttributes(attributes);
+        unitAttributes = attributes;
     }
 
     @Override
@@ -156,6 +203,26 @@ public final class DefaultAdvancementUnit extends AbstractUnit
                 .add("experience", experienceValue)
                 .add("position", getPosition()).add("giant", isGiant())
                 .toString();
+    }
+
+    /**
+     * Returns the modifiable list of the unit's abilities.
+     * 
+     * @return the modifiable list of the unit's abilities
+     */
+    private final Collection<Ability> getAbilitiesModifiable() {
+        return unitAbilities;
+    }
+
+    /**
+     * Returns the base unit class being used for inheritance through
+     * composition.
+     * 
+     * @return the base unit class being used for inheritance through
+     *         composition
+     */
+    private final Unit getBaseUnit() {
+        return baseUnit;
     }
 
     /**

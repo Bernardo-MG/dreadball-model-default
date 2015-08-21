@@ -15,8 +15,12 @@
  */
 package com.wandrell.tabletop.dreadball.model.unit;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
@@ -29,12 +33,37 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultUnit extends AbstractUnit implements Serializable {
+public final class DefaultUnit implements Unit, Serializable {
 
     /**
      * Serialization ID.
      */
     private static final long serialVersionUID = -5871012498706537929L;
+
+    /**
+     * Base cost of the unit.
+     */
+    private final Integer             baseCost;
+    /**
+     * Indicates if the unit is a giant.
+     */
+    private final Boolean             giantFlag;
+    /**
+     * Name of the template from which this unit has been created.
+     */
+    private final String              templateName;
+    /**
+     * The unit's team position.
+     */
+    private final TeamPosition        templatePosition;
+    /**
+     * The unit's abilities.
+     */
+    private final Collection<Ability> unitAbilities = new LinkedHashSet<>();
+    /**
+     * Unit's attributes.
+     */
+    private final AttributesHolder    unitAttributes;
 
     /**
      * Constructs a {@code DefaultUnit} with the specified arguments.
@@ -55,7 +84,53 @@ public final class DefaultUnit extends AbstractUnit implements Serializable {
     public DefaultUnit(final String nameTemplate, final Integer cost,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant) {
-        super(nameTemplate, cost, position, attributes, abilities, giant);
+        super();
+
+        templateName = checkNotNull(nameTemplate,
+                "Received a null pointer as the template name");
+        unitAttributes = checkNotNull(attributes,
+                "Received a null pointer as attributes");
+        templatePosition = checkNotNull(position,
+                "Received a null pointer as position");
+        giantFlag = checkNotNull(giant, "Received a null pointer as giant");
+        baseCost = checkNotNull(cost, "Received a null pointer as cost");
+
+        checkNotNull(abilities, "Received a null pointer as abilities");
+
+        for (final Ability ability : abilities) {
+            unitAbilities.add(checkNotNull(ability,
+                    "Received a null pointer as ability"));
+        }
+    }
+
+    @Override
+    public final Collection<Ability> getAbilities() {
+        return Collections.unmodifiableCollection(getAbilitiesModifiable());
+    }
+
+    @Override
+    public final AttributesHolder getAttributes() {
+        return unitAttributes;
+    }
+
+    @Override
+    public final Integer getCost() {
+        return baseCost;
+    }
+
+    @Override
+    public final TeamPosition getPosition() {
+        return templatePosition;
+    }
+
+    @Override
+    public final String getTemplateName() {
+        return templateName;
+    }
+
+    @Override
+    public final Boolean isGiant() {
+        return giantFlag;
     }
 
     @Override
@@ -63,6 +138,15 @@ public final class DefaultUnit extends AbstractUnit implements Serializable {
         return MoreObjects.toStringHelper(this).add("name", getTemplateName())
                 .add("position", getPosition()).add("giant", isGiant())
                 .toString();
+    }
+
+    /**
+     * Returns the modifiable list of the unit's abilities.
+     * 
+     * @return the modifiable list of the unit's abilities
+     */
+    private final Collection<Ability> getAbilitiesModifiable() {
+        return unitAbilities;
     }
 
 }

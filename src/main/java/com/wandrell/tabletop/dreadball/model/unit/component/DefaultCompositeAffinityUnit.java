@@ -80,8 +80,8 @@ public final class DefaultCompositeAffinityUnit extends AbstractCompositeUnit
             final Collection<UnitComponent> components) {
         super(components);
 
-        baseUnit = new DefaultAffinityUnit(nameTemplate, cost, position,
-                attributes, abilities, giant, affinities, allyCost, friendCost,
+        baseUnit = new DefaultAffinityUnit(nameTemplate, position, attributes,
+                abilities, giant, affinities, allyCost, friendCost,
                 strangerCost);
     }
 

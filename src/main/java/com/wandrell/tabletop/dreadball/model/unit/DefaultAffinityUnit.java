@@ -29,8 +29,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAffinityUnit extends AbstractUnit
-        implements AffinityUnit, Serializable {
+public final class DefaultAffinityUnit implements AffinityUnit, Serializable {
 
     /**
      * Serialization ID.
@@ -40,6 +39,14 @@ public final class DefaultAffinityUnit extends AbstractUnit
      * The affinities of the unit.
      */
     private final Collection<AffinityGroup> affinityGroups   = new LinkedList<AffinityGroup>();
+    /**
+     * {@code Unit} used for inheritance through composition.
+     */
+    private final Unit                      baseUnit;
+    /**
+     * The actual cost of the unit.
+     */
+    private Integer                         costActual       = 0;
     /**
      * Unit cost for an ally.
      */
@@ -58,8 +65,6 @@ public final class DefaultAffinityUnit extends AbstractUnit
      * 
      * @param nameTemplate
      *            the unit's base template name
-     * @param cost
-     *            cost of the unit
      * @param position
      *            team position role of the unit
      * @param attributes
@@ -77,12 +82,15 @@ public final class DefaultAffinityUnit extends AbstractUnit
      * @param strangerCost
      *            the unit cost for a stranger
      */
-    public DefaultAffinityUnit(final String nameTemplate, final Integer cost,
+    public DefaultAffinityUnit(final String nameTemplate,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final Collection<AffinityGroup> affinities, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost) {
-        super(nameTemplate, cost, position, attributes, abilities, giant);
+        super();
+
+        baseUnit = new DefaultUnit(nameTemplate, 0, position, attributes,
+                abilities, giant);
 
         costAlly = checkNotNull(allyCost,
                 "Received a null pointer as ally cost");
@@ -99,6 +107,11 @@ public final class DefaultAffinityUnit extends AbstractUnit
     }
 
     @Override
+    public final Collection<Ability> getAbilities() {
+        return getBaseUnit().getAbilities();
+    }
+
+    @Override
     public final Collection<AffinityGroup> getAffinityGroups() {
         return affinityGroups;
     }
@@ -109,13 +122,70 @@ public final class DefaultAffinityUnit extends AbstractUnit
     }
 
     @Override
+    public final AttributesHolder getAttributes() {
+        return getBaseUnit().getAttributes();
+    }
+
+    @Override
+    public final Integer getCost() {
+        return costActual;
+    }
+
+    @Override
     public final Integer getFriendCost() {
         return costFriend;
     }
 
     @Override
+    public final TeamPosition getPosition() {
+        return getBaseUnit().getPosition();
+    }
+
+    @Override
     public final Integer getStrangerCost() {
         return costStranger;
+    }
+
+    @Override
+    public final String getTemplateName() {
+        return getBaseUnit().getTemplateName();
+    }
+
+    @Override
+    public final Boolean isGiant() {
+        return getBaseUnit().isGiant();
+    }
+
+    /**
+     * Sets the cost as the ally cost.
+     */
+    public final void setCostForAlly() {
+        costActual = getAllyCost();
+    }
+
+    /**
+     * Sets the cost as the friend cost.
+     */
+    public final void setCostForFriend() {
+        costActual = getFriendCost();
+    }
+
+    /**
+     * Sets the cost as the stranger cost.
+     */
+    public final void setCostForStranger() {
+        costActual = getStrangerCost();
+    }
+
+    /**
+     * Returns the base unit class being used for inheritance through
+     * composition.
+     * 
+     * @return the base unit class being used for inheritance through
+     *         composition
+     */
+    private final Unit getBaseUnit() {
+        return baseUnit;
     }
 
 }
