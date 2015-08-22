@@ -1,6 +1,7 @@
 package com.wandrell.tabletop.dreadball.testing.model.test.unit.team.exception;
 
 import org.mockito.Mockito;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
@@ -11,12 +12,15 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 public final class TestExceptionPlayersDefaultSponsorTeam {
 
-    private final SponsorTeam team;
+    private SponsorTeam team;
 
-    @SuppressWarnings("unchecked")
     public TestExceptionPlayersDefaultSponsorTeam() {
         super();
+    }
 
+    @SuppressWarnings("unchecked")
+    @BeforeClass
+    public final void initialize() {
         final Sponsor sponsor;
         final TeamValorationCalculator<SponsorTeam> valorator;
 
