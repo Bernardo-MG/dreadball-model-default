@@ -100,6 +100,8 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
         baseUnit = new DefaultUnit(nameTemplate, cost, position, attributes,
                 abilities, giant);
 
+        unitAbilities.addAll(baseUnit.getAbilities());
+
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");
     }
