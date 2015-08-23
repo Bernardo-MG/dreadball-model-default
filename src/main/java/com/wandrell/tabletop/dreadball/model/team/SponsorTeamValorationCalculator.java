@@ -36,6 +36,10 @@ public final class SponsorTeamValorationCalculator
      */
     private final Integer costDie;
     /**
+     * Cost of a Medibot.
+     */
+    private final Integer costMedibot;
+    /**
      * Cost of a Sabotage Card.
      */
     private final Integer costSabotage;
@@ -61,10 +65,13 @@ public final class SponsorTeamValorationCalculator
      *            cost of a Cheerleader
      * @param wagerCost
      *            cost of a Wager
+     * @param medibotCost
+     *            cost of a Medibot
      */
     public SponsorTeamValorationCalculator(final Integer dieCost,
             final Integer sabotageCost, final Integer specialMoveCost,
-            final Integer cheerleaderCost, final Integer wagerCost) {
+            final Integer cheerleaderCost, final Integer wagerCost,
+            final Integer medibotCost) {
         super();
 
         costDie = checkNotNull(dieCost,
@@ -76,6 +83,8 @@ public final class SponsorTeamValorationCalculator
         costCheerleader = checkNotNull(cheerleaderCost,
                 "Received a null pointer as the cheerleader cost");
         costWager = checkNotNull(wagerCost,
+                "Received a null pointer as the wager cost");
+        costMedibot = checkNotNull(medibotCost,
                 "Received a null pointer as the wager cost");
     }
 
@@ -95,6 +104,7 @@ public final class SponsorTeamValorationCalculator
         valoration += team.getSpecialMoveCards() * costSpecialMove;
         valoration += team.getCheerleaders() * costCheerleader;
         valoration += team.getWagers() * costWager;
+        valoration += team.getMediBots() * costMedibot;
 
         return valoration;
     }
