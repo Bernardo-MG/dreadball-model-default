@@ -126,8 +126,15 @@ public final class DefaultSponsor implements Sponsor {
     }
 
     @Override
-    public final void removeAfinityGroup(final AffinityGroup affinity) {
+    public final void removeAffinityGroup(final AffinityGroup affinity) {
         getAffinityGroupsModifiable().remove(affinity);
+    }
+
+    @Override
+    public final void
+            setAffinityGroups(final Collection<AffinityGroup> affinities) {
+        getAffinityGroupsModifiable().clear();
+        getAffinityGroupsModifiable().addAll(affinities);
     }
 
     @Override
