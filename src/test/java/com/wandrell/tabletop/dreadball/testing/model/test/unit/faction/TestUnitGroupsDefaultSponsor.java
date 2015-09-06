@@ -26,17 +26,35 @@ import com.wandrell.tabletop.dreadball.model.faction.DefaultSponsor;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
+/**
+ * Unit tests for {@link DefaultSponsor}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Repeated affinity groups received through the constructor are not
+ * repeated</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class TestUnitGroupsDefaultSponsor {
 
+    /**
+     * Default constructor.
+     */
     public TestUnitGroupsDefaultSponsor() {
         super();
     }
 
+    /**
+     * Tests that repeated affinity groups received through the constructor are
+     * not repeated.
+     */
     @Test
-    public final void test_RepeatAbility_NoRepeats() {
-        final Sponsor sponsor;
-        final Collection<AffinityGroup> groups;
-        final AffinityGroup group;
+    public final void test_RepeatAffinity_NoRepeats() {
+        final Sponsor sponsor;     // Tested sponsor
+        final Collection<AffinityGroup> groups; // Sponsor affinities
+        final AffinityGroup group; // Mocked affinity group
 
         group = Mockito.mock(AffinityGroup.class);
         groups = new LinkedList<>();

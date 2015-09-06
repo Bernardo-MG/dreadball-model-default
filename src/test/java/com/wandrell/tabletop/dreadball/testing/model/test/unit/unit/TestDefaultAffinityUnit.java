@@ -22,25 +22,41 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
-import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
+import com.wandrell.tabletop.dreadball.model.unit.DefaultUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
-public final class TestAbilitiesDefaultUnit {
+/**
+ * Unit tests for {@link DefaultUnit}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Repeated abilities received through the constructor are not repeated</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public final class TestDefaultAffinityUnit {
 
-    public TestAbilitiesDefaultUnit() {
+    /**
+     * Default constructor.
+     */
+    public TestDefaultAffinityUnit() {
         super();
     }
 
+    /**
+     * Tests that repeated abilities received through the constructor are not
+     * repeated.
+     */
     @Test
-    public final void test_RepeatAbility_NoRepeats() {
-        final Unit unit;
-        final Collection<Ability> abilities;
-        final Ability ability;
-        final AttributesHolder attributes;
+    public final void test_RepeatAbility_NoRepeats_Constructor() {
+        final Unit unit;                     // Tested unit
+        final Collection<Ability> abilities; // Initial abilities
+        final Ability ability;               // Mocked ability
+        final AttributesHolder attributes;   // Mocked attributes
 
         ability = Mockito.mock(Ability.class);
         abilities = new LinkedList<>();
@@ -49,8 +65,8 @@ public final class TestAbilitiesDefaultUnit {
 
         attributes = Mockito.mock(AttributesHolder.class);
 
-        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
-                abilities, true, new LinkedList<AffinityGroup>(), 0, 0, 0);
+        unit = new DefaultUnit("name", 0, TeamPosition.GUARD, attributes,
+                abilities, true);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }

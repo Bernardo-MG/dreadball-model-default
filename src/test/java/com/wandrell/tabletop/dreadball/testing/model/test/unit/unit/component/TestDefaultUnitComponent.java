@@ -29,20 +29,37 @@ import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
+/**
+ * Unit tests for {@link DefaultUnitComponent}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Repeated abilities are ignored</li>
+ * <li>Repeated team positions are ignored</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class TestDefaultUnitComponent {
 
+    /**
+     * Default constructor.
+     */
     public TestDefaultUnitComponent() {
         super();
     }
 
+    /**
+     * Tests that repeated abilities are ignored.
+     */
     @Test
     public final void test_RepeatAbility_NoRepeats() {
-        final UnitComponent component;
-        final Collection<Ability> abilities;
-        final Collection<TeamPosition> positions;
-        final Ability ability;
-        final AttributesHolder attributes;
-        final ComponentLocation location;
+        final UnitComponent component;       // Tested component
+        final Collection<Ability> abilities; // Component abilities
+        final Collection<TeamPosition> positions; // Component positions
+        final Ability ability;               // Mocked ability
+        final AttributesHolder attributes;   // Mocked attributes
+        final ComponentLocation location;    // Mocked location
 
         ability = Mockito.mock(Ability.class);
         abilities = new LinkedList<Ability>();
@@ -60,13 +77,16 @@ public final class TestDefaultUnitComponent {
         Assert.assertEquals(component.getAbilities().size(), 1);
     }
 
+    /**
+     * Tests that repeated team positions are ignored.
+     */
     @Test
     public final void test_RepeatPosition_NoRepeats() {
-        final UnitComponent component;
-        final Collection<Ability> abilities;
-        final Collection<TeamPosition> positions;
-        final AttributesHolder attributes;
-        final ComponentLocation location;
+        final UnitComponent component;       // Tested component
+        final Collection<Ability> abilities; // Component abilities
+        final Collection<TeamPosition> positions; // Component positions
+        final AttributesHolder attributes;   // Mocked attributes
+        final ComponentLocation location;    // Mocked location
 
         abilities = new LinkedList<Ability>();
 

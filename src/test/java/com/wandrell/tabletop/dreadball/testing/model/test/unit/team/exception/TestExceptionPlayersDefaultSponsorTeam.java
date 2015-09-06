@@ -25,14 +25,35 @@ import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
+/**
+ * Unit tests for {@link SponsorTeam} checking that exceptions are thrown.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Adding an existing player raises an {@code IllegalArgumentException}</li>
+ * <li>Adding a player to a negative position raises an
+ * {@code IllegalArgumentException}</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class TestExceptionPlayersDefaultSponsorTeam {
 
+    /**
+     * Tested team.
+     */
     private SponsorTeam team;
 
+    /**
+     * Default constructor.
+     */
     public TestExceptionPlayersDefaultSponsorTeam() {
         super();
     }
 
+    /**
+     * Initializes the team.
+     */
     @SuppressWarnings("unchecked")
     @BeforeClass
     public final void initialize() {
@@ -45,6 +66,10 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
         this.team = new DefaultSponsorTeam(sponsor, valorator);
     }
 
+    /**
+     * Tests that adding an existing player raises an
+     * {@code IllegalArgumentException}.
+     */
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_Existing() {
         final Unit player;
@@ -55,6 +80,10 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
         team.addPlayer(player, 1);
     }
 
+    /**
+     * Tests that adding a player to a negative position raises an
+     * {@code IllegalArgumentException}.
+     */
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
         final Unit player;

@@ -24,17 +24,35 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnitValorationBuild
 import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 
-public final class TestAdvancementUnitValorationBuilder {
+/**
+ * Unit tests for {@link UnitValorationCalculator} applied to a
+ * {@link AdvancementUnit}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Valoration is calculated correctly</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public final class TestAdvancementUnitUnitValorationCalculator {
 
-    public TestAdvancementUnitValorationBuilder() {
+    /**
+     * Default constructor.
+     */
+    public TestAdvancementUnitUnitValorationCalculator() {
         super();
     }
 
+    /**
+     * Tests that the valoration is calculated correctly.
+     */
     @Test
     public final void testValoration() {
-        final AdvancementUnit unit;
-        final UnitValorationCalculator<AdvancementUnit> valorator;
-        final UnitComponent implant;
+        final UnitValorationCalculator<AdvancementUnit> valorator; // Tested
+                                                                   // class
+        final AdvancementUnit unit;     // Unit for the test
+        final UnitComponent implant;    // Unit's implant
 
         implant = Mockito.mock(UnitComponent.class);
         Mockito.when(implant.getCost()).thenReturn(5);

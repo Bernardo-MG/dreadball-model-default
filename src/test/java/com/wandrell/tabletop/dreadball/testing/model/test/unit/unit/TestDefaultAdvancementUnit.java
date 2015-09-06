@@ -30,19 +30,36 @@ import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
-public final class TestAbilitiesDefaultAdvancementUnit {
+/**
+ * Unit tests for {@link DefaultAdvancementUnit}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Repeated abilities received through the constructor are not repeated</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
+public final class TestDefaultAdvancementUnit {
 
-    public TestAbilitiesDefaultAdvancementUnit() {
+    /**
+     * Default constructor.
+     */
+    public TestDefaultAdvancementUnit() {
         super();
     }
 
+    /**
+     * Tests that repeated abilities received through the constructor are not
+     * repeated.
+     */
     @SuppressWarnings("unchecked")
     @Test
     public final void test_RepeatAbility_NoRepeats() {
-        final Unit unit;
-        final Collection<Ability> abilities;
-        final Ability ability;
-        final AttributesHolder attributes;
+        final Unit unit;                     // Tested unit
+        final Collection<Ability> abilities; // Initial abilities
+        final Ability ability;               // Mocked ability
+        final AttributesHolder attributes;   // Mocked attributes
         final UnitValorationCalculator<AdvancementUnit> valorator;
 
         ability = Mockito.mock(Ability.class);

@@ -20,7 +20,6 @@ import java.util.Map;
 
 import org.mockito.Mockito;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
@@ -28,24 +27,36 @@ import com.wandrell.tabletop.dreadball.model.team.SponsorTeamValorationCalculato
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
+/**
+ * Unit tests for {@link SponsorTeamValorationCalculator}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Valoration is calculated correctly</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class TestSponsorTeamValorationCalculator {
 
-    private TeamValorationCalculator<SponsorTeam> valorator;
-
+    /**
+     * Default constructor.
+     */
     public TestSponsorTeamValorationCalculator() {
         super();
     }
 
-    @BeforeClass
-    public final void initialize() {
-        valorator = new SponsorTeamValorationCalculator(1, 2, 3, 4, 5, 6);
-    }
-
+    /**
+     * Tests that the valoration is calculated correctly.
+     */
     @Test
     public final void testValoration() {
-        final SponsorTeam team;
-        final Map<Integer, Unit> players;
-        final Unit player;
+        final TeamValorationCalculator<SponsorTeam> valorator; // Tested class
+        final SponsorTeam team;           // Team to valorate
+        final Map<Integer, Unit> players; // Team players
+        final Unit player;                // Mocked player
+
+        valorator = new SponsorTeamValorationCalculator(1, 2, 3, 4, 5, 6);
 
         team = Mockito.mock(SponsorTeam.class);
         Mockito.when(team.getDice()).thenReturn(2);

@@ -20,7 +20,6 @@ import java.util.Map;
 
 import org.mockito.Mockito;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
@@ -28,24 +27,37 @@ import com.wandrell.tabletop.dreadball.model.team.AdvancementTeamValorationCalcu
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
+/**
+ * Unit tests for {@link AdvancementTeamValorationCalculator}.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>Valoration is calculated correctly</li>
+ * </ol>
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public final class TestAdvancementTeamValorationCalculator {
 
-    private TeamValorationCalculator<AdvancementTeam> valorator;
-
+    /**
+     * Default constructor.
+     */
     public TestAdvancementTeamValorationCalculator() {
         super();
     }
 
-    @BeforeClass
-    public final void initialize() {
-        valorator = new AdvancementTeamValorationCalculator(1, 2, 3, 4);
-    }
-
+    /**
+     * Tests that the valoration is calculated correctly.
+     */
     @Test
     public final void testValoration() {
-        final AdvancementTeam team;
-        final Map<Integer, AdvancementUnit> players;
-        final AdvancementUnit player;
+        final TeamValorationCalculator<AdvancementTeam> valorator; // Tested
+                                                                   // class
+        final AdvancementTeam team;                  // Team to valorate
+        final Map<Integer, AdvancementUnit> players; // Team players
+        final AdvancementUnit player;                // Mocked player
+
+        valorator = new AdvancementTeamValorationCalculator(1, 2, 3, 4);
 
         team = Mockito.mock(AdvancementTeam.class);
         Mockito.when(team.getDice()).thenReturn(2);
