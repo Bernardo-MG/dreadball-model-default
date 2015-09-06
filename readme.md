@@ -1,6 +1,8 @@
 # Dreadball Default Model Implementation
 
-Default implementation of the [Dreadball Model API][dreadball-model-api].
+Default implementation of the [Dreadball Model API][dreadball-model-api] meant for a simple and generic use.
+
+This covers both the original Dreadball and Dreadball Xtreme, and includes teams, units and the availabilities during team creation.
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.wandrell.tabletop.dreadball/dreadball-model-default.svg)][maven-repo]
 [![Bintray](https://api.bintray.com/packages/bernardo-mg/tabletop-toolkits/dreadball-model-default/images/download.svg)][bintray-repo]
