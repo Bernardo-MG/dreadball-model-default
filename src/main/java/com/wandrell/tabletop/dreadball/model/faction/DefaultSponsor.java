@@ -75,7 +75,7 @@ public final class DefaultSponsor implements Sponsor {
     }
 
     @Override
-    public final void addAfinityGroup(final AffinityGroup affinity) {
+    public final void addAffinityGroup(final AffinityGroup affinity) {
         getAffinityGroupsModifiable().add(affinity);
     }
 

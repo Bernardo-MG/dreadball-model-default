@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
@@ -108,7 +109,8 @@ public final class DefaultAffinityUnit implements AffinityUnit {
 
     @Override
     public final Collection<AffinityGroup> getAffinityGroups() {
-        return affinityGroups;
+        return Collections
+                .unmodifiableCollection(getAffinityGroupsModifiable());
     }
 
     @Override
@@ -170,6 +172,15 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      */
     public final void setCostForStranger() {
         costActual = getStrangerCost();
+    }
+
+    /**
+     * Returns the modifiable collection of the unit's affinity groups.
+     * 
+     * @return the modifiable collection of the unit's affinity groups
+     */
+    private final Collection<AffinityGroup> getAffinityGroupsModifiable() {
+        return affinityGroups;
     }
 
     /**
