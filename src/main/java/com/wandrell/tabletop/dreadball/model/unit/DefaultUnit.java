@@ -133,9 +133,9 @@ public final class DefaultUnit implements Unit {
     }
 
     /**
-     * Returns the modifiable list of the unit's abilities.
+     * Returns the modifiable collection of the unit's abilities.
      * 
-     * @return the modifiable list of the unit's abilities
+     * @return the modifiable collection of the unit's abilities
      */
     private final Collection<Ability> getAbilitiesModifiable() {
         return unitAbilities;
