@@ -19,7 +19,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
 
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
@@ -34,7 +34,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     /**
      * The affinities of the unit.
      */
-    private final Collection<AffinityGroup> affinityGroups = new LinkedList<AffinityGroup>();
+    private final Collection<AffinityGroup> affinityGroups  = new LinkedHashSet<AffinityGroup>();
     /**
      * {@code Unit} used for inheritance through composition.
      */
@@ -42,7 +42,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     /**
      * The actual cost of the unit.
      */
-    private Integer                         costActual     = 0;
+    private Integer                         costActual      = 0;
     /**
      * Unit cost for an ally.
      */
@@ -55,6 +55,10 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * Unit cost for a stranger.
      */
     private final Integer                   costStranger;
+    /**
+     * The affinities hated by the unit.
+     */
+    private final Collection<AffinityGroup> hatedAffinities = new LinkedHashSet<AffinityGroup>();
 
     /**
      * Constructs a {@code DefaultAffinityUnit} with the specified arguments.
@@ -71,6 +75,8 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      *            flag indicating if this is a giant
      * @param affinities
      *            the unit affinities
+     * @param hated
+     *            the unit hated affinities
      * @param allyCost
      *            the unit cost for an ally
      * @param friendCost
@@ -81,7 +87,8 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     public DefaultAffinityUnit(final String nameTemplate,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
-            final Collection<AffinityGroup> affinities, final Integer allyCost,
+            final Collection<AffinityGroup> affinities,
+            final Collection<AffinityGroup> hated, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost) {
         super();
 
@@ -95,10 +102,16 @@ public final class DefaultAffinityUnit implements AffinityUnit {
         costStranger = checkNotNull(strangerCost,
                 "Received a null pointer as stranger cost");
         checkNotNull(affinities, "Received a null pointer as affinities");
+        checkNotNull(hated, "Received a null pointer as hated affinities");
 
         for (final AffinityGroup affinity : affinities) {
             affinityGroups.add(checkNotNull(affinity,
                     "Received a null pointer as affinity"));
+        }
+
+        for (final AffinityGroup affinity : hated) {
+            hatedAffinities.add(checkNotNull(affinity,
+                    "Received a null pointer as hated affinity"));
         }
     }
 
@@ -131,6 +144,12 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     @Override
     public final Integer getFriendCost() {
         return costFriend;
+    }
+
+    @Override
+    public final Collection<AffinityGroup> getHatedAffinityGroups() {
+        return Collections
+                .unmodifiableCollection(getHatedAffinityGroupsModifiable());
     }
 
     @Override
@@ -192,6 +211,15 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      */
     private final Unit getBaseUnit() {
         return baseUnit;
+    }
+
+    /**
+     * Returns the modifiable collection of the unit's hated affinity groups.
+     * 
+     * @return the modifiable collection of the unit's hated affinity groups
+     */
+    private final Collection<AffinityGroup> getHatedAffinityGroupsModifiable() {
+        return hatedAffinities;
     }
 
 }

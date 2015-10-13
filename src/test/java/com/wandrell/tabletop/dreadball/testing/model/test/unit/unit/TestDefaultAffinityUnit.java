@@ -22,6 +22,9 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
+import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
+import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
@@ -34,6 +37,10 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
  * Checks the following cases:
  * <ol>
  * <li>Repeated abilities received through the constructor are not repeated</li>
+ * <li>Repeated affinities received through the constructor are not repeated
+ * </li>
+ * <li>Repeated hated affinities received through the constructor are not
+ * repeated</li>
  * </ol>
  * 
  * @author Bernardo Martínez Garrido
@@ -59,16 +66,67 @@ public final class TestDefaultAffinityUnit {
         final AttributesHolder attributes;   // Mocked attributes
 
         ability = Mockito.mock(Ability.class);
-        abilities = new LinkedList<>();
+        abilities = new LinkedList<Ability>();
         abilities.add(ability);
         abilities.add(ability);
 
         attributes = Mockito.mock(AttributesHolder.class);
 
-        unit = new DefaultUnit("name", 0, TeamPosition.GUARD, attributes,
-                abilities, true);
+        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
+                abilities, true, new LinkedList<AffinityGroup>(),
+                new LinkedList<AffinityGroup>(), 0, 0, 0);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
+    }
+
+    /**
+     * Tests that repeated affinities received through the constructor are not
+     * repeated.
+     */
+    @Test
+    public final void test_RepeatAffinity_NoRepeats_Constructor() {
+        final AffinityUnit unit;                    // Tested unit
+        final Collection<AffinityGroup> affinities; // Initial affinities
+        final AffinityGroup affinity;               // Mocked ability
+        final AttributesHolder attributes;          // Mocked attributes
+
+        affinity = Mockito.mock(AffinityGroup.class);
+        affinities = new LinkedList<AffinityGroup>();
+        affinities.add(affinity);
+        affinities.add(affinity);
+
+        attributes = Mockito.mock(AttributesHolder.class);
+
+        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
+                new LinkedList<Ability>(), true, affinities,
+                new LinkedList<AffinityGroup>(), 0, 0, 0);
+
+        Assert.assertEquals(unit.getAffinityGroups().size(), 1);
+    }
+
+    /**
+     * Tests that repeated hated affinities received through the constructor are
+     * not repeated.
+     */
+    @Test
+    public final void test_RepeatHatedAffinity_NoRepeats_Constructor() {
+        final AffinityUnit unit;                    // Tested unit
+        final Collection<AffinityGroup> affinities; // Initial affinities
+        final AffinityGroup affinity;               // Mocked ability
+        final AttributesHolder attributes;          // Mocked attributes
+
+        affinity = Mockito.mock(AffinityGroup.class);
+        affinities = new LinkedList<AffinityGroup>();
+        affinities.add(affinity);
+        affinities.add(affinity);
+
+        attributes = Mockito.mock(AttributesHolder.class);
+
+        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
+                new LinkedList<Ability>(), true,
+                new LinkedList<AffinityGroup>(), affinities, 0, 0, 0);
+
+        Assert.assertEquals(unit.getHatedAffinityGroups().size(), 1);
     }
 
 }

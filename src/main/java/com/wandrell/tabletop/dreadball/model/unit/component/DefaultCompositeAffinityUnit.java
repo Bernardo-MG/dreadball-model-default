@@ -63,6 +63,8 @@ public final class DefaultCompositeAffinityUnit
      *            flag indicating if this is a giant
      * @param affinities
      *            the unit affinities
+     * @param hated
+     *            the unit hated affinities
      * @param allyCost
      *            the unit cost for an ally
      * @param friendCost
@@ -75,13 +77,14 @@ public final class DefaultCompositeAffinityUnit
     public DefaultCompositeAffinityUnit(final String nameTemplate,
             final TeamPosition position, final AttributesHolder attributes,
             final Collection<Ability> abilities, final Boolean giant,
-            final Collection<AffinityGroup> affinities, final Integer allyCost,
+            final Collection<AffinityGroup> affinities,
+            final Collection<AffinityGroup> hated, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost,
             final Collection<UnitComponent> components) {
         super();
 
         baseUnit = new DefaultAffinityUnit(nameTemplate, position, attributes,
-                abilities, giant, affinities, allyCost, friendCost,
+                abilities, giant, affinities, hated, allyCost, friendCost,
                 strangerCost);
 
         checkNotNull(components,
@@ -133,6 +136,11 @@ public final class DefaultCompositeAffinityUnit
     @Override
     public final Integer getFriendCost() {
         return getBaseUnit().getFriendCost();
+    }
+
+    @Override
+    public final Collection<AffinityGroup> getHatedAffinityGroups() {
+        return getBaseUnit().getAffinityGroups();
     }
 
     @Override

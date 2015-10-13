@@ -52,7 +52,7 @@ public final class TestAdvancementTeamValorationCalculator {
     @Test
     public final void testValoration() {
         final TeamValorationCalculator<AdvancementTeam> valorator; // Tested
- // class
+        // class
         final AdvancementTeam team;                  // Team to valorate
         final Map<Integer, AdvancementUnit> players; // Team players
         final AdvancementUnit player;                // Mocked player

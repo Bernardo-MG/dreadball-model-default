@@ -50,7 +50,7 @@ public final class TestAdvancementUnitUnitValorationCalculator {
     @Test
     public final void testValoration() {
         final UnitValorationCalculator<AdvancementUnit> valorator; // Tested
- // class
+        // class
         final AdvancementUnit unit;     // Unit for the test
         final UnitComponent implant;    // Unit's implant
 

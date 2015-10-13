@@ -22,8 +22,8 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
+import com.wandrell.tabletop.dreadball.model.unit.DefaultUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
@@ -60,14 +60,14 @@ public final class TestDefaultUnit {
         final AttributesHolder attributes;   // Mocked attributes
 
         ability = Mockito.mock(Ability.class);
-        abilities = new LinkedList<Ability>();
+        abilities = new LinkedList<>();
         abilities.add(ability);
         abilities.add(ability);
 
         attributes = Mockito.mock(AttributesHolder.class);
 
-        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
-                abilities, true, new LinkedList<AffinityGroup>(), 0, 0, 0);
+        unit = new DefaultUnit("name", 0, TeamPosition.GUARD, attributes,
+                abilities, true);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }
