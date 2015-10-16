@@ -6,7 +6,7 @@
 
 	<groupId>com.wandrell.tabletop.dreadball</groupId>
 	<artifactId>dreadball-model-default</artifactId>
-	<version>0.1.2</version>
+	<version>0.1.3</version>
 	<packaging>jar</packaging>
 
 	<name>Dreadball Default Model Implementation</name>
@@ -148,7 +148,7 @@
 		<!-- Extensions versions -->
 		<extension.wagon.version>2.9</extension.wagon.version>
 		<!-- Maven Site -->
-		<site.skin.version>0.1.0</site.skin.version>
+		<site.skin.version>0.2.0</site.skin.version>
 		<bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view</bintrayURL>
 		<mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-default</mavenURL>
 	</properties>
