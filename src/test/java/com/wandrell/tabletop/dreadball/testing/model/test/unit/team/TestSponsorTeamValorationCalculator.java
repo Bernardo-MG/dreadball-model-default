@@ -22,13 +22,15 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
- * Unit tests for {@link SponsorTeamValorationCalculator}.
+ * Unit tests for {@link SponsorTeamValorationCalculator} applied to a
+ * {@link AdvancementTeam}.
  * <p>
  * Checks the following cases:
  * <ol>

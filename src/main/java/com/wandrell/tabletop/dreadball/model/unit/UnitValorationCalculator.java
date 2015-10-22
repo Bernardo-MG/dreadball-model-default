@@ -16,7 +16,7 @@
 package com.wandrell.tabletop.dreadball.model.unit;
 
 /**
- * Interface for calculating the valoration of a {@link Unit}.
+ * Interface for calculating the valoration of a {@link UnitTemplate}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
  * calculate a unit's valoration.
@@ -28,10 +28,11 @@ package com.wandrell.tabletop.dreadball.model.unit;
 public interface UnitValorationCalculator<U extends UnitTemplate> {
 
     /**
-     * Returns a {@code Unit}'s valoration.
+     * Returns a {@code UnitTemplate}'s valoration.
      * 
      * @param unit
-     *            the {@code Unit} of which the valoration will be calculated
+     *            the {@code UnitTemplate} of which the valoration will be
+     *            calculated
      * @return the valoration of the {@code Unit}
      */
     public Integer getValoration(final U unit);

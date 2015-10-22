@@ -53,7 +53,7 @@ public final class DefaultAdvancementTeam
     /**
      * Team's name.
      */
-    private String                                          teamName;
+    private String                                          teamName       = "";
     /**
      * The base type of the team.
      */
@@ -66,18 +66,15 @@ public final class DefaultAdvancementTeam
     /**
      * Constructs a {@code DefaultLicensedTeam} with the specified parameters.
      * 
-     * @param name
-     *            team's name
      * @param type
      *            team's base type
      * @param valorator
      *            valoration builder
      */
-    public DefaultAdvancementTeam(final String name, final TeamType type,
+    public DefaultAdvancementTeam(final TeamType type,
             final TeamValorationCalculator<AdvancementTeam> valorator) {
         super();
 
-        teamName = checkNotNull(name, "Received a null pointer as name");
         teamType = checkNotNull(type, "Received a null pointer as type");
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");

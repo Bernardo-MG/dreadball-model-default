@@ -63,7 +63,7 @@ public abstract class AbstractBaseTeam<U extends UnitTemplate>
         checkNotNull(position, "Received a null pointer as position");
 
         checkArgument(position > 0, "The position should be higher than zero");
-        checkArgument(getUnitPosition(player) > 0,
+        checkArgument(getUnitPosition(player) < 0,
                 "The player is already on the team");
 
         getPlayersModifiable().put(position, player);
@@ -113,6 +113,7 @@ public abstract class AbstractBaseTeam<U extends UnitTemplate>
      */
     private final Integer getUnitPosition(final U unit) {
         final Iterator<Entry<Integer, U>> itr;
+        U current;
         Integer pos;
         Integer result;
 
@@ -123,7 +124,8 @@ public abstract class AbstractBaseTeam<U extends UnitTemplate>
         result = -1;
         pos = 1;
         while ((itr.hasNext()) && (result < 0)) {
-            if (itr.next().equals(unit)) {
+            current = itr.next().getValue();
+            if ((current == unit) || (current.equals(unit))) {
                 result = pos;
             }
             pos++;

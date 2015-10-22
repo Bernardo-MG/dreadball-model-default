@@ -28,7 +28,8 @@ import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Unit tests for {@link AdvancementTeamValorationCalculator}.
+ * Unit tests for {@link AdvancementTeamValorationCalculator} applied to a
+ * {@link AdvancementTeam}.
  * <p>
  * Checks the following cases:
  * <ol>
