@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.wandrell.tabletop.dreadball.model.availability.team;
+package com.wandrell.tabletop.dreadball.model.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -55,21 +55,21 @@ public final class DefaultTeamTypeAssetsAvailability
      * Flag indicating if this {@code TeamType} begins with a Defensive Coaching
      * Staff.
      */
-    private final Boolean  initialDefCoach;
-    /**
-     * Initial number of Coaching Dice for this {@code TeamType}.
-     */
-    private final Integer  initialDie;
+    private final Boolean  initialCoachDef;
     /**
      * Flag indicating if this {@code TeamType} begins with an Offensive
      * Coaching Staff.
      */
-    private final Boolean  initialOffCoach;
+    private final Boolean  initialCoachOff;
     /**
      * Flag indicating if this {@code TeamType} begins with a Support Coaching
      * Staff.
      */
-    private final Boolean  initialSupCoach;
+    private final Boolean  initialCoachSup;
+    /**
+     * Initial number of Coaching Dice for this {@code TeamType}.
+     */
+    private final Integer  initialDie;
     /**
      * Maximum number of Dreadball Cards for this {@code TeamType}.
      */
@@ -93,11 +93,11 @@ public final class DefaultTeamTypeAssetsAvailability
      * 
      * @param team
      *            {@code TeamType} to which this availability applies
-     * @param cheerleaderCost
+     * @param cheerCost
      *            cost of a Cheerleader
-     * @param cheerleaderInitial
+     * @param cheerInitial
      *            initial number of Cheerleaders
-     * @param cheerleaderMax
+     * @param cheerMax
      *            maximum number of Cheerleaders
      * @param diceCost
      *            cost of a Coaching Die
@@ -113,35 +113,34 @@ public final class DefaultTeamTypeAssetsAvailability
      *            maximum number of Dreadball Cards
      * @param coachingCost
      *            cost of a Coaching Staff
-     * @param initialOffensiveCoach
+     * @param offensiveCoach
      *            flag indicating if the {@code TeamType} begins with an
      *            Offensive Coaching Staff
-     * @param initialDefensiveCoach
+     * @param defensiveCoach
      *            flag indicating if the {@code TeamType} begins with a
      *            Defensive Coaching Staff
-     * @param initialSupportCoach
+     * @param supportCoach
      *            flag indicating if the {@code TeamType} begins with a Support
      *            Coaching Staff
      */
     public DefaultTeamTypeAssetsAvailability(final TeamType team,
-            final Integer cheerleaderCost, final Integer cheerleaderInitial,
-            final Integer cheerleaderMax, final Integer diceCost,
+            final Integer cheerCost, final Integer cheerInitial,
+            final Integer cheerMax, final Integer diceCost,
             final Integer diceInitial, final Integer diceMax,
             final Integer cardCost, final Integer cardInitial,
             final Integer cardMax, final Integer coachingCost,
-            final Boolean initialOffensiveCoach,
-            final Boolean initialDefensiveCoach,
-            final Boolean initialSupportCoach) {
+            final Boolean offensiveCoach, final Boolean defensiveCoach,
+            final Boolean supportCoach) {
         super();
 
         teamType = checkNotNull(team,
                 "Received a null pointer as the Team Type");
 
-        costCheerleader = checkNotNull(cheerleaderCost,
+        costCheerleader = checkNotNull(cheerCost,
                 "Received a null pointer as the Cheerleader cost");
-        initialCheer = checkNotNull(cheerleaderInitial,
+        initialCheer = checkNotNull(cheerInitial,
                 "Received a null pointer as initial Cheerleaders");
-        maxCheerleader = checkNotNull(cheerleaderMax,
+        maxCheerleader = checkNotNull(cheerMax,
                 "Received a null pointer as maximum Cheerleaders");
 
         costDie = checkNotNull(diceCost,
@@ -160,26 +159,26 @@ public final class DefaultTeamTypeAssetsAvailability
 
         costCoaching = checkNotNull(coachingCost,
                 "Received a null pointer as the Coaching Staff cost");
-        initialOffCoach = checkNotNull(initialOffensiveCoach,
+        initialCoachOff = checkNotNull(offensiveCoach,
                 "Received a null pointer as the initial Offensive Coach flag");
-        initialDefCoach = checkNotNull(initialDefensiveCoach,
+        initialCoachDef = checkNotNull(defensiveCoach,
                 "Received a null pointer as the initial Defensive Coach flag");
-        initialSupCoach = checkNotNull(initialSupportCoach,
+        initialCoachSup = checkNotNull(supportCoach,
                 "Received a null pointer as the initial Support Coach flag");
     }
 
     @Override
-    public final Integer getCheerleadersCost() {
+    public final Integer getCheerleaderCost() {
         return costCheerleader;
     }
 
     @Override
-    public final Integer getCheerleadersInitial() {
+    public final Integer getCheerleaderInitial() {
         return initialCheer;
     }
 
     @Override
-    public final Integer getCheerleadersMax() {
+    public final Integer getCheerleaderMax() {
         return maxCheerleader;
     }
 
@@ -225,17 +224,17 @@ public final class DefaultTeamTypeAssetsAvailability
 
     @Override
     public final Boolean isStartingWithDefensiveCoachingStaff() {
-        return initialDefCoach;
+        return initialCoachDef;
     }
 
     @Override
     public final Boolean isStartingWithOffensiveCoachingStaff() {
-        return initialOffCoach;
+        return initialCoachOff;
     }
 
     @Override
     public final Boolean isStartingWithSupportCoachingStaff() {
-        return initialSupCoach;
+        return initialCoachSup;
     }
 
 }

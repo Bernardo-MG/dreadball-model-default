@@ -133,11 +133,6 @@ public final class DefaultUnitComponent implements UnitComponent {
     }
 
     @Override
-    public final String getComponentName() {
-        return componentName;
-    }
-
-    @Override
     public final Integer getCost() {
         return componentCost;
     }
@@ -145,6 +140,11 @@ public final class DefaultUnitComponent implements UnitComponent {
     @Override
     public final ComponentLocation getLocation() {
         return componentLocation;
+    }
+
+    @Override
+    public final String getName() {
+        return componentName;
     }
 
     @Override

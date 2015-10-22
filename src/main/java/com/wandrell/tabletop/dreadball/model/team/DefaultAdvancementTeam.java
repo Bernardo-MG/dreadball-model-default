@@ -28,8 +28,8 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
-        implements AdvancementTeam {
+public final class DefaultAdvancementTeam
+        extends AbstractBaseTeam<AdvancementUnit> implements AdvancementTeam {
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
@@ -53,7 +53,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     /**
      * Team's name.
      */
-    private String                                          teamName;
+    private String                                          teamName       = "";
     /**
      * The base type of the team.
      */
@@ -66,18 +66,15 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     /**
      * Constructs a {@code DefaultLicensedTeam} with the specified parameters.
      * 
-     * @param name
-     *            team's name
      * @param type
      *            team's base type
      * @param valorator
      *            valoration builder
      */
-    public DefaultAdvancementTeam(final String name, final TeamType type,
+    public DefaultAdvancementTeam(final TeamType type,
             final TeamValorationCalculator<AdvancementTeam> valorator) {
         super();
 
-        teamName = checkNotNull(name, "Received a null pointer as name");
         teamType = checkNotNull(type, "Received a null pointer as type");
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");
@@ -114,7 +111,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     }
 
     @Override
-    public final String getTeamName() {
+    public final String getName() {
         return teamName;
     }
 
@@ -166,6 +163,11 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     }
 
     @Override
+    public final void setName(final String name) {
+        teamName = name;
+    }
+
+    @Override
     public final void setOffensiveCoachingStaff(final Boolean coach) {
         offensiveCoach = coach;
     }
@@ -173,11 +175,6 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     @Override
     public final void setSupportCoachingStaff(final Boolean coach) {
         supportCoach = coach;
-    }
-
-    @Override
-    public final void setTeamName(final String name) {
-        teamName = name;
     }
 
     @Override

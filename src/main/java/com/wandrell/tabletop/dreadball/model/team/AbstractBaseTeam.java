@@ -24,7 +24,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
  * Abstract implementation of {@code Team}.
@@ -34,7 +34,8 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * @param <U>
  *            the type of player the {@code Team} is made of
  */
-public abstract class AbstractTeam<U extends Unit> implements Team<U> {
+public abstract class AbstractBaseTeam<U extends UnitTemplate>
+        implements BaseTeam<U> {
 
     /**
      * Team's players.
@@ -52,7 +53,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     /**
      * Constructs an {@code AbstractTeam}.
      */
-    public AbstractTeam() {
+    public AbstractBaseTeam() {
         super();
     }
 
@@ -62,7 +63,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
         checkNotNull(position, "Received a null pointer as position");
 
         checkArgument(position > 0, "The position should be higher than zero");
-        checkArgument(getUnitPosition(player) > 0,
+        checkArgument(getUnitPosition(player) < 0,
                 "The player is already on the team");
 
         getPlayersModifiable().put(position, player);
@@ -74,7 +75,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     }
 
     @Override
-    public final Integer getDice() {
+    public final Integer getCoachingDice() {
         return teamDice;
     }
 
@@ -99,7 +100,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     }
 
     @Override
-    public final void setDice(final Integer dice) {
+    public final void setCoachingDice(final Integer dice) {
         teamDice = dice;
     }
 
@@ -112,6 +113,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
      */
     private final Integer getUnitPosition(final U unit) {
         final Iterator<Entry<Integer, U>> itr;
+        U current;
         Integer pos;
         Integer result;
 
@@ -122,7 +124,8 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
         result = -1;
         pos = 1;
         while ((itr.hasNext()) && (result < 0)) {
-            if (itr.next().equals(unit)) {
+            current = itr.next().getValue();
+            if ((current == unit) || (current.equals(unit))) {
                 result = pos;
             }
             pos++;

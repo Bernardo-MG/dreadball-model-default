@@ -28,7 +28,8 @@ import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Unit tests for {@link AdvancementTeamValorationCalculator}.
+ * Unit tests for {@link AdvancementTeamValorationCalculator} applied to a
+ * {@link AdvancementTeam}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -60,7 +61,7 @@ public final class TestAdvancementTeamValorationCalculator {
         valorator = new AdvancementTeamValorationCalculator(1, 2, 3, 4);
 
         team = Mockito.mock(AdvancementTeam.class);
-        Mockito.when(team.getDice()).thenReturn(2);
+        Mockito.when(team.getCoachingDice()).thenReturn(2);
         Mockito.when(team.getDreadballCards()).thenReturn(4);
         Mockito.when(team.getCheerleaders()).thenReturn(1);
         Mockito.when(team.hasDefensiveCoachingStaff()).thenReturn(true);

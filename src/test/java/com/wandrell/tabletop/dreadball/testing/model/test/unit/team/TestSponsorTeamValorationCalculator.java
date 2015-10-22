@@ -22,13 +22,15 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
- * Unit tests for {@link SponsorTeamValorationCalculator}.
+ * Unit tests for {@link SponsorTeamValorationCalculator} applied to a
+ * {@link AdvancementTeam}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -53,13 +55,13 @@ public final class TestSponsorTeamValorationCalculator {
     public final void testValoration() {
         final TeamValorationCalculator<SponsorTeam> valorator; // Tested class
         final SponsorTeam team;           // Team to valorate
-        final Map<Integer, Unit> players; // Team players
-        final Unit player;                // Mocked player
+        final Map<Integer, UnitTemplate> players; // Team players
+        final UnitTemplate player;                // Mocked player
 
         valorator = new SponsorTeamValorationCalculator(1, 2, 3, 4, 5, 6);
 
         team = Mockito.mock(SponsorTeam.class);
-        Mockito.when(team.getDice()).thenReturn(2);
+        Mockito.when(team.getCoachingDice()).thenReturn(2);
         Mockito.when(team.getSabotageCards()).thenReturn(4);
         Mockito.when(team.getSpecialMoveCards()).thenReturn(5);
         Mockito.when(team.getCheerleaders()).thenReturn(1);
@@ -67,7 +69,7 @@ public final class TestSponsorTeamValorationCalculator {
         Mockito.when(team.getMediBots()).thenReturn(3);
 
         players = new LinkedHashMap<>();
-        player = Mockito.mock(Unit.class);
+        player = Mockito.mock(UnitTemplate.class);
         Mockito.when(player.getCost()).thenReturn(10);
         players.put(1, player);
 

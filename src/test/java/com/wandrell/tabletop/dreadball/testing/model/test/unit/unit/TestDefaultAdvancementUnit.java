@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
@@ -56,7 +56,7 @@ public final class TestDefaultAdvancementUnit {
     @SuppressWarnings("unchecked")
     @Test
     public final void test_RepeatAbility_NoRepeats() {
-        final Unit unit;                     // Tested unit
+        final UnitTemplate unit;                     // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final AttributesHolder attributes;   // Mocked attributes

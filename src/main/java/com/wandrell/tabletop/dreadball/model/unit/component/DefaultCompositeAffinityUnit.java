@@ -144,6 +144,11 @@ public final class DefaultCompositeAffinityUnit
     }
 
     @Override
+    public final String getName() {
+        return getBaseUnit().getName();
+    }
+
+    @Override
     public final TeamPosition getPosition() {
         return getBaseUnit().getPosition();
     }
@@ -161,6 +166,11 @@ public final class DefaultCompositeAffinityUnit
     @Override
     public final Boolean isGiant() {
         return getBaseUnit().isGiant();
+    }
+
+    @Override
+    public final void setName(final String name) {
+        getBaseUnit().setName(name);
     }
 
     /**

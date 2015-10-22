@@ -63,7 +63,7 @@ public final class TestExceptionPlayersDefaultAdvancementTeam {
         valorator = Mockito.mock(TeamValorationCalculator.class);
         type = Mockito.mock(TeamType.class);
 
-        this.team = new DefaultAdvancementTeam("team_name", type, valorator);
+        this.team = new DefaultAdvancementTeam(type, valorator);
     }
 
     /**

@@ -66,7 +66,7 @@ public final class DefaultAbility implements Ability {
     }
 
     @Override
-    public final String getAbilityName() {
+    public final String getName() {
         return abilityName;
     }
 

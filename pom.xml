@@ -6,7 +6,7 @@
 
 	<groupId>com.wandrell.tabletop.dreadball</groupId>
 	<artifactId>dreadball-model-default</artifactId>
-	<version>0.1.3</version>
+	<version>0.2.0</version>
 	<packaging>jar</packaging>
 
 	<name>Dreadball Default Model Implementation</name>
@@ -115,7 +115,7 @@
 		<guava.version>18.0</guava.version>
 		<mockito.version>1.10.19</mockito.version>
 		<slf4j.version>1.7.12</slf4j.version>
-		<tabletop.dreadball.model.api.version>0.3.4</tabletop.dreadball.model.api.version>
+		<tabletop.dreadball.model.api.version>0.4.0</tabletop.dreadball.model.api.version>
 		<testng.version>6.8.8</testng.version>
 		<wandrell.patterns.version>0.4.1</wandrell.patterns.version>
 		<!-- Plugins versions -->

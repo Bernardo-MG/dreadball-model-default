@@ -18,7 +18,7 @@ package com.wandrell.tabletop.dreadball.model.availability.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
  * Default serializable implementation of {@link TeamTypeMVPAvailability}.
@@ -29,13 +29,13 @@ public final class DefaultTeamTypeMVPAvailability
         implements TeamTypeMVPAvailability {
 
     /**
-     * {@code Unit} for which the availability applies.
+     * {@code UnitTemplate} for which the availability applies.
      */
-    private final Unit     avaUnit;
+    private final UnitTemplate avaUnit;
     /**
      * {@code TeamType} for which the availability applies.
      */
-    private final TeamType teamType;
+    private final TeamType     teamType;
 
     /**
      * Constructs a {@code DefaultTeamTypeMVPAvailability} with the specified
@@ -44,10 +44,10 @@ public final class DefaultTeamTypeMVPAvailability
      * @param team
      *            {@code TeamType} for which the availability applies
      * @param unit
-     *            {@code Unit} for which the availability applies
+     *            {@code UnitTemplate} for which the availability applies
      */
     public DefaultTeamTypeMVPAvailability(final TeamType team,
-            final Unit unit) {
+            final UnitTemplate unit) {
         super();
 
         teamType = checkNotNull(team,
@@ -61,7 +61,7 @@ public final class DefaultTeamTypeMVPAvailability
     }
 
     @Override
-    public final Unit getUnit() {
+    public final UnitTemplate getUnit() {
         return avaUnit;
     }
 

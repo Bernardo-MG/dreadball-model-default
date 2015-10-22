@@ -36,9 +36,9 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      */
     private final Collection<AffinityGroup> affinityGroups  = new LinkedHashSet<AffinityGroup>();
     /**
-     * {@code Unit} used for inheritance through composition.
+     * {@code UnitTemplate} used for inheritance through composition.
      */
-    private final Unit                      baseUnit;
+    private final UnitTemplate              baseUnit;
     /**
      * The actual cost of the unit.
      */
@@ -59,6 +59,10 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * The affinities hated by the unit.
      */
     private final Collection<AffinityGroup> hatedAffinities = new LinkedHashSet<AffinityGroup>();
+    /**
+     * Name given to the unit.
+     */
+    private String                          unitName        = "";
 
     /**
      * Constructs a {@code DefaultAffinityUnit} with the specified arguments.
@@ -153,6 +157,11 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     }
 
     @Override
+    public final String getName() {
+        return unitName;
+    }
+
+    @Override
     public final TeamPosition getPosition() {
         return getBaseUnit().getPosition();
     }
@@ -193,6 +202,11 @@ public final class DefaultAffinityUnit implements AffinityUnit {
         costActual = getStrangerCost();
     }
 
+    @Override
+    public final void setName(final String name) {
+        unitName = name;
+    }
+
     /**
      * Returns the modifiable collection of the unit's affinity groups.
      * 
@@ -209,7 +223,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final Unit getBaseUnit() {
+    private final UnitTemplate getBaseUnit() {
         return baseUnit;
     }
 

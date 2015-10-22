@@ -66,7 +66,7 @@ public final class DefaultAffinityGroup implements AffinityGroup {
     }
 
     @Override
-    public final String getAffinityGroupName() {
+    public final String getName() {
         return groupName;
     }
 

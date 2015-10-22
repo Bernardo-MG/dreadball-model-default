@@ -66,7 +66,7 @@ public final class DefaultComponentLocation implements ComponentLocation {
     }
 
     @Override
-    public final String getComponentLocationName() {
+    public final String getName() {
         return locationName;
     }
 

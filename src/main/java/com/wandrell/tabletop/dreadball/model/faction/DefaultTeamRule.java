@@ -66,7 +66,7 @@ public final class DefaultTeamRule implements TeamRule {
     }
 
     @Override
-    public final String getTeamRuleName() {
+    public final String getName() {
         return ruleName;
     }
 
