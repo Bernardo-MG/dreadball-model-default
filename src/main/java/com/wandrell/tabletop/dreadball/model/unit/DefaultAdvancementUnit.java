@@ -38,9 +38,9 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributesHolde
 public final class DefaultAdvancementUnit implements AdvancementUnit {
 
     /**
-     * {@code Unit} used for inheritance through composition.
+     * {@code UnitTemplate} used for inheritance through composition.
      */
-    private final Unit                                      baseUnit;
+    private final UnitTemplate                              baseUnit;
     /**
      * The unspent experience.
      */
@@ -68,6 +68,10 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      * Unit's attributes.
      */
     private AttributesHolder                                unitAttributes;
+    /**
+     * Name given to the unit.
+     */
+    private String                                          unitName       = "";
     /**
      * Object used for calculating the unit valoration.
      */
@@ -132,6 +136,11 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
+    public final String getName() {
+        return unitName;
+    }
+
+    @Override
     public final TeamPosition getPosition() {
         return getBaseUnit().getPosition();
     }
@@ -183,6 +192,11 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
+    public final void setName(final String name) {
+        unitName = name;
+    }
+
+    @Override
     public final void setRank(final Integer rank) {
         rankValue = checkNotNull(rank, "Received a null pointer as rank");
     }
@@ -217,7 +231,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final Unit getBaseUnit() {
+    private final UnitTemplate getBaseUnit() {
         return baseUnit;
     }
 

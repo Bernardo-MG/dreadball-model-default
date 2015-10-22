@@ -26,11 +26,11 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
 /**
- * Default implementation of {@code Unit}.
+ * Default implementation of {@code UnitTemplate}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultUnit implements Unit {
+public final class DefaultUnit implements UnitTemplate {
 
     /**
      * Base cost of the unit.

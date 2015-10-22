@@ -82,13 +82,13 @@ public final class DefaultTeamType implements TeamType {
     }
 
     @Override
-    public final Collection<TeamRule> getTeamRules() {
-        return Collections.unmodifiableCollection(getTeamRulesModifiable());
+    public final String getName() {
+        return teamName;
     }
 
     @Override
-    public final String getTeamTypeName() {
-        return teamName;
+    public final Collection<TeamRule> getTeamRules() {
+        return Collections.unmodifiableCollection(getTeamRulesModifiable());
     }
 
     @Override

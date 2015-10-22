@@ -25,7 +25,7 @@ package com.wandrell.tabletop.dreadball.model.team;
  * @param <T>
  *            the type of the team of which the valoration will be calculated
  */
-public interface TeamValorationCalculator<T extends Team<?>> {
+public interface TeamValorationCalculator<T extends BaseTeam<?>> {
 
     /**
      * Returns a {@code Team}'s valoration.

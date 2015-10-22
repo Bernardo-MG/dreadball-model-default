@@ -16,4 +16,4 @@
 /**
  * Provides classes for team assets availabilities.
  */
-package com.wandrell.tabletop.dreadball.model.availability.team;
+package com.wandrell.tabletop.dreadball.model.availability.asset;

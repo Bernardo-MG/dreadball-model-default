@@ -83,7 +83,7 @@ public final class AdvancementTeamValorationCalculator
             valoration += unit.getValoration();
         }
 
-        valoration += team.getDice() * costDie;
+        valoration += team.getCoachingDice() * costDie;
         valoration += team.getDreadballCards() * costCard;
         valoration += team.getCheerleaders() * costCheerleader;
         if (team.hasDefensiveCoachingStaff()) {

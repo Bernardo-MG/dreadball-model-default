@@ -21,14 +21,14 @@ import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
  * Default implementation of {@link SponsorTeam}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultSponsorTeam extends AbstractTeam<Unit>
+public final class DefaultSponsorTeam extends AbstractBaseTeam<UnitTemplate>
         implements SponsorTeam {
 
     /**

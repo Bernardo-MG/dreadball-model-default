@@ -60,7 +60,7 @@ public final class TestAdvancementTeamValorationCalculator {
         valorator = new AdvancementTeamValorationCalculator(1, 2, 3, 4);
 
         team = Mockito.mock(AdvancementTeam.class);
-        Mockito.when(team.getDice()).thenReturn(2);
+        Mockito.when(team.getCoachingDice()).thenReturn(2);
         Mockito.when(team.getDreadballCards()).thenReturn(4);
         Mockito.when(team.getCheerleaders()).thenReturn(1);
         Mockito.when(team.hasDefensiveCoachingStaff()).thenReturn(true);

@@ -61,7 +61,9 @@ public final class TestUnitGroupsDefaultSponsor {
         groups.add(group);
         groups.add(group);
 
-        sponsor = new DefaultSponsor("name", 0, groups);
+        sponsor = new DefaultSponsor();
+
+        sponsor.setAffinityGroups(groups);
 
         Assert.assertEquals(sponsor.getAffinityGroups().size(), 1);
     }

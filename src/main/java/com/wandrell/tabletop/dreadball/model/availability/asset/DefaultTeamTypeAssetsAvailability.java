@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.wandrell.tabletop.dreadball.model.availability.team;
+package com.wandrell.tabletop.dreadball.model.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -169,17 +169,17 @@ public final class DefaultTeamTypeAssetsAvailability
     }
 
     @Override
-    public final Integer getCheerleadersCost() {
+    public final Integer getCheerleaderCost() {
         return costCheerleader;
     }
 
     @Override
-    public final Integer getCheerleadersInitial() {
+    public final Integer getCheerleaderInitial() {
         return initialCheer;
     }
 
     @Override
-    public final Integer getCheerleadersMax() {
+    public final Integer getCheerleaderMax() {
         return maxCheerleader;
     }
 

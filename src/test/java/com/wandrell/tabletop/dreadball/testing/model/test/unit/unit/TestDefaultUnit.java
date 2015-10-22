@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultUnit;
 import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
 
@@ -54,7 +54,7 @@ public final class TestDefaultUnit {
      */
     @Test
     public final void test_RepeatAbility_NoRepeats_Constructor() {
-        final Unit unit;                     // Tested unit
+        final UnitTemplate unit;             // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final AttributesHolder attributes;   // Mocked attributes

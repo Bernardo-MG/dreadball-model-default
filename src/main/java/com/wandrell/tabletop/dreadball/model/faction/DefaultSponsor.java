@@ -43,35 +43,17 @@ public final class DefaultSponsor implements Sponsor {
     /**
      * Sponsor's name.
      */
-    private final String                    sponsorName;
+    private String                          sponsorName    = "";
     /**
      * Sponsor's rank.
      */
     private Integer                         sponsorRank    = 0;
 
     /**
-     * Constructs a {@code DefaultSponsor} with the specified parameters.
-     * 
-     * @param name
-     *            sponsor's name
-     * @param rank
-     *            sponsor's rank
-     * @param groups
-     *            sponsor's groups
+     * Constructs a {@code DefaultSponsor}.
      */
-    public DefaultSponsor(final String name, final Integer rank,
-            final Collection<AffinityGroup> groups) {
+    public DefaultSponsor() {
         super();
-
-        sponsorName = checkNotNull(name, "Received a null pointer as name");
-        sponsorRank = checkNotNull(rank, "Received a null pointer as rank");
-
-        checkNotNull(groups, "Received a null pointer as groups");
-
-        for (final AffinityGroup group : groups) {
-            affinityGroups.add(
-                    checkNotNull(group, "Received a null pointer as group"));
-        }
     }
 
     @Override
@@ -111,13 +93,13 @@ public final class DefaultSponsor implements Sponsor {
     }
 
     @Override
-    public final Integer getRank() {
-        return sponsorRank;
+    public final String getName() {
+        return sponsorName;
     }
 
     @Override
-    public final String getSponsorName() {
-        return sponsorName;
+    public final Integer getRank() {
+        return sponsorRank;
     }
 
     @Override
@@ -140,6 +122,11 @@ public final class DefaultSponsor implements Sponsor {
     @Override
     public final void setCash(final Integer cash) {
         sponsorCash = cash;
+    }
+
+    @Override
+    public final void setName(final String name) {
+        sponsorName = name;
     }
 
     @Override

@@ -126,6 +126,11 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
+    public final String getName() {
+        return getBaseUnit().getName();
+    }
+
+    @Override
     public final TeamPosition getPosition() {
         return getBaseUnit().getPosition();
     }
@@ -173,6 +178,11 @@ public final class DefaultCompositeAdvancementUnit
     @Override
     public final void setGraftedImplant(final UnitComponent implant) {
         getBaseUnit().setGraftedImplant(implant);
+    }
+
+    @Override
+    public final void setName(final String name) {
+        getBaseUnit().setName(name);
     }
 
     @Override

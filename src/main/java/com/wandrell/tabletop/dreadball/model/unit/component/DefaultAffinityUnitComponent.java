@@ -112,11 +112,6 @@ public final class DefaultAffinityUnitComponent
     }
 
     @Override
-    public final String getComponentName() {
-        return getBaseComponent().getComponentName();
-    }
-
-    @Override
     public final Integer getCost() {
         return costActual;
     }
@@ -129,6 +124,11 @@ public final class DefaultAffinityUnitComponent
     @Override
     public final ComponentLocation getLocation() {
         return getBaseComponent().getLocation();
+    }
+
+    @Override
+    public final String getName() {
+        return getBaseComponent().getName();
     }
 
     @Override

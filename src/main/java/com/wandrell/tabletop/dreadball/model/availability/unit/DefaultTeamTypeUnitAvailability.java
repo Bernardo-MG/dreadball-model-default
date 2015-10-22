@@ -18,7 +18,7 @@ package com.wandrell.tabletop.dreadball.model.availability.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
+import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
 
 /**
  * Default serializable implementation of {@link TeamTypeUnitAvailability}.
@@ -31,19 +31,19 @@ public final class DefaultTeamTypeUnitAvailability
     /**
      * Initial number of units of this type for the team type.
      */
-    private final Integer  avaInitial;
+    private final Integer      avaInitial;
     /**
      * Maximum number of units of this type for the team type.
      */
-    private final Integer  avaMax;
+    private final Integer      avaMax;
     /**
-     * {@code Unit} for which the availability applies.
+     * {@code UnitTemplate} for which the availability applies.
      */
-    private final Unit     avaUnit;
+    private final UnitTemplate avaUnit;
     /**
      * {@code TeamType} for which the availability applies.
      */
-    private final TeamType teamType;
+    private final TeamType     teamType;
 
     /**
      * Constructs a {@code DefaultTeamTypeUnitAvailability} with the specified
@@ -52,14 +52,14 @@ public final class DefaultTeamTypeUnitAvailability
      * @param team
      *            {@code TeamType} for which the availability applies
      * @param unit
-     *            {@code Unit} for which the availability applies
+     *            {@code UnitTemplate} for which the availability applies
      * @param initial
      *            initial number of units of this type
      * @param max
      *            maximum number of units of this type
      */
-    public DefaultTeamTypeUnitAvailability(final TeamType team, final Unit unit,
-            final Integer initial, final Integer max) {
+    public DefaultTeamTypeUnitAvailability(final TeamType team,
+            final UnitTemplate unit, final Integer initial, final Integer max) {
         super();
 
         teamType = checkNotNull(team,
@@ -87,7 +87,7 @@ public final class DefaultTeamTypeUnitAvailability
     }
 
     @Override
-    public final Unit getUnit() {
+    public final UnitTemplate getUnit() {
         return avaUnit;
     }
 
