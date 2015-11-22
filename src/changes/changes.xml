@@ -35,5 +35,10 @@
 				Adapted to version 0.4.0 of the API.
 			</action>
 		</release>
+		<release version="0.2.1" date="2015-11-22" description="Updated configuration">
+			<action dev="bmg" type="update">
+				Updated project configuration.
+			</action>
+		</release>
 	</body>
 </document>
