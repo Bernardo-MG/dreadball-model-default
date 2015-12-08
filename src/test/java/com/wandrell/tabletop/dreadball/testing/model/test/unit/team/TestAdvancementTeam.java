@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.testing.model.test.unit.team;
 
 import org.mockito.Mockito;
