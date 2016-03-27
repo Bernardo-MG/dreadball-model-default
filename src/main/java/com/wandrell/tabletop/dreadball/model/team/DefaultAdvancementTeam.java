@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -31,34 +31,42 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  */
 public final class DefaultAdvancementTeam
         extends AbstractBaseTeam<AdvancementUnit> implements AdvancementTeam {
+
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
     private Boolean                                         defensiveCoach = false;
+
     /**
      * Flag indicating if the team has an Offensive Coaching Staff.
      */
     private Boolean                                         offensiveCoach = false;
+
     /**
      * Flag indicating if the team has a Support Coaching Staff.
      */
     private Boolean                                         supportCoach   = false;
+
     /**
      * Number of Dreadball Cards in the team.
      */
     private Integer                                         teamCards      = 0;
+
     /**
      * Team's unspent cash.
      */
     private Integer                                         teamCash       = 0;
+
     /**
      * Team's name.
      */
     private String                                          teamName       = "";
+
     /**
      * The base type of the team.
      */
     private final TeamType                                  teamType;
+
     /**
      * Builder for calculating the valoration.
      */

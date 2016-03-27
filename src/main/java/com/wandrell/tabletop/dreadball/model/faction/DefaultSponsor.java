@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -37,14 +37,17 @@ public final class DefaultSponsor implements Sponsor {
      * Sponsor's player groups.
      */
     private final Collection<AffinityGroup> affinityGroups = new LinkedHashSet<>();
+
     /**
      * Sponsor's unspent cash.
      */
     private Integer                         sponsorCash    = 0;
+
     /**
      * Sponsor's name.
      */
     private String                          sponsorName    = "";
+
     /**
      * Sponsor's rank.
      */

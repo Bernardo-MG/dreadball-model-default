@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -37,22 +37,27 @@ public final class DefaultUnit implements UnitTemplate {
      * Base cost of the unit.
      */
     private final Integer             baseCost;
+
     /**
      * Indicates if the unit is a giant.
      */
     private final Boolean             giantFlag;
+
     /**
      * Name of the template from which this unit has been created.
      */
     private final String              templateName;
+
     /**
      * The unit's team position.
      */
     private final TeamPosition        templatePosition;
+
     /**
      * The unit's abilities.
      */
     private final Collection<Ability> unitAbilities = new LinkedHashSet<>();
+
     /**
      * Unit's attributes.
      */

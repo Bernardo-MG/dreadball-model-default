@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -33,14 +33,17 @@ public final class DefaultTeamTypeUnitAvailability
      * Initial number of units of this type for the team type.
      */
     private final Integer      avaInitial;
+
     /**
      * Maximum number of units of this type for the team type.
      */
     private final Integer      avaMax;
+
     /**
      * {@code UnitTemplate} for which the availability applies.
      */
     private final UnitTemplate avaUnit;
+
     /**
      * {@code TeamType} for which the availability applies.
      */

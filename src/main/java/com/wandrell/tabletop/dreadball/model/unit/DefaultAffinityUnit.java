@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -36,30 +36,37 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * The affinities of the unit.
      */
     private final Collection<AffinityGroup> affinityGroups  = new LinkedHashSet<AffinityGroup>();
+
     /**
      * {@code UnitTemplate} used for inheritance through composition.
      */
     private final UnitTemplate              baseUnit;
+
     /**
      * The actual cost of the unit.
      */
     private Integer                         costActual      = 0;
+
     /**
      * Unit cost for an ally.
      */
     private final Integer                   costAlly;
+
     /**
      * Unit cost for a friend.
      */
     private final Integer                   costFriend;
+
     /**
      * Unit cost for a stranger.
      */
     private final Integer                   costStranger;
+
     /**
      * The affinities hated by the unit.
      */
     private final Collection<AffinityGroup> hatedAffinities = new LinkedHashSet<AffinityGroup>();
+
     /**
      * Name given to the unit.
      */

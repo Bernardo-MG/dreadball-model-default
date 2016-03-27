@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -39,22 +39,27 @@ public final class DefaultUnitComponent implements UnitComponent {
      * Abilities given by this component.
      */
     private final Collection<Ability>      abilitiesGiven = new LinkedHashSet<Ability>();
+
     /**
      * Attributes given by this component.
      */
     private final AttributesHolder         attributesGiven;
+
     /**
      * Cost of the component.
      */
     private final Integer                  componentCost;
+
     /**
      * Location where this component is applied.
      */
     private final ComponentLocation        componentLocation;
+
     /**
      * Component's name.
      */
     private final String                   componentName;
+
     /**
      * Team position roles which can have this component.
      */

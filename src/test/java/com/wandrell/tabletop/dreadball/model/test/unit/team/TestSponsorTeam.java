@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,20 +14,20 @@
  * the License.
  */
 
-package com.wandrell.tabletop.dreadball.testing.model.test.unit.team;
+package com.wandrell.tabletop.dreadball.model.test.unit.team;
 
 import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.faction.TeamType;
-import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
-import com.wandrell.tabletop.dreadball.model.team.DefaultAdvancementTeam;
+import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
+import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
+import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Unit tests for {@link AdvancementTeam}.
+ * Unit tests for {@link SponsorTeam}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -39,12 +39,12 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class TestAdvancementTeam {
+public final class TestSponsorTeam {
 
     /**
      * Default constructor.
      */
-    public TestAdvancementTeam() {
+    public TestSponsorTeam() {
         super();
     }
 
@@ -54,17 +54,17 @@ public final class TestAdvancementTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testAddPlayer_Empty() {
-        final AdvancementTeam team;                  // Tested team
+        final SponsorTeam team;                      // Tested team
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
-        final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final Sponsor sponsor;                       // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
+                                                               // valorator
 
-        type = Mockito.mock(TeamType.class);
+        sponsor = Mockito.mock(Sponsor.class);
         valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        team = new DefaultSponsorTeam(sponsor, valorator);
 
         player1 = Mockito.mock(AdvancementUnit.class);
         player2 = Mockito.mock(AdvancementUnit.class);
@@ -81,17 +81,17 @@ public final class TestAdvancementTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testAddPlayer_Overwrite() {
-        final AdvancementTeam team;                  // Tested team
+        final SponsorTeam team;                      // Tested team
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
-        final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final Sponsor sponsor;                       // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
+                                                               // valorator
 
-        type = Mockito.mock(TeamType.class);
+        sponsor = Mockito.mock(Sponsor.class);
         valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        team = new DefaultSponsorTeam(sponsor, valorator);
 
         player1 = Mockito.mock(AdvancementUnit.class);
         player2 = Mockito.mock(AdvancementUnit.class);
@@ -113,16 +113,16 @@ public final class TestAdvancementTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testRemovePlayer_Number() {
-        final AdvancementTeam team;                  // Tested team
+        final SponsorTeam team;                      // Tested team
         final AdvancementUnit player;                // Mocked player
-        final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final Sponsor sponsor;                       // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
+                                                               // valorator
 
-        type = Mockito.mock(TeamType.class);
+        sponsor = Mockito.mock(Sponsor.class);
         valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        team = new DefaultSponsorTeam(sponsor, valorator);
 
         player = Mockito.mock(AdvancementUnit.class);
         team.addPlayer(player, 1);
@@ -138,16 +138,16 @@ public final class TestAdvancementTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testRemovePlayer_Player() {
-        final AdvancementTeam team;                  // Tested team
+        final SponsorTeam team;                      // Tested team
         final AdvancementUnit player;                // Mocked player
-        final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final Sponsor sponsor;                       // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
+                                                               // valorator
 
-        type = Mockito.mock(TeamType.class);
+        sponsor = Mockito.mock(Sponsor.class);
         valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        team = new DefaultSponsorTeam(sponsor, valorator);
 
         player = Mockito.mock(AdvancementUnit.class);
         team.addPlayer(player, 1);

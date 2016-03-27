@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -37,10 +37,12 @@ public final class DefaultSponsorAffinityGroupAvailability
      * Available affinities groups.
      */
     private final Collection<AffinityGroup> avaAffinities = new LinkedHashSet<AffinityGroup>();
+
     /**
      * Name of the affinities.
      */
     private final String                    avaName;
+
     /**
      * Flag indicating if the availability allows increasing the rank.
      */

@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -38,18 +38,22 @@ public final class DefaultAffinityUnitComponent
      * {@code UnitComponent} used for inheritance through composition.
      */
     private final UnitComponent baseComponent;
+
     /**
      * The actual cost of the component.
      */
     private Integer             costActual = 0;
+
     /**
      * Component cost for an ally.
      */
     private final Integer       costAlly;
+
     /**
      * Component cost for a friend.
      */
     private final Integer       costFriend;
+
     /**
      * Component cost for a stranger.
      */

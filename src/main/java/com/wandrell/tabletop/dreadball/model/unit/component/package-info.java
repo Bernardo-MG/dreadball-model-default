@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,7 +14,8 @@
  * the License.
  */
 /**
- * Provides classes for components and composite units. These are such units as
+ * Components and composite units. These are such units as
  * those from the Mechanite or Plague teams.
  */
+
 package com.wandrell.tabletop.dreadball.model.unit.component;

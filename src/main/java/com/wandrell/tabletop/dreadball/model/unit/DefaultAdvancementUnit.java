@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -42,10 +42,12 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      * {@code UnitTemplate} used for inheritance through composition.
      */
     private final UnitTemplate                              baseUnit;
+
     /**
      * The unspent experience.
      */
     private Integer                                         experienceValue;
+
     /**
      * Implant grafted to the unit. This is a {@code UnitComponent}, the same
      * objects used for composite units.
@@ -57,22 +59,27 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
             new LinkedList<TeamPosition>(),
             new ImmutableAttributesHolder(0, 0, 0, 0, 0),
             new LinkedList<Ability>());
+
     /**
      * The unit's current rank.
      */
     private Integer                                         rankValue;
+
     /**
      * The unit's abilities.
      */
     private final Collection<Ability>                       unitAbilities  = new LinkedHashSet<>();
+
     /**
      * Unit's attributes.
      */
     private AttributesHolder                                unitAttributes;
+
     /**
      * Name given to the unit.
      */
     private String                                          unitName       = "";
+
     /**
      * Object used for calculating the unit valoration.
      */

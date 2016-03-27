@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -31,18 +31,22 @@ public final class MutableAttributesHolder implements AttributesHolder {
      * Armor value.
      */
     private Integer armorValue    = 0;
+
     /**
      * Movement value.
      */
     private Integer movementValue = 0;
+
     /**
      * Skill value.
      */
     private Integer skillValue    = 0;
+
     /**
      * Speed value.
      */
     private Integer speedValue    = 0;
+
     /**
      * Strength value.
      */

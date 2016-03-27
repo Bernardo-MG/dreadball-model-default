@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -30,38 +30,47 @@ public final class DefaultSponsorAssetsAvailability
      * Cost of an Affinity Group.
      */
     private final Integer costAffinityGroup;
+
     /**
      * Cost of a Cheerleader.
      */
     private final Integer costCheerleader;
+
     /**
      * Cost of a Coaching Die.
      */
     private final Integer costDie;
+
     /**
      * Cost of a Medibot.
      */
     private final Integer costMedibot;
+
     /**
      * Cost of a Sabotage Card.
      */
     private final Integer costSabotageCard;
+
     /**
      * Cost of a Special Move Card.
      */
     private final Integer costSpMoveCard;
+
     /**
      * Cost for unlocking a Cheerleader.
      */
     private final Integer costUnlockCheer;
+
     /**
      * Cost of a Wager.
      */
     private final Integer costWager;
+
     /**
      * Maximum number of Wagers allowed.
      */
     private final Integer maxWagerCount;
+
     /**
      * Minimum allowed cost for a team.
      */

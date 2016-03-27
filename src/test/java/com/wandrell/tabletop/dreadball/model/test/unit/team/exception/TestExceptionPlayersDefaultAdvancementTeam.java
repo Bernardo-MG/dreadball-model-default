@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,20 +14,20 @@
  * the License.
  */
 
-package com.wandrell.tabletop.dreadball.testing.model.test.unit.team.exception;
+package com.wandrell.tabletop.dreadball.model.test.unit.team.exception;
 
 import org.mockito.Mockito;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
-import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
-import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
+import com.wandrell.tabletop.dreadball.model.faction.TeamType;
+import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
+import com.wandrell.tabletop.dreadball.model.team.DefaultAdvancementTeam;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Unit tests for {@link SponsorTeam} checking that exceptions are thrown.
+ * Unit tests for {@link AdvancementTeam} checking that exceptions are thrown.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -38,17 +38,17 @@ import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class TestExceptionPlayersDefaultSponsorTeam {
+public final class TestExceptionPlayersDefaultAdvancementTeam {
 
     /**
      * Tested team.
      */
-    private SponsorTeam team;
+    private AdvancementTeam team;
 
     /**
      * Default constructor.
      */
-    public TestExceptionPlayersDefaultSponsorTeam() {
+    public TestExceptionPlayersDefaultAdvancementTeam() {
         super();
     }
 
@@ -58,13 +58,13 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
     @SuppressWarnings("unchecked")
     @BeforeClass
     public final void initialize() {
-        final Sponsor sponsor;
-        final TeamValorationCalculator<SponsorTeam> valorator;
+        final TeamType type;
+        final TeamValorationCalculator<AdvancementTeam> valorator;
 
         valorator = Mockito.mock(TeamValorationCalculator.class);
-        sponsor = Mockito.mock(Sponsor.class);
+        type = Mockito.mock(TeamType.class);
 
-        this.team = new DefaultSponsorTeam(sponsor, valorator);
+        this.team = new DefaultAdvancementTeam(type, valorator);
     }
 
     /**
@@ -73,9 +73,9 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
      */
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_Existing() {
-        final UnitTemplate player;
+        final AdvancementUnit player;
 
-        player = Mockito.mock(UnitTemplate.class);
+        player = Mockito.mock(AdvancementUnit.class);
 
         team.addPlayer(player, 0);
         team.addPlayer(player, 1);
@@ -87,9 +87,9 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
      */
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
-        final UnitTemplate player;
+        final AdvancementUnit player;
 
-        player = Mockito.mock(UnitTemplate.class);
+        player = Mockito.mock(AdvancementUnit.class);
 
         team.addPlayer(player, -1);
     }
