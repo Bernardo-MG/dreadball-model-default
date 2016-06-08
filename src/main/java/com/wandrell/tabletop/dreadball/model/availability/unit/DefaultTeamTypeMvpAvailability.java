@@ -22,7 +22,7 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Default serializable implementation of {@link TeamTypeMVPAvailability}.
+ * Default serializable implementation of {@link TeamTypeMvpAvailability}.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -40,7 +40,7 @@ public final class DefaultTeamTypeMvpAvailability
     private final TeamType teamType;
 
     /**
-     * Constructs a {@code DefaultTeamTypeMVPAvailability} with the specified
+     * Constructs a {@code DefaultTeamTypeMvpAvailability} with the specified
      * arguments.
      * 
      * @param team

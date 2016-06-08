@@ -27,7 +27,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code UnitTemplate}.
+ * Default implementation of {@code Unit}.
  * 
  * @author Bernardo Martínez Garrido
  */

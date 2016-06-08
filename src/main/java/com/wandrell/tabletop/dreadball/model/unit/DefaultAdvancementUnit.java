@@ -91,7 +91,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      *            the unit's base template name
      * @param cost
      *            cost of the unit
-     * @param position
+     * @param role
      *            team position role of the unit
      * @param attributes
      *            unit attributes
