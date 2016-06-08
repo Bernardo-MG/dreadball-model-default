@@ -101,7 +101,7 @@ public final class TestDefaultComponent {
         component = new DefaultComponent("name", location, 0, positions,
                 attributes, abilities);
 
-        Assert.assertEquals(component.getTeamRole().size(), 1);
+        Assert.assertEquals(component.getRoles().size(), 1);
     }
 
 }

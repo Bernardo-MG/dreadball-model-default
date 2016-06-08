@@ -140,8 +140,8 @@ public final class DefaultAffinityComponent implements AffinityComponent {
     }
 
     @Override
-    public final Collection<Role> getTeamRole() {
-        return getBaseComponent().getTeamRole();
+    public final Collection<Role> getRoles() {
+        return getBaseComponent().getRoles();
     }
 
     /**

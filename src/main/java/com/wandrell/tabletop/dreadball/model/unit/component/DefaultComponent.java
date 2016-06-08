@@ -152,7 +152,7 @@ public final class DefaultComponent implements Component {
     }
 
     @Override
-    public final Collection<Role> getTeamRole() {
+    public final Collection<Role> getRoles() {
         return componentPos;
     }
 
