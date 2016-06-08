@@ -1,255 +1,255 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
+   <modelVersion>4.0.0</modelVersion>
 
-    <!-- ********************************************** -->
-    <!-- ****************** BASE POM ****************** -->
-    <!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ****************** BASE POM ****************** -->
+   <!-- ********************************************** -->
 
-    <parent>
-        <groupId>com.wandrell.maven</groupId>
-        <artifactId>base-pom</artifactId>
-        <version>1.0.1</version>
-    </parent>
+   <parent>
+      <groupId>com.wandrell.maven</groupId>
+      <artifactId>base-pom</artifactId>
+      <version>1.0.1</version>
+   </parent>
 
-	<!-- ********************************************** -->
-	<!-- **************** PROJECT INFO **************** -->
-	<!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- **************** PROJECT INFO **************** -->
+   <!-- ********************************************** -->
 
-	<groupId>com.wandrell.tabletop.dreadball</groupId>
-	<artifactId>dreadball-model-default</artifactId>
-	<version>0.3.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+   <groupId>com.wandrell.tabletop.dreadball</groupId>
+   <artifactId>dreadball-model-default</artifactId>
+   <version>0.3.0-SNAPSHOT</version>
+   <packaging>jar</packaging>
 
-	<name>Dreadball Default Model Implementation</name>
-	<description>Default implementation of the Dreadball Model API.</description>
-	<url>https://github.com/bernardo-mg/dreadball-model-default</url>
-	<inceptionYear>2015</inceptionYear>
+   <name>Dreadball Default Model Implementation</name>
+   <description>Default implementation of the Dreadball Model API.</description>
+   <url>https://github.com/bernardo-mg/dreadball-model-default</url>
+   <inceptionYear>2015</inceptionYear>
 
-	<licenses>
-		<license>
-			<name>Apache v2 License</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+   <licenses>
+      <license>
+         <name>Apache v2 License</name>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+         <distribution>repo</distribution>
+      </license>
+   </licenses>
 
-	<!-- ********************************************** -->
-	<!-- ********* INFRASTRUCTURE AND SERVICES ******** -->
-	<!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ********* INFRASTRUCTURE AND SERVICES ******** -->
+   <!-- ********************************************** -->
 
-	<scm>
-		<connection>scm:git:https://github.com/bernardo-mg/dreadball-model-default.git</connection>
-		<developerConnection>scm:git:https://github.com/bernardo-mg/dreadball-model-default.git</developerConnection>
-		<tag>head</tag>
-		<url>https://github.com/bernardo-mg/dreadball-model-default</url>
-	</scm>
+   <scm>
+      <connection>scm:git:https://github.com/bernardo-mg/dreadball-model-default.git</connection>
+      <developerConnection>scm:git:https://github.com/bernardo-mg/dreadball-model-default.git</developerConnection>
+      <tag>head</tag>
+      <url>https://github.com/bernardo-mg/dreadball-model-default</url>
+   </scm>
 
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/bernardo-mg/dreadball-model-default/issues</url>
-	</issueManagement>
+   <issueManagement>
+      <system>GitHub</system>
+      <url>https://github.com/bernardo-mg/dreadball-model-default/issues</url>
+   </issueManagement>
 
-	<ciManagement>
-		<system>Travis CI</system>
-		<url>https://travis-ci.org/Bernardo-MG/dreadball-model-default</url>
-		<notifiers />
-	</ciManagement>
+   <ciManagement>
+      <system>Travis CI</system>
+      <url>https://travis-ci.org/Bernardo-MG/dreadball-model-default</url>
+      <notifiers />
+   </ciManagement>
 
-	<distributionManagement>
-		<repository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>releases</id>
-			<name>Releases Repository</name>
-			<url>https://api.bintray.com/maven/bernardo-mg/tabletop-toolkits/dreadball-model-default</url>
-		</repository>
-		<snapshotRepository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>snapshots</id>
-			<name>Snapshots Repository</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+   <distributionManagement>
+      <repository>
+         <uniqueVersion>false</uniqueVersion>
+         <id>releases</id>
+         <name>Releases Repository</name>
+         <url>https://api.bintray.com/maven/bernardo-mg/tabletop-toolkits/dreadball-model-default</url>
+      </repository>
+      <snapshotRepository>
+         <uniqueVersion>false</uniqueVersion>
+         <id>snapshots</id>
+         <name>Snapshots Repository</name>
+         <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      </snapshotRepository>
+   </distributionManagement>
 
-	<!-- ********************************************** -->
-	<!-- ****************** PROFILES ****************** -->
-	<!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ****************** PROFILES ****************** -->
+   <!-- ********************************************** -->
 
-    <profiles>
-        <profile>
-            <!-- Profile for the Eclipse Maven plugin -->
-            <!-- Sets the POM so this plugin does not give the usual unregistered 
-                goals errors -->
-            <!-- It will be activated automatically on Eclipse if this has the m2e 
-                plugin, by detecting the version property -->
-            <id>eclipse-maven</id>
-            <activation>
-                <property>
-                    <name>m2e.version</name>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <!-- m2e lifecycle mapping -->
-                            <!-- This is used to configure the Maven plugin for Eclipse. -->
-                            <!-- Among other things, it allows registering goals, which Eclipse 
-                                would otherwise reject. -->
-                            <!-- It has no real effect on Maven. -->
-                            <groupId>org.eclipse.m2e</groupId>
-                            <artifactId>lifecycle-mapping</artifactId>
-                            <version>${plugin.lifecycle.version}</version>
-                            <configuration>
-                                <downloadSources>true</downloadSources>
-                                <downloadJavadocs>true</downloadJavadocs>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <!-- Release site deployment profile -->
-            <!-- Sets the site repository to point to the releases repo -->
-            <id>deploy-site-release</id>
-            <activation>
-                <!-- Active by default so the repository appears in the reports -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <distributionManagement>
-                <site>
-                    <id>site</id>
-                    <name>Project Documentation Site</name>
-					<url>ftp://docs.wandrell.com/dreadball-model-default</url>
-                </site>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <!-- Development site deployment profile -->
-            <!-- Sets the site repository to point to the development repo -->
-            <id>deploy-site-development</id>
-            <distributionManagement>
-                <site>
-                    <id>site-development</id>
-                    <name>Project Development Documentation Site</name>
-					<url>ftp://docs.wandrell.com/dreadball-model-default</url>
-                </site>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <!-- Deployment profile -->
-            <!-- Sets ups the environment for deployment -->
-            <id>deployment</id>
-            <properties>
-                <!-- Tests are skipped -->
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-    </profiles>
+   <profiles>
+      <profile>
+         <!-- Profile for the Eclipse Maven plugin -->
+         <!-- Sets the POM so this plugin does not give the usual unregistered goals 
+            errors -->
+         <!-- It will be activated automatically on Eclipse if this has the m2e plugin, 
+            by detecting the version property -->
+         <id>eclipse-maven</id>
+         <activation>
+            <property>
+               <name>m2e.version</name>
+            </property>
+         </activation>
+         <build>
+            <pluginManagement>
+               <plugins>
+                  <plugin>
+                     <!-- m2e lifecycle mapping -->
+                     <!-- This is used to configure the Maven plugin for Eclipse. -->
+                     <!-- Among other things, it allows registering goals, which 
+                        Eclipse would otherwise reject. -->
+                     <!-- It has no real effect on Maven. -->
+                     <groupId>org.eclipse.m2e</groupId>
+                     <artifactId>lifecycle-mapping</artifactId>
+                     <version>${plugin.lifecycle.version}</version>
+                     <configuration>
+                        <downloadSources>true</downloadSources>
+                        <downloadJavadocs>true</downloadJavadocs>
+                     </configuration>
+                  </plugin>
+               </plugins>
+            </pluginManagement>
+         </build>
+      </profile>
+      <profile>
+         <!-- Release site deployment profile -->
+         <!-- Sets the site repository to point to the releases repo -->
+         <id>deploy-site-release</id>
+         <activation>
+            <!-- Active by default so the repository appears in the reports -->
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         <distributionManagement>
+            <site>
+               <id>site</id>
+               <name>Project Documentation Site</name>
+               <url>ftp://docs.wandrell.com/dreadball-model-default</url>
+            </site>
+         </distributionManagement>
+      </profile>
+      <profile>
+         <!-- Development site deployment profile -->
+         <!-- Sets the site repository to point to the development repo -->
+         <id>deploy-site-development</id>
+         <distributionManagement>
+            <site>
+               <id>site-development</id>
+               <name>Project Development Documentation Site</name>
+               <url>ftp://docs.wandrell.com/dreadball-model-default</url>
+            </site>
+         </distributionManagement>
+      </profile>
+      <profile>
+         <!-- Deployment profile -->
+         <!-- Sets ups the environment for deployment -->
+         <id>deployment</id>
+         <properties>
+            <!-- Tests are skipped -->
+            <maven.test.skip>true</maven.test.skip>
+         </properties>
+      </profile>
+   </profiles>
 
-	<!-- ********************************************** -->
-	<!-- *********** ORGANIZATION AND MEMBERS ********* -->
-	<!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- *********** ORGANIZATION AND MEMBERS ********* -->
+   <!-- ********************************************** -->
 
-	<organization>
-		<name>Bernardo Martínez Garrido</name>
-		<url>https://github.com/Bernardo-MG</url>
-	</organization>
+   <organization>
+      <name>Bernardo Martínez Garrido</name>
+      <url>https://github.com/Bernardo-MG</url>
+   </organization>
 
-	<developers>
-		<developer>
-			<id>bmg</id>
-			<name>Bernardo Martínez Garrido</name>
-			<email>programming@wandrell.com</email>
-			<url>https://github.com/Bernardo-MG</url>
-			<organization>Bernardo Martínez Garrido</organization>
-			<organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
-			<roles>
-				<role>Developer</role>
-			</roles>
-			<timezone>+1</timezone>
-			<properties />
-		</developer>
-	</developers>
+   <developers>
+      <developer>
+         <id>bmg</id>
+         <name>Bernardo Martínez Garrido</name>
+         <email>programming@wandrell.com</email>
+         <url>https://github.com/Bernardo-MG</url>
+         <organization>Bernardo Martínez Garrido</organization>
+         <organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
+         <roles>
+            <role>Developer</role>
+         </roles>
+         <timezone>+1</timezone>
+         <properties />
+      </developer>
+   </developers>
 
-	<!-- ********************************************** -->
-	<!-- **************** PROPERTIES ****************** -->
-	<!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- **************** PROPERTIES ****************** -->
+   <!-- ********************************************** -->
 
-	<properties>
-		<!-- Manifest data -->
-		<manifest.name>com/wandrell/tabletop/dreadball/model/default</manifest.name>
-		<!-- Dependencies versions -->
-		<guava.version>19.0</guava.version>
-		<log4j.version>2.6</log4j.version>
-		<mockito.version>1.10.19</mockito.version>
-		<tabletop.dreadball.model.api.version>0.5.0</tabletop.dreadball.model.api.version>
-		<testng.version>6.9.10</testng.version>
-		<!-- Plugins versions -->
-        <plugin.changes.version>2.12</plugin.changes.version>
-        <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
-		<!-- Maven Site -->
-		<site.skin.version>0.3.0</site.skin.version>
-		<bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view</bintrayURL>
-		<mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-default</mavenURL>
-	</properties>
+   <properties>
+      <!-- Manifest data -->
+      <manifest.name>com/wandrell/tabletop/dreadball/model/default</manifest.name>
+      <!-- Dependencies versions -->
+      <guava.version>19.0</guava.version>
+      <log4j.version>2.6</log4j.version>
+      <mockito.version>1.10.19</mockito.version>
+      <tabletop.dreadball.model.api.version>0.5.0</tabletop.dreadball.model.api.version>
+      <testng.version>6.9.10</testng.version>
+      <!-- Plugins versions -->
+      <plugin.changes.version>2.12</plugin.changes.version>
+      <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
+      <!-- Maven Site -->
+      <site.skin.version>0.3.0</site.skin.version>
+      <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view</bintrayURL>
+      <mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-default</mavenURL>
+   </properties>
 
-	<!-- ********************************************** -->
-	<!-- *************** DEPENDENCIES ***************** -->
-	<!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- *************** DEPENDENCIES ***************** -->
+   <!-- ********************************************** -->
 
-	<dependencies>
-		<dependency>
-			<!-- Dreadball Model API -->
-			<groupId>com.wandrell.tabletop.dreadball</groupId>
-			<artifactId>dreadball-model-api</artifactId>
-			<version>${tabletop.dreadball.model.api.version}</version>
-		</dependency>
-		<dependency>
-			<!-- Guava -->
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
-		</dependency>
-		<!-- ============================================== -->
-		<!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
-		<!-- ============================================== -->
-		<dependency>
-			<!-- Log4j core -->
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<!-- Log4j SLF4J Bridge -->
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<!-- Mockito -->
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>${mockito.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<!-- TestNG -->
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+   <dependencies>
+      <dependency>
+         <!-- Dreadball Model API -->
+         <groupId>com.wandrell.tabletop.dreadball</groupId>
+         <artifactId>dreadball-model-api</artifactId>
+         <version>${tabletop.dreadball.model.api.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Guava -->
+         <groupId>com.google.guava</groupId>
+         <artifactId>guava</artifactId>
+         <version>${guava.version}</version>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- Log4j core -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Log4j SLF4J Bridge -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
+         <version>${log4j.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- Mockito -->
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-all</artifactId>
+         <version>${mockito.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <!-- TestNG -->
+         <groupId>org.testng</groupId>
+         <artifactId>testng</artifactId>
+         <version>${testng.version}</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
 
-	<!-- ********************************************** -->
-	<!-- ******************* BUILD ******************** -->
-	<!-- ********************************************** -->
+   <!-- ********************************************** -->
+   <!-- ******************* BUILD ******************** -->
+   <!-- ********************************************** -->
 
    <build>
       <defaultGoal>clean package install</defaultGoal>
@@ -336,14 +336,14 @@
    <reporting>
       <plugins>
          <plugin>
-             <!-- FindBugs -->
-             <!-- Checks for patterns which are prone to errors -->
-             <groupId>org.codehaus.mojo</groupId>
-             <artifactId>findbugs-maven-plugin</artifactId>
-             <configuration>
-                 <!-- Exclusion patterns -->
-                 <excludeFilterFile>${project.basedir}/src/config/findbugs/findbugs-exclude.xml</excludeFilterFile>
-             </configuration>
+            <!-- FindBugs -->
+            <!-- Checks for patterns which are prone to errors -->
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <configuration>
+               <!-- Exclusion patterns -->
+               <excludeFilterFile>${project.basedir}/src/config/findbugs/findbugs-exclude.xml</excludeFilterFile>
+            </configuration>
          </plugin>
          <plugin>
             <!-- Checkstyle -->
