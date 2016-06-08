@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnitValorationBuilder;
 import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
+import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 
 /**
  * Unit tests for {@link UnitValorationCalculator} applied to a
@@ -53,9 +53,9 @@ public final class TestAdvancementUnitUnitValorationCalculator {
         final UnitValorationCalculator<AdvancementUnit> valorator; // Tested
         // class
         final AdvancementUnit unit;     // Unit for the test
-        final UnitComponent implant;    // Unit's implant
+        final Component implant;        // Unit's implant
 
-        implant = Mockito.mock(UnitComponent.class);
+        implant = Mockito.mock(Component.class);
         Mockito.when(implant.getCost()).thenReturn(5);
 
         unit = Mockito.mock(AdvancementUnit.class);

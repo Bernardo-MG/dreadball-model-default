@@ -21,42 +21,62 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.base.MoreObjects;
 
 /**
- * Mutable implementation of {@code AttributesHolder}.
+ * Immutable implementation of {@code Attributes}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class MutableAttributesHolder implements AttributesHolder {
+public final class ImmutableAttributes implements Attributes {
 
     /**
      * Armor value.
      */
-    private Integer armorValue    = 0;
+    private final Integer armorValue;
 
     /**
      * Movement value.
      */
-    private Integer movementValue = 0;
+    private final Integer movementValue;
 
     /**
      * Skill value.
      */
-    private Integer skillValue    = 0;
+    private final Integer skillValue;
 
     /**
      * Speed value.
      */
-    private Integer speedValue    = 0;
+    private final Integer speedValue;
 
     /**
      * Strength value.
      */
-    private Integer strengthValue = 0;
+    private final Integer strengthValue;
 
     /**
-     * Constructs a {@code MutableAttributesHolder}.
+     * Constructs a {@code ImmutableAttributes}.
+     * 
+     * @param armor
+     *            armor value
+     * @param movement
+     *            movement value
+     * @param skill
+     *            skill value
+     * @param speed
+     *            speed value
+     * @param strength
+     *            strength value
      */
-    public MutableAttributesHolder() {
+    public ImmutableAttributes(final Integer armor, final Integer movement,
+            final Integer skill, final Integer speed, final Integer strength) {
         super();
+
+        armorValue = checkNotNull(armor, "Received a null pointer as armor");
+        movementValue = checkNotNull(movement,
+                "Received a null pointer as movement");
+        skillValue = checkNotNull(skill, "Received a null pointer as skill");
+        speedValue = checkNotNull(speed, "Received a null pointer as speed");
+        strengthValue = checkNotNull(strength,
+                "Received a null pointer as strength");
     }
 
     @Override
@@ -82,58 +102,6 @@ public final class MutableAttributesHolder implements AttributesHolder {
     @Override
     public final Integer getStrength() {
         return strengthValue;
-    }
-
-    /**
-     * Sets the armor value.
-     * 
-     * @param armor
-     *            the new armor value
-     */
-    public final void setArmor(final Integer armor) {
-        armorValue = checkNotNull(armor, "Received a null pointer as armor");
-    }
-
-    /**
-     * Sets the movement value.
-     * 
-     * @param movement
-     *            the new movement value
-     */
-    public final void setMovement(final Integer movement) {
-        movementValue = checkNotNull(movement,
-                "Received a null pointer as movement");
-    }
-
-    /**
-     * Sets the skill value.
-     * 
-     * @param skill
-     *            the new skill value
-     */
-    public final void setSkill(final Integer skill) {
-        skillValue = checkNotNull(skill, "Received a null pointer as skill");
-    }
-
-    /**
-     * Sets the speed value.
-     * 
-     * @param speed
-     *            the new speed value
-     */
-    public final void setSpeed(final Integer speed) {
-        speedValue = checkNotNull(speed, "Received a null pointer as speed");
-    }
-
-    /**
-     * Sets the strength value.
-     * 
-     * @param strength
-     *            the new strength value
-     */
-    public final void setStrength(final Integer strength) {
-        strengthValue = checkNotNull(strength,
-                "Received a null pointer as strength");
     }
 
     @Override

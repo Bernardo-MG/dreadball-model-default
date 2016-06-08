@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Default implementation of {@link AffinityUnit}.
@@ -38,9 +38,9 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     private final Collection<AffinityGroup> affinityGroups  = new LinkedHashSet<AffinityGroup>();
 
     /**
-     * {@code UnitTemplate} used for inheritance through composition.
+     * {@code Unit} used for inheritance through composition.
      */
-    private final UnitTemplate              baseUnit;
+    private final Unit                      baseUnit;
 
     /**
      * The actual cost of the unit.
@@ -96,10 +96,9 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * @param strangerCost
      *            the unit cost for a stranger
      */
-    public DefaultAffinityUnit(final String nameTemplate,
-            final TeamPosition position, final AttributesHolder attributes,
-            final Collection<Ability> abilities, final Boolean giant,
-            final Collection<AffinityGroup> affinities,
+    public DefaultAffinityUnit(final String nameTemplate, final Role position,
+            final Attributes attributes, final Collection<Ability> abilities,
+            final Boolean giant, final Collection<AffinityGroup> affinities,
             final Collection<AffinityGroup> hated, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost) {
         super();
@@ -144,7 +143,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return getBaseUnit().getAttributes();
     }
 
@@ -170,8 +169,8 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     }
 
     @Override
-    public final TeamPosition getPosition() {
-        return getBaseUnit().getPosition();
+    public final Role getRole() {
+        return getBaseUnit().getRole();
     }
 
     @Override
@@ -231,7 +230,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final UnitTemplate getBaseUnit() {
+    private final Unit getBaseUnit() {
         return baseUnit;
     }
 

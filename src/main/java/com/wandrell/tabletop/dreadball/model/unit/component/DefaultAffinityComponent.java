@@ -20,47 +20,46 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Collection;
 
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code AffinityUnitComponent}.
+ * Default implementation of {@code AffinityComponent}.
  * <p>
- * It uses composition to inherit from {@link DefaultUnitComponent}.
+ * It uses composition to inherit from {@link DefaultComponent}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAffinityUnitComponent
-        implements AffinityUnitComponent {
+public final class DefaultAffinityComponent implements AffinityComponent {
 
     /**
-     * {@code UnitComponent} used for inheritance through composition.
+     * {@code Component} used for inheritance through composition.
      */
-    private final UnitComponent baseComponent;
+    private final Component baseComponent;
 
     /**
      * The actual cost of the component.
      */
-    private Integer             costActual = 0;
+    private Integer         costActual = 0;
 
     /**
      * Component cost for an ally.
      */
-    private final Integer       costAlly;
+    private final Integer   costAlly;
 
     /**
      * Component cost for a friend.
      */
-    private final Integer       costFriend;
+    private final Integer   costFriend;
 
     /**
      * Component cost for a stranger.
      */
-    private final Integer       costStranger;
+    private final Integer   costStranger;
 
     /**
-     * Constructs a {@code DefaultAffinityUnitComponent} with the specified
+     * Constructs a {@code DefaultAffinityComponent} with the specified
      * arguments.
      * 
      * @param name
@@ -80,11 +79,10 @@ public final class DefaultAffinityUnitComponent
      * @param abilities
      *            abilities granted by the component
      */
-    public DefaultAffinityUnitComponent(final String name,
+    public DefaultAffinityComponent(final String name,
             final ComponentLocation location, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost,
-            final Collection<TeamPosition> positions,
-            final AttributesHolder attributes,
+            final Collection<Role> positions, final Attributes attributes,
             final Collection<Ability> abilities) {
         super();
 
@@ -97,7 +95,7 @@ public final class DefaultAffinityUnitComponent
 
         costActual = costStranger;
 
-        baseComponent = new DefaultUnitComponent(name, location, 0, positions,
+        baseComponent = new DefaultComponent(name, location, 0, positions,
                 attributes, abilities);
     }
 
@@ -112,7 +110,7 @@ public final class DefaultAffinityUnitComponent
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return getBaseComponent().getAttributes();
     }
 
@@ -142,8 +140,8 @@ public final class DefaultAffinityUnitComponent
     }
 
     @Override
-    public final Collection<TeamPosition> getTeamPositions() {
-        return getBaseComponent().getTeamPositions();
+    public final Collection<Role> getTeamRole() {
+        return getBaseComponent().getTeamRole();
     }
 
     /**
@@ -174,7 +172,7 @@ public final class DefaultAffinityUnitComponent
      * @return the base component class being used for inheritance through
      *         composition
      */
-    private final UnitComponent getBaseComponent() {
+    private final Component getBaseComponent() {
         return baseComponent;
     }
 

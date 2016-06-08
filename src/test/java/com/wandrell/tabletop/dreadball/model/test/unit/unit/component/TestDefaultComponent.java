@@ -23,15 +23,15 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
+import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 import com.wandrell.tabletop.dreadball.model.unit.component.ComponentLocation;
-import com.wandrell.tabletop.dreadball.model.unit.component.DefaultUnitComponent;
-import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
+import com.wandrell.tabletop.dreadball.model.unit.component.DefaultComponent;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Unit tests for {@link DefaultUnitComponent}.
+ * Unit tests for {@link DefaultComponent}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -41,12 +41,12 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class TestDefaultUnitComponent {
+public final class TestDefaultComponent {
 
     /**
      * Default constructor.
      */
-    public TestDefaultUnitComponent() {
+    public TestDefaultComponent() {
         super();
     }
 
@@ -55,11 +55,11 @@ public final class TestDefaultUnitComponent {
      */
     @Test
     public final void test_RepeatAbility_NoRepeats() {
-        final UnitComponent component;       // Tested component
+        final Component component;           // Tested component
         final Collection<Ability> abilities; // Component abilities
-        final Collection<TeamPosition> positions; // Component positions
+        final Collection<Role> positions;    // Component positions
         final Ability ability;               // Mocked ability
-        final AttributesHolder attributes;   // Mocked attributes
+        final Attributes attributes;         // Mocked attributes
         final ComponentLocation location;    // Mocked location
 
         ability = Mockito.mock(Ability.class);
@@ -67,12 +67,12 @@ public final class TestDefaultUnitComponent {
         abilities.add(ability);
         abilities.add(ability);
 
-        positions = new LinkedList<TeamPosition>();
+        positions = new LinkedList<Role>();
 
-        attributes = Mockito.mock(AttributesHolder.class);
+        attributes = Mockito.mock(Attributes.class);
         location = Mockito.mock(ComponentLocation.class);
 
-        component = new DefaultUnitComponent("name", location, 0, positions,
+        component = new DefaultComponent("name", location, 0, positions,
                 attributes, abilities);
 
         Assert.assertEquals(component.getAbilities().size(), 1);
@@ -83,25 +83,25 @@ public final class TestDefaultUnitComponent {
      */
     @Test
     public final void test_RepeatPosition_NoRepeats() {
-        final UnitComponent component;       // Tested component
+        final Component component;           // Tested component
         final Collection<Ability> abilities; // Component abilities
-        final Collection<TeamPosition> positions; // Component positions
-        final AttributesHolder attributes;   // Mocked attributes
+        final Collection<Role> positions;    // Component positions
+        final Attributes attributes;         // Mocked attributes
         final ComponentLocation location;    // Mocked location
 
         abilities = new LinkedList<Ability>();
 
-        positions = new LinkedList<TeamPosition>();
-        positions.add(TeamPosition.STRIKER);
-        positions.add(TeamPosition.STRIKER);
+        positions = new LinkedList<Role>();
+        positions.add(Role.STRIKER);
+        positions.add(Role.STRIKER);
 
-        attributes = Mockito.mock(AttributesHolder.class);
+        attributes = Mockito.mock(Attributes.class);
         location = Mockito.mock(ComponentLocation.class);
 
-        component = new DefaultUnitComponent("name", location, 0, positions,
+        component = new DefaultComponent("name", location, 0, positions,
                 attributes, abilities);
 
-        Assert.assertEquals(component.getTeamPositions().size(), 1);
+        Assert.assertEquals(component.getTeamRole().size(), 1);
     }
 
 }

@@ -24,49 +24,49 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code UnitComponent}.
+ * Default implementation of {@code Component}.
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultUnitComponent implements UnitComponent {
+public final class DefaultComponent implements Component {
 
     /**
      * Abilities given by this component.
      */
-    private final Collection<Ability>      abilitiesGiven = new LinkedHashSet<Ability>();
+    private final Collection<Ability> abilitiesGiven = new LinkedHashSet<Ability>();
 
     /**
      * Attributes given by this component.
      */
-    private final AttributesHolder         attributesGiven;
+    private final Attributes          attributesGiven;
 
     /**
      * Cost of the component.
      */
-    private final Integer                  componentCost;
+    private final Integer             componentCost;
 
     /**
      * Location where this component is applied.
      */
-    private final ComponentLocation        componentLocation;
+    private final ComponentLocation   componentLocation;
 
     /**
      * Component's name.
      */
-    private final String                   componentName;
+    private final String              componentName;
 
     /**
      * Team position roles which can have this component.
      */
-    private final Collection<TeamPosition> componentPos   = new LinkedHashSet<TeamPosition>();
+    private final Collection<Role>    componentPos   = new LinkedHashSet<Role>();
 
     /**
-     * Constructs a {@code DefaultUnitComponent} with the specified arguments.
+     * Constructs a {@code DefaultComponent} with the specified arguments.
      * 
      * @param name
      *            name of the component
@@ -81,11 +81,9 @@ public final class DefaultUnitComponent implements UnitComponent {
      * @param abilities
      *            abilities granted by the component
      */
-    public DefaultUnitComponent(final String name,
-            final ComponentLocation location, final Integer cost,
-            final Collection<TeamPosition> positions,
-            final AttributesHolder attributes,
-            final Collection<Ability> abilities) {
+    public DefaultComponent(final String name, final ComponentLocation location,
+            final Integer cost, final Collection<Role> positions,
+            final Attributes attributes, final Collection<Ability> abilities) {
         super();
 
         componentName = checkNotNull(name, "Received a null pointer as name");
@@ -102,7 +100,7 @@ public final class DefaultUnitComponent implements UnitComponent {
                     "Received a null pointer as ability"));
         }
 
-        for (final TeamPosition position : positions) {
+        for (final Role position : positions) {
             componentPos.add(checkNotNull(position,
                     "Received a null pointer as position"));
         }
@@ -122,9 +120,9 @@ public final class DefaultUnitComponent implements UnitComponent {
             return false;
         }
 
-        final DefaultUnitComponent other;
+        final DefaultComponent other;
 
-        other = (DefaultUnitComponent) obj;
+        other = (DefaultComponent) obj;
         return Objects.equals(componentName, other.componentName);
     }
 
@@ -134,7 +132,7 @@ public final class DefaultUnitComponent implements UnitComponent {
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return attributesGiven;
     }
 
@@ -154,7 +152,7 @@ public final class DefaultUnitComponent implements UnitComponent {
     }
 
     @Override
-    public final Collection<TeamPosition> getTeamPositions() {
+    public final Collection<Role> getTeamRole() {
         return componentPos;
     }
 

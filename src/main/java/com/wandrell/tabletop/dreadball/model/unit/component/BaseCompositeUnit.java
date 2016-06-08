@@ -34,7 +34,7 @@ public class BaseCompositeUnit {
     /**
      * Components of the unit.
      */
-    private final Collection<UnitComponent> unitComponents = new LinkedHashSet<UnitComponent>();
+    private final Collection<Component> unitComponents = new LinkedHashSet<Component>();
 
     /**
      * Constructs an {@code AbstractCompositeUnit} with the specified arguments.
@@ -42,13 +42,13 @@ public class BaseCompositeUnit {
      * @param components
      *            the components which make up the unit
      */
-    public BaseCompositeUnit(final Collection<UnitComponent> components) {
+    public BaseCompositeUnit(final Collection<Component> components) {
         super();
 
         checkNotNull(components,
                 "Received a null pointer as valoration the components");
 
-        for (final UnitComponent component : components) {
+        for (final Component component : components) {
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
@@ -61,7 +61,7 @@ public class BaseCompositeUnit {
      * 
      * @return the components which make up the unit
      */
-    public final Collection<UnitComponent> getComponents() {
+    public final Collection<Component> getComponents() {
         return Collections.unmodifiableCollection(getComponentsModifiable());
     }
 
@@ -70,7 +70,7 @@ public class BaseCompositeUnit {
      * 
      * @return a modifiable collection with the unit components
      */
-    private final Collection<UnitComponent> getComponentsModifiable() {
+    private final Collection<Component> getComponentsModifiable() {
         return unitComponents;
     }
 

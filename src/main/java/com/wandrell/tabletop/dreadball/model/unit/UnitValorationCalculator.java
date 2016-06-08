@@ -26,7 +26,7 @@ package com.wandrell.tabletop.dreadball.model.unit;
  * @param <U>
  *            the type of the unit of which the valoration will be calculated
  */
-public interface UnitValorationCalculator<U extends UnitTemplate> {
+public interface UnitValorationCalculator<U extends Unit> {
 
     /**
      * Returns a {@code UnitTemplate}'s valoration.

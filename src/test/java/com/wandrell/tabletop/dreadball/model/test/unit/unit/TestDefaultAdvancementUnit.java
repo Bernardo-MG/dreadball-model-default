@@ -25,11 +25,11 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultAdvancementUnit}.
@@ -57,10 +57,10 @@ public final class TestDefaultAdvancementUnit {
     @SuppressWarnings("unchecked")
     @Test
     public final void test_RepeatAbility_NoRepeats() {
-        final UnitTemplate unit;                     // Tested unit
+        final Unit unit;                     // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
-        final AttributesHolder attributes;   // Mocked attributes
+        final Attributes attributes;         // Mocked attributes
         final UnitValorationCalculator<AdvancementUnit> valorator;
 
         ability = Mockito.mock(Ability.class);
@@ -68,12 +68,12 @@ public final class TestDefaultAdvancementUnit {
         abilities.add(ability);
         abilities.add(ability);
 
-        attributes = Mockito.mock(AttributesHolder.class);
+        attributes = Mockito.mock(Attributes.class);
 
         valorator = Mockito.mock(UnitValorationCalculator.class);
 
-        unit = new DefaultAdvancementUnit("name", 0, TeamPosition.GUARD,
-                attributes, abilities, true, valorator);
+        unit = new DefaultAdvancementUnit("name", 0, Role.GUARD, attributes,
+                abilities, true, valorator);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }

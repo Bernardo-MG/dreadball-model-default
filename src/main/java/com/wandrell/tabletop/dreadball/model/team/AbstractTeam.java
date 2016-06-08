@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Abstract implementation of {@code Team}.
@@ -35,8 +35,7 @@ import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
  * @param <U>
  *            the type of player the {@code Team} is made of
  */
-public abstract class AbstractBaseTeam<U extends UnitTemplate>
-        implements BaseTeam<U> {
+public abstract class AbstractTeam<U extends Unit> implements Team<U> {
 
     /**
      * Team's players.
@@ -56,7 +55,7 @@ public abstract class AbstractBaseTeam<U extends UnitTemplate>
     /**
      * Constructs an {@code AbstractTeam}.
      */
-    public AbstractBaseTeam() {
+    public AbstractTeam() {
         super();
     }
 

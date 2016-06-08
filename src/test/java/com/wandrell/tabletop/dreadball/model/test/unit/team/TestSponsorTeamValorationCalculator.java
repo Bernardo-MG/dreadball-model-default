@@ -27,7 +27,7 @@ import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Unit tests for {@link SponsorTeamValorationCalculator} applied to a
@@ -56,8 +56,8 @@ public final class TestSponsorTeamValorationCalculator {
     public final void testValoration() {
         final TeamValorationCalculator<SponsorTeam> valorator; // Tested class
         final SponsorTeam team;           // Team to valorate
-        final Map<Integer, UnitTemplate> players; // Team players
-        final UnitTemplate player;                // Mocked player
+        final Map<Integer, Unit> players; // Team players
+        final Unit player;                // Mocked player
 
         valorator = new SponsorTeamValorationCalculator(1, 2, 3, 4, 5, 6);
 
@@ -70,7 +70,7 @@ public final class TestSponsorTeamValorationCalculator {
         Mockito.when(team.getMediBots()).thenReturn(3);
 
         players = new LinkedHashMap<>();
-        player = Mockito.mock(UnitTemplate.class);
+        player = Mockito.mock(Unit.class);
         Mockito.when(player.getCost()).thenReturn(10);
         players.put(1, player);
 

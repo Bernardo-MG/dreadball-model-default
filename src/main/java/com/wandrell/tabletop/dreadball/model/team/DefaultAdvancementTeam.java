@@ -29,8 +29,8 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class DefaultAdvancementTeam
-        extends AbstractBaseTeam<AdvancementUnit> implements AdvancementTeam {
+public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
+        implements AdvancementTeam {
 
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.

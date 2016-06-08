@@ -24,12 +24,12 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 import com.google.common.base.MoreObjects;
+import com.wandrell.tabletop.dreadball.model.unit.component.Component;
+import com.wandrell.tabletop.dreadball.model.unit.component.DefaultComponent;
 import com.wandrell.tabletop.dreadball.model.unit.component.DefaultComponentLocation;
-import com.wandrell.tabletop.dreadball.model.unit.component.DefaultUnitComponent;
-import com.wandrell.tabletop.dreadball.model.unit.component.UnitComponent;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
-import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
+import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributes;
 
 /**
  * Default serializable implementation of {@code AdvancementUnit}.
@@ -39,9 +39,9 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributesHolde
 public final class DefaultAdvancementUnit implements AdvancementUnit {
 
     /**
-     * {@code UnitTemplate} used for inheritance through composition.
+     * {@code Unit} used for inheritance through composition.
      */
-    private final UnitTemplate                              baseUnit;
+    private final Unit                                      baseUnit;
 
     /**
      * The unspent experience.
@@ -49,15 +49,14 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     private Integer                                         experienceValue;
 
     /**
-     * Implant grafted to the unit. This is a {@code UnitComponent}, the same
-     * objects used for composite units.
+     * Implant grafted to the unit. This is a {@code Unit}, the same objects
+     * used for composite units.
      * <p>
      * Be default it will be a stub component.
      */
-    private UnitComponent                                   graftedImplant = new DefaultUnitComponent(
+    private Component                                       graftedImplant = new DefaultComponent(
             "none", new DefaultComponentLocation("none"), 0,
-            new LinkedList<TeamPosition>(),
-            new ImmutableAttributesHolder(0, 0, 0, 0, 0),
+            new LinkedList<Role>(), new ImmutableAttributes(0, 0, 0, 0, 0),
             new LinkedList<Ability>());
 
     /**
@@ -73,7 +72,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     /**
      * Unit's attributes.
      */
-    private AttributesHolder                                unitAttributes;
+    private Attributes                                      unitAttributes;
 
     /**
      * Name given to the unit.
@@ -104,12 +103,12 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      *            calculator for the valoration
      */
     public DefaultAdvancementUnit(final String nameTemplate, final Integer cost,
-            final TeamPosition position, final AttributesHolder attributes,
+            final Role role, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final UnitValorationCalculator<AdvancementUnit> valorator) {
         super();
 
-        baseUnit = new DefaultUnit(nameTemplate, cost, position, attributes,
+        baseUnit = new DefaultUnit(nameTemplate, cost, role, attributes,
                 abilities, giant);
 
         unitAbilities.addAll(baseUnit.getAbilities());
@@ -129,7 +128,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return unitAttributes;
     }
 
@@ -139,7 +138,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
-    public final UnitComponent getGraftedImplant() {
+    public final Component getGraftedImplant() {
         return graftedImplant;
     }
 
@@ -149,13 +148,13 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
-    public final TeamPosition getPosition() {
-        return getBaseUnit().getPosition();
+    public final Integer getRank() {
+        return rankValue;
     }
 
     @Override
-    public final Integer getRank() {
-        return rankValue;
+    public final Role getRole() {
+        return getBaseUnit().getRole();
     }
 
     @Override
@@ -190,12 +189,12 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
-    public final void setAttributes(final AttributesHolder attributes) {
+    public final void setAttributes(final Attributes attributes) {
         unitAttributes = attributes;
     }
 
     @Override
-    public final void setGraftedImplant(final UnitComponent implant) {
+    public final void setGraftedImplant(final Component implant) {
         graftedImplant = implant;
     }
 
@@ -218,9 +217,8 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("rank", rankValue)
-                .add("experience", experienceValue)
-                .add("position", getPosition()).add("giant", isGiant())
-                .toString();
+                .add("experience", experienceValue).add("role", getRole())
+                .add("giant", isGiant()).toString();
     }
 
     /**
@@ -239,7 +237,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final UnitTemplate getBaseUnit() {
+    private final Unit getBaseUnit() {
         return baseUnit;
     }
 

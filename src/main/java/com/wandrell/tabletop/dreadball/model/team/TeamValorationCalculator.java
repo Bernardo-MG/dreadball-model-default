@@ -17,7 +17,7 @@
 package com.wandrell.tabletop.dreadball.model.team;
 
 /**
- * Interface for calculating the valoration of a {@link BaseTeam}.
+ * Interface for calculating the valoration of a {@link Team}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
  * calculate a team's valoration.
@@ -26,10 +26,10 @@ package com.wandrell.tabletop.dreadball.model.team;
  * @param <T>
  *            the type of the team of which the valoration will be calculated
  */
-public interface TeamValorationCalculator<T extends BaseTeam<?>> {
+public interface TeamValorationCalculator<T extends Team<?>> {
 
     /**
-     * Returns a {@code BaseTeam}'s valoration.
+     * Returns a {@code Team}'s valoration.
      * 
      * @param team
      *            the {@code Team} of which the valoration will be calculated

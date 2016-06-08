@@ -27,10 +27,10 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultUnit;
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultUnit}.
@@ -61,19 +61,19 @@ public final class TestDefaultAffinityUnit {
      */
     @Test
     public final void test_RepeatAbility_NoRepeats_Constructor() {
-        final UnitTemplate unit;             // Tested unit
+        final Unit unit;                     // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
-        final AttributesHolder attributes;   // Mocked attributes
+        final Attributes attributes;         // Mocked attributes
 
         ability = Mockito.mock(Ability.class);
         abilities = new LinkedList<Ability>();
         abilities.add(ability);
         abilities.add(ability);
 
-        attributes = Mockito.mock(AttributesHolder.class);
+        attributes = Mockito.mock(Attributes.class);
 
-        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
+        unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
                 abilities, true, new LinkedList<AffinityGroup>(),
                 new LinkedList<AffinityGroup>(), 0, 0, 0);
 
@@ -89,16 +89,16 @@ public final class TestDefaultAffinityUnit {
         final AffinityUnit unit;                    // Tested unit
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
-        final AttributesHolder attributes;          // Mocked attributes
+        final Attributes attributes;                // Mocked attributes
 
         affinity = Mockito.mock(AffinityGroup.class);
         affinities = new LinkedList<AffinityGroup>();
         affinities.add(affinity);
         affinities.add(affinity);
 
-        attributes = Mockito.mock(AttributesHolder.class);
+        attributes = Mockito.mock(Attributes.class);
 
-        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
+        unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
                 new LinkedList<Ability>(), true, affinities,
                 new LinkedList<AffinityGroup>(), 0, 0, 0);
 
@@ -114,16 +114,16 @@ public final class TestDefaultAffinityUnit {
         final AffinityUnit unit;                    // Tested unit
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
-        final AttributesHolder attributes;          // Mocked attributes
+        final Attributes attributes;                // Mocked attributes
 
         affinity = Mockito.mock(AffinityGroup.class);
         affinities = new LinkedList<AffinityGroup>();
         affinities.add(affinity);
         affinities.add(affinity);
 
-        attributes = Mockito.mock(AttributesHolder.class);
+        attributes = Mockito.mock(Attributes.class);
 
-        unit = new DefaultAffinityUnit("name", TeamPosition.GUARD, attributes,
+        unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
                 new LinkedList<Ability>(), true,
                 new LinkedList<AffinityGroup>(), affinities, 0, 0, 0);
 

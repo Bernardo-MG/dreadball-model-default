@@ -14,8 +14,8 @@
  * the License.
  */
 /**
- * Components and composite units. These are such units as
- * those from the Mechanite or Plague teams.
+ * Components and composite units. These are such units as those from the
+ * Mechanite or Plague teams.
  */
 
 package com.wandrell.tabletop.dreadball.model.unit.component;

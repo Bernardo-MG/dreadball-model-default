@@ -18,7 +18,7 @@ package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Implementation of {@link TeamValorationCalculator} for {@link SponsorTeam}.
@@ -101,7 +101,7 @@ public final class SponsorTeamValorationCalculator
         checkNotNull(team, "Received a null pointer as the team");
 
         valoration = 0;
-        for (final UnitTemplate unit : team.getPlayers().values()) {
+        for (final Unit unit : team.getPlayers().values()) {
             valoration += unit.getCost();
         }
 

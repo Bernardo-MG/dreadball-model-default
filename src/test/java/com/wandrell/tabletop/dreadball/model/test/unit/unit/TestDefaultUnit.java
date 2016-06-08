@@ -25,10 +25,10 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultUnit;
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultAffinityUnit}.
@@ -55,20 +55,20 @@ public final class TestDefaultUnit {
      */
     @Test
     public final void test_RepeatAbility_NoRepeats_Constructor() {
-        final UnitTemplate unit;             // Tested unit
+        final Unit unit;                     // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
-        final AttributesHolder attributes;   // Mocked attributes
+        final Attributes attributes;         // Mocked attributes
 
         ability = Mockito.mock(Ability.class);
         abilities = new LinkedList<>();
         abilities.add(ability);
         abilities.add(ability);
 
-        attributes = Mockito.mock(AttributesHolder.class);
+        attributes = Mockito.mock(Attributes.class);
 
-        unit = new DefaultUnit("name", 0, TeamPosition.GUARD, attributes,
-                abilities, true);
+        unit = new DefaultUnit("name", 0, Role.GUARD, attributes, abilities,
+                true);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }

@@ -24,7 +24,7 @@ import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Unit tests for {@link SponsorTeam} checking that exceptions are thrown.
@@ -73,9 +73,9 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
      */
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_Existing() {
-        final UnitTemplate player;
+        final Unit player;
 
-        player = Mockito.mock(UnitTemplate.class);
+        player = Mockito.mock(Unit.class);
 
         team.addPlayer(player, 0);
         team.addPlayer(player, 1);
@@ -87,9 +87,9 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
      */
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
-        final UnitTemplate player;
+        final Unit player;
 
-        player = Mockito.mock(UnitTemplate.class);
+        player = Mockito.mock(Unit.class);
 
         team.addPlayer(player, -1);
     }
