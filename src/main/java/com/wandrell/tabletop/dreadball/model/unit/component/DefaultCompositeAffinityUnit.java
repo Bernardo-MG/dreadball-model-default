@@ -36,7 +36,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * <p>
  * It uses composition to inherit from {@link DefaultAffinityUnit}.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultCompositeAffinityUnit
         implements CompositeAffinityUnit {

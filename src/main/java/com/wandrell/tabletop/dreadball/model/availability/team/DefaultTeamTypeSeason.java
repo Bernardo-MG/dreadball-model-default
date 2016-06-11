@@ -26,7 +26,7 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
  * <p>
  * This is an immutable implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultTeamTypeSeason implements TeamTypeSeason {
 

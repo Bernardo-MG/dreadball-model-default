@@ -36,7 +36,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * {@code IllegalArgumentException}</li>
  * </ol>
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class TestExceptionPlayersDefaultSponsorTeam {
 

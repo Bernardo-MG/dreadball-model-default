@@ -37,7 +37,7 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * <li>Valoration is calculated correctly</li>
  * </ol>
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class TestAdvancementTeamValorationCalculator {
 

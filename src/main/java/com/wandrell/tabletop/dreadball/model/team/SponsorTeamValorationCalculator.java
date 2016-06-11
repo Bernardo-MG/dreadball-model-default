@@ -23,7 +23,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
 /**
  * Team valoration calculator for an {@code SponsorTeam}.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class SponsorTeamValorationCalculator
         implements TeamValorationCalculator<SponsorTeam> {

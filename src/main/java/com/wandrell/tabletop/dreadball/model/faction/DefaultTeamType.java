@@ -31,7 +31,7 @@ import com.google.common.base.MoreObjects;
  * <p>
  * This is an immutable implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultTeamType implements TeamType {
 

@@ -27,7 +27,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * This means that the unit should have been grafted an implant, or have a
  * working stub, for this formula to work.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class AdvancementUnitValorationBuilder
         implements UnitValorationCalculator<AdvancementUnit> {

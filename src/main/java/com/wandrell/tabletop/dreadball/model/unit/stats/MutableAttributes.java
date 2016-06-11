@@ -23,7 +23,7 @@ import com.google.common.base.MoreObjects;
 /**
  * Unit attributes.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class MutableAttributes implements Attributes {
 

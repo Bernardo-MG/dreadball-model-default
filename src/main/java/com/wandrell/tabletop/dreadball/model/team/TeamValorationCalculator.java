@@ -22,7 +22,7 @@ package com.wandrell.tabletop.dreadball.model.team;
  * It is a version of the strategy pattern, allowing to create different ways to
  * calculate a team's valoration.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @param <T>
  *            the type of the team of which the valoration will be calculated
  */

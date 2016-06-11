@@ -30,7 +30,7 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * <p>
  * This is an immutable implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
         implements AdvancementTeam {

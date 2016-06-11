@@ -27,7 +27,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * <p>
  * This is an immutable implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultTeamTypeMvpAvailability
         implements TeamTypeMvpAvailability {

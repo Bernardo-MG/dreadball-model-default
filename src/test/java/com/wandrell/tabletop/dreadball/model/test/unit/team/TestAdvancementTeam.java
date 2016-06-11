@@ -37,7 +37,7 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * <li>Removing a unit using it as a reference works as expected</li>
  * </ol>
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class TestAdvancementTeam {
 

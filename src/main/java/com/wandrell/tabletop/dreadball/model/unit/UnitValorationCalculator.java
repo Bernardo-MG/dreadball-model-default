@@ -22,7 +22,7 @@ package com.wandrell.tabletop.dreadball.model.unit;
  * It is a version of the strategy pattern, allowing to create different ways to
  * calculate a unit's valoration.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @param <U>
  *            the type of the unit of which the valoration will be calculated
  */

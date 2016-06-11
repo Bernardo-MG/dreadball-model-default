@@ -38,7 +38,7 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * <li>Repeated abilities received through the constructor are not repeated</li>
  * </ol>
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class TestDefaultUnit {
 

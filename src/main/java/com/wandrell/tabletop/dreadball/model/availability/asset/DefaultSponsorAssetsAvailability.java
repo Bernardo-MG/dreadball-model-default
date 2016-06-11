@@ -24,7 +24,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * <p>
  * This is an immutable implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultSponsorAssetsAvailability
         implements SponsorAssetsAvailability {

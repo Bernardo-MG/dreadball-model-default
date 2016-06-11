@@ -32,7 +32,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * have, no matter if they come from Dreadball Original (DBO) or Dreaball Xtreme
  * (DBX), serving as a root interface for both games.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  *
  * @param <U>
  *            the type of unit the team is composed of
