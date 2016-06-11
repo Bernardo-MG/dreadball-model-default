@@ -19,7 +19,10 @@ package com.wandrell.tabletop.dreadball.model.availability.asset;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Default serializable implementation of {@link SponsorAssetsAvailability}.
+ * Asset availabilities for a
+ * {@link com.wandrell.tabletop.dreadball.model.faction.Sponsor Sponsors}.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -77,8 +80,8 @@ public final class DefaultSponsorAssetsAvailability
     private final Integer minTeamCost;
 
     /**
-     * Constructs a {@code DefaultSponsorAssetsAvailability} with the specified
-     * arguments.
+     * Constructs assets availability with the specified asset costs and
+     * constraints.
      * 
      * @param diceCost
      *            cost of a Coaching Die

@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Team assets availabilities.
+ * Assets availabilities.
  */
 
 package com.wandrell.tabletop.dreadball.model.availability.asset;

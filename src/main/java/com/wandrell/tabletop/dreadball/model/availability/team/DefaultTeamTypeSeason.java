@@ -22,11 +22,13 @@ import com.wandrell.tabletop.dreadball.model.availability.faction.TeamTypeSeason
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
 /**
- * Default serializable implementation of {@link TeamTypeSeason}.
+ * Season in which a team appeared.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */
-public class DefaultTeamTypeSeason implements TeamTypeSeason {
+public final class DefaultTeamTypeSeason implements TeamTypeSeason {
 
     /**
      * The season the team appeared in.

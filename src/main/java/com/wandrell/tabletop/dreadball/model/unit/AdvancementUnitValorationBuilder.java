@@ -19,8 +19,7 @@ package com.wandrell.tabletop.dreadball.model.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Implementation of {@link UnitValorationCalculator} for
- * {@link AdvancementUnit}.
+ * Calculates the valoration of an {@link AdvancementUnit}.
  * <p>
  * It uses the DBO's valoration formula, which consists on: [unit cost] + [unit
  * rank]*[rank value] + [implant cost].

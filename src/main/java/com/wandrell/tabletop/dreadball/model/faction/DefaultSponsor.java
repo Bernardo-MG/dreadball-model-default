@@ -27,7 +27,9 @@ import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
- * Default serializable implementation of {@link Sponsor}.
+ * Sponsor, which are the Dreadball Xtreme (DBX) factions.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

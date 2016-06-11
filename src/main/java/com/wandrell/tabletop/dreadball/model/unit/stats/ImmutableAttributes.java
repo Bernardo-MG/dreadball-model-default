@@ -21,7 +21,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.base.MoreObjects;
 
 /**
- * Immutable implementation of {@code Attributes}.
+ * Unit attributes.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

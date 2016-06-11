@@ -23,7 +23,9 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@code Ability}.
+ * Unit ability.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

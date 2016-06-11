@@ -23,7 +23,9 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default serializable implementation of {@link TeamRule}.
+ * Special rule for teams.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

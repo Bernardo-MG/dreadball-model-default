@@ -32,7 +32,9 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributes;
 
 /**
- * Default serializable implementation of {@code AdvancementUnit}.
+ * Unit which may change and evolve over time, usually between matches.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

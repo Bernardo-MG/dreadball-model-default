@@ -17,7 +17,7 @@
 package com.wandrell.tabletop.dreadball.model.unit;
 
 /**
- * Interface for calculating the valoration of a {@link Unit}.
+ * Calculates the valoration of a {@link Unit}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
  * calculate a unit's valoration.

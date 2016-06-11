@@ -22,7 +22,10 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Default serializable implementation of {@link TeamTypeMvpAvailability}.
+ * MVP availabilities for a {@link TeamType}, which are the Dreadball Original
+ * (DBO) factions.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

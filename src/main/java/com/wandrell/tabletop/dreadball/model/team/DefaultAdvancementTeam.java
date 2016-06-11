@@ -25,7 +25,10 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Default implementation of {@link AdvancementTeam}.
+ * Dreadball Original (DBO) team, composed of units which, along the team
+ * itself, are capable of changing from game to game.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

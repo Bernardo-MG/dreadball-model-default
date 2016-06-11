@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.google.common.base.MoreObjects;
 
 /**
- * Mutable implementation of {@code Attributes}.
+ * Unit attributes.
  * 
  * @author Bernardo Martínez Garrido
  */

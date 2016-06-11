@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Implementation of {@link TeamValorationCalculator} for {@link SponsorTeam}.
+ * Team valoration calculator for an {@code SponsorTeam}.
  * 
  * @author Bernardo Martínez Garrido
  */

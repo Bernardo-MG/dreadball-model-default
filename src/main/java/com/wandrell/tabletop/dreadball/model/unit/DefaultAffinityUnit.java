@@ -26,7 +26,10 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@link AffinityUnit}.
+ * Unit with affinity groups, and various costs which will depend on how many of
+ * such affinities are shared.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

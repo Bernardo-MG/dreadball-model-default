@@ -25,8 +25,11 @@ import java.util.LinkedHashSet;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
- * Default serializable implementation of
- * {@link SponsorAffinityGroupAvailability}.
+ * Affinity group availabilities for a
+ * {@link com.wandrell.tabletop.dreadball.model.faction.Sponsor Sponsors}, to be
+ * acquired during their creation.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

@@ -22,7 +22,10 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Default serializable implementation of {@link TeamTypeUnitAvailability}.
+ * Unit availabilities for a {@link TeamType}, to be used for both Dreadball
+ * Original (DBO) and Dreadball Xtreme (DBX).
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

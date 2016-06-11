@@ -21,7 +21,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
 /**
- * Default serializable implementation of {@link TeamTypeAssetsAvailability}.
+ * Assets availabilities for a {@link TeamType}, which are the Dreadball
+ * Original (DBO) factions.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */
@@ -102,8 +105,8 @@ public final class DefaultTeamTypeAssetsAvailability
     private final TeamType teamType;
 
     /**
-     * Constructs a {@code DefaultTeamTypeAssetsAvailability} with the specified
-     * arguments.
+     * Constructs assets availability with the specified asset costs and
+     * constraints.
      * 
      * @param team
      *            {@code TeamType} to which this availability applies

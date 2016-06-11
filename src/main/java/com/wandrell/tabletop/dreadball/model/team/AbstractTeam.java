@@ -28,12 +28,14 @@ import java.util.Map.Entry;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Abstract implementation of {@code Team}.
+ * Abstract root team representing the basic features all the Dreadball teams
+ * have, no matter if they come from Dreadball Original (DBO) or Dreaball Xtreme
+ * (DBX), serving as a root interface for both games.
  * 
  * @author Bernardo Martínez Garrido
  *
  * @param <U>
- *            the type of player the {@code Team} is made of
+ *            the type of unit the team is composed of
  */
 public abstract class AbstractTeam<U extends Unit> implements Team<U> {
 

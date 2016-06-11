@@ -26,7 +26,10 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@link TeamType}.
+ * Team type, which are the Dreadball Original (DBO) factions. They are also
+ * used to group together Dreadball Xtreme (DBX) units.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */

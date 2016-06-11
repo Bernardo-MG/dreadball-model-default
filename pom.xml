@@ -186,7 +186,7 @@
       <guava.version>19.0</guava.version>
       <log4j.version>2.6</log4j.version>
       <mockito.version>1.10.19</mockito.version>
-      <tabletop.dreadball.model.api.version>0.5.1</tabletop.dreadball.model.api.version>
+      <tabletop.dreadball.api.version>0.5.1</tabletop.dreadball.api.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
       <plugin.changes.version>2.12</plugin.changes.version>
@@ -206,7 +206,7 @@
          <!-- Dreadball Model API -->
          <groupId>com.wandrell.tabletop.dreadball</groupId>
          <artifactId>dreadball-model-api</artifactId>
-         <version>${tabletop.dreadball.model.api.version}</version>
+         <version>${tabletop.dreadball.api.version}</version>
       </dependency>
       <dependency>
          <!-- Guava -->

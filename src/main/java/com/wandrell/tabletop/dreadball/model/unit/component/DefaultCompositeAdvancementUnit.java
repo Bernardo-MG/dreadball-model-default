@@ -30,7 +30,9 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code CompositeAdvancementUnit}.
+ * Composite advancement unit.
+ * <p>
+ * This is an immutable implementation.
  * <p>
  * It uses composition to inherit from {@link DefaultAdvancementUnit}.
  * 

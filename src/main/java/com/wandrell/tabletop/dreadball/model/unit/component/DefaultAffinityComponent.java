@@ -25,7 +25,10 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code AffinityComponent}.
+ * Component with affinity groups, and various costs which will depend on how
+ * many of such affinities are shared.
+ * <p>
+ * This is an immutable implementation.
  * <p>
  * It uses composition to inherit from {@link DefaultComponent}.
  * 
@@ -135,13 +138,13 @@ public final class DefaultAffinityComponent implements AffinityComponent {
     }
 
     @Override
-    public final Integer getStrangerCost() {
-        return costStranger;
+    public final Collection<Role> getRoles() {
+        return getBaseComponent().getRoles();
     }
 
     @Override
-    public final Collection<Role> getRoles() {
-        return getBaseComponent().getRoles();
+    public final Integer getStrangerCost() {
+        return costStranger;
     }
 
     /**

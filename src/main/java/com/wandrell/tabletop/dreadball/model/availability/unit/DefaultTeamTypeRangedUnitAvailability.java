@@ -22,7 +22,11 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Default serializable implementation of {@link TeamTypeUnitAvailability}.
+ * Unit availabilities for a
+ * {@link com.wandrell.tabletop.dreadball.model.faction.TeamType TeamType},
+ * where there is a range of how many times it can be acquired.
+ * <p>
+ * This is an immutable implementation.
  * 
  * @author Bernardo Martínez Garrido
  */
