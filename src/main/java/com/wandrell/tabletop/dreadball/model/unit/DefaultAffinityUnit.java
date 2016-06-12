@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -22,12 +23,13 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@link AffinityUnit}.
+ * Unit with affinity groups, and various costs which will depend on how many of
+ * such affinities are shared.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultAffinityUnit implements AffinityUnit {
 
@@ -35,30 +37,37 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * The affinities of the unit.
      */
     private final Collection<AffinityGroup> affinityGroups  = new LinkedHashSet<AffinityGroup>();
+
     /**
-     * {@code UnitTemplate} used for inheritance through composition.
+     * {@code Unit} used for inheritance through composition.
      */
-    private final UnitTemplate              baseUnit;
+    private final Unit                      baseUnit;
+
     /**
      * The actual cost of the unit.
      */
     private Integer                         costActual      = 0;
+
     /**
      * Unit cost for an ally.
      */
     private final Integer                   costAlly;
+
     /**
      * Unit cost for a friend.
      */
     private final Integer                   costFriend;
+
     /**
      * Unit cost for a stranger.
      */
     private final Integer                   costStranger;
+
     /**
      * The affinities hated by the unit.
      */
     private final Collection<AffinityGroup> hatedAffinities = new LinkedHashSet<AffinityGroup>();
+
     /**
      * Name given to the unit.
      */
@@ -88,10 +97,9 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * @param strangerCost
      *            the unit cost for a stranger
      */
-    public DefaultAffinityUnit(final String nameTemplate,
-            final TeamPosition position, final AttributesHolder attributes,
-            final Collection<Ability> abilities, final Boolean giant,
-            final Collection<AffinityGroup> affinities,
+    public DefaultAffinityUnit(final String nameTemplate, final Role position,
+            final Attributes attributes, final Collection<Ability> abilities,
+            final Boolean giant, final Collection<AffinityGroup> affinities,
             final Collection<AffinityGroup> hated, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost) {
         super();
@@ -136,7 +144,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return getBaseUnit().getAttributes();
     }
 
@@ -162,8 +170,8 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     }
 
     @Override
-    public final TeamPosition getPosition() {
-        return getBaseUnit().getPosition();
+    public final Role getRole() {
+        return getBaseUnit().getRole();
     }
 
     @Override
@@ -223,7 +231,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final UnitTemplate getBaseUnit() {
+    private final Unit getBaseUnit() {
         return baseUnit;
     }
 

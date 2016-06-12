@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.faction;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -25,9 +26,12 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Default implementation of {@link TeamType}.
+ * Team type, which are the Dreadball Original (DBO) factions. They are also
+ * used to group together Dreadball Xtreme (DBX) units.
+ * <p>
+ * This is an immutable implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultTeamType implements TeamType {
 
@@ -35,6 +39,7 @@ public final class DefaultTeamType implements TeamType {
      * Team type's name.
      */
     private final String               teamName;
+
     /**
      * Team type's rules.
      */

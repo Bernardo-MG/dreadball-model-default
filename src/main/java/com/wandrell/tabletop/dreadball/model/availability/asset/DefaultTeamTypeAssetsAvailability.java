@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -20,9 +21,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
 /**
- * Default serializable implementation of {@link TeamTypeAssetsAvailability}.
+ * Assets availabilities for a {@link TeamType}, which are the Dreadball
+ * Original (DBO) factions.
+ * <p>
+ * This is an immutable implementation.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultTeamTypeAssetsAvailability
         implements TeamTypeAssetsAvailability {
@@ -31,65 +35,78 @@ public final class DefaultTeamTypeAssetsAvailability
      * Cost of a Dreadball card.
      */
     private final Integer  costCard;
+
     /**
      * Cost of a Cheerleader.
      */
     private final Integer  costCheerleader;
+
     /**
      * Cost of a Coaching Staff.
      */
     private final Integer  costCoaching;
+
     /**
      * Cost of a Coaching Die.
      */
     private final Integer  costDie;
+
     /**
      * Initial number of Dreadball Cards for this {@code TeamType}.
      */
     private final Integer  initialCard;
+
     /**
      * Initial number of Cheerleaders for this {@code TeamType}.
      */
     private final Integer  initialCheer;
+
     /**
      * Flag indicating if this {@code TeamType} begins with a Defensive Coaching
      * Staff.
      */
     private final Boolean  initialCoachDef;
+
     /**
      * Flag indicating if this {@code TeamType} begins with an Offensive
      * Coaching Staff.
      */
     private final Boolean  initialCoachOff;
+
     /**
      * Flag indicating if this {@code TeamType} begins with a Support Coaching
      * Staff.
      */
     private final Boolean  initialCoachSup;
+
     /**
      * Initial number of Coaching Dice for this {@code TeamType}.
      */
     private final Integer  initialDie;
+
     /**
      * Maximum number of Dreadball Cards for this {@code TeamType}.
      */
     private final Integer  maxCard;
+
     /**
      * Maximum number of Cheerleaders for this {@code TeamType}.
      */
     private final Integer  maxCheerleader;
+
     /**
      * Maximum number of Coaching Dice for this {@code TeamType}.
      */
     private final Integer  maxDie;
+
     /**
      * {@code TeamType} to which this availability applies.
      */
     private final TeamType teamType;
 
     /**
-     * Constructs a {@code DefaultTeamTypeAssetsAvailability} with the specified
-     * arguments.
+     * Constructs assets availability with the specified asset costs and
+     * constraints.
      * 
      * @param team
      *            {@code TeamType} to which this availability applies

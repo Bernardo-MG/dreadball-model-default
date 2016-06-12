@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -23,17 +24,17 @@ import java.util.LinkedHashSet;
 
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code CompositeAdvancementUnit}.
+ * Composite advancement unit.
  * <p>
  * It uses composition to inherit from {@link DefaultAdvancementUnit}.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultCompositeAdvancementUnit
         implements CompositeAdvancementUnit {
@@ -41,11 +42,12 @@ public final class DefaultCompositeAdvancementUnit
     /**
      * {@code AdvancementUnit} used for inheritance through composition.
      */
-    private final AdvancementUnit           baseUnit;
+    private final AdvancementUnit       baseUnit;
+
     /**
      * Components of the unit.
      */
-    private final Collection<UnitComponent> unitComponents = new LinkedHashSet<UnitComponent>();
+    private final Collection<Component> unitComponents = new LinkedHashSet<Component>();
 
     /**
      * Constructs a {@code DefaultCompositeAdvancementUnit} with the specified
@@ -69,11 +71,11 @@ public final class DefaultCompositeAdvancementUnit
      *            components which create this unit
      */
     public DefaultCompositeAdvancementUnit(final String nameTemplate,
-            final Integer cost, final TeamPosition position,
-            final AttributesHolder attributes,
-            final Collection<Ability> abilities, final Boolean giant,
+            final Integer cost, final Role position,
+            final Attributes attributes, final Collection<Ability> abilities,
+            final Boolean giant,
             final UnitValorationCalculator<AdvancementUnit> valorator,
-            final Collection<UnitComponent> components) {
+            final Collection<Component> components) {
         super();
 
         baseUnit = new DefaultAdvancementUnit(nameTemplate, cost, position,
@@ -82,7 +84,7 @@ public final class DefaultCompositeAdvancementUnit
         checkNotNull(components,
                 "Received a null pointer as valoration the components");
 
-        for (final UnitComponent component : components) {
+        for (final Component component : components) {
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
@@ -101,7 +103,7 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return getBaseUnit().getAttributes();
     }
 
@@ -111,7 +113,7 @@ public final class DefaultCompositeAdvancementUnit
      * @return the components which make up the unit
      */
     @Override
-    public final Collection<UnitComponent> getComponents() {
+    public final Collection<Component> getComponents() {
         return Collections.unmodifiableCollection(getComponentsModifiable());
     }
 
@@ -121,7 +123,7 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
-    public final UnitComponent getGraftedImplant() {
+    public final Component getGraftedImplant() {
         return getBaseUnit().getGraftedImplant();
     }
 
@@ -131,13 +133,13 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
-    public final TeamPosition getPosition() {
-        return getBaseUnit().getPosition();
+    public final Integer getRank() {
+        return getBaseUnit().getRank();
     }
 
     @Override
-    public final Integer getRank() {
-        return getBaseUnit().getRank();
+    public final Role getRole() {
+        return getBaseUnit().getRole();
     }
 
     @Override
@@ -171,12 +173,12 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
-    public final void setAttributes(final AttributesHolder attributes) {
+    public final void setAttributes(final Attributes attributes) {
         getBaseUnit().setAttributes(attributes);
     }
 
     @Override
-    public final void setGraftedImplant(final UnitComponent implant) {
+    public final void setGraftedImplant(final Component implant) {
         getBaseUnit().setGraftedImplant(implant);
     }
 
@@ -211,7 +213,7 @@ public final class DefaultCompositeAdvancementUnit
      * 
      * @return a modifiable collection with the unit components
      */
-    private final Collection<UnitComponent> getComponentsModifiable() {
+    private final Collection<Component> getComponentsModifiable() {
         return unitComponents;
     }
 

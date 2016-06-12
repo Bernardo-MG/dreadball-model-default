@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -24,40 +25,49 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Default implementation of {@link AdvancementTeam}.
+ * Dreadball Original (DBO) team, composed of units which, along the team
+ * itself, are capable of changing from game to game.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAdvancementTeam
-        extends AbstractBaseTeam<AdvancementUnit> implements AdvancementTeam {
+public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
+        implements AdvancementTeam {
+
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
     private Boolean                                         defensiveCoach = false;
+
     /**
      * Flag indicating if the team has an Offensive Coaching Staff.
      */
     private Boolean                                         offensiveCoach = false;
+
     /**
      * Flag indicating if the team has a Support Coaching Staff.
      */
     private Boolean                                         supportCoach   = false;
+
     /**
      * Number of Dreadball Cards in the team.
      */
     private Integer                                         teamCards      = 0;
+
     /**
      * Team's unspent cash.
      */
     private Integer                                         teamCash       = 0;
+
     /**
      * Team's name.
      */
     private String                                          teamName       = "";
+
     /**
      * The base type of the team.
      */
     private final TeamType                                  teamType;
+
     /**
      * Builder for calculating the valoration.
      */

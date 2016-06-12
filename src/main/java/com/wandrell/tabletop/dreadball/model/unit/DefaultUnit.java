@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -23,39 +24,50 @@ import java.util.LinkedHashSet;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code UnitTemplate}.
+ * Root for the basic features all the Dreadball units have, no matter if they
+ * come from Dreadball Original (DBO) or Dreadball Xtreme (DBX).
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultUnit implements UnitTemplate {
+public final class DefaultUnit implements Unit {
 
     /**
      * Base cost of the unit.
      */
     private final Integer             baseCost;
+
     /**
      * Indicates if the unit is a giant.
      */
     private final Boolean             giantFlag;
+
+    /**
+     * Unit's name.
+     */
+    private String                    unitName      = "";
+
     /**
      * Name of the template from which this unit has been created.
      */
     private final String              templateName;
+
     /**
      * The unit's team position.
      */
-    private final TeamPosition        templatePosition;
+    private final Role                templatePosition;
+
     /**
      * The unit's abilities.
      */
     private final Collection<Ability> unitAbilities = new LinkedHashSet<>();
+
     /**
      * Unit's attributes.
      */
-    private final AttributesHolder    unitAttributes;
+    private final Attributes          unitAttributes;
 
     /**
      * Constructs a {@code DefaultUnit} with the specified arguments.
@@ -74,7 +86,7 @@ public final class DefaultUnit implements UnitTemplate {
      *            flag indicating if this is a giant
      */
     public DefaultUnit(final String nameTemplate, final Integer cost,
-            final TeamPosition position, final AttributesHolder attributes,
+            final Role position, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean giant) {
         super();
 
@@ -101,7 +113,7 @@ public final class DefaultUnit implements UnitTemplate {
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return unitAttributes;
     }
 
@@ -111,7 +123,12 @@ public final class DefaultUnit implements UnitTemplate {
     }
 
     @Override
-    public final TeamPosition getPosition() {
+    public final String getName() {
+        return unitName;
+    }
+
+    @Override
+    public final Role getRole() {
         return templatePosition;
     }
 
@@ -125,11 +142,20 @@ public final class DefaultUnit implements UnitTemplate {
         return giantFlag;
     }
 
+    /**
+     * Sets the unit name.
+     * 
+     * @param name
+     *            the unit name
+     */
+    public final void setName(final String name) {
+        unitName = name;
+    }
+
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("name", getTemplateName())
-                .add("position", getPosition()).add("giant", isGiant())
-                .toString();
+                .add("role", getRole()).add("giant", isGiant()).toString();
     }
 
     /**

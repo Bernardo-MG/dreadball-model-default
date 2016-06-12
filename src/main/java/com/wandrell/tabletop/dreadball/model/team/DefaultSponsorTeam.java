@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -21,36 +22,42 @@ import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
-import com.wandrell.tabletop.dreadball.model.unit.UnitTemplate;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Default implementation of {@link SponsorTeam}.
+ * Dreadball Xtreme (DBX) team, composed of units with affinities, and a Sponsor
+ * which changes over time.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultSponsorTeam extends AbstractBaseTeam<UnitTemplate>
+public final class DefaultSponsorTeam extends AbstractTeam<Unit>
         implements SponsorTeam {
 
     /**
      * Number of Medibots in the team.
      */
     private Integer                                     teamMedibots      = 0;
+
     /**
      * Number of Sabotage Cards in the team.
      */
     private Integer                                     teamSabotageCards = 0;
+
     /**
      * Number of Special Move Cards.
      */
     private Integer                                     teamSpMoveCards   = 0;
+
     /**
      * Team's sponsor.
      */
     private final Sponsor                               teamSponsor;
+
     /**
      * Number of Wagers in the team.
      */
     private Integer                                     teamWagers        = 0;
+
     /**
      * Builder for calculating the valoration.
      */

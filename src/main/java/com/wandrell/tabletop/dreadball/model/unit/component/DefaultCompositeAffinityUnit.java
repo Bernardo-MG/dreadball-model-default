@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -24,16 +25,18 @@ import java.util.LinkedHashSet;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
-import com.wandrell.tabletop.dreadball.model.unit.TeamPosition;
+import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
-import com.wandrell.tabletop.dreadball.model.unit.stats.AttributesHolder;
+import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Default implementation of {@code CompositeAffinityUnit}.
+ * Composite affinity unit.
+ * <p>
+ * This is an immutable implementation.
  * <p>
  * It uses composition to inherit from {@link DefaultAffinityUnit}.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultCompositeAffinityUnit
         implements CompositeAffinityUnit {
@@ -41,11 +44,12 @@ public final class DefaultCompositeAffinityUnit
     /**
      * {@code AffinityUnit} used for inheritance through composition.
      */
-    private final AffinityUnit              baseUnit;
+    private final AffinityUnit          baseUnit;
+
     /**
      * Components of the unit.
      */
-    private final Collection<UnitComponent> unitComponents = new LinkedHashSet<UnitComponent>();
+    private final Collection<Component> unitComponents = new LinkedHashSet<Component>();
 
     /**
      * Constructs a {@code DefaultCompositeAffinityUnit} with the specified
@@ -75,12 +79,12 @@ public final class DefaultCompositeAffinityUnit
      *            components which create this unit
      */
     public DefaultCompositeAffinityUnit(final String nameTemplate,
-            final TeamPosition position, final AttributesHolder attributes,
+            final Role position, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean giant,
             final Collection<AffinityGroup> affinities,
             final Collection<AffinityGroup> hated, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost,
-            final Collection<UnitComponent> components) {
+            final Collection<Component> components) {
         super();
 
         baseUnit = new DefaultAffinityUnit(nameTemplate, position, attributes,
@@ -90,7 +94,7 @@ public final class DefaultCompositeAffinityUnit
         checkNotNull(components,
                 "Received a null pointer as valoration the components");
 
-        for (final UnitComponent component : components) {
+        for (final Component component : components) {
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
@@ -114,7 +118,7 @@ public final class DefaultCompositeAffinityUnit
     }
 
     @Override
-    public final AttributesHolder getAttributes() {
+    public final Attributes getAttributes() {
         return getBaseUnit().getAttributes();
     }
 
@@ -124,7 +128,7 @@ public final class DefaultCompositeAffinityUnit
      * @return the components which make up the unit
      */
     @Override
-    public final Collection<UnitComponent> getComponents() {
+    public final Collection<Component> getComponents() {
         return Collections.unmodifiableCollection(getComponentsModifiable());
     }
 
@@ -149,8 +153,8 @@ public final class DefaultCompositeAffinityUnit
     }
 
     @Override
-    public final TeamPosition getPosition() {
-        return getBaseUnit().getPosition();
+    public final Role getRole() {
+        return getBaseUnit().getRole();
     }
 
     @Override
@@ -189,7 +193,7 @@ public final class DefaultCompositeAffinityUnit
      * 
      * @return a modifiable collection with the unit components
      */
-    private final Collection<UnitComponent> getComponentsModifiable() {
+    private final Collection<Component> getComponentsModifiable() {
         return unitComponents;
     }
 

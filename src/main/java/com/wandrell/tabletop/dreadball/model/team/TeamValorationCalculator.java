@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,22 +13,23 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.team;
 
 /**
- * Interface for calculating the valoration of a {@link BaseTeam}.
+ * Calculates the valoration of a {@link Team}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
  * calculate a team's valoration.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  * @param <T>
  *            the type of the team of which the valoration will be calculated
  */
-public interface TeamValorationCalculator<T extends BaseTeam<?>> {
+public interface TeamValorationCalculator<T extends Team<?>> {
 
     /**
-     * Returns a {@code BaseTeam}'s valoration.
+     * Returns a {@code Team}'s valoration.
      * 
      * @param team
      *            the {@code Team} of which the valoration will be calculated

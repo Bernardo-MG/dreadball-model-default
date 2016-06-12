@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,6 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+
 package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -20,10 +21,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Implementation of {@link TeamValorationCalculator} for
- * {@link AdvancementTeam}.
+ * Team valoration calculator for an {@code AdvancementTeam}.
  * 
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class AdvancementTeamValorationCalculator
         implements TeamValorationCalculator<AdvancementTeam> {
@@ -32,14 +32,17 @@ public final class AdvancementTeamValorationCalculator
      * Cost of a Dreadball Card.
      */
     private final Integer costCard;
+
     /**
      * Cost of a Cheerleader.
      */
     private final Integer costCheerleader;
+
     /**
      * Cost of a Coaching Staff.
      */
     private final Integer costCoaching;
+
     /**
      * Cost of a Coaching Die.
      */
