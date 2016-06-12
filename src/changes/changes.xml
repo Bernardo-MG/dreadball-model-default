@@ -45,7 +45,7 @@
                 Added base POM.
             </action>
         </release>
-        <release version="0.3.0" date="2015-12-8" description="Updated API">
+        <release version="0.3.0" date="2016-06-12" description="Updated API">
             <action dev="bmg" type="update">
                 Updated to the latest API.
             </action>
