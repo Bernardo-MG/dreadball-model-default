@@ -27,8 +27,6 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 /**
  * Dreadball Original (DBO) team, composed of units which, along the team
  * itself, are capable of changing from game to game.
- * <p>
- * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

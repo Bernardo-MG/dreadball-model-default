@@ -28,8 +28,6 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 /**
  * Unit with affinity groups, and various costs which will depend on how many of
  * such affinities are shared.
- * <p>
- * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

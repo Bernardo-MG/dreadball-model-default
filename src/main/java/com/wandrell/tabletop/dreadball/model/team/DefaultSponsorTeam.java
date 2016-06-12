@@ -27,8 +27,6 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
 /**
  * Dreadball Xtreme (DBX) team, composed of units with affinities, and a Sponsor
  * which changes over time.
- * <p>
- * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

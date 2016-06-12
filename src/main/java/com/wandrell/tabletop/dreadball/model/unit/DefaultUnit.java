@@ -29,8 +29,6 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 /**
  * Root for the basic features all the Dreadball units have, no matter if they
  * come from Dreadball Original (DBO) or Dreadball Xtreme (DBX).
- * <p>
- * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -47,9 +45,9 @@ public final class DefaultUnit implements Unit {
     private final Boolean             giantFlag;
 
     /**
-     * Unit's name;
+     * Unit's name.
      */
-    private String                    name          = "";
+    private String                    unitName      = "";
 
     /**
      * Name of the template from which this unit has been created.
@@ -126,7 +124,7 @@ public final class DefaultUnit implements Unit {
 
     @Override
     public final String getName() {
-        return name;
+        return unitName;
     }
 
     @Override
@@ -151,7 +149,7 @@ public final class DefaultUnit implements Unit {
      *            the unit name
      */
     public final void setName(final String name) {
-        this.name = name;
+        unitName = name;
     }
 
     @Override

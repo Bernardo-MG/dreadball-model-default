@@ -33,8 +33,6 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributes;
 
 /**
  * Unit which may change and evolve over time, usually between matches.
- * <p>
- * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

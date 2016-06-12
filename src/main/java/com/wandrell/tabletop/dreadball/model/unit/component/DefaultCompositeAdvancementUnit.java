@@ -32,8 +32,6 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 /**
  * Composite advancement unit.
  * <p>
- * This is an immutable implementation.
- * <p>
  * It uses composition to inherit from {@link DefaultAdvancementUnit}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
