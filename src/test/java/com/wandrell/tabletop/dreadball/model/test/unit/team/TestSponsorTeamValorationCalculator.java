@@ -23,15 +23,13 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Unit tests for {@link SponsorTeamValorationCalculator} applied to a
- * {@link AdvancementTeam}.
+ * Unit tests for {@link SponsorTeamValorationCalculator}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -54,13 +52,12 @@ public final class TestSponsorTeamValorationCalculator {
      */
     @Test
     public final void testValoration() {
-        final TeamValorationCalculator<SponsorTeam> valorator; // Tested class
+        final TeamValorationCalculator<SponsorTeam> calculator; // Tested class
         final SponsorTeam team;           // Team to valorate
         final Map<Integer, Unit> players; // Team players
         final Unit player;                // Mocked player
 
-        valorator = new SponsorTeamValorationCalculator(1, 2, 3, 4, 5, 6);
-
+        // Mocks team
         team = Mockito.mock(SponsorTeam.class);
         Mockito.when(team.getCoachingDice()).thenReturn(2);
         Mockito.when(team.getSabotageCards()).thenReturn(4);
@@ -69,6 +66,7 @@ public final class TestSponsorTeamValorationCalculator {
         Mockito.when(team.getWagers()).thenReturn(6);
         Mockito.when(team.getMediBots()).thenReturn(3);
 
+        // Mocks players
         players = new LinkedHashMap<>();
         player = Mockito.mock(Unit.class);
         Mockito.when(player.getCost()).thenReturn(10);
@@ -76,7 +74,10 @@ public final class TestSponsorTeamValorationCalculator {
 
         Mockito.when(team.getPlayers()).thenReturn(players);
 
-        Assert.assertEquals(valorator.getValoration(team), (Integer) 87);
+        // Creates calculator
+        calculator = new SponsorTeamValorationCalculator(1, 2, 3, 4, 5, 6);
+
+        Assert.assertEquals(calculator.getValoration(team), (Integer) 87);
     }
 
 }

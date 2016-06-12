@@ -35,8 +35,8 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Repeated abilities are ignored</li>
- * <li>Repeated team positions are ignored</li>
+ * <li>Abilities are not repeated</li>
+ * <li>Team roles are not repeated</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
@@ -51,55 +51,59 @@ public final class TestDefaultComponent {
     }
 
     /**
-     * Tests that repeated abilities are ignored.
+     * Tests that abilities are not repeated.
      */
     @Test
-    public final void test_RepeatAbility_NoRepeats() {
+    public final void testRepeatAbility_NoRepeats() {
         final Component component;           // Tested component
         final Collection<Ability> abilities; // Component abilities
-        final Collection<Role> positions;    // Component positions
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
         final ComponentLocation location;    // Mocked location
 
+        // Mocks abilities
         ability = Mockito.mock(Ability.class);
         abilities = new LinkedList<Ability>();
         abilities.add(ability);
         abilities.add(ability);
 
-        positions = new LinkedList<Role>();
-
+        // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
+
+        // Mocks location
         location = Mockito.mock(ComponentLocation.class);
 
-        component = new DefaultComponent("name", location, 0, positions,
-                attributes, abilities);
+        // Creates component
+        component = new DefaultComponent("name", location, 0,
+                new LinkedList<Role>(), attributes, abilities);
 
         Assert.assertEquals(component.getAbilities().size(), 1);
     }
 
     /**
-     * Tests that repeated team positions are ignored.
+     * Tests that team roles are not repeated.
      */
     @Test
-    public final void test_RepeatPosition_NoRepeats() {
+    public final void testRepeatRole_NoRepeats() {
         final Component component;           // Tested component
-        final Collection<Ability> abilities; // Component abilities
-        final Collection<Role> positions;    // Component positions
+        final Collection<Role> roles;        // Component roles
         final Attributes attributes;         // Mocked attributes
         final ComponentLocation location;    // Mocked location
 
-        abilities = new LinkedList<Ability>();
+        // Sets roles
+        roles = new LinkedList<Role>();
+        roles.add(Role.STRIKER);
+        roles.add(Role.STRIKER);
 
-        positions = new LinkedList<Role>();
-        positions.add(Role.STRIKER);
-        positions.add(Role.STRIKER);
-
+        // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
+
+        // Mocks location
         location = Mockito.mock(ComponentLocation.class);
 
-        component = new DefaultComponent("name", location, 0, positions,
-                attributes, abilities);
+        // Creates component
+        component = new DefaultComponent("name", location, 0, roles, attributes,
+                new LinkedList<Ability>());
 
         Assert.assertEquals(component.getRoles().size(), 1);
     }

@@ -32,36 +32,36 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Repeated affinity groups received through the constructor are not
- * repeated</li>
+ * <li>Affinities are not repeated</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestUnitGroupsDefaultSponsor {
+public final class TestDefaultSponsor {
 
     /**
      * Default constructor.
      */
-    public TestUnitGroupsDefaultSponsor() {
+    public TestDefaultSponsor() {
         super();
     }
 
     /**
-     * Tests that repeated affinity groups received through the constructor are
-     * not repeated.
+     * Tests that affinities are not repeated.
      */
     @Test
-    public final void test_RepeatAffinity_NoRepeats() {
+    public final void testRepeatAffinity_NoRepeats() {
         final Sponsor sponsor;     // Tested sponsor
         final Collection<AffinityGroup> groups; // Sponsor affinities
         final AffinityGroup group; // Mocked affinity group
 
+        // Mocks affinities
         group = Mockito.mock(AffinityGroup.class);
         groups = new LinkedList<>();
         groups.add(group);
         groups.add(group);
 
+        // Creates sponsor
         sponsor = new DefaultSponsor();
 
         sponsor.setAffinityGroups(groups);

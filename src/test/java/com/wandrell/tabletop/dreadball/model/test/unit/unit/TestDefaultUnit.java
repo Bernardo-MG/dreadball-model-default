@@ -23,7 +23,6 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.unit.DefaultAffinityUnit;
 import com.wandrell.tabletop.dreadball.model.unit.DefaultUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
@@ -31,11 +30,11 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Unit tests for {@link DefaultAffinityUnit}.
+ * Unit tests for {@link DefaultUnit}.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Repeated abilities received through the constructor are not repeated</li>
+ * <li>Abilities are not repeated</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
@@ -50,23 +49,25 @@ public final class TestDefaultUnit {
     }
 
     /**
-     * Tests that repeated abilities received through the constructor are not
-     * repeated.
+     * Tests that abilities are not repeated.
      */
     @Test
-    public final void test_RepeatAbility_NoRepeats_Constructor() {
+    public final void testRepeatAbility_NoRepeats() {
         final Unit unit;                     // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
 
+        // Mocks abilities
         ability = Mockito.mock(Ability.class);
         abilities = new LinkedList<>();
         abilities.add(ability);
         abilities.add(ability);
 
+        // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
+        // Creates unit
         unit = new DefaultUnit("name", 0, Role.GUARD, attributes, abilities,
                 true);
 

@@ -28,8 +28,6 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
 /**
  * Sponsor, which are the Dreadball Xtreme (DBX) factions.
- * <p>
- * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

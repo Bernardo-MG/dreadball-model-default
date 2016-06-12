@@ -29,7 +29,7 @@ import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Unit tests for {@link AdvancementTeamValorationCalculator} applied to a
+ * Unit tests for {@link TeamValorationCalculator} applied to a
  * {@link AdvancementTeam}.
  * <p>
  * Checks the following cases:
@@ -39,12 +39,12 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestAdvancementTeamValorationCalculator {
+public final class TestTeamValorationCalculator {
 
     /**
      * Default constructor.
      */
-    public TestAdvancementTeamValorationCalculator() {
+    public TestTeamValorationCalculator() {
         super();
     }
 
@@ -53,14 +53,13 @@ public final class TestAdvancementTeamValorationCalculator {
      */
     @Test
     public final void testValoration() {
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Tested
-        // class
+        final TeamValorationCalculator<AdvancementTeam> calculator; // Tested
+                                                                    // class
         final AdvancementTeam team;                  // Team to valorate
         final Map<Integer, AdvancementUnit> players; // Team players
         final AdvancementUnit player;                // Mocked player
 
-        valorator = new AdvancementTeamValorationCalculator(1, 2, 3, 4);
-
+        // Mocks team
         team = Mockito.mock(AdvancementTeam.class);
         Mockito.when(team.getCoachingDice()).thenReturn(2);
         Mockito.when(team.getDreadballCards()).thenReturn(4);
@@ -69,6 +68,7 @@ public final class TestAdvancementTeamValorationCalculator {
         Mockito.when(team.hasOffensiveCoachingStaff()).thenReturn(true);
         Mockito.when(team.hasSupportCoachingStaff()).thenReturn(true);
 
+        // Mocks players
         players = new LinkedHashMap<>();
         player = Mockito.mock(AdvancementUnit.class);
         Mockito.when(player.getValoration()).thenReturn(10);
@@ -76,7 +76,10 @@ public final class TestAdvancementTeamValorationCalculator {
 
         Mockito.when(team.getPlayers()).thenReturn(players);
 
-        Assert.assertEquals(valorator.getValoration(team), (Integer) 35);
+        // Creates calculator
+        calculator = new AdvancementTeamValorationCalculator(1, 2, 3, 4);
+
+        Assert.assertEquals(calculator.getValoration(team), (Integer) 35);
     }
 
 }

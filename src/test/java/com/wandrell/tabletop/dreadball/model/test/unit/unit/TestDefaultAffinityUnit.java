@@ -37,11 +37,9 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Repeated abilities received through the constructor are not repeated</li>
- * <li>Repeated affinities received through the constructor are not repeated
- * </li>
- * <li>Repeated hated affinities received through the constructor are not
- * repeated</li>
+ * <li>Abilities are not repeated</li>
+ * <li>Affinities are not repeated</li>
+ * <li>Hated affinities are not repeated</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
@@ -56,23 +54,25 @@ public final class TestDefaultAffinityUnit {
     }
 
     /**
-     * Tests that repeated abilities received through the constructor are not
-     * repeated.
+     * Tests that abilities are not repeated.
      */
     @Test
-    public final void test_RepeatAbility_NoRepeats_Constructor() {
+    public final void testRepeatAbility_NoRepeats() {
         final Unit unit;                     // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
 
+        // Mocks abilities
         ability = Mockito.mock(Ability.class);
         abilities = new LinkedList<Ability>();
         abilities.add(ability);
         abilities.add(ability);
 
+        // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
+        // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
                 abilities, true, new LinkedList<AffinityGroup>(),
                 new LinkedList<AffinityGroup>(), 0, 0, 0);
@@ -81,23 +81,25 @@ public final class TestDefaultAffinityUnit {
     }
 
     /**
-     * Tests that repeated affinities received through the constructor are not
-     * repeated.
+     * Tests that affinities are not repeated.
      */
     @Test
-    public final void test_RepeatAffinity_NoRepeats_Constructor() {
+    public final void testRepeatAffinity_NoRepeats() {
         final AffinityUnit unit;                    // Tested unit
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
         final Attributes attributes;                // Mocked attributes
 
+        // Mocks abilities
         affinity = Mockito.mock(AffinityGroup.class);
         affinities = new LinkedList<AffinityGroup>();
         affinities.add(affinity);
         affinities.add(affinity);
 
+        // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
+        // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
                 new LinkedList<Ability>(), true, affinities,
                 new LinkedList<AffinityGroup>(), 0, 0, 0);
@@ -106,23 +108,25 @@ public final class TestDefaultAffinityUnit {
     }
 
     /**
-     * Tests that repeated hated affinities received through the constructor are
-     * not repeated.
+     * Tests that hated affinities are not repeated.
      */
     @Test
-    public final void test_RepeatHatedAffinity_NoRepeats_Constructor() {
+    public final void testRepeatHatedAffinity_NoRepeats() {
         final AffinityUnit unit;                    // Tested unit
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
         final Attributes attributes;                // Mocked attributes
 
+        // Mocks abilities
         affinity = Mockito.mock(AffinityGroup.class);
         affinities = new LinkedList<AffinityGroup>();
         affinities.add(affinity);
         affinities.add(affinity);
 
+        // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
+        // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
                 new LinkedList<Ability>(), true,
                 new LinkedList<AffinityGroup>(), affinities, 0, 0, 0);

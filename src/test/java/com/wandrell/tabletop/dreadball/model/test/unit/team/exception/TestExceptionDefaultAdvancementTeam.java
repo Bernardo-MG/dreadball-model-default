@@ -17,7 +17,6 @@
 package com.wandrell.tabletop.dreadball.model.test.unit.team.exception;
 
 import org.mockito.Mockito;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
@@ -27,69 +26,75 @@ import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
- * Unit tests for {@link AdvancementTeam} checking that exceptions are thrown.
+ * Unit tests for {@link DefaultAdvancementTeam} checking that exceptions are
+ * thrown.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Adding an existing player raises an {@code IllegalArgumentException}</li>
- * <li>Adding a player to a negative position raises an
- * {@code IllegalArgumentException}</li>
+ * <li>Adding an existing player raises an exception</li>
+ * <li>Adding a player to a negative position raises an exception</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestExceptionPlayersDefaultAdvancementTeam {
-
-    /**
-     * Tested team.
-     */
-    private AdvancementTeam team;
+public final class TestExceptionDefaultAdvancementTeam {
 
     /**
      * Default constructor.
      */
-    public TestExceptionPlayersDefaultAdvancementTeam() {
+    public TestExceptionDefaultAdvancementTeam() {
         super();
     }
 
     /**
-     * Initializes the team.
+     * Tests that adding an existing player raises an exception.
      */
     @SuppressWarnings("unchecked")
-    @BeforeClass
-    public final void initialize() {
-        final TeamType type;
-        final TeamValorationCalculator<AdvancementTeam> valorator;
-
-        valorator = Mockito.mock(TeamValorationCalculator.class);
-        type = Mockito.mock(TeamType.class);
-
-        this.team = new DefaultAdvancementTeam(type, valorator);
-    }
-
-    /**
-     * Tests that adding an existing player raises an
-     * {@code IllegalArgumentException}.
-     */
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_Existing() {
-        final AdvancementUnit player;
+        final AdvancementTeam team;   // Tested team
+        final AdvancementUnit player; // Mocked player
+        final TeamType type;          // Mocked team type
+        final TeamValorationCalculator<AdvancementTeam> calculator;
 
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+
+        // Mocks team type
+        type = Mockito.mock(TeamType.class);
+
+        // Mocks player
         player = Mockito.mock(AdvancementUnit.class);
+
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
 
         team.addPlayer(player, 0);
         team.addPlayer(player, 1);
     }
 
     /**
-     * Tests that adding a player to a negative position raises an
-     * {@code IllegalArgumentException}.
+     * Tests that adding a player to a negative position raises an exception.
      */
+    @SuppressWarnings("unchecked")
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
-        final AdvancementUnit player;
+        final AdvancementTeam team;   // Tested team
+        final AdvancementUnit player; // Mocked player
+        final TeamType type;          // Mocked team type
+        final TeamValorationCalculator<AdvancementTeam> calculator;
 
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+
+        // Mocks team type
+        type = Mockito.mock(TeamType.class);
+
+        // Mocks player
         player = Mockito.mock(AdvancementUnit.class);
+
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
 
         team.addPlayer(player, -1);
     }

@@ -23,34 +23,31 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.faction.DefaultSponsor;
 import com.wandrell.tabletop.dreadball.model.faction.DefaultTeamType;
 import com.wandrell.tabletop.dreadball.model.faction.TeamRule;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
 /**
- * Unit tests for {@link DefaultSponsor}.
+ * Unit tests for {@link DefaultTeamType}.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Repeated team rules received through the constructor are not repeated
- * </li>
+ * <li>Team rules are not repeated</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestRulesDefaultTeamType {
+public final class TestDefaultTeamType {
 
     /**
      * Default constructor.
      */
-    public TestRulesDefaultTeamType() {
+    public TestDefaultTeamType() {
         super();
     }
 
     /**
-     * Tests that repeated team rules received through the constructor are not
-     * repeated.
+     * Tests that team rules are not repeated.
      */
     @Test
     public final void test_RepeatTeamRule_NoRepeats() {
@@ -58,11 +55,13 @@ public final class TestRulesDefaultTeamType {
         final Collection<TeamRule> rules; // Team type rules
         final TeamRule rule; // Mocked rule
 
+        // Mocks rules
         rule = Mockito.mock(TeamRule.class);
         rules = new LinkedList<>();
         rules.add(rule);
         rules.add(rule);
 
+        // Creates team
         team = new DefaultTeamType("name", rules);
 
         Assert.assertEquals(team.getTeamRules().size(), 1);

@@ -58,17 +58,23 @@ public final class TestSponsorTeam {
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
         final Sponsor sponsor;                       // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
-                                                               // valorator
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
 
+        // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultSponsorTeam(sponsor, valorator);
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator);
+
+        // Mocks players
         player1 = Mockito.mock(AdvancementUnit.class);
         player2 = Mockito.mock(AdvancementUnit.class);
 
+        // Adds players
         team.addPlayer(player1, 1);
         team.addPlayer(player2, 3);
 
@@ -85,17 +91,23 @@ public final class TestSponsorTeam {
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
         final Sponsor sponsor;                       // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
-                                                               // valorator
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
 
+        // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultSponsorTeam(sponsor, valorator);
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator);
+
+        // Mocks players
         player1 = Mockito.mock(AdvancementUnit.class);
         player2 = Mockito.mock(AdvancementUnit.class);
 
+        // Adds players
         team.addPlayer(player1, 1);
         team.addPlayer(player2, 1);
 
@@ -116,14 +128,19 @@ public final class TestSponsorTeam {
         final SponsorTeam team;                      // Tested team
         final AdvancementUnit player;                // Mocked player
         final Sponsor sponsor;                       // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
-                                                               // valorator
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
 
+        // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultSponsorTeam(sponsor, valorator);
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator);
+
+        // Mocks player
         player = Mockito.mock(AdvancementUnit.class);
         team.addPlayer(player, 1);
 
@@ -141,14 +158,19 @@ public final class TestSponsorTeam {
         final SponsorTeam team;                      // Tested team
         final AdvancementUnit player;                // Mocked player
         final Sponsor sponsor;                       // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> valorator; // Mocked
-                                                               // valorator
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
 
+        // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultSponsorTeam(sponsor, valorator);
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator);
+
+        // Mocks player
         player = Mockito.mock(AdvancementUnit.class);
         team.addPlayer(player, 1);
 

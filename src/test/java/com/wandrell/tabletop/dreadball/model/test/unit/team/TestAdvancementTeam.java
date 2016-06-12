@@ -58,14 +58,19 @@ public final class TestAdvancementTeam {
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
         final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final TeamValorationCalculator<AdvancementTeam> calculator; // Mocked
+                                                                    // calculator
 
+        // Mocks team type
         type = Mockito.mock(TeamType.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        // Mocks valoration calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
+
+        // Mocks players
         player1 = Mockito.mock(AdvancementUnit.class);
         player2 = Mockito.mock(AdvancementUnit.class);
 
@@ -85,14 +90,19 @@ public final class TestAdvancementTeam {
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
         final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final TeamValorationCalculator<AdvancementTeam> calculator; // Mocked
+                                                                    // calculator
 
+        // Mocks team type
         type = Mockito.mock(TeamType.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        // Mocks valoration calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
+
+        // Mocks players
         player1 = Mockito.mock(AdvancementUnit.class);
         player2 = Mockito.mock(AdvancementUnit.class);
 
@@ -116,14 +126,19 @@ public final class TestAdvancementTeam {
         final AdvancementTeam team;                  // Tested team
         final AdvancementUnit player;                // Mocked player
         final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final TeamValorationCalculator<AdvancementTeam> calculator; // Mocked
+                                                                    // calculator
 
+        // Mocks team type
         type = Mockito.mock(TeamType.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        // Mocks valoration calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
+
+        // Mocks players
         player = Mockito.mock(AdvancementUnit.class);
         team.addPlayer(player, 1);
 
@@ -141,14 +156,19 @@ public final class TestAdvancementTeam {
         final AdvancementTeam team;                  // Tested team
         final AdvancementUnit player;                // Mocked player
         final TeamType type;                         // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> valorator; // Mocked
-                                                                   // valorator
+        final TeamValorationCalculator<AdvancementTeam> calculator; // Mocked
+                                                                    // calculator
 
+        // Mocks team type
         type = Mockito.mock(TeamType.class);
-        valorator = Mockito.mock(TeamValorationCalculator.class);
 
-        team = new DefaultAdvancementTeam(type, valorator);
+        // Mocks valoration calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
 
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
+
+        // Mocks players
         player = Mockito.mock(AdvancementUnit.class);
         team.addPlayer(player, 1);
 

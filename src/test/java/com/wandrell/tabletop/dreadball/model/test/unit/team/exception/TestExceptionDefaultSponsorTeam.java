@@ -17,7 +17,6 @@
 package com.wandrell.tabletop.dreadball.model.test.unit.team.exception;
 
 import org.mockito.Mockito;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
@@ -27,7 +26,8 @@ import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Unit tests for {@link SponsorTeam} checking that exceptions are thrown.
+ * Unit tests for {@link DefaultSponsorTeam} checking that exceptions are
+ * thrown.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -38,44 +38,39 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestExceptionPlayersDefaultSponsorTeam {
-
-    /**
-     * Tested team.
-     */
-    private SponsorTeam team;
+public final class TestExceptionDefaultSponsorTeam {
 
     /**
      * Default constructor.
      */
-    public TestExceptionPlayersDefaultSponsorTeam() {
+    public TestExceptionDefaultSponsorTeam() {
         super();
-    }
-
-    /**
-     * Initializes the team.
-     */
-    @SuppressWarnings("unchecked")
-    @BeforeClass
-    public final void initialize() {
-        final Sponsor sponsor;
-        final TeamValorationCalculator<SponsorTeam> valorator;
-
-        valorator = Mockito.mock(TeamValorationCalculator.class);
-        sponsor = Mockito.mock(Sponsor.class);
-
-        this.team = new DefaultSponsorTeam(sponsor, valorator);
     }
 
     /**
      * Tests that adding an existing player raises an
      * {@code IllegalArgumentException}.
      */
+    @SuppressWarnings("unchecked")
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_Existing() {
-        final Unit player;
+        final SponsorTeam team; // Tested team
+        final Sponsor sponsor;  // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
+        final Unit player;      // Mocked player
 
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+
+        // Mocks sponsor
+        sponsor = Mockito.mock(Sponsor.class);
+
+        // Mocks player
         player = Mockito.mock(Unit.class);
+
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator);
 
         team.addPlayer(player, 0);
         team.addPlayer(player, 1);
@@ -85,11 +80,26 @@ public final class TestExceptionPlayersDefaultSponsorTeam {
      * Tests that adding a player to a negative position raises an
      * {@code IllegalArgumentException}.
      */
+    @SuppressWarnings("unchecked")
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
-        final Unit player;
+        final SponsorTeam team; // Tested team
+        final Sponsor sponsor;  // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
+        final Unit player;      // Mocked player
 
+        // Mocks calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+
+        // Mocks sponsor
+        sponsor = Mockito.mock(Sponsor.class);
+
+        // Mocks player
         player = Mockito.mock(Unit.class);
+
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator);
 
         team.addPlayer(player, -1);
     }

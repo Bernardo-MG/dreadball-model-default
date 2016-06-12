@@ -50,22 +50,25 @@ public final class TestAdvancementUnitUnitValorationCalculator {
      */
     @Test
     public final void testValoration() {
-        final UnitValorationCalculator<AdvancementUnit> valorator; // Tested
-        // class
+        final UnitValorationCalculator<AdvancementUnit> calculator; // Tested
+                                                                    // class
         final AdvancementUnit unit;     // Unit for the test
         final Component implant;        // Unit's implant
 
+        // Mocks implant
         implant = Mockito.mock(Component.class);
         Mockito.when(implant.getCost()).thenReturn(5);
 
+        // Mocks unit
         unit = Mockito.mock(AdvancementUnit.class);
         Mockito.when(unit.getCost()).thenReturn(10);
         Mockito.when(unit.getRank()).thenReturn(3);
         Mockito.when(unit.getGraftedImplant()).thenReturn(implant);
 
-        valorator = new AdvancementUnitValorationBuilder(5);
+        // Creates calculator
+        calculator = new AdvancementUnitValorationBuilder(5);
 
-        Assert.assertEquals(valorator.getValoration(unit), (Integer) 30);
+        Assert.assertEquals(calculator.getValoration(unit), (Integer) 30);
     }
 
 }
