@@ -76,7 +76,7 @@ public final class TestDefaultAdvancementUnit {
 
         // Creates unit
         unit = new DefaultAdvancementUnit("name", 0, Role.GUARD, attributes,
-                abilities, true, calculator);
+                abilities, true, true, calculator);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }

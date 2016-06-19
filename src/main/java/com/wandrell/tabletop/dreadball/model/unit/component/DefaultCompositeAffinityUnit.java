@@ -63,6 +63,8 @@ public final class DefaultCompositeAffinityUnit
      *            unit attributes
      * @param abilities
      *            unit abilities
+     * @param mvp
+     *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
      * @param affinities
@@ -80,15 +82,15 @@ public final class DefaultCompositeAffinityUnit
      */
     public DefaultCompositeAffinityUnit(final String nameTemplate,
             final Role position, final Attributes attributes,
-            final Collection<Ability> abilities, final Boolean giant,
-            final Collection<AffinityGroup> affinities,
+            final Collection<Ability> abilities, final Boolean mvp,
+            final Boolean giant, final Collection<AffinityGroup> affinities,
             final Collection<AffinityGroup> hated, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost,
             final Collection<Component> components) {
         super();
 
         baseUnit = new DefaultAffinityUnit(nameTemplate, position, attributes,
-                abilities, giant, affinities, hated, allyCost, friendCost,
+                abilities, mvp, giant, affinities, hated, allyCost, friendCost,
                 strangerCost);
 
         checkNotNull(components,
@@ -143,8 +145,18 @@ public final class DefaultCompositeAffinityUnit
     }
 
     @Override
+    public final Boolean getGiant() {
+        return getBaseUnit().getGiant();
+    }
+
+    @Override
     public final Collection<AffinityGroup> getHatedAffinityGroups() {
         return getBaseUnit().getAffinityGroups();
+    }
+
+    @Override
+    public final Boolean getMvp() {
+        return getBaseUnit().getMvp();
     }
 
     @Override
@@ -165,11 +177,6 @@ public final class DefaultCompositeAffinityUnit
     @Override
     public final String getTemplateName() {
         return getBaseUnit().getTemplateName();
-    }
-
-    @Override
-    public final Boolean isGiant() {
-        return getBaseUnit().isGiant();
     }
 
     @Override

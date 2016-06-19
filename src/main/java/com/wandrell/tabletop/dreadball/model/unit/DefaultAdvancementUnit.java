@@ -97,6 +97,8 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      *            unit attributes
      * @param abilities
      *            unit abilities
+     * @param mvp
+     *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
      * @param valorator
@@ -104,12 +106,13 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      */
     public DefaultAdvancementUnit(final String nameTemplate, final Integer cost,
             final Role role, final Attributes attributes,
-            final Collection<Ability> abilities, final Boolean giant,
+            final Collection<Ability> abilities, final Boolean mvp,
+            final Boolean giant,
             final UnitValorationCalculator<AdvancementUnit> valorator) {
         super();
 
         baseUnit = new DefaultUnit(nameTemplate, cost, role, attributes,
-                abilities, giant);
+                abilities, mvp, giant);
 
         unitAbilities.addAll(baseUnit.getAbilities());
 
@@ -138,8 +141,18 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
+    public final Boolean getGiant() {
+        return getBaseUnit().getGiant();
+    }
+
+    @Override
     public final Component getGraftedImplant() {
         return graftedImplant;
+    }
+
+    @Override
+    public final Boolean getMvp() {
+        return getBaseUnit().getMvp();
     }
 
     @Override
@@ -170,11 +183,6 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     @Override
     public final Integer getValoration() {
         return getValorationCalculator().getValoration(this);
-    }
-
-    @Override
-    public final Boolean isGiant() {
-        return getBaseUnit().isGiant();
     }
 
     @Override
@@ -218,7 +226,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("rank", rankValue)
                 .add("experience", experienceValue).add("role", getRole())
-                .add("giant", isGiant()).toString();
+                .add("mvp", getMvp()).add("giant", getGiant()).toString();
     }
 
     /**

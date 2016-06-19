@@ -74,7 +74,7 @@ public final class TestDefaultAffinityUnit {
 
         // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
-                abilities, true, new LinkedList<AffinityGroup>(),
+                abilities, true, true, new LinkedList<AffinityGroup>(),
                 new LinkedList<AffinityGroup>(), 0, 0, 0);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
@@ -101,7 +101,7 @@ public final class TestDefaultAffinityUnit {
 
         // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
-                new LinkedList<Ability>(), true, affinities,
+                new LinkedList<Ability>(), true, true, affinities,
                 new LinkedList<AffinityGroup>(), 0, 0, 0);
 
         Assert.assertEquals(unit.getAffinityGroups().size(), 1);
@@ -128,7 +128,7 @@ public final class TestDefaultAffinityUnit {
 
         // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
-                new LinkedList<Ability>(), true,
+                new LinkedList<Ability>(), true, true,
                 new LinkedList<AffinityGroup>(), affinities, 0, 0, 0);
 
         Assert.assertEquals(unit.getHatedAffinityGroups().size(), 1);

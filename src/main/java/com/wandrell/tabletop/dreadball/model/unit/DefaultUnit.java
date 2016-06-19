@@ -45,9 +45,9 @@ public final class DefaultUnit implements Unit {
     private final Boolean             giantFlag;
 
     /**
-     * Unit's name.
+     * Indicates if the unit is a MVP.
      */
-    private String                    unitName      = "";
+    private final Boolean             mvpFlag;
 
     /**
      * Name of the template from which this unit has been created.
@@ -70,6 +70,11 @@ public final class DefaultUnit implements Unit {
     private final Attributes          unitAttributes;
 
     /**
+     * Unit's name.
+     */
+    private String                    unitName      = "";
+
+    /**
      * Constructs a {@code DefaultUnit} with the specified arguments.
      * 
      * @param nameTemplate
@@ -82,12 +87,15 @@ public final class DefaultUnit implements Unit {
      *            unit attributes
      * @param abilities
      *            unit abilities
+     * @param mvp
+     *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
      */
     public DefaultUnit(final String nameTemplate, final Integer cost,
             final Role position, final Attributes attributes,
-            final Collection<Ability> abilities, final Boolean giant) {
+            final Collection<Ability> abilities, final Boolean mvp,
+            final Boolean giant) {
         super();
 
         templateName = checkNotNull(nameTemplate,
@@ -96,7 +104,9 @@ public final class DefaultUnit implements Unit {
                 "Received a null pointer as attributes");
         templatePosition = checkNotNull(position,
                 "Received a null pointer as position");
-        giantFlag = checkNotNull(giant, "Received a null pointer as giant");
+        giantFlag = checkNotNull(giant,
+                "Received a null pointer as giant flag");
+        mvpFlag = checkNotNull(mvp, "Received a null pointer as MVP flag");
         baseCost = checkNotNull(cost, "Received a null pointer as cost");
 
         checkNotNull(abilities, "Received a null pointer as abilities");
@@ -123,6 +133,16 @@ public final class DefaultUnit implements Unit {
     }
 
     @Override
+    public final Boolean getGiant() {
+        return giantFlag;
+    }
+
+    @Override
+    public final Boolean getMvp() {
+        return mvpFlag;
+    }
+
+    @Override
     public final String getName() {
         return unitName;
     }
@@ -135,11 +155,6 @@ public final class DefaultUnit implements Unit {
     @Override
     public final String getTemplateName() {
         return templateName;
-    }
-
-    @Override
-    public final Boolean isGiant() {
-        return giantFlag;
     }
 
     /**
@@ -155,7 +170,8 @@ public final class DefaultUnit implements Unit {
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("name", getTemplateName())
-                .add("role", getRole()).add("giant", isGiant()).toString();
+                .add("role", getRole()).add("mvp", getMvp())
+                .add("giant", getGiant()).toString();
     }
 
     /**

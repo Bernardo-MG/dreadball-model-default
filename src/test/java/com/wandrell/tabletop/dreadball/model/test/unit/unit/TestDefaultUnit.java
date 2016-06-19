@@ -69,7 +69,7 @@ public final class TestDefaultUnit {
 
         // Creates unit
         unit = new DefaultUnit("name", 0, Role.GUARD, attributes, abilities,
-                true);
+                true, true);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }

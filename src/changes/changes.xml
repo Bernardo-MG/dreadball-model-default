@@ -45,9 +45,17 @@
                 Added base POM.
             </action>
         </release>
-        <release version="0.3.0" date="2015-12-8" description="Updated API">
+        <release version="0.3.0" date="2016-06-12" description="Updated API">
             <action dev="bmg" type="update">
                 Updated to the latest API.
+            </action>
+        </release>
+        <release version="0.4.0" date="2016-06-19" description="Added MVP flag">
+            <action dev="bmg" type="update">
+                Added the MVP flag to the units.
+            </action>
+            <action dev="bmg" type="update">
+                Removed the MVP availability class.
             </action>
         </release>
 	</body>
