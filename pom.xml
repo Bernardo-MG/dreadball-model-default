@@ -186,7 +186,7 @@
       <guava.version>19.0</guava.version>
       <log4j.version>2.6</log4j.version>
       <mockito.version>1.10.19</mockito.version>
-      <tabletop.dreadball.api.version>0.5.1</tabletop.dreadball.api.version>
+      <tabletop.dreadball.api.version>0.6.0</tabletop.dreadball.api.version>
       <testng.version>6.9.10</testng.version>
       <!-- Plugins versions -->
       <plugin.changes.version>2.12</plugin.changes.version>

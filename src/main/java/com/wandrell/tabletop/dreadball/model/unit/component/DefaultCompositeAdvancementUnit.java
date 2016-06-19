@@ -63,6 +63,8 @@ public final class DefaultCompositeAdvancementUnit
      *            unit attributes
      * @param abilities
      *            unit abilities
+     * @param mvp
+     *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
      * @param valorator
@@ -73,13 +75,13 @@ public final class DefaultCompositeAdvancementUnit
     public DefaultCompositeAdvancementUnit(final String nameTemplate,
             final Integer cost, final Role position,
             final Attributes attributes, final Collection<Ability> abilities,
-            final Boolean giant,
+            final Boolean mvp, final Boolean giant,
             final UnitValorationCalculator<AdvancementUnit> valorator,
             final Collection<Component> components) {
         super();
 
         baseUnit = new DefaultAdvancementUnit(nameTemplate, cost, position,
-                attributes, abilities, giant, valorator);
+                attributes, abilities, mvp, giant, valorator);
 
         checkNotNull(components,
                 "Received a null pointer as valoration the components");
@@ -123,8 +125,18 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
+    public final Boolean getGiant() {
+        return getBaseUnit().getGiant();
+    }
+
+    @Override
     public final Component getGraftedImplant() {
         return getBaseUnit().getGraftedImplant();
+    }
+
+    @Override
+    public final Boolean getMvp() {
+        return getBaseUnit().getMvp();
     }
 
     @Override
@@ -155,11 +167,6 @@ public final class DefaultCompositeAdvancementUnit
     @Override
     public final Integer getValoration() {
         return getBaseUnit().getValoration();
-    }
-
-    @Override
-    public final Boolean isGiant() {
-        return getBaseUnit().isGiant();
     }
 
     @Override

@@ -84,6 +84,8 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      *            unit attributes
      * @param abilities
      *            unit abilities
+     * @param mvp
+     *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
      * @param affinities
@@ -99,13 +101,14 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      */
     public DefaultAffinityUnit(final String nameTemplate, final Role position,
             final Attributes attributes, final Collection<Ability> abilities,
-            final Boolean giant, final Collection<AffinityGroup> affinities,
+            final Boolean mvp, final Boolean giant,
+            final Collection<AffinityGroup> affinities,
             final Collection<AffinityGroup> hated, final Integer allyCost,
             final Integer friendCost, final Integer strangerCost) {
         super();
 
         baseUnit = new DefaultUnit(nameTemplate, 0, position, attributes,
-                abilities, giant);
+                abilities, mvp, giant);
 
         costAlly = checkNotNull(allyCost,
                 "Received a null pointer as ally cost");
@@ -159,9 +162,19 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     }
 
     @Override
+    public final Boolean getGiant() {
+        return getBaseUnit().getGiant();
+    }
+
+    @Override
     public final Collection<AffinityGroup> getHatedAffinityGroups() {
         return Collections
                 .unmodifiableCollection(getHatedAffinityGroupsModifiable());
+    }
+
+    @Override
+    public final Boolean getMvp() {
+        return getBaseUnit().getMvp();
     }
 
     @Override
@@ -182,11 +195,6 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     @Override
     public final String getTemplateName() {
         return getBaseUnit().getTemplateName();
-    }
-
-    @Override
-    public final Boolean isGiant() {
-        return getBaseUnit().isGiant();
     }
 
     /**
