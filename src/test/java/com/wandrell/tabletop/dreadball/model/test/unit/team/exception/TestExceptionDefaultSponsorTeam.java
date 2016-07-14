@@ -48,35 +48,6 @@ public final class TestExceptionDefaultSponsorTeam {
     }
 
     /**
-     * Tests that adding an existing player raises an
-     * {@code IllegalArgumentException}.
-     */
-    @SuppressWarnings("unchecked")
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testAddPlayer_Existing() {
-        final SponsorTeam team; // Tested team
-        final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final Unit player;      // Mocked player
-
-        // Mocks calculator
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-
-        // Mocks sponsor
-        sponsor = Mockito.mock(Sponsor.class);
-
-        // Mocks player
-        player = Mockito.mock(Unit.class);
-
-        // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator);
-
-        team.addPlayer(player, 0);
-        team.addPlayer(player, 1);
-    }
-
-    /**
      * Tests that adding a player to a negative position raises an
      * {@code IllegalArgumentException}.
      */

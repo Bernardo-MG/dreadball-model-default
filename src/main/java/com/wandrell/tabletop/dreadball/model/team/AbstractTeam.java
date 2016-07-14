@@ -67,8 +67,6 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
         checkNotNull(position, "Received a null pointer as position");
 
         checkArgument(position > 0, "The position should be higher than zero");
-        checkArgument(getUnitPosition(player) < 0,
-                "The player is already on the team");
 
         getPlayersModifiable().put(position, player);
     }
