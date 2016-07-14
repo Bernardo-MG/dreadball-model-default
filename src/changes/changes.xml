@@ -58,5 +58,13 @@
                 Removed the MVP availability class.
             </action>
         </release>
+        <release version="0.5.0" date="2016-07-14" description="Updated API">
+            <action dev="bmg" type="update">
+                Updated API.
+            </action>
+            <action dev="bmg" type="update">
+                Added comparison methods.
+            </action>
+        </release>
 	</body>
 </document>

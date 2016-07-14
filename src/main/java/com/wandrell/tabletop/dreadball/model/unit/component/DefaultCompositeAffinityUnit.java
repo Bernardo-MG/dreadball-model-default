@@ -21,6 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityUnit;
@@ -105,6 +106,26 @@ public final class DefaultCompositeAffinityUnit
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultCompositeAffinityUnit other;
+
+        other = (DefaultCompositeAffinityUnit) obj;
+        return Objects.equals(baseUnit, other.baseUnit);
+    }
+
+    @Override
     public final Collection<Ability> getAbilities() {
         return getBaseUnit().getAbilities();
     }
@@ -177,6 +198,11 @@ public final class DefaultCompositeAffinityUnit
     @Override
     public final String getTemplateName() {
         return getBaseUnit().getTemplateName();
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hashCode(baseUnit);
     }
 
     @Override

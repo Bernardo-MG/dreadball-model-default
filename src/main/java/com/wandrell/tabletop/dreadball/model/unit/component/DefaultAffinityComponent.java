@@ -19,6 +19,7 @@ package com.wandrell.tabletop.dreadball.model.unit.component;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Collection;
+import java.util.Objects;
 
 import com.wandrell.tabletop.dreadball.model.unit.Role;
 import com.wandrell.tabletop.dreadball.model.unit.stats.Ability;
@@ -101,6 +102,26 @@ public final class DefaultAffinityComponent implements AffinityComponent {
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultAffinityComponent other;
+
+        other = (DefaultAffinityComponent) obj;
+        return Objects.equals(baseComponent, other.baseComponent);
+    }
+
+    @Override
     public final Collection<Ability> getAbilities() {
         return getBaseComponent().getAbilities();
     }
@@ -143,6 +164,11 @@ public final class DefaultAffinityComponent implements AffinityComponent {
     @Override
     public final Integer getStrangerCost() {
         return costStranger;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hashCode(baseComponent);
     }
 
     /**

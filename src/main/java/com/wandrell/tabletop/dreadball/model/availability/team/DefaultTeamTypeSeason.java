@@ -18,6 +18,8 @@ package com.wandrell.tabletop.dreadball.model.availability.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Objects;
+
 import com.wandrell.tabletop.dreadball.model.availability.faction.TeamTypeSeason;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
@@ -58,6 +60,27 @@ public final class DefaultTeamTypeSeason implements TeamTypeSeason {
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultTeamTypeSeason other;
+
+        other = (DefaultTeamTypeSeason) obj;
+        return Objects.equals(team, other.team)
+                && Objects.equals(seasonNumber, other.seasonNumber);
+    }
+
+    @Override
     public final Integer getSeasonNumber() {
         return seasonNumber;
     }
@@ -65,6 +88,11 @@ public final class DefaultTeamTypeSeason implements TeamTypeSeason {
     @Override
     public final TeamType getTeam() {
         return team;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(team, seasonNumber);
     }
 
 }

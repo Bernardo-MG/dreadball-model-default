@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.unit.component.Component;
@@ -126,6 +127,27 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultAdvancementUnit other;
+
+        other = (DefaultAdvancementUnit) obj;
+        return Objects.equals(baseUnit, other.baseUnit)
+                && Objects.equals(unitName, other.unitName);
+    }
+
+    @Override
     public final Collection<Ability> getAbilities() {
         return Collections.unmodifiableCollection(getAbilitiesModifiable());
     }
@@ -183,6 +205,11 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     @Override
     public final Integer getValoration() {
         return getValorationCalculator().getValoration(this);
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(baseUnit, unitName);
     }
 
     @Override
