@@ -39,12 +39,12 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestRankCostCalculator {
+public final class TestDefaultRankCostCalculator {
 
     /**
      * Default constructor.
      */
-    public TestRankCostCalculator() {
+    public TestDefaultRankCostCalculator() {
         super();
     }
 

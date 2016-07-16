@@ -42,12 +42,12 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestSponsorTeam {
+public final class TestDefaultSponsorTeam {
 
     /**
      * Default constructor.
      */
-    public TestSponsorTeam() {
+    public TestDefaultSponsorTeam() {
         super();
     }
 
