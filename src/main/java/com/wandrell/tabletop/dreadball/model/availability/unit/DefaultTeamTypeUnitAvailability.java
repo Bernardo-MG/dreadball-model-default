@@ -45,8 +45,7 @@ public final class DefaultTeamTypeUnitAvailability
     private final TeamType teamType;
 
     /**
-     * Constructs a {@code DefaultTeamTypeUnitAvailability} with the specified
-     * arguments.
+     * Constructs a unit availability for the specified team and unit.
      * 
      * @param team
      *            {@code TeamType} for which the availability applies

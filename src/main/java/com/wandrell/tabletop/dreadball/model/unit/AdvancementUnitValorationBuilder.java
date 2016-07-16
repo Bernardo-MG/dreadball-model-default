@@ -40,7 +40,7 @@ public final class AdvancementUnitValorationBuilder
     private final Integer rankValue;
 
     /**
-     * Constructs a {@code AdvancementUnitValorationBuilder} with the specified
+     * Constructs an advancement unit valoration calculator with the specified
      * arguments.
      * 
      * @param rankCostIncrease

@@ -57,7 +57,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     private Integer               teamDice         = 0;
 
     /**
-     * Constructs an {@code AbstractTeam}.
+     * Default constructor.
      */
     public AbstractTeam() {
         super();

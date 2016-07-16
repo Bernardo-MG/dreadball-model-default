@@ -37,7 +37,7 @@ public final class DefaultTeamRule implements TeamRule {
     private final String ruleName;
 
     /**
-     * Constructs a {@code DefaultTeamRule} with the specified parameters.
+     * Constructs a team rule with the specified parameters.
      * 
      * @param name
      *            the team's name

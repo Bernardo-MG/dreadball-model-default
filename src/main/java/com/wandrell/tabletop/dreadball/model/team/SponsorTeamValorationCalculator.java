@@ -59,7 +59,10 @@ public final class SponsorTeamValorationCalculator
     private final Integer costWager;
 
     /**
-     * Constructs a {@code SponsorTeamValorationCalculator}.
+     * Constructs a team valoration calculator using the specified cost.
+     * <p>
+     * These costs will be applied to the team assets to find out the final
+     * cost.
      * 
      * @param dieCost
      *            cost of a Coaching Die

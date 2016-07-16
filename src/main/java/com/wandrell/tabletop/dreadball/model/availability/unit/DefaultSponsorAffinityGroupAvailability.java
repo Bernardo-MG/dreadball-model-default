@@ -53,8 +53,7 @@ public final class DefaultSponsorAffinityGroupAvailability
     private final Boolean                   hasRankInc;
 
     /**
-     * Constructs a {@code DefaultSponsorAffinityGroupAvailability} with the
-     * specified arguments.
+     * Constructs a set of affinity groups availabilities for sponsors.
      * 
      * @param name
      *            name of the availability

@@ -37,7 +37,7 @@ public final class DefaultComponentLocation implements ComponentLocation {
     private final String locationName;
 
     /**
-     * Constructs a {@code DefaultComponentLocation}.
+     * Constructs a component location.
      * 
      * @param name
      *            name of the location

@@ -61,8 +61,7 @@ public final class DefaultAffinityComponent implements AffinityComponent {
     private final Integer   costStranger;
 
     /**
-     * Constructs a {@code DefaultAffinityComponent} with the specified
-     * arguments.
+     * Constructs an affinities component with the specified arguments.
      * 
      * @param name
      *            name of the component

@@ -69,7 +69,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     private final TeamValorationCalculator<SponsorTeam> valorationCalculator;
 
     /**
-     * Constructs a {@code DefaultSponsorTeam} with the specified arguments.
+     * Constructs a sponsor team with the specified arguments.
      * 
      * @param sponsor
      *            the team's sponsor

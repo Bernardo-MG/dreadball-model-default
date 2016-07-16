@@ -37,7 +37,7 @@ public final class DefaultAbility implements Ability {
     private final String abilityName;
 
     /**
-     * Constructs a {@code DefaultAbility} with the specified parameters.
+     * Constructs an ability with the specified parameters.
      * 
      * @param name
      *            ability's name

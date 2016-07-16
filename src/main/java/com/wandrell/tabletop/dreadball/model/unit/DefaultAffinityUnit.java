@@ -75,7 +75,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     private String                          unitName        = "";
 
     /**
-     * Constructs a {@code DefaultAffinityUnit} with the specified arguments.
+     * Constructs an affinity unit with the specified arguments.
      * 
      * @param nameTemplate
      *            the unit's base template name

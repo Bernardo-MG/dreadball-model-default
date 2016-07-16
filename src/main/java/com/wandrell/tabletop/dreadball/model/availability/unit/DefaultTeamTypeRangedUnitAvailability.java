@@ -56,8 +56,7 @@ public final class DefaultTeamTypeRangedUnitAvailability
     private final TeamType teamType;
 
     /**
-     * Constructs a {@code DefaultTeamTypeUnitAvailability} with the specified
-     * arguments.
+     * Constructs a ranged unit availability for the specified team and unit.
      * 
      * @param team
      *            {@code TeamType} for which the availability applies

@@ -76,7 +76,7 @@ public final class DefaultUnit implements Unit {
     private String                    unitName      = "";
 
     /**
-     * Constructs a {@code DefaultUnit} with the specified arguments.
+     * Constructs a unit with the specified arguments.
      * 
      * @param nameTemplate
      *            the unit's base template name

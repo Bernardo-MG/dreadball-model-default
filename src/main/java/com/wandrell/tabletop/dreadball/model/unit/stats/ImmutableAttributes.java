@@ -57,7 +57,7 @@ public final class ImmutableAttributes implements Attributes {
     private final Integer strengthValue;
 
     /**
-     * Constructs a {@code ImmutableAttributes}.
+     * Constructs attributes with the specified values.
      * 
      * @param armor
      *            armor value

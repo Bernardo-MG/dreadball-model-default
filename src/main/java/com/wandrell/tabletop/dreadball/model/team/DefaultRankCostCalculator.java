@@ -1,8 +1,28 @@
+/**
+ * Copyright 2016 the original author or authors
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 
 package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ * Rank cost calculator.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
 public final class DefaultRankCostCalculator implements RankCostCalculator {
 
     /**
@@ -35,13 +55,30 @@ public final class DefaultRankCostCalculator implements RankCostCalculator {
      */
     private final Integer costWager;
 
+    /**
+     * Constructs a rank cost calculator using the specified cost.
+     * <p>
+     * These costs will be applied to the team assets to find out the final
+     * cost.
+     * 
+     * @param dieCost
+     *            rank cost of a die
+     * @param sabotageCost
+     *            rank cost of a sabotage card
+     * @param specialMoveCost
+     *            rank cost of a special move card
+     * @param cheerleaderCost
+     *            rank cost of a cheerleader
+     * @param wagerCost
+     *            rank cost of a wager
+     * @param medibotCost
+     *            rank cost of a medibot
+     */
     public DefaultRankCostCalculator(final Integer dieCost,
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderCost, final Integer wagerCost,
             final Integer medibotCost) {
         super();
-
-        // TODO: Test this class
 
         costDie = checkNotNull(dieCost,
                 "Received a null pointer as the dice cost");

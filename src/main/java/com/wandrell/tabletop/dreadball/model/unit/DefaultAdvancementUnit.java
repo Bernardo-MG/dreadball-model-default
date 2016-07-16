@@ -86,7 +86,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     private final UnitValorationCalculator<AdvancementUnit> valorationBuilder;
 
     /**
-     * Constructs a {@code DefaultAdvancementUnit} with the specified arguments.
+     * Constructs an advancement unit with the specified arguments.
      * 
      * @param nameTemplate
      *            the unit's base template name

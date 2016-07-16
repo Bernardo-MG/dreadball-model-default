@@ -49,7 +49,10 @@ public final class AdvancementTeamValorationCalculator
     private final Integer costDie;
 
     /**
-     * Constructs a {@code AdvancementTeamValorationCalculator}.
+     * Constructs a team valoration calculator using the specified cost.
+     * <p>
+     * These costs will be applied to the team assets to find out the final
+     * cost.
      * 
      * @param dieCost
      *            the cost of a Coaching Die

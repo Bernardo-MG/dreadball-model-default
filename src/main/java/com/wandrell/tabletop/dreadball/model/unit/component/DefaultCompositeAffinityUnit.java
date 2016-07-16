@@ -53,8 +53,7 @@ public final class DefaultCompositeAffinityUnit
     private final Collection<Component> unitComponents = new LinkedHashSet<Component>();
 
     /**
-     * Constructs a {@code DefaultCompositeAffinityUnit} with the specified
-     * arguments.
+     * Constructs a composite affinities unit with the specified arguments.
      * 
      * @param nameTemplate
      *            the unit's base template name

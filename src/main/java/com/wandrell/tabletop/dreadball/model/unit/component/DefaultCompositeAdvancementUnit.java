@@ -51,8 +51,7 @@ public final class DefaultCompositeAdvancementUnit
     private final Collection<Component> unitComponents = new LinkedHashSet<Component>();
 
     /**
-     * Constructs a {@code DefaultCompositeAdvancementUnit} with the specified
-     * arguments.
+     * Constructs a composite advancement unit with the specified arguments.
      * 
      * @param nameTemplate
      *            the unit's base template name

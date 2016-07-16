@@ -43,7 +43,7 @@ public final class DefaultTeamTypeSeason implements TeamTypeSeason {
     private final TeamType team;
 
     /**
-     * Constructs a {@code DefaultTeamTypeSeason}.
+     * Constructs a team season.
      * 
      * @param teamType
      *            team type which appeared in the season

@@ -24,6 +24,8 @@ import com.google.common.base.MoreObjects;
 
 /**
  * Unit attributes.
+ * <p>
+ * This is a mutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -55,7 +57,7 @@ public final class MutableAttributes implements Attributes {
     private Integer strengthValue = 0;
 
     /**
-     * Constructs a {@code MutableAttributes}.
+     * Default constructor.
      */
     public MutableAttributes() {
         super();

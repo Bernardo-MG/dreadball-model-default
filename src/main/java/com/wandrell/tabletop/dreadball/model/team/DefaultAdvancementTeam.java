@@ -74,7 +74,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     private final TeamValorationCalculator<AdvancementTeam> valorationCalculator;
 
     /**
-     * Constructs a {@code DefaultLicensedTeam} with the specified parameters.
+     * Constructs an advancement team with the specified parameters.
      * 
      * @param type
      *            team's base type
