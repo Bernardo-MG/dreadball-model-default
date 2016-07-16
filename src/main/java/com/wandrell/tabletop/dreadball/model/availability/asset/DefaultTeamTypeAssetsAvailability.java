@@ -257,6 +257,21 @@ public final class DefaultTeamTypeAssetsAvailability
     }
 
     @Override
+    public final Boolean getStartingWithDefensiveCoachingStaff() {
+        return initialCoachDef;
+    }
+
+    @Override
+    public final Boolean getStartingWithOffensiveCoachingStaff() {
+        return initialCoachOff;
+    }
+
+    @Override
+    public final Boolean getStartingWithSupportCoachingStaff() {
+        return initialCoachSup;
+    }
+
+    @Override
     public final TeamType getTeamType() {
         return teamType;
     }
@@ -264,21 +279,6 @@ public final class DefaultTeamTypeAssetsAvailability
     @Override
     public final int hashCode() {
         return Objects.hashCode(teamType);
-    }
-
-    @Override
-    public final Boolean isStartingWithDefensiveCoachingStaff() {
-        return initialCoachDef;
-    }
-
-    @Override
-    public final Boolean isStartingWithOffensiveCoachingStaff() {
-        return initialCoachOff;
-    }
-
-    @Override
-    public final Boolean isStartingWithSupportCoachingStaff() {
-        return initialCoachSup;
     }
 
 }

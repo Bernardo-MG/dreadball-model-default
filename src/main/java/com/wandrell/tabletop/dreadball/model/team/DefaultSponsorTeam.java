@@ -34,6 +34,11 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
         implements SponsorTeam {
 
     /**
+     * Rank cost calculator.
+     */
+    private final RankCostCalculator                    rankCostCalculator;
+
+    /**
      * Number of Medibots in the team.
      */
     private Integer                                     teamMedibots      = 0;
@@ -59,9 +64,9 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     private Integer                                     teamWagers        = 0;
 
     /**
-     * Builder for calculating the valoration.
+     * Valoration calculator.
      */
-    private final TeamValorationCalculator<SponsorTeam> valorationBuilder;
+    private final TeamValorationCalculator<SponsorTeam> valorationCalculator;
 
     /**
      * Constructs a {@code DefaultSponsorTeam} with the specified arguments.
@@ -72,13 +77,16 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
      *            valoration calculator for the team
      */
     public DefaultSponsorTeam(final Sponsor sponsor,
-            final TeamValorationCalculator<SponsorTeam> valorator) {
+            final TeamValorationCalculator<SponsorTeam> valorator,
+            final RankCostCalculator rankCoster) {
         super();
 
         teamSponsor = checkNotNull(sponsor,
                 "Received a null pointer as sponsor");
-        valorationBuilder = checkNotNull(valorator,
-                "Received a null pointer as valoration builder");
+        valorationCalculator = checkNotNull(valorator,
+                "Received a null pointer as valoration calculator");
+        rankCostCalculator = checkNotNull(rankCoster,
+                "Received a null pointer as rank cost calculator");
     }
 
     @Override
@@ -104,6 +112,11 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     @Override
     public final Integer getMediBots() {
         return teamMedibots;
+    }
+
+    @Override
+    public final Integer getRankCost() {
+        return getRankCostCalculator().getRankCost(this);
     }
 
     @Override
@@ -163,13 +176,22 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     }
 
     /**
+     * Returns the rank cost calculator.
+     * 
+     * @return the rank cost calculator
+     */
+    private final RankCostCalculator getRankCostCalculator() {
+        return rankCostCalculator;
+    }
+
+    /**
      * Returns the valoration calculator.
      * 
      * @return the valoration calculator
      */
     private final TeamValorationCalculator<SponsorTeam>
             getValorationCalculator() {
-        return valorationBuilder;
+        return valorationCalculator;
     }
 
 }

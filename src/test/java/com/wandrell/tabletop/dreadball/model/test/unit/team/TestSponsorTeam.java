@@ -22,6 +22,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
+import com.wandrell.tabletop.dreadball.model.team.RankCostCalculator;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
@@ -54,21 +55,23 @@ public final class TestSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testAddPlayer_Empty() {
-        final SponsorTeam team;                      // Tested team
-        final AdvancementUnit player1;               // Mocked player 1
-        final AdvancementUnit player2;               // Mocked player 2
-        final Sponsor sponsor;                       // Mocked sponsor
+        final SponsorTeam team;          // Tested team
+        final AdvancementUnit player1;   // Mocked player 1
+        final AdvancementUnit player2;   // Mocked player 2
+        final Sponsor sponsor;           // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
+        final RankCostCalculator ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
-        // Mocks calculator
+        // Mocks calculators
         calculator = Mockito.mock(TeamValorationCalculator.class);
+        ranker = Mockito.mock(RankCostCalculator.class);
 
         // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator);
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
         player1 = Mockito.mock(AdvancementUnit.class);
@@ -87,21 +90,23 @@ public final class TestSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testAddPlayer_Overwrite() {
-        final SponsorTeam team;                      // Tested team
-        final AdvancementUnit player1;               // Mocked player 1
-        final AdvancementUnit player2;               // Mocked player 2
-        final Sponsor sponsor;                       // Mocked sponsor
+        final SponsorTeam team;          // Tested team
+        final AdvancementUnit player1;   // Mocked player 1
+        final AdvancementUnit player2;   // Mocked player 2
+        final Sponsor sponsor;           // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
+        final RankCostCalculator ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
-        // Mocks calculator
+        // Mocks calculators
         calculator = Mockito.mock(TeamValorationCalculator.class);
+        ranker = Mockito.mock(RankCostCalculator.class);
 
         // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator);
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
         player1 = Mockito.mock(AdvancementUnit.class);
@@ -125,20 +130,22 @@ public final class TestSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testRemovePlayer_Number() {
-        final SponsorTeam team;                      // Tested team
-        final AdvancementUnit player;                // Mocked player
-        final Sponsor sponsor;                       // Mocked sponsor
+        final SponsorTeam team;          // Tested team
+        final AdvancementUnit player;    // Mocked player
+        final Sponsor sponsor;           // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
+        final RankCostCalculator ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
-        // Mocks calculator
+        // Mocks calculators
         calculator = Mockito.mock(TeamValorationCalculator.class);
+        ranker = Mockito.mock(RankCostCalculator.class);
 
         // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator);
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks player
         player = Mockito.mock(AdvancementUnit.class);
@@ -155,20 +162,22 @@ public final class TestSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testRemovePlayer_Player() {
-        final SponsorTeam team;                      // Tested team
-        final AdvancementUnit player;                // Mocked player
-        final Sponsor sponsor;                       // Mocked sponsor
+        final SponsorTeam team;          // Tested team
+        final AdvancementUnit player;    // Mocked player
+        final Sponsor sponsor;           // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
+        final RankCostCalculator ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
-        // Mocks calculator
+        // Mocks calculators
         calculator = Mockito.mock(TeamValorationCalculator.class);
+        ranker = Mockito.mock(RankCostCalculator.class);
 
         // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator);
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks player
         player = Mockito.mock(AdvancementUnit.class);
