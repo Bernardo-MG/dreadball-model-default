@@ -29,7 +29,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class AdvancementUnitValorationBuilder
+public final class AdvancementUnitValorationCalculator
         implements UnitValorationCalculator<AdvancementUnit> {
 
     /**
@@ -46,7 +46,7 @@ public final class AdvancementUnitValorationBuilder
      * @param rankCostIncrease
      *            the cost of each rank
      */
-    public AdvancementUnitValorationBuilder(final Integer rankCostIncrease) {
+    public AdvancementUnitValorationCalculator(final Integer rankCostIncrease) {
         super();
 
         rankValue = checkNotNull(rankCostIncrease,
