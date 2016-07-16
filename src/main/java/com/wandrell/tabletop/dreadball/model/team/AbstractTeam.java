@@ -71,7 +71,6 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
         final Integer maxPos;          // Maximum position
         Integer position;              // Team position searched
 
-        // TODO: Test this
         positions = new LinkedList<Integer>(getPlayersModifiable().keySet());
         Collections.sort(positions);
 

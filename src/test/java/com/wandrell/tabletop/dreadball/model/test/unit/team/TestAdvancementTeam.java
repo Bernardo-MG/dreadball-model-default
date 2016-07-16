@@ -33,6 +33,8 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * <ol>
  * <li>Adding units to an empty team work as expected</li>
  * <li>Adding a unit to an existing position overwrites the unit</li>
+ * <li>Adding a unit without giving a position uses the first empty position
+ * </li>
  * <li>Removing a unit using its position works as expected</li>
  * <li>Removing a unit using it as a reference works as expected</li>
  * </ol>
@@ -49,11 +51,48 @@ public final class TestAdvancementTeam {
     }
 
     /**
+     * Tests that adding a unit without giving a position uses the first empty
+     * position.
+     */
+    @SuppressWarnings("unchecked")
+    @Test
+    public final void testAddPlayer_AutoPos_FirstEmpty() {
+        final AdvancementTeam team;                  // Tested team
+        final AdvancementUnit player1;               // Mocked player 1
+        final AdvancementUnit player2;               // Mocked player 2
+        final AdvancementUnit player3;               // Mocked player 3
+        final TeamType type;                         // Mocked team type
+        final TeamValorationCalculator<AdvancementTeam> calculator; // Mocked
+                                                                    // calculator
+
+        // Mocks team type
+        type = Mockito.mock(TeamType.class);
+
+        // Mocks valoration calculator
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
+
+        // Mocks players
+        player1 = Mockito.mock(AdvancementUnit.class);
+        player2 = Mockito.mock(AdvancementUnit.class);
+        player3 = Mockito.mock(AdvancementUnit.class);
+
+        team.addPlayer(player1, 1);
+        team.addPlayer(player3, 3);
+
+        team.addPlayer(player2);
+
+        Assert.assertEquals(team.getPlayers().get(2), player2);
+    }
+
+    /**
      * Tests that adding units to an empty team work as expected.
      */
     @SuppressWarnings("unchecked")
     @Test
-    public final void testAddPlayer_Empty() {
+    public final void testAddPlayer_Position_Empty() {
         final AdvancementTeam team;                  // Tested team
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
@@ -85,7 +124,7 @@ public final class TestAdvancementTeam {
      */
     @SuppressWarnings("unchecked")
     @Test
-    public final void testAddPlayer_Overwrite() {
+    public final void testAddPlayer_Position_Overwrite() {
         final AdvancementTeam team;                  // Tested team
         final AdvancementUnit player1;               // Mocked player 1
         final AdvancementUnit player2;               // Mocked player 2
@@ -122,7 +161,7 @@ public final class TestAdvancementTeam {
      */
     @SuppressWarnings("unchecked")
     @Test
-    public final void testRemovePlayer_Number() {
+    public final void testRemovePlayer_Position_Number() {
         final AdvancementTeam team;                  // Tested team
         final AdvancementUnit player;                // Mocked player
         final TeamType type;                         // Mocked team type
@@ -152,7 +191,7 @@ public final class TestAdvancementTeam {
      */
     @SuppressWarnings("unchecked")
     @Test
-    public final void testRemovePlayer_Player() {
+    public final void testRemovePlayer_Position_Player() {
         final AdvancementTeam team;                  // Tested team
         final AdvancementUnit player;                // Mocked player
         final TeamType type;                         // Mocked team type
