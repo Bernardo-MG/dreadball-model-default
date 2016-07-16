@@ -23,63 +23,61 @@ import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
-import com.wandrell.tabletop.dreadball.model.team.AdvancementTeamValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.DefaultRankCostCalculator;
+import com.wandrell.tabletop.dreadball.model.team.RankCostCalculator;
+import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
- * Unit tests for {@link TeamValorationCalculator} applied to a
- * {@link AdvancementTeam}.
+ * Unit tests for {@link DefaultRankCostCalculator}.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>Valoration is calculated correctly</li>
+ * <li>Rank cost is calculated correctly</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestTeamValorationCalculator {
+public final class TestDefaultRankCostCalculator {
 
     /**
      * Default constructor.
      */
-    public TestTeamValorationCalculator() {
+    public TestDefaultRankCostCalculator() {
         super();
     }
 
     /**
-     * Tests that the valoration is calculated correctly.
+     * Tests that the rank cost is calculated correctly.
      */
     @Test
-    public final void testValoration() {
-        final TeamValorationCalculator<AdvancementTeam> calculator; // Tested
-                                                                    // class
-        final AdvancementTeam team;                  // Team to valorate
-        final Map<Integer, AdvancementUnit> players; // Team players
-        final AdvancementUnit player;                // Mocked player
+    public final void testRankCost() {
+        final RankCostCalculator calculator; // Tested class
+        final SponsorTeam team;              // Team to valorate
+        final Map<Integer, Unit> players;    // Team players
+        final Unit player;                   // Mocked player
 
         // Mocks team
-        team = Mockito.mock(AdvancementTeam.class);
+        team = Mockito.mock(SponsorTeam.class);
         Mockito.when(team.getCoachingDice()).thenReturn(2);
-        Mockito.when(team.getDreadballCards()).thenReturn(4);
+        Mockito.when(team.getSabotageCards()).thenReturn(4);
+        Mockito.when(team.getSpecialMoveCards()).thenReturn(5);
         Mockito.when(team.getCheerleaders()).thenReturn(1);
-        Mockito.when(team.hasDefensiveCoachingStaff()).thenReturn(true);
-        Mockito.when(team.hasOffensiveCoachingStaff()).thenReturn(true);
-        Mockito.when(team.hasSupportCoachingStaff()).thenReturn(true);
+        Mockito.when(team.getMediBots()).thenReturn(2);
+        Mockito.when(team.getWagers()).thenReturn(3);
 
         // Mocks players
         players = new LinkedHashMap<>();
         player = Mockito.mock(AdvancementUnit.class);
-        Mockito.when(player.getValoration()).thenReturn(10);
         players.put(1, player);
 
         Mockito.when(team.getPlayers()).thenReturn(players);
 
         // Creates calculator
-        calculator = new AdvancementTeamValorationCalculator(1, 2, 3, 4);
+        calculator = new DefaultRankCostCalculator(1, 2, 3, 4, 5, 6);
 
-        Assert.assertEquals(calculator.getValoration(team), (Integer) 35);
+        Assert.assertEquals(calculator.getRankCost(team), (Integer) 56);
     }
 
 }

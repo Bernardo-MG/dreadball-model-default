@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2016 the original author or authors
+ * Copyright 2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -18,15 +18,12 @@ package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.wandrell.tabletop.dreadball.model.unit.Unit;
-
 /**
- * Team valoration calculator for an {@code SponsorTeam}.
+ * Rank cost calculator.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class SponsorTeamValorationCalculator
-        implements TeamValorationCalculator<SponsorTeam> {
+public final class DefaultRankCostCalculator implements RankCostCalculator {
 
     /**
      * Cost of a Cheerleader.
@@ -59,25 +56,25 @@ public final class SponsorTeamValorationCalculator
     private final Integer costWager;
 
     /**
-     * Constructs a team valoration calculator using the specified cost.
+     * Constructs a rank cost calculator using the specified cost.
      * <p>
      * These costs will be applied to the team assets to find out the final
      * cost.
      * 
      * @param dieCost
-     *            cost of a Coaching Die
+     *            rank cost of a die
      * @param sabotageCost
-     *            cost of a Sabotage Card
+     *            rank cost of a sabotage card
      * @param specialMoveCost
-     *            cost of a Special Move Card
+     *            rank cost of a special move card
      * @param cheerleaderCost
-     *            cost of a Cheerleader
+     *            rank cost of a cheerleader
      * @param wagerCost
-     *            cost of a Wager
+     *            rank cost of a wager
      * @param medibotCost
-     *            cost of a Medibot
+     *            rank cost of a medibot
      */
-    public SponsorTeamValorationCalculator(final Integer dieCost,
+    public DefaultRankCostCalculator(final Integer dieCost,
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderCost, final Integer wagerCost,
             final Integer medibotCost) {
@@ -98,15 +95,12 @@ public final class SponsorTeamValorationCalculator
     }
 
     @Override
-    public final Integer getValoration(final SponsorTeam team) {
+    public final Integer getRankCost(final SponsorTeam team) {
         Integer valoration;
 
         checkNotNull(team, "Received a null pointer as the team");
 
         valoration = 0;
-        for (final Unit unit : team.getPlayers().values()) {
-            valoration += unit.getCost();
-        }
 
         valoration += team.getCoachingDice() * getDieCost();
         valoration += team.getSabotageCards() * getSabotageCost();

@@ -18,6 +18,8 @@ package com.wandrell.tabletop.dreadball.model.availability.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Objects;
+
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
@@ -43,8 +45,7 @@ public final class DefaultTeamTypeUnitAvailability
     private final TeamType teamType;
 
     /**
-     * Constructs a {@code DefaultTeamTypeUnitAvailability} with the specified
-     * arguments.
+     * Constructs a unit availability for the specified team and unit.
      * 
      * @param team
      *            {@code TeamType} for which the availability applies
@@ -61,6 +62,26 @@ public final class DefaultTeamTypeUnitAvailability
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultTeamTypeUnitAvailability other;
+
+        other = (DefaultTeamTypeUnitAvailability) obj;
+        return Objects.equals(avaUnit, other.avaUnit);
+    }
+
+    @Override
     public final TeamType getTeamType() {
         return teamType;
     }
@@ -68,6 +89,11 @@ public final class DefaultTeamTypeUnitAvailability
     @Override
     public final Unit getUnit() {
         return avaUnit;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hashCode(avaUnit);
     }
 
 }

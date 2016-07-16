@@ -18,10 +18,14 @@ package com.wandrell.tabletop.dreadball.model.unit.stats;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Objects;
+
 import com.google.common.base.MoreObjects;
 
 /**
  * Unit attributes.
+ * <p>
+ * This is a mutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -53,10 +57,34 @@ public final class MutableAttributes implements Attributes {
     private Integer strengthValue = 0;
 
     /**
-     * Constructs a {@code MutableAttributes}.
+     * Default constructor.
      */
     public MutableAttributes() {
         super();
+    }
+
+    @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final MutableAttributes other;
+
+        other = (MutableAttributes) obj;
+        return Objects.equals(armorValue, other.armorValue)
+                && Objects.equals(movementValue, other.movementValue)
+                && Objects.equals(skillValue, other.skillValue)
+                && Objects.equals(speedValue, other.speedValue)
+                && Objects.equals(strengthValue, other.strengthValue);
     }
 
     @Override
@@ -82,6 +110,12 @@ public final class MutableAttributes implements Attributes {
     @Override
     public final Integer getStrength() {
         return strengthValue;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(armorValue, movementValue, skillValue, speedValue,
+                strengthValue);
     }
 
     /**

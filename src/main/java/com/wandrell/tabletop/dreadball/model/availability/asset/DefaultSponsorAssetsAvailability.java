@@ -18,6 +18,8 @@ package com.wandrell.tabletop.dreadball.model.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Objects;
+
 /**
  * Asset availabilities for a
  * {@link com.wandrell.tabletop.dreadball.model.faction.Sponsor Sponsors}.
@@ -135,6 +137,35 @@ public final class DefaultSponsorAssetsAvailability
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultSponsorAssetsAvailability other;
+
+        other = (DefaultSponsorAssetsAvailability) obj;
+        return Objects.equals(costAffinityGroup, other.costAffinityGroup)
+                && Objects.equals(costCheerleader, other.costCheerleader)
+                && Objects.equals(costDie, other.costDie)
+                && Objects.equals(costMedibot, other.costMedibot)
+                && Objects.equals(costSabotageCard, other.costSabotageCard)
+                && Objects.equals(costSpMoveCard, other.costSpMoveCard)
+                && Objects.equals(costUnlockCheer, other.costUnlockCheer)
+                && Objects.equals(costWager, other.costWager)
+                && Objects.equals(maxWagerCount, other.maxWagerCount)
+                && Objects.equals(minTeamCost, other.minTeamCost);
+    }
+
+    @Override
     public final Integer getAffinityGroupCost() {
         return costAffinityGroup;
     }
@@ -182,6 +213,13 @@ public final class DefaultSponsorAssetsAvailability
     @Override
     public final Integer getWagerMaxCount() {
         return maxWagerCount;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hash(costAffinityGroup, costCheerleader, costDie,
+                costMedibot, costSabotageCard, costSpMoveCard, costUnlockCheer,
+                costWager, maxWagerCount, minTeamCost);
     }
 
 }

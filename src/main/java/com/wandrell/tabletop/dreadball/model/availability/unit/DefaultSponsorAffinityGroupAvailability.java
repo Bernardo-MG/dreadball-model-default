@@ -21,6 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.Objects;
 
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 
@@ -52,8 +53,7 @@ public final class DefaultSponsorAffinityGroupAvailability
     private final Boolean                   hasRankInc;
 
     /**
-     * Constructs a {@code DefaultSponsorAffinityGroupAvailability} with the
-     * specified arguments.
+     * Constructs a set of affinity groups availabilities for sponsors.
      * 
      * @param name
      *            name of the availability
@@ -84,6 +84,26 @@ public final class DefaultSponsorAffinityGroupAvailability
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultSponsorAffinityGroupAvailability other;
+
+        other = (DefaultSponsorAffinityGroupAvailability) obj;
+        return Objects.equals(avaName, other.avaName);
+    }
+
+    @Override
     public final Collection<AffinityGroup> getAffinityGroups() {
         return Collections
                 .unmodifiableCollection(getAffinityGroupsModifiable());
@@ -92,6 +112,11 @@ public final class DefaultSponsorAffinityGroupAvailability
     @Override
     public final String getName() {
         return avaName;
+    }
+
+    @Override
+    public final int hashCode() {
+        return Objects.hashCode(avaName);
     }
 
     @Override

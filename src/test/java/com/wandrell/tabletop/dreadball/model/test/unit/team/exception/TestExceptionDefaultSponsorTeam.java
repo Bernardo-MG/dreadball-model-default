@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
+import com.wandrell.tabletop.dreadball.model.team.RankCostCalculator;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
@@ -48,49 +49,22 @@ public final class TestExceptionDefaultSponsorTeam {
     }
 
     /**
-     * Tests that adding an existing player raises an
-     * {@code IllegalArgumentException}.
-     */
-    @SuppressWarnings("unchecked")
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testAddPlayer_Existing() {
-        final SponsorTeam team; // Tested team
-        final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final Unit player;      // Mocked player
-
-        // Mocks calculator
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-
-        // Mocks sponsor
-        sponsor = Mockito.mock(Sponsor.class);
-
-        // Mocks player
-        player = Mockito.mock(Unit.class);
-
-        // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator);
-
-        team.addPlayer(player, 0);
-        team.addPlayer(player, 1);
-    }
-
-    /**
      * Tests that adding a player to a negative position raises an
      * {@code IllegalArgumentException}.
      */
     @SuppressWarnings("unchecked")
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
-        final SponsorTeam team; // Tested team
-        final Sponsor sponsor;  // Mocked sponsor
+        final SponsorTeam team;          // Tested team
+        final Sponsor sponsor;           // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
-        final Unit player;      // Mocked player
+        final RankCostCalculator ranker; // Mocked rank calculator
+        final Unit player;               // Mocked player
 
         // Mocks calculator
         calculator = Mockito.mock(TeamValorationCalculator.class);
+        ranker = Mockito.mock(RankCostCalculator.class);
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
@@ -99,7 +73,7 @@ public final class TestExceptionDefaultSponsorTeam {
         player = Mockito.mock(Unit.class);
 
         // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator);
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         team.addPlayer(player, -1);
     }

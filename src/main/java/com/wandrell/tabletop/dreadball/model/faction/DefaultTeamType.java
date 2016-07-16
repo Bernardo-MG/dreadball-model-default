@@ -46,7 +46,7 @@ public final class DefaultTeamType implements TeamType {
     private final Collection<TeamRule> teamRules = new LinkedHashSet<>();
 
     /**
-     * Constructs a {@code DefaultTeamType} with the specified parameters.
+     * Constructs a team type with the specified parameters.
      * 
      * @param name
      *            team type's name

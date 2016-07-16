@@ -21,7 +21,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
-import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnitValorationBuilder;
+import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.component.Component;
 
@@ -66,7 +66,7 @@ public final class TestAdvancementUnitUnitValorationCalculator {
         Mockito.when(unit.getGraftedImplant()).thenReturn(implant);
 
         // Creates calculator
-        calculator = new AdvancementUnitValorationBuilder(5);
+        calculator = new AdvancementUnitValorationCalculator(5);
 
         Assert.assertEquals(calculator.getValoration(unit), (Integer) 30);
     }

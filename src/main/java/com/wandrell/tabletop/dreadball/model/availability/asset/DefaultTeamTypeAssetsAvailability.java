@@ -18,6 +18,8 @@ package com.wandrell.tabletop.dreadball.model.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Objects;
+
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 
 /**
@@ -185,6 +187,26 @@ public final class DefaultTeamTypeAssetsAvailability
     }
 
     @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final DefaultTeamTypeAssetsAvailability other;
+
+        other = (DefaultTeamTypeAssetsAvailability) obj;
+        return Objects.equals(teamType, other.teamType);
+    }
+
+    @Override
     public final Integer getCheerleaderCost() {
         return costCheerleader;
     }
@@ -235,23 +257,28 @@ public final class DefaultTeamTypeAssetsAvailability
     }
 
     @Override
+    public final Boolean getStartingWithDefensiveCoachingStaff() {
+        return initialCoachDef;
+    }
+
+    @Override
+    public final Boolean getStartingWithOffensiveCoachingStaff() {
+        return initialCoachOff;
+    }
+
+    @Override
+    public final Boolean getStartingWithSupportCoachingStaff() {
+        return initialCoachSup;
+    }
+
+    @Override
     public final TeamType getTeamType() {
         return teamType;
     }
 
     @Override
-    public final Boolean isStartingWithDefensiveCoachingStaff() {
-        return initialCoachDef;
-    }
-
-    @Override
-    public final Boolean isStartingWithOffensiveCoachingStaff() {
-        return initialCoachOff;
-    }
-
-    @Override
-    public final Boolean isStartingWithSupportCoachingStaff() {
-        return initialCoachSup;
+    public final int hashCode() {
+        return Objects.hashCode(teamType);
     }
 
 }

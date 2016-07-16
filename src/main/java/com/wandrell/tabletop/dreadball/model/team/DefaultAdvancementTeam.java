@@ -69,12 +69,12 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     private final TeamType                                  teamType;
 
     /**
-     * Builder for calculating the valoration.
+     * Valoration calculator.
      */
-    private final TeamValorationCalculator<AdvancementTeam> valorationBuilder;
+    private final TeamValorationCalculator<AdvancementTeam> valorationCalculator;
 
     /**
-     * Constructs a {@code DefaultLicensedTeam} with the specified parameters.
+     * Constructs an advancement team with the specified parameters.
      * 
      * @param type
      *            team's base type
@@ -86,8 +86,8 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
         super();
 
         teamType = checkNotNull(type, "Received a null pointer as type");
-        valorationBuilder = checkNotNull(valorator,
-                "Received a null pointer as valoration builder");
+        valorationCalculator = checkNotNull(valorator,
+                "Received a null pointer as valoration calculator");
     }
 
     @Override
@@ -201,7 +201,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
      */
     private final TeamValorationCalculator<AdvancementTeam>
             getValorationCalculator() {
-        return valorationBuilder;
+        return valorationCalculator;
     }
 
 }

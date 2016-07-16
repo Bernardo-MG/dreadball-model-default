@@ -49,7 +49,10 @@ public final class AdvancementTeamValorationCalculator
     private final Integer costDie;
 
     /**
-     * Constructs a {@code AdvancementTeamValorationCalculator}.
+     * Constructs a team valoration calculator using the specified cost.
+     * <p>
+     * These costs will be applied to the team assets to find out the final
+     * cost.
      * 
      * @param dieCost
      *            the cost of a Coaching Die
@@ -86,20 +89,57 @@ public final class AdvancementTeamValorationCalculator
             valoration += unit.getValoration();
         }
 
-        valoration += team.getCoachingDice() * costDie;
-        valoration += team.getDreadballCards() * costCard;
-        valoration += team.getCheerleaders() * costCheerleader;
+        valoration += team.getCoachingDice() * getCostDie();
+        valoration += team.getDreadballCards() * getCostCard();
+        valoration += team.getCheerleaders() * getCostCheerleader();
+
         if (team.hasDefensiveCoachingStaff()) {
-            valoration += costCoaching;
+            valoration += getCostCoaching();
         }
         if (team.hasOffensiveCoachingStaff()) {
-            valoration += costCoaching;
+            valoration += getCostCoaching();
         }
         if (team.hasSupportCoachingStaff()) {
-            valoration += costCoaching;
+            valoration += getCostCoaching();
         }
 
         return valoration;
+    }
+
+    /**
+     * Returns the cost of a dreadball card.
+     * 
+     * @return the cost of a dreadball card
+     */
+    private final Integer getCostCard() {
+        return costCard;
+    }
+
+    /**
+     * Returns the cost of a cheerleader.
+     * 
+     * @return the cost of a dreadball card
+     */
+    private final Integer getCostCheerleader() {
+        return costCheerleader;
+    }
+
+    /**
+     * Returns the cost of coaching staff.
+     * 
+     * @return the cost of coaching staff
+     */
+    private final Integer getCostCoaching() {
+        return costCoaching;
+    }
+
+    /**
+     * Returns the cost of a Dreadball die.
+     * 
+     * @return the cost of a Dreadball die
+     */
+    private final Integer getCostDie() {
+        return costDie;
     }
 
 }

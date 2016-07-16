@@ -68,7 +68,7 @@ public final class DefaultComponent implements Component {
     private final Collection<Role>    componentPos   = new LinkedHashSet<Role>();
 
     /**
-     * Constructs a {@code DefaultComponent} with the specified arguments.
+     * Constructs a component with the specified arguments.
      * 
      * @param name
      *            name of the component

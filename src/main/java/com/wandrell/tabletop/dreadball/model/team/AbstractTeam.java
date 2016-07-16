@@ -22,6 +22,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -55,10 +57,32 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     private Integer               teamDice         = 0;
 
     /**
-     * Constructs an {@code AbstractTeam}.
+     * Default constructor.
      */
     public AbstractTeam() {
         super();
+    }
+
+    @Override
+    public final void addPlayer(final U player) {
+        checkNotNull(player, "Received a null pointer as player");
+
+        final List<Integer> positions; // Team positions taken
+        final Integer maxPos;          // Maximum position
+        Integer position;              // Team position searched
+
+        positions = new LinkedList<Integer>(getPlayersModifiable().keySet());
+        Collections.sort(positions);
+
+        position = 1;
+        maxPos = positions.get(positions.size() - 1);
+        while ((positions.contains(position)) && (position < maxPos)) {
+            position++;
+        }
+
+        if (!positions.contains(position)) {
+            addPlayer(player, position);
+        }
     }
 
     @Override
@@ -67,8 +91,6 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
         checkNotNull(position, "Received a null pointer as position");
 
         checkArgument(position > 0, "The position should be higher than zero");
-        checkArgument(getUnitPosition(player) < 0,
-                "The player is already on the team");
 
         getPlayersModifiable().put(position, player);
     }

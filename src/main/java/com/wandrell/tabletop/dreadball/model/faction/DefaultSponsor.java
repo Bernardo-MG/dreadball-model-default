@@ -54,7 +54,7 @@ public final class DefaultSponsor implements Sponsor {
     private Integer                         sponsorRank    = 0;
 
     /**
-     * Constructs a {@code DefaultSponsor}.
+     * Default constructor.
      */
     public DefaultSponsor() {
         super();

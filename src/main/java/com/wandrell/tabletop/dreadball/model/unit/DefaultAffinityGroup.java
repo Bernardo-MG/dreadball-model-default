@@ -37,7 +37,7 @@ public final class DefaultAffinityGroup implements AffinityGroup {
     private final String groupName;
 
     /**
-     * Constructs a {@code DefaultUnitGroup} with the specified arguments.
+     * Constructs an affinity group with the specified arguments.
      * 
      * @param name
      *            the name of the group
