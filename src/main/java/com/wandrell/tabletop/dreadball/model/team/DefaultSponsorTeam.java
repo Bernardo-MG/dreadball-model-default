@@ -75,6 +75,8 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
      *            the team's sponsor
      * @param valorator
      *            valoration calculator for the team
+     * @param rankCoster
+     *            rank cost calculator for the team
      */
     public DefaultSponsorTeam(final Sponsor sponsor,
             final TeamValorationCalculator<SponsorTeam> valorator,
