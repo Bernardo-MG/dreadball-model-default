@@ -36,6 +36,8 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * <li>Adding a unit to an existing position overwrites the unit</li>
  * <li>Adding a unit without giving a position uses the first empty position
  * </li>
+ * <li>Adding a unit without giving a position works when there are no units
+ * </li>
  * <li>Removing a unit using its position works as expected</li>
  * <li>Removing a unit using it as a reference works as expected</li>
  * </ol>
@@ -49,6 +51,39 @@ public final class TestDefaultSponsorTeam {
      */
     public TestDefaultSponsorTeam() {
         super();
+    }
+
+    /**
+     * Tests that adding a unit without giving a position works when there are
+     * no units.
+     */
+    @SuppressWarnings("unchecked")
+    @Test
+    public final void testAddPlayer_AutoPos_Empty() {
+        final SponsorTeam team;          // Tested team
+        final AdvancementUnit player1;   // Mocked player 1
+        final Sponsor sponsor;           // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
+        final RankCostCalculator ranker; // Mocked rank calculator
+
+        // Mocks sponsor
+        sponsor = Mockito.mock(Sponsor.class);
+
+        // Mocks calculators
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+        ranker = Mockito.mock(RankCostCalculator.class);
+
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
+
+        // Mocks players
+        player1 = Mockito.mock(AdvancementUnit.class);
+
+        // Adds player
+        team.addPlayer(player1);
+
+        Assert.assertEquals(team.getPlayers().get(1), player1);
     }
 
     /**
