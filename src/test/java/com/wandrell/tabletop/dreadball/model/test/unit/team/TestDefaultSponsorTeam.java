@@ -25,7 +25,7 @@ import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.RankCostCalculator;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Unit tests for {@link SponsorTeam}.
@@ -38,6 +38,8 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * </li>
  * <li>Adding a unit without giving a position works when there are no units
  * </li>
+ * <li>Adding a unit without giving a position adds correctly to the last
+ * position</li>
  * <li>Removing a unit using its position works as expected</li>
  * <li>Removing a unit using it as a reference works as expected</li>
  * </ol>
@@ -60,9 +62,10 @@ public final class TestDefaultSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testAddPlayer_AutoPos_Empty() {
-        final SponsorTeam team;          // Tested team
-        final AdvancementUnit player1;   // Mocked player 1
-        final Sponsor sponsor;           // Mocked sponsor
+        final SponsorTeam team; // Tested team
+        final Unit player1;     // Mocked player 1
+        final Unit player2;     // Mocked player 2
+        final Sponsor sponsor;  // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
         final RankCostCalculator ranker; // Mocked rank calculator
@@ -78,10 +81,12 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(AdvancementUnit.class);
+        player1 = Mockito.mock(Unit.class);
+        player2 = Mockito.mock(Unit.class);
 
         // Adds player
         team.addPlayer(player1);
+        team.addPlayer(player2);
 
         Assert.assertEquals(team.getPlayers().get(1), player1);
     }
@@ -93,11 +98,11 @@ public final class TestDefaultSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testAddPlayer_AutoPos_FirstEmpty() {
-        final SponsorTeam team;          // Tested team
-        final AdvancementUnit player1;   // Mocked player 1
-        final AdvancementUnit player2;   // Mocked player 2
-        final AdvancementUnit player3;   // Mocked player 3
-        final Sponsor sponsor;           // Mocked sponsor
+        final SponsorTeam team; // Tested team
+        final Unit player1;     // Mocked player 1
+        final Unit player2;     // Mocked player 2
+        final Unit player3;     // Mocked player 3
+        final Sponsor sponsor;  // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
         final RankCostCalculator ranker; // Mocked rank calculator
@@ -113,9 +118,9 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(AdvancementUnit.class);
-        player2 = Mockito.mock(AdvancementUnit.class);
-        player3 = Mockito.mock(AdvancementUnit.class);
+        player1 = Mockito.mock(Unit.class);
+        player2 = Mockito.mock(Unit.class);
+        player3 = Mockito.mock(Unit.class);
 
         // Adds players
         team.addPlayer(player1, 1);
@@ -127,15 +132,17 @@ public final class TestDefaultSponsorTeam {
     }
 
     /**
-     * Tests that adding units to an empty team work as expected.
+     * Tests that adding a unit without giving a position adds correctly to the
+     * last position.
      */
     @SuppressWarnings("unchecked")
     @Test
-    public final void testAddPlayer_Position_Empty() {
-        final SponsorTeam team;          // Tested team
-        final AdvancementUnit player1;   // Mocked player 1
-        final AdvancementUnit player2;   // Mocked player 2
-        final Sponsor sponsor;           // Mocked sponsor
+    public final void testAddPlayer_AutoPos_LastPos() {
+        final SponsorTeam team; // Tested team
+        final Unit player1;     // Mocked player 1
+        final Unit player2;     // Mocked player 2
+        final Unit player3;     // Mocked player 3
+        final Sponsor sponsor;  // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
         final RankCostCalculator ranker; // Mocked rank calculator
@@ -151,8 +158,45 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(AdvancementUnit.class);
-        player2 = Mockito.mock(AdvancementUnit.class);
+        player1 = Mockito.mock(Unit.class);
+        player2 = Mockito.mock(Unit.class);
+        player3 = Mockito.mock(Unit.class);
+
+        // Adds player
+        team.addPlayer(player1);
+        team.addPlayer(player2);
+        team.addPlayer(player3);
+
+        Assert.assertEquals(team.getPlayers().get(3), player3);
+    }
+
+    /**
+     * Tests that adding units to an empty team work as expected.
+     */
+    @SuppressWarnings("unchecked")
+    @Test
+    public final void testAddPlayer_Position_Empty() {
+        final SponsorTeam team; // Tested team
+        final Unit player1;     // Mocked player 1
+        final Unit player2;     // Mocked player 2
+        final Sponsor sponsor;  // Mocked sponsor
+        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
+                                                                // calculator
+        final RankCostCalculator ranker; // Mocked rank calculator
+
+        // Mocks sponsor
+        sponsor = Mockito.mock(Sponsor.class);
+
+        // Mocks calculators
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+        ranker = Mockito.mock(RankCostCalculator.class);
+
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
+
+        // Mocks players
+        player1 = Mockito.mock(Unit.class);
+        player2 = Mockito.mock(Unit.class);
 
         // Adds players
         team.addPlayer(player1, 1);
@@ -167,10 +211,10 @@ public final class TestDefaultSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testAddPlayer_Position_Overwrite() {
-        final SponsorTeam team;          // Tested team
-        final AdvancementUnit player1;   // Mocked player 1
-        final AdvancementUnit player2;   // Mocked player 2
-        final Sponsor sponsor;           // Mocked sponsor
+        final SponsorTeam team; // Tested team
+        final Unit player1;     // Mocked player 1
+        final Unit player2;     // Mocked player 2
+        final Sponsor sponsor;  // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
         final RankCostCalculator ranker; // Mocked rank calculator
@@ -186,8 +230,8 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(AdvancementUnit.class);
-        player2 = Mockito.mock(AdvancementUnit.class);
+        player1 = Mockito.mock(Unit.class);
+        player2 = Mockito.mock(Unit.class);
 
         // Adds players
         team.addPlayer(player1, 1);
@@ -207,9 +251,9 @@ public final class TestDefaultSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testRemovePlayer_Number() {
-        final SponsorTeam team;          // Tested team
-        final AdvancementUnit player;    // Mocked player
-        final Sponsor sponsor;           // Mocked sponsor
+        final SponsorTeam team; // Tested team
+        final Unit player;      // Mocked player
+        final Sponsor sponsor;  // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
         final RankCostCalculator ranker; // Mocked rank calculator
@@ -225,7 +269,7 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks player
-        player = Mockito.mock(AdvancementUnit.class);
+        player = Mockito.mock(Unit.class);
         team.addPlayer(player, 1);
 
         team.removePlayer(1);
@@ -239,9 +283,9 @@ public final class TestDefaultSponsorTeam {
     @SuppressWarnings("unchecked")
     @Test
     public final void testRemovePlayer_Player() {
-        final SponsorTeam team;          // Tested team
-        final AdvancementUnit player;    // Mocked player
-        final Sponsor sponsor;           // Mocked sponsor
+        final SponsorTeam team; // Tested team
+        final Unit player;      // Mocked player
+        final Sponsor sponsor;  // Mocked sponsor
         final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
                                                                 // calculator
         final RankCostCalculator ranker; // Mocked rank calculator
@@ -257,7 +301,7 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks player
-        player = Mockito.mock(AdvancementUnit.class);
+        player = Mockito.mock(Unit.class);
         team.addPlayer(player, 1);
 
         team.removePlayer(player);

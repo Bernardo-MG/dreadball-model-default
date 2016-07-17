@@ -81,7 +81,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
             Collections.sort(positions);
 
             maxPos = positions.get(positions.size() - 1);
-            while ((positions.contains(position)) && (position < maxPos)) {
+            while ((positions.contains(position)) && (position <= maxPos)) {
                 position++;
             }
 
