@@ -121,6 +121,43 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
+     * Tests that adding a unit without giving a position adds correctly to the
+     * last position.
+     */
+    @SuppressWarnings("unchecked")
+    @Test
+    public final void testAddPlayer_AutoPos_LastPos() {
+        final AdvancementTeam team;    // Tested team
+        final AdvancementUnit player1; // Mocked player 1
+        final AdvancementUnit player2; // Mocked player 2
+        final AdvancementUnit player3; // Mocked player 3
+        final TeamType type;           // Mocked team type
+        final TeamValorationCalculator<AdvancementTeam> calculator; // Mocked
+                                                                    // calculator
+
+        // Mocks team type
+        type = Mockito.mock(TeamType.class);
+
+        // Mocks calculators
+        calculator = Mockito.mock(TeamValorationCalculator.class);
+
+        // Creates team
+        team = new DefaultAdvancementTeam(type, calculator);
+
+        // Mocks players
+        player1 = Mockito.mock(AdvancementUnit.class);
+        player2 = Mockito.mock(AdvancementUnit.class);
+        player3 = Mockito.mock(AdvancementUnit.class);
+
+        // Adds player
+        team.addPlayer(player1);
+        team.addPlayer(player2);
+        team.addPlayer(player3);
+
+        Assert.assertEquals(team.getPlayers().get(3), player3);
+    }
+
+    /**
      * Tests that adding units to an empty team work as expected.
      */
     @SuppressWarnings("unchecked")

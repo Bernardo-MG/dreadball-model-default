@@ -78,5 +78,10 @@
             addition method.
          </action>
       </release>
+      <release version="0.5.2" date="2016-07-17" description="Fixed adding units to team">
+         <action dev="bmg" type="fix">
+            Fixed units not being added to teams in certain situations.
+         </action>
+      </release>
    </body>
 </document>
