@@ -72,5 +72,11 @@
             the team.
          </action>
       </release>
+      <release version="0.5.1" date="2016-07-17" description="Fixed adding units to team">
+         <action dev="bmg" type="fix">
+            Fixed an exception when adding units to empty teams through the default
+            addition method.
+         </action>
+      </release>
    </body>
 </document>
