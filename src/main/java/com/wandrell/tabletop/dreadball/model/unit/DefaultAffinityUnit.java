@@ -79,7 +79,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * 
      * @param nameTemplate
      *            the unit's base template name
-     * @param position
+     * @param role
      *            team position role of the unit
      * @param attributes
      *            unit attributes
@@ -100,7 +100,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
      * @param strangerCost
      *            the unit cost for a stranger
      */
-    public DefaultAffinityUnit(final String nameTemplate, final Role position,
+    public DefaultAffinityUnit(final String nameTemplate, final Role role,
             final Attributes attributes, final Collection<Ability> abilities,
             final Boolean mvp, final Boolean giant,
             final Collection<AffinityGroup> affinities,
@@ -108,8 +108,8 @@ public final class DefaultAffinityUnit implements AffinityUnit {
             final Integer friendCost, final Integer strangerCost) {
         super();
 
-        baseUnit = new DefaultUnit(nameTemplate, 0, position, attributes,
-                abilities, mvp, giant);
+        baseUnit = new DefaultUnit(nameTemplate, 0, role, attributes, abilities,
+                mvp, giant);
 
         costAlly = checkNotNull(allyCost,
                 "Received a null pointer as ally cost");
