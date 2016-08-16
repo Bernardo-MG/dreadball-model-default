@@ -37,8 +37,7 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * </li>
  * <li>Adding a unit without giving a position works when there are no units
  * </li>
- * <li>Removing a unit using its position works as expected</li>
- * <li>Removing a unit using it as a reference works as expected</li>
+ * <li>Removing a unit works as expected</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
@@ -227,11 +226,11 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
-     * Tests that removing a unit using its position works as expected.
+     * Tests that removing a unit works as expected.
      */
     @SuppressWarnings("unchecked")
     @Test
-    public final void testRemovePlayer_Position_Number() {
+    public final void testRemovePlayer() {
         final AdvancementTeam team;   // Tested team
         final AdvancementUnit player; // Mocked player
         final TeamType type;          // Mocked team type
@@ -252,36 +251,6 @@ public final class TestDefaultAdvancementTeam {
         team.addPlayer(player, 1);
 
         team.removePlayer(1);
-
-        Assert.assertEquals(team.getPlayers().size(), 0);
-    }
-
-    /**
-     * Tests that removing a unit using it as a reference works as expected.
-     */
-    @SuppressWarnings("unchecked")
-    @Test
-    public final void testRemovePlayer_Position_Player() {
-        final AdvancementTeam team;   // Tested team
-        final AdvancementUnit player; // Mocked player
-        final TeamType type;          // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> calculator; // Mocked
-                                                                    // calculator
-
-        // Mocks team type
-        type = Mockito.mock(TeamType.class);
-
-        // Mocks valoration calculator
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-
-        // Creates team
-        team = new DefaultAdvancementTeam(type, calculator);
-
-        // Mocks players
-        player = Mockito.mock(AdvancementUnit.class);
-        team.addPlayer(player, 1);
-
-        team.removePlayer(player);
 
         Assert.assertEquals(team.getPlayers().size(), 0);
     }

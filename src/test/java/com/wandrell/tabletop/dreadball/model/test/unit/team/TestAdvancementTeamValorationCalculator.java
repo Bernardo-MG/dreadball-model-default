@@ -64,9 +64,9 @@ public final class TestAdvancementTeamValorationCalculator {
         Mockito.when(team.getCoachingDice()).thenReturn(2);
         Mockito.when(team.getDreadballCards()).thenReturn(4);
         Mockito.when(team.getCheerleaders()).thenReturn(1);
-        Mockito.when(team.hasDefensiveCoachingStaff()).thenReturn(true);
-        Mockito.when(team.hasOffensiveCoachingStaff()).thenReturn(true);
-        Mockito.when(team.hasSupportCoachingStaff()).thenReturn(true);
+        Mockito.when(team.getDefensiveCoachingStaff()).thenReturn(true);
+        Mockito.when(team.getOffensiveCoachingStaff()).thenReturn(true);
+        Mockito.when(team.getSupportCoachingStaff()).thenReturn(true);
 
         // Mocks players
         players = new LinkedHashMap<>();

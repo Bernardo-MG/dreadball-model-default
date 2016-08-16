@@ -93,13 +93,13 @@ public final class AdvancementTeamValorationCalculator
         valoration += team.getDreadballCards() * getCostCard();
         valoration += team.getCheerleaders() * getCostCheerleader();
 
-        if (team.hasDefensiveCoachingStaff()) {
+        if (team.getDefensiveCoachingStaff()) {
             valoration += getCostCoaching();
         }
-        if (team.hasOffensiveCoachingStaff()) {
+        if (team.getOffensiveCoachingStaff()) {
             valoration += getCostCoaching();
         }
-        if (team.hasSupportCoachingStaff()) {
+        if (team.getSupportCoachingStaff()) {
             valoration += getCostCoaching();
         }
 

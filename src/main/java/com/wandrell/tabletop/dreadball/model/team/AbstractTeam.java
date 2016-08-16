@@ -20,12 +20,10 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
@@ -122,11 +120,6 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     }
 
     @Override
-    public final void removePlayer(final U player) {
-        removePlayer(getUnitPosition(player));
-    }
-
-    @Override
     public final void setCheerleaders(final Integer cheerleaders) {
         teamCheerleaders = cheerleaders;
     }
@@ -134,36 +127,6 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     @Override
     public final void setCoachingDice(final Integer dice) {
         teamDice = dice;
-    }
-
-    /**
-     * Finds a unit on the team and returns his position on the rooster.
-     * 
-     * @param unit
-     *            the unit to find
-     * @return the unit's rooster position
-     */
-    private final Integer getUnitPosition(final U unit) {
-        final Iterator<Entry<Integer, U>> itr;
-        U current;
-        Integer pos;
-        Integer result;
-
-        checkNotNull(unit, "Received a null pointer as player");
-
-        itr = getPlayersModifiable().entrySet().iterator();
-
-        result = -1;
-        pos = 1;
-        while ((itr.hasNext()) && (result < 0)) {
-            current = itr.next().getValue();
-            if ((current == unit) || (current.equals(unit))) {
-                result = pos;
-            }
-            pos++;
-        }
-
-        return result;
     }
 
     /**

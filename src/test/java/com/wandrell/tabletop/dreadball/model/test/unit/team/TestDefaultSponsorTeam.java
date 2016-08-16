@@ -40,8 +40,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * </li>
  * <li>Adding a unit without giving a position adds correctly to the last
  * position</li>
- * <li>Removing a unit using its position works as expected</li>
- * <li>Removing a unit using it as a reference works as expected</li>
+ * <li>Removing a unit works as expected</li>
  * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
@@ -250,7 +249,7 @@ public final class TestDefaultSponsorTeam {
      */
     @SuppressWarnings("unchecked")
     @Test
-    public final void testRemovePlayer_Number() {
+    public final void testRemovePlayer() {
         final SponsorTeam team; // Tested team
         final Unit player;      // Mocked player
         final Sponsor sponsor;  // Mocked sponsor
@@ -273,38 +272,6 @@ public final class TestDefaultSponsorTeam {
         team.addPlayer(player, 1);
 
         team.removePlayer(1);
-
-        Assert.assertEquals(team.getPlayers().size(), 0);
-    }
-
-    /**
-     * Tests that removing a unit using it as a reference works as expected.
-     */
-    @SuppressWarnings("unchecked")
-    @Test
-    public final void testRemovePlayer_Player() {
-        final SponsorTeam team; // Tested team
-        final Unit player;      // Mocked player
-        final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
-
-        // Mocks sponsor
-        sponsor = Mockito.mock(Sponsor.class);
-
-        // Mocks calculators
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
-
-        // Creates team
-        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
-
-        // Mocks player
-        player = Mockito.mock(Unit.class);
-        team.addPlayer(player, 1);
-
-        team.removePlayer(player);
 
         Assert.assertEquals(team.getPlayers().size(), 0);
     }

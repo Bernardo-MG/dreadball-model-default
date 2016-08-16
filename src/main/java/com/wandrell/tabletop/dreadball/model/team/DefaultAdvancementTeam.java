@@ -116,6 +116,11 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     }
 
     @Override
+    public final Boolean getDefensiveCoachingStaff() {
+        return defensiveCoach;
+    }
+
+    @Override
     public final Integer getDreadballCards() {
         return teamCards;
     }
@@ -123,6 +128,16 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     @Override
     public final String getName() {
         return teamName;
+    }
+
+    @Override
+    public final Boolean getOffensiveCoachingStaff() {
+        return offensiveCoach;
+    }
+
+    @Override
+    public final Boolean getSupportCoachingStaff() {
+        return supportCoach;
     }
 
     @Override
@@ -136,23 +151,8 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     }
 
     @Override
-    public final Boolean hasDefensiveCoachingStaff() {
-        return defensiveCoach;
-    }
-
-    @Override
     public final int hashCode() {
         return Objects.hashCode(teamName);
-    }
-
-    @Override
-    public final Boolean hasOffensiveCoachingStaff() {
-        return offensiveCoach;
-    }
-
-    @Override
-    public final Boolean hasSupportCoachingStaff() {
-        return supportCoach;
     }
 
     @Override

@@ -58,7 +58,7 @@ public final class DefaultUnit implements Unit {
     /**
      * The unit's team position.
      */
-    private final Role                templatePosition;
+    private final Role                templateRole;
 
     /**
      * The unit's abilities.
@@ -82,7 +82,7 @@ public final class DefaultUnit implements Unit {
      *            the unit's base template name
      * @param cost
      *            cost of the unit
-     * @param position
+     * @param role
      *            team position role of the unit
      * @param attributes
      *            unit attributes
@@ -94,7 +94,7 @@ public final class DefaultUnit implements Unit {
      *            flag indicating if this is a giant
      */
     public DefaultUnit(final String nameTemplate, final Integer cost,
-            final Role position, final Attributes attributes,
+            final Role role, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant) {
         super();
@@ -103,7 +103,7 @@ public final class DefaultUnit implements Unit {
                 "Received a null pointer as the template name");
         unitAttributes = checkNotNull(attributes,
                 "Received a null pointer as attributes");
-        templatePosition = checkNotNull(position,
+        templateRole = checkNotNull(role,
                 "Received a null pointer as position");
         giantFlag = checkNotNull(giant,
                 "Received a null pointer as giant flag");
@@ -170,7 +170,7 @@ public final class DefaultUnit implements Unit {
 
     @Override
     public final Role getRole() {
-        return templatePosition;
+        return templateRole;
     }
 
     @Override

@@ -83,5 +83,10 @@
             Fixed units not being added to teams in certain situations.
          </action>
       </release>
+      <release version="0.5.3" date="2016-08-16" description="API update">
+         <action dev="bmg" type="update">
+            Updated API.
+         </action>
+      </release>
    </body>
 </document>
