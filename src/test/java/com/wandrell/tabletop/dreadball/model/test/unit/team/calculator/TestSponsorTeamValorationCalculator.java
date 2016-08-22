@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.wandrell.tabletop.dreadball.model.test.unit.team;
+package com.wandrell.tabletop.dreadball.model.test.unit.team.calculator;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,8 +24,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
-import com.wandrell.tabletop.dreadball.model.team.SponsorTeamValorationCalculator;
-import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.SponsorTeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
