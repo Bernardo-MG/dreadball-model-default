@@ -48,7 +48,7 @@ public abstract class AbstractRankCostCalculator implements RankCostCalculator {
         valoration += team.getSpecialMoveCards() * getSpecialMoveCost();
         valoration += team.getCheerleaders() * getCheerleaderCost();
         valoration += team.getWagers() * getWagerCost();
-        valoration += team.getMediBots() * getMedibotCost();
+        valoration += team.getMediBots() * getMediBotCost();
 
         return valoration;
     }
@@ -72,7 +72,7 @@ public abstract class AbstractRankCostCalculator implements RankCostCalculator {
      * 
      * @return the cost of a medibot
      */
-    protected abstract Integer getMedibotCost();
+    protected abstract Integer getMediBotCost();
 
     /**
      * Returns the cost of a sabotage card.

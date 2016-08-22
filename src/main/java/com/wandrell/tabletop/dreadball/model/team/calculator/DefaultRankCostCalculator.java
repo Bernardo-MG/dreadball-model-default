@@ -39,7 +39,7 @@ public final class DefaultRankCostCalculator
     /**
      * Cost of a Medibot.
      */
-    private final Integer costMedibot;
+    private final Integer costMediBot;
 
     /**
      * Cost of a Sabotage Card.
@@ -72,13 +72,13 @@ public final class DefaultRankCostCalculator
      *            rank cost of a cheerleader
      * @param wagerCost
      *            rank cost of a wager
-     * @param medibotCost
+     * @param mediBotCost
      *            rank cost of a medibot
      */
     public DefaultRankCostCalculator(final Integer dieCost,
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderCost, final Integer wagerCost,
-            final Integer medibotCost) {
+            final Integer mediBotCost) {
         super();
 
         costDie = checkNotNull(dieCost,
@@ -91,7 +91,7 @@ public final class DefaultRankCostCalculator
                 "Received a null pointer as the cheerleader cost");
         costWager = checkNotNull(wagerCost,
                 "Received a null pointer as the wager cost");
-        costMedibot = checkNotNull(medibotCost,
+        costMediBot = checkNotNull(mediBotCost,
                 "Received a null pointer as the wager cost");
     }
 
@@ -121,8 +121,8 @@ public final class DefaultRankCostCalculator
      * @return the cost of a medibot
      */
     @Override
-    protected final Integer getMedibotCost() {
-        return costMedibot;
+    protected final Integer getMediBotCost() {
+        return costMediBot;
     }
 
     /**
