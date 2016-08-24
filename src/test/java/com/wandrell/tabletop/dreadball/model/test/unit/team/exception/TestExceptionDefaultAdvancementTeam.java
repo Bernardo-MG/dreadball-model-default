@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
 import com.wandrell.tabletop.dreadball.model.team.DefaultAdvancementTeam;
-import com.wandrell.tabletop.dreadball.model.team.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**

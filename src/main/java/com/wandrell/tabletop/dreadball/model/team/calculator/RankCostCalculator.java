@@ -14,27 +14,28 @@
  * the License.
  */
 
-package com.wandrell.tabletop.dreadball.model.team;
+package com.wandrell.tabletop.dreadball.model.team.calculator;
+
+import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 
 /**
- * Calculates the valoration of a {@link Team}.
+ * Calculates the rank cost of a {@link SponsorTeam}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
- * calculate a team's valoration.
+ * calculate a team's rank cost.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
- * @param <T>
- *            the type of the team of which the valoration will be calculated
  */
-public interface TeamValorationCalculator<T extends Team<?>> {
+public interface RankCostCalculator {
 
     /**
-     * Returns a {@code Team}'s valoration.
+     * Returns a {@code SponsorTeam}'s rank cost.
      * 
      * @param team
-     *            the {@code Team} of which the valoration will be calculated
-     * @return the valoration of the {@code Team}
+     *            the {@code SponsorTeam} of which the rank cost will be
+     *            calculated
+     * @return the rank cost of the {@code SponsorTeam}
      */
-    public Integer getValoration(final T team);
+    public Integer getRankCost(final SponsorTeam team);
 
 }

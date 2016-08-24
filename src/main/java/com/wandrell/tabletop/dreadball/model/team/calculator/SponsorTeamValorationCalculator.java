@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 the original author or authors
+ * Copyright 2015-2016 the original author or authors
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -14,16 +14,17 @@
  * the License.
  */
 
-package com.wandrell.tabletop.dreadball.model.team;
+package com.wandrell.tabletop.dreadball.model.team.calculator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Rank cost calculator.
+ * Team valoration calculator for an {@code SponsorTeam}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultRankCostCalculator implements RankCostCalculator {
+public final class SponsorTeamValorationCalculator
+        extends AbstractSponsorTeamValorationCalculator {
 
     /**
      * Cost of a Cheerleader.
@@ -38,7 +39,7 @@ public final class DefaultRankCostCalculator implements RankCostCalculator {
     /**
      * Cost of a Medibot.
      */
-    private final Integer costMedibot;
+    private final Integer costMediBot;
 
     /**
      * Cost of a Sabotage Card.
@@ -56,25 +57,25 @@ public final class DefaultRankCostCalculator implements RankCostCalculator {
     private final Integer costWager;
 
     /**
-     * Constructs a rank cost calculator using the specified cost.
+     * Constructs a team valoration calculator using the specified cost.
      * <p>
      * These costs will be applied to the team assets to find out the final
      * cost.
      * 
      * @param dieCost
-     *            rank cost of a die
+     *            cost of a Coaching Die
      * @param sabotageCost
-     *            rank cost of a sabotage card
+     *            cost of a Sabotage Card
      * @param specialMoveCost
-     *            rank cost of a special move card
+     *            cost of a Special Move Card
      * @param cheerleaderCost
-     *            rank cost of a cheerleader
+     *            cost of a Cheerleader
      * @param wagerCost
-     *            rank cost of a wager
+     *            cost of a Wager
      * @param medibotCost
-     *            rank cost of a medibot
+     *            cost of a Medibot
      */
-    public DefaultRankCostCalculator(final Integer dieCost,
+    public SponsorTeamValorationCalculator(final Integer dieCost,
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderCost, final Integer wagerCost,
             final Integer medibotCost) {
@@ -90,79 +91,37 @@ public final class DefaultRankCostCalculator implements RankCostCalculator {
                 "Received a null pointer as the cheerleader cost");
         costWager = checkNotNull(wagerCost,
                 "Received a null pointer as the wager cost");
-        costMedibot = checkNotNull(medibotCost,
+        costMediBot = checkNotNull(medibotCost,
                 "Received a null pointer as the wager cost");
     }
 
     @Override
-    public final Integer getRankCost(final SponsorTeam team) {
-        Integer valoration;
-
-        checkNotNull(team, "Received a null pointer as the team");
-
-        valoration = 0;
-
-        valoration += team.getCoachingDice() * getDieCost();
-        valoration += team.getSabotageCards() * getSabotageCost();
-        valoration += team.getSpecialMoveCards() * getSpecialMoveCost();
-        valoration += team.getCheerleaders() * getCheerleaderCost();
-        valoration += team.getWagers() * getWagerCost();
-        valoration += team.getMediBots() * getMedibotCost();
-
-        return valoration;
-    }
-
-    /**
-     * Returns the cost of a cheerleader.
-     * 
-     * @return the cost of a cheerleader
-     */
-    private final Integer getCheerleaderCost() {
+    protected final Integer getCheerleaderCost() {
         return costCheerleader;
     }
 
-    /**
-     * Returns the cost of a die.
-     * 
-     * @return the cost of a die
-     */
-    private final Integer getDieCost() {
+    @Override
+    protected final Integer getDieCost() {
         return costDie;
     }
 
-    /**
-     * Returns the cost of a medibot.
-     * 
-     * @return the cost of a medibot
-     */
-    private final Integer getMedibotCost() {
-        return costMedibot;
+    @Override
+    protected final Integer getMediBotCost() {
+        return costMediBot;
     }
 
-    /**
-     * Returns the cost of a sabotage card.
-     * 
-     * @return the cost of a sabotage card
-     */
-    private final Integer getSabotageCost() {
+    @Override
+    protected final Integer getSabotageCost() {
         return costSabotage;
     }
 
-    /**
-     * Returns the cost of a special move card.
-     * 
-     * @return the cost of a special move card
-     */
-    private final Integer getSpecialMoveCost() {
+    @Override
+    protected final Integer getSpecialMoveCost() {
         return costSpecialMove;
     }
 
-    /**
-     * Returns the cost of a wager.
-     * 
-     * @return the cost of a wager
-     */
-    private final Integer getWagerCost() {
+    @Override
+    protected final Integer getWagerCost() {
         return costWager;
     }
 

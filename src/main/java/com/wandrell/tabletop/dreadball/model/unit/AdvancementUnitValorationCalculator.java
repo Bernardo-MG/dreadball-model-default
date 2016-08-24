@@ -19,18 +19,12 @@ package com.wandrell.tabletop.dreadball.model.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Calculates the valoration of an {@link AdvancementUnit}.
- * <p>
- * It uses the DBO's valoration formula, which consists on: [unit cost] + [unit
- * rank]*[rank value] + [implant cost].
- * <p>
- * This means that the unit should have been grafted an implant, or have a
- * working stub, for this formula to work.
+ * Valoration calculator for {@link AdvancementUnit}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class AdvancementUnitValorationCalculator
-        implements UnitValorationCalculator<AdvancementUnit> {
+        extends AbstractAdvancementUnitValorationCalculator {
 
     /**
      * Value of each rank.
@@ -53,20 +47,6 @@ public final class AdvancementUnitValorationCalculator
                 "Received a null pointer as the rank cost increase");
     }
 
-    @Override
-    public final Integer getValoration(final AdvancementUnit unit) {
-        Integer valoration;
-
-        checkNotNull(unit, "Received a null pointer as the unit");
-
-        valoration = unit.getCost();
-
-        valoration += unit.getGraftedImplant().getCost();
-        valoration += unit.getRank() * getRankCostIncrease();
-
-        return valoration;
-    }
-
     /**
      * Returns the cost of each rank.
      * <p>
@@ -75,7 +55,8 @@ public final class AdvancementUnitValorationCalculator
      * 
      * @return the cost of each rank
      */
-    private final Integer getRankCostIncrease() {
+    @Override
+    protected final Integer getRankCostIncrease() {
         return rankValue;
     }
 

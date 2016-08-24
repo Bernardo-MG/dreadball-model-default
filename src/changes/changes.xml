@@ -88,5 +88,10 @@
             Updated API.
          </action>
       </release>
+      <release version="0.5.4" date="2016-08-24" description="Added abstract calculators">
+         <action dev="bmg" type="update">
+            Calculators now include an abstract version with the calculation algorithm.
+         </action>
+      </release>
    </body>
 </document>
