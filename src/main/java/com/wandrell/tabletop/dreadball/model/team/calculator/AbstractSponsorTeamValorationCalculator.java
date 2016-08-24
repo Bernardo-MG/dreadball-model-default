@@ -54,7 +54,7 @@ public abstract class AbstractSponsorTeamValorationCalculator
         valoration += team.getSpecialMoveCards() * getSpecialMoveCost();
         valoration += team.getCheerleaders() * getCheerleaderCost();
         valoration += team.getWagers() * getWagerCost();
-        valoration += team.getMediBots() * getMedibotCost();
+        valoration += team.getMediBots() * getMediBotCost();
 
         return valoration;
     }
@@ -78,7 +78,7 @@ public abstract class AbstractSponsorTeamValorationCalculator
      * 
      * @return the cost of a medibot
      */
-    protected abstract Integer getMedibotCost();
+    protected abstract Integer getMediBotCost();
 
     /**
      * Returns the cost of a sabotage card.

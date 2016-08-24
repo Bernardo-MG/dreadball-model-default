@@ -39,7 +39,7 @@ public final class SponsorTeamValorationCalculator
     /**
      * Cost of a Medibot.
      */
-    private final Integer costMedibot;
+    private final Integer costMediBot;
 
     /**
      * Cost of a Sabotage Card.
@@ -91,7 +91,7 @@ public final class SponsorTeamValorationCalculator
                 "Received a null pointer as the cheerleader cost");
         costWager = checkNotNull(wagerCost,
                 "Received a null pointer as the wager cost");
-        costMedibot = checkNotNull(medibotCost,
+        costMediBot = checkNotNull(medibotCost,
                 "Received a null pointer as the wager cost");
     }
 
@@ -106,8 +106,8 @@ public final class SponsorTeamValorationCalculator
     }
 
     @Override
-    protected final Integer getMedibotCost() {
-        return costMedibot;
+    protected final Integer getMediBotCost() {
+        return costMediBot;
     }
 
     @Override
