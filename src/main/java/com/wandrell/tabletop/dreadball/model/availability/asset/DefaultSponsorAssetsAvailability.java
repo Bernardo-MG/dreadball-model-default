@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.availability.asset;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -29,57 +30,62 @@ import java.util.Objects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultSponsorAssetsAvailability
-        implements SponsorAssetsAvailability {
+        implements SponsorAssetsAvailability, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = -8859149010870860449L;
 
     /**
      * Cost of an Affinity Group.
      */
-    private final Integer costAffinityGroup;
+    private final Integer     costAffinityGroup;
 
     /**
      * Cost of a Cheerleader.
      */
-    private final Integer costCheerleader;
+    private final Integer     costCheerleader;
 
     /**
      * Cost of a Coaching Die.
      */
-    private final Integer costDie;
+    private final Integer     costDie;
 
     /**
      * Cost of a Medibot.
      */
-    private final Integer costMedibot;
+    private final Integer     costMedibot;
 
     /**
      * Cost of a Sabotage Card.
      */
-    private final Integer costSabotageCard;
+    private final Integer     costSabotageCard;
 
     /**
      * Cost of a Special Move Card.
      */
-    private final Integer costSpMoveCard;
+    private final Integer     costSpMoveCard;
 
     /**
      * Cost for unlocking a Cheerleader.
      */
-    private final Integer costUnlockCheer;
+    private final Integer     costUnlockCheer;
 
     /**
      * Cost of a Wager.
      */
-    private final Integer costWager;
+    private final Integer     costWager;
 
     /**
      * Maximum number of Wagers allowed.
      */
-    private final Integer maxWagerCount;
+    private final Integer     maxWagerCount;
 
     /**
      * Minimum allowed cost for a team.
      */
-    private final Integer minTeamCost;
+    private final Integer     minTeamCost;
 
     /**
      * Constructs assets availability with the specified asset costs and

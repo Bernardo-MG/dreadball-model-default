@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.faction;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -29,12 +30,17 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamRule implements TeamRule {
+public final class DefaultTeamRule implements TeamRule, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = 3441674928267205572L;
 
     /**
      * Rule's name.
      */
-    private final String ruleName;
+    private final String      ruleName;
 
     /**
      * Constructs a team rule with the specified parameters.

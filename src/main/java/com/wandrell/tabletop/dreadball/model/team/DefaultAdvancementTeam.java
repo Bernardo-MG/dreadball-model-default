@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -32,37 +33,42 @@ import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
-        implements AdvancementTeam {
+        implements AdvancementTeam, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long                               serialVersionUID = -7832905135406602622L;
 
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
-    private Boolean                                         defensiveCoach = false;
+    private Boolean                                         defensiveCoach   = false;
 
     /**
      * Flag indicating if the team has an Offensive Coaching Staff.
      */
-    private Boolean                                         offensiveCoach = false;
+    private Boolean                                         offensiveCoach   = false;
 
     /**
      * Flag indicating if the team has a Support Coaching Staff.
      */
-    private Boolean                                         supportCoach   = false;
+    private Boolean                                         supportCoach     = false;
 
     /**
      * Number of Dreadball Cards in the team.
      */
-    private Integer                                         teamCards      = 0;
+    private Integer                                         teamCards        = 0;
 
     /**
      * Team's unspent cash.
      */
-    private Integer                                         teamCash       = 0;
+    private Integer                                         teamCash         = 0;
 
     /**
      * Team's name.
      */
-    private String                                          teamName       = "";
+    private String                                          teamName         = "";
 
     /**
      * The base type of the team.

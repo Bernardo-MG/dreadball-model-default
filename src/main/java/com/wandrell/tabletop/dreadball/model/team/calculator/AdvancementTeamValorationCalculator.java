@@ -18,33 +18,40 @@ package com.wandrell.tabletop.dreadball.model.team.calculator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
+
 /**
  * Team valoration calculator for an {@code AdvancementTeam}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class AdvancementTeamValorationCalculator
-        extends AbstractAdvancementTeamValorationCalculator {
+public final class AdvancementTeamValorationCalculator extends
+        AbstractAdvancementTeamValorationCalculator implements Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = -7170817384573011362L;
 
     /**
      * Cost of a Dreadball Card.
      */
-    private final Integer costCard;
+    private final Integer     costCard;
 
     /**
      * Cost of a Cheerleader.
      */
-    private final Integer costCheerleader;
+    private final Integer     costCheerleader;
 
     /**
      * Cost of a Coaching Staff.
      */
-    private final Integer costCoaching;
+    private final Integer     costCoaching;
 
     /**
      * Cost of a Coaching Die.
      */
-    private final Integer costDie;
+    private final Integer     costDie;
 
     /**
      * Constructs a team valoration calculator using the specified cost.

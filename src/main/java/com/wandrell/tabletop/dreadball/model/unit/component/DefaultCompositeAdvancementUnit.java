@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -38,7 +39,12 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultCompositeAdvancementUnit
-        implements CompositeAdvancementUnit {
+        implements CompositeAdvancementUnit, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long           serialVersionUID = 6492427235549316354L;
 
     /**
      * {@code AdvancementUnit} used for inheritance through composition.
@@ -48,7 +54,7 @@ public final class DefaultCompositeAdvancementUnit
     /**
      * Components of the unit.
      */
-    private final Collection<Component> unitComponents = new LinkedHashSet<Component>();
+    private final Collection<Component> unitComponents   = new LinkedHashSet<Component>();
 
     /**
      * Constructs a composite advancement unit with the specified arguments.

@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -33,7 +34,12 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultSponsorTeam extends AbstractTeam<Unit>
-        implements SponsorTeam {
+        implements SponsorTeam, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long                           serialVersionUID  = -6502596684517851116L;
 
     /**
      * Rank cost calculator.

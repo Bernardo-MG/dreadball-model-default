@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.faction;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -31,27 +32,32 @@ import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultSponsor implements Sponsor {
+public final class DefaultSponsor implements Sponsor, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long               serialVersionUID = -4829127089851341472L;
 
     /**
      * Sponsor's player groups.
      */
-    private final Collection<AffinityGroup> affinityGroups = new LinkedHashSet<>();
+    private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<>();
 
     /**
      * Sponsor's unspent cash.
      */
-    private Integer                         sponsorCash    = 0;
+    private Integer                         sponsorCash      = 0;
 
     /**
      * Sponsor's name.
      */
-    private String                          sponsorName    = "";
+    private String                          sponsorName      = "";
 
     /**
      * Sponsor's rank.
      */
-    private Integer                         sponsorRank    = 0;
+    private Integer                         sponsorRank      = 0;
 
     /**
      * Default constructor.

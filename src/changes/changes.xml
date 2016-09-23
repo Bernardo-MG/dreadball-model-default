@@ -93,5 +93,10 @@
             Calculators now include an abstract version with the calculation algorithm.
          </action>
       </release>
+      <release version="0.5.5" date="2016-09-23" description="Serialization">
+         <action dev="bmg" type="update">
+            All the classes are now serializable.
+         </action>
+      </release>
    </body>
 </document>

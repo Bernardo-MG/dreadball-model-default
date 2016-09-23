@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -37,7 +38,13 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.ImmutableAttributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAdvancementUnit implements AdvancementUnit {
+public final class DefaultAdvancementUnit
+        implements AdvancementUnit, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long                               serialVersionUID = -9100853601667992893L;
 
     /**
      * {@code Unit} used for inheritance through composition.
@@ -55,7 +62,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
      * <p>
      * Be default it will be a stub component.
      */
-    private Component                                       graftedImplant = new DefaultComponent(
+    private Component                                       graftedImplant   = new DefaultComponent(
             "none", new DefaultComponentLocation("none"), 0,
             new LinkedList<Role>(), new ImmutableAttributes(0, 0, 0, 0, 0),
             new LinkedList<Ability>());
@@ -68,7 +75,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     /**
      * The unit's abilities.
      */
-    private final Collection<Ability>                       unitAbilities  = new LinkedHashSet<>();
+    private final Collection<Ability>                       unitAbilities    = new LinkedHashSet<>();
 
     /**
      * Unit's attributes.
@@ -78,7 +85,7 @@ public final class DefaultAdvancementUnit implements AdvancementUnit {
     /**
      * Name given to the unit.
      */
-    private String                                          unitName       = "";
+    private String                                          unitName         = "";
 
     /**
      * Object used for calculating the unit valoration.

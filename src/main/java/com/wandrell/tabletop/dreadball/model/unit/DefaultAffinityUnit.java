@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -32,12 +33,17 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAffinityUnit implements AffinityUnit {
+public final class DefaultAffinityUnit implements AffinityUnit, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long               serialVersionUID = 7590874136661141233L;
 
     /**
      * The affinities of the unit.
      */
-    private final Collection<AffinityGroup> affinityGroups  = new LinkedHashSet<AffinityGroup>();
+    private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<AffinityGroup>();
 
     /**
      * {@code Unit} used for inheritance through composition.
@@ -47,7 +53,7 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     /**
      * The actual cost of the unit.
      */
-    private Integer                         costActual      = 0;
+    private Integer                         costActual       = 0;
 
     /**
      * Unit cost for an ally.
@@ -67,12 +73,12 @@ public final class DefaultAffinityUnit implements AffinityUnit {
     /**
      * The affinities hated by the unit.
      */
-    private final Collection<AffinityGroup> hatedAffinities = new LinkedHashSet<AffinityGroup>();
+    private final Collection<AffinityGroup> hatedAffinities  = new LinkedHashSet<AffinityGroup>();
 
     /**
      * Name given to the unit.
      */
-    private String                          unitName        = "";
+    private String                          unitName         = "";
 
     /**
      * Constructs an affinity unit with the specified arguments.

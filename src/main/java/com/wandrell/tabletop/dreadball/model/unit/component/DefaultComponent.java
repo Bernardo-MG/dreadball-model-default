@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -35,12 +36,17 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultComponent implements Component {
+public final class DefaultComponent implements Component, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long         serialVersionUID = 409045439122602174L;
 
     /**
      * Abilities given by this component.
      */
-    private final Collection<Ability> abilitiesGiven = new LinkedHashSet<Ability>();
+    private final Collection<Ability> abilitiesGiven   = new LinkedHashSet<Ability>();
 
     /**
      * Attributes given by this component.
@@ -65,7 +71,7 @@ public final class DefaultComponent implements Component {
     /**
      * Team position roles which can have this component.
      */
-    private final Collection<Role>    componentPos   = new LinkedHashSet<Role>();
+    private final Collection<Role>    componentPos     = new LinkedHashSet<Role>();
 
     /**
      * Constructs a component with the specified arguments.

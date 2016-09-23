@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -40,7 +41,12 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultCompositeAffinityUnit
-        implements CompositeAffinityUnit {
+        implements CompositeAffinityUnit, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long           serialVersionUID = 7289790050324765193L;
 
     /**
      * {@code AffinityUnit} used for inheritance through composition.
@@ -50,7 +56,7 @@ public final class DefaultCompositeAffinityUnit
     /**
      * Components of the unit.
      */
-    private final Collection<Component> unitComponents = new LinkedHashSet<Component>();
+    private final Collection<Component> unitComponents   = new LinkedHashSet<Component>();
 
     /**
      * Constructs a composite affinities unit with the specified arguments.

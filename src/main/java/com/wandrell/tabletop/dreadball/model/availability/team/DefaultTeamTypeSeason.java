@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.availability.team;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.wandrell.tabletop.dreadball.model.availability.faction.TeamTypeSeason;
@@ -30,17 +31,23 @@ import com.wandrell.tabletop.dreadball.model.faction.TeamType;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamTypeSeason implements TeamTypeSeason {
+public final class DefaultTeamTypeSeason
+        implements TeamTypeSeason, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = 2243352801856981700L;
 
     /**
      * The season the team appeared in.
      */
-    private final Integer  seasonNumber;
+    private final Integer     seasonNumber;
 
     /**
      * The team which appeared in this season.
      */
-    private final TeamType team;
+    private final TeamType    team;
 
     /**
      * Constructs a team season.

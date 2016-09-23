@@ -18,20 +18,27 @@ package com.wandrell.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
+
 /**
  * Valoration calculator for {@link AdvancementUnit}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class AdvancementUnitValorationCalculator
-        extends AbstractAdvancementUnitValorationCalculator {
+public final class AdvancementUnitValorationCalculator extends
+        AbstractAdvancementUnitValorationCalculator implements Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = 7339981867271775690L;
 
     /**
      * Value of each rank.
      * <p>
      * A unit's rank will be multiplied by this number to find its value.
      */
-    private final Integer rankValue;
+    private final Integer     rankValue;
 
     /**
      * Constructs an advancement unit valoration calculator with the specified

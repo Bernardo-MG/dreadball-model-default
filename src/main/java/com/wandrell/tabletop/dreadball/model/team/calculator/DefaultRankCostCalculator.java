@@ -18,43 +18,50 @@ package com.wandrell.tabletop.dreadball.model.team.calculator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
+
 /**
  * Rank cost calculator.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultRankCostCalculator
-        extends AbstractRankCostCalculator {
+public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
+        implements Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = -4287711889234159746L;
 
     /**
      * Cost of a Cheerleader.
      */
-    private final Integer costCheerleader;
+    private final Integer     costCheerleader;
 
     /**
      * Cost of a Coaching Die.
      */
-    private final Integer costDie;
+    private final Integer     costDie;
 
     /**
      * Cost of a Medibot.
      */
-    private final Integer costMediBot;
+    private final Integer     costMediBot;
 
     /**
      * Cost of a Sabotage Card.
      */
-    private final Integer costSabotage;
+    private final Integer     costSabotage;
 
     /**
      * Cost of a Special Move Card.
      */
-    private final Integer costSpecialMove;
+    private final Integer     costSpecialMove;
 
     /**
      * Cost of a Wager.
      */
-    private final Integer costWager;
+    private final Integer     costWager;
 
     /**
      * Constructs a rank cost calculator using the specified cost.

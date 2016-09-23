@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -33,32 +34,38 @@ import com.wandrell.tabletop.dreadball.model.unit.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAffinityComponent implements AffinityComponent {
+public final class DefaultAffinityComponent
+        implements AffinityComponent, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = -8763313281233982534L;
 
     /**
      * {@code Component} used for inheritance through composition.
      */
-    private final Component baseComponent;
+    private final Component   baseComponent;
 
     /**
      * The actual cost of the component.
      */
-    private Integer         costActual = 0;
+    private Integer           costActual       = 0;
 
     /**
      * Component cost for an ally.
      */
-    private final Integer   costAlly;
+    private final Integer     costAlly;
 
     /**
      * Component cost for a friend.
      */
-    private final Integer   costFriend;
+    private final Integer     costFriend;
 
     /**
      * Component cost for a stranger.
      */
-    private final Integer   costStranger;
+    private final Integer     costStranger;
 
     /**
      * Constructs an affinities component with the specified arguments.
