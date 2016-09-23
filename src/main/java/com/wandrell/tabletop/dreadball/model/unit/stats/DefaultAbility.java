@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit.stats;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -29,12 +30,17 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAbility implements Ability {
+public final class DefaultAbility implements Ability, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = 5005941056605378231L;
 
     /**
      * Ability's name.
      */
-    private final String abilityName;
+    private final String      abilityName;
 
     /**
      * Constructs an ability with the specified parameters.

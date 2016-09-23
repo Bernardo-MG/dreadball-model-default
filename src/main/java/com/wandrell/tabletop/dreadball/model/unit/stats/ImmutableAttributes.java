@@ -18,6 +18,7 @@ package com.wandrell.tabletop.dreadball.model.unit.stats;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -29,32 +30,37 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ImmutableAttributes implements Attributes {
+public final class ImmutableAttributes implements Attributes, Serializable {
+
+    /**
+     * Serialization id.
+     */
+    private static final long serialVersionUID = 5432386510717307041L;
 
     /**
      * Armor value.
      */
-    private final Integer armorValue;
+    private final Integer     armorValue;
 
     /**
      * Movement value.
      */
-    private final Integer movementValue;
+    private final Integer     movementValue;
 
     /**
      * Skill value.
      */
-    private final Integer skillValue;
+    private final Integer     skillValue;
 
     /**
      * Speed value.
      */
-    private final Integer speedValue;
+    private final Integer     speedValue;
 
     /**
      * Strength value.
      */
-    private final Integer strengthValue;
+    private final Integer     strengthValue;
 
     /**
      * Constructs attributes with the specified values.
