@@ -98,7 +98,7 @@
             All the classes are now serializable.
          </action>
       </release>
-      <release version="0.5.5" date="2016-09-28" description="Site deployment">
+      <release version="0.5.6" date="2016-09-28" description="Site deployment">
          <action dev="bmg" type="update">
             Maven site is now deployed through SSH.
          </action>
