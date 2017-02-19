@@ -183,7 +183,7 @@
       <!-- Manifest data -->
       <manifest.name>com/wandrell/tabletop/dreadball/model/default</manifest.name>
       <!-- Dependencies versions -->
-      <guava.version>21.0</guava.version>
+      <guava.version>20.0</guava.version>
       <log4j.version>2.8</log4j.version>
       <mockito.version>1.10.19</mockito.version>
       <dreadball.api.version>0.7.1</dreadball.api.version>
