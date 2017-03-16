@@ -19,12 +19,16 @@ package com.wandrell.tabletop.dreadball.model.team;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.team.calculator.RankCostCalculator;
 import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
@@ -40,6 +44,11 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
      * Serialization id.
      */
     private static final long                           serialVersionUID  = -6502596684517851116L;
+
+    /**
+     * Additional affinity groups for the next match.
+     */
+    private final Collection<AffinityGroup>             affinities        = new ArrayList<>();
 
     /**
      * Rank cost calculator.
@@ -100,6 +109,16 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     }
 
     @Override
+    public final void addAdditionalAffinityGroup(final AffinityGroup affinity) {
+        getAffinityGroupsModifiable().add(affinity);
+    }
+
+    @Override
+    public final void clearAdditionalAffinityGroups() {
+        getAffinityGroupsModifiable().clear();
+    }
+
+    @Override
     public final boolean equals(final Object obj) {
         if (this == obj) {
             return true;
@@ -117,6 +136,12 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
 
         other = (DefaultSponsorTeam) obj;
         return Objects.equals(teamSponsor, other.teamSponsor);
+    }
+
+    @Override
+    public final Iterable<AffinityGroup> getAdditionalAffinityGroups() {
+        return Collections
+                .unmodifiableCollection(getAffinityGroupsModifiable());
     }
 
     @Override
@@ -183,6 +208,15 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("sponsor", teamSponsor)
                 .add("players", getPlayers()).toString();
+    }
+
+    /**
+     * Returns the modifiable collection with the additiona affinity groups.
+     * 
+     * @return the modifiable collection with the additiona affinity groups
+     */
+    private final Collection<AffinityGroup> getAffinityGroupsModifiable() {
+        return affinities;
     }
 
     /**
