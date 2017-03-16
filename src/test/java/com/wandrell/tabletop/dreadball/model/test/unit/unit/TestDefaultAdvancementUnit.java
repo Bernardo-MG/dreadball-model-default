@@ -16,8 +16,8 @@
 
 package com.wandrell.tabletop.dreadball.model.test.unit.unit;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import org.mockito.Mockito;
 import org.testng.Assert;
@@ -64,7 +64,7 @@ public final class TestDefaultAdvancementUnit {
 
         // Mocks abilities
         ability = Mockito.mock(Ability.class);
-        abilities = new LinkedList<>();
+        abilities = new ArrayList<>();
         abilities.add(ability);
         abilities.add(ability);
 

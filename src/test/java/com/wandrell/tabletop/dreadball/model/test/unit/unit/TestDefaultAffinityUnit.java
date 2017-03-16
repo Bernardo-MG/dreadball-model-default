@@ -16,8 +16,8 @@
 
 package com.wandrell.tabletop.dreadball.model.test.unit.unit;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import org.mockito.Mockito;
 import org.testng.Assert;
@@ -65,7 +65,7 @@ public final class TestDefaultAffinityUnit {
 
         // Mocks abilities
         ability = Mockito.mock(Ability.class);
-        abilities = new LinkedList<Ability>();
+        abilities = new ArrayList<>();
         abilities.add(ability);
         abilities.add(ability);
 
@@ -74,8 +74,8 @@ public final class TestDefaultAffinityUnit {
 
         // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
-                abilities, true, true, new LinkedList<AffinityGroup>(),
-                new LinkedList<AffinityGroup>(), 0, 0, 0);
+                abilities, true, true, new ArrayList<AffinityGroup>(),
+                new ArrayList<AffinityGroup>(), 0, 0, 0);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }
@@ -92,7 +92,7 @@ public final class TestDefaultAffinityUnit {
 
         // Mocks abilities
         affinity = Mockito.mock(AffinityGroup.class);
-        affinities = new LinkedList<AffinityGroup>();
+        affinities = new ArrayList<>();
         affinities.add(affinity);
         affinities.add(affinity);
 
@@ -101,8 +101,8 @@ public final class TestDefaultAffinityUnit {
 
         // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
-                new LinkedList<Ability>(), true, true, affinities,
-                new LinkedList<AffinityGroup>(), 0, 0, 0);
+                new ArrayList<Ability>(), true, true, affinities,
+                new ArrayList<AffinityGroup>(), 0, 0, 0);
 
         Assert.assertEquals(unit.getAffinityGroups().size(), 1);
     }
@@ -119,7 +119,7 @@ public final class TestDefaultAffinityUnit {
 
         // Mocks abilities
         affinity = Mockito.mock(AffinityGroup.class);
-        affinities = new LinkedList<AffinityGroup>();
+        affinities = new ArrayList<>();
         affinities.add(affinity);
         affinities.add(affinity);
 
@@ -128,8 +128,8 @@ public final class TestDefaultAffinityUnit {
 
         // Creates unit
         unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
-                new LinkedList<Ability>(), true, true,
-                new LinkedList<AffinityGroup>(), affinities, 0, 0, 0);
+                new ArrayList<Ability>(), true, true,
+                new ArrayList<AffinityGroup>(), affinities, 0, 0, 0);
 
         Assert.assertEquals(unit.getHatedAffinityGroups().size(), 1);
     }

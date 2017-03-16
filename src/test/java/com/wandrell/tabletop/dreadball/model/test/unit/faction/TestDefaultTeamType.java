@@ -16,8 +16,8 @@
 
 package com.wandrell.tabletop.dreadball.model.test.unit.faction;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import org.mockito.Mockito;
 import org.testng.Assert;
@@ -57,7 +57,7 @@ public final class TestDefaultTeamType {
 
         // Mocks rules
         rule = Mockito.mock(TeamRule.class);
-        rules = new LinkedList<>();
+        rules = new ArrayList<>();
         rules.add(rule);
         rules.add(rule);
 

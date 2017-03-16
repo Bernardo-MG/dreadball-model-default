@@ -19,10 +19,10 @@ package com.wandrell.tabletop.dreadball.model.unit;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -64,8 +64,8 @@ public final class DefaultAdvancementUnit
      */
     private Component                                       graftedImplant   = new DefaultComponent(
             "none", new DefaultComponentLocation("none"), 0,
-            new LinkedList<Role>(), new ImmutableAttributes(0, 0, 0, 0, 0),
-            new LinkedList<Ability>());
+            new ArrayList<Role>(), new ImmutableAttributes(0, 0, 0, 0, 0),
+            new ArrayList<Ability>());
 
     /**
      * The unit's current rank.
@@ -75,7 +75,7 @@ public final class DefaultAdvancementUnit
     /**
      * The unit's abilities.
      */
-    private final Collection<Ability>                       unitAbilities    = new LinkedHashSet<>();
+    private final Collection<Ability>                       unitAbilities    = new HashSet<>();
 
     /**
      * Unit's attributes.

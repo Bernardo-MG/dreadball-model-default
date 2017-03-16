@@ -16,8 +16,8 @@
 
 package com.wandrell.tabletop.dreadball.model.test.unit.unit.component;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import org.mockito.Mockito;
 import org.testng.Assert;
@@ -63,7 +63,7 @@ public final class TestDefaultComponent {
 
         // Mocks abilities
         ability = Mockito.mock(Ability.class);
-        abilities = new LinkedList<Ability>();
+        abilities = new ArrayList<>();
         abilities.add(ability);
         abilities.add(ability);
 
@@ -75,7 +75,7 @@ public final class TestDefaultComponent {
 
         // Creates component
         component = new DefaultComponent("name", location, 0,
-                new LinkedList<Role>(), attributes, abilities);
+                new ArrayList<Role>(), attributes, abilities);
 
         Assert.assertEquals(component.getAbilities().size(), 1);
     }
@@ -91,7 +91,7 @@ public final class TestDefaultComponent {
         final ComponentLocation location;    // Mocked location
 
         // Sets roles
-        roles = new LinkedList<Role>();
+        roles = new ArrayList<>();
         roles.add(Role.STRIKER);
         roles.add(Role.STRIKER);
 
@@ -103,7 +103,7 @@ public final class TestDefaultComponent {
 
         // Creates component
         component = new DefaultComponent("name", location, 0, roles, attributes,
-                new LinkedList<Ability>());
+                new ArrayList<Ability>());
 
         Assert.assertEquals(component.getRoles().size(), 1);
     }
