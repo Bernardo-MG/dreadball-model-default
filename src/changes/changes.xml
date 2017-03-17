@@ -103,7 +103,7 @@
             Maven site is now deployed through SSH.
          </action>
       </release>
-      <release version="0.5.7" date="2016-09-28" description="Updated API">
+      <release version="0.5.7" date="2017-03-17" description="Updated API">
          <action dev="bmg" type="update">
             Updated API.
          </action>
