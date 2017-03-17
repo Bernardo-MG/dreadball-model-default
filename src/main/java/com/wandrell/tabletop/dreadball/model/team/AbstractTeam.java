@@ -19,9 +19,9 @@ package com.wandrell.tabletop.dreadball.model.team;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +42,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
     /**
      * Team's players.
      */
-    private final Map<Integer, U> playersMap       = new LinkedHashMap<>();
+    private final Map<Integer, U> playersMap       = new HashMap<>();
 
     /**
      * Number of Cheerleaders on the team.
@@ -74,8 +74,7 @@ public abstract class AbstractTeam<U extends Unit> implements Team<U> {
         if (getPlayersModifiable().isEmpty()) {
             addPlayer(player, position);
         } else {
-            positions = new LinkedList<Integer>(
-                    getPlayersModifiable().keySet());
+            positions = new ArrayList<>(getPlayersModifiable().keySet());
             Collections.sort(positions);
 
             maxPos = positions.get(positions.size() - 1);
