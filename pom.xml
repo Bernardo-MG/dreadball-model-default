@@ -313,6 +313,17 @@
             </configuration>
          </plugin>
          <plugin>
+            <!-- Javadoc -->
+            <!-- Generates the javadocs -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+               <links>
+                  <link>http://docs.wandrell.com/maven/dreadball-model-api/apidocs/</link>
+               </links>
+            </configuration>
+         </plugin>
+         <plugin>
             <!-- PMD -->
             <!-- Checks that the code complies with a series of code quality rules -->
             <groupId>org.apache.maven.plugins</groupId>
