@@ -20,13 +20,15 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
+import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
+
 /**
- * Rank cost calculator.
+ * Calculates the rank cost of a {@link SponsorTeam}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
-        implements Serializable {
+public final class DefaultRankCostCalculator
+        implements Serializable, CostCalculator<SponsorTeam> {
 
     /**
      * Serialization id.
@@ -103,12 +105,37 @@ public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
     }
 
     /**
+     * Returns a {@code SponsorTeam}'s rank cost.
+     * 
+     * @param team
+     *            the {@code SponsorTeam} of which the rank cost will be
+     *            calculated
+     * @return the rank cost of the {@code SponsorTeam}
+     */
+    @Override
+    public final Integer getCost(final SponsorTeam team) {
+        Integer valoration;
+
+        checkNotNull(team, "Received a null pointer as the team");
+
+        valoration = 0;
+
+        valoration += team.getCoachingDice() * getDieCost();
+        valoration += team.getSabotageCards() * getSabotageCost();
+        valoration += team.getSpecialMoveCards() * getSpecialMoveCost();
+        valoration += team.getCheerleaders() * getCheerleaderCost();
+        valoration += team.getWagers() * getWagerCost();
+        valoration += team.getMediBots() * getMediBotCost();
+
+        return valoration;
+    }
+
+    /**
      * Returns the cost of a cheerleader.
      * 
      * @return the cost of a cheerleader
      */
-    @Override
-    protected final Integer getCheerleaderCost() {
+    private final Integer getCheerleaderCost() {
         return costCheerleader;
     }
 
@@ -117,8 +144,7 @@ public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
      * 
      * @return the cost of a die
      */
-    @Override
-    protected final Integer getDieCost() {
+    private final Integer getDieCost() {
         return costDie;
     }
 
@@ -127,8 +153,7 @@ public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
      * 
      * @return the cost of a medibot
      */
-    @Override
-    protected final Integer getMediBotCost() {
+    private final Integer getMediBotCost() {
         return costMediBot;
     }
 
@@ -137,8 +162,7 @@ public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
      * 
      * @return the cost of a sabotage card
      */
-    @Override
-    protected final Integer getSabotageCost() {
+    private final Integer getSabotageCost() {
         return costSabotage;
     }
 
@@ -147,8 +171,7 @@ public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
      * 
      * @return the cost of a special move card
      */
-    @Override
-    protected final Integer getSpecialMoveCost() {
+    private final Integer getSpecialMoveCost() {
         return costSpecialMove;
     }
 
@@ -157,8 +180,7 @@ public final class DefaultRankCostCalculator extends AbstractRankCostCalculator
      * 
      * @return the cost of a wager
      */
-    @Override
-    protected final Integer getWagerCost() {
+    private final Integer getWagerCost() {
         return costWager;
     }
 

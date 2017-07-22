@@ -108,5 +108,13 @@
             Updated API.
          </action>
       </release>
+      <release version="0.6.0" date="2017-07-22" description="Reduced number of calculators">
+         <action dev="bmg" type="add">
+            Reduced the number of calculator interfaces.
+         </action>
+         <action dev="bmg" type="remove">
+            Removed abstract calculators.
+         </action>
+      </release>
    </body>
 </document>

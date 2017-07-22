@@ -16,27 +16,23 @@
 
 package com.wandrell.tabletop.dreadball.model.team.calculator;
 
-import com.wandrell.tabletop.dreadball.model.team.Team;
-
 /**
- * Calculates the valoration of a {@link Team}.
+ * Calculates the rank cost of an object.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
- * calculate a team's valoration.
+ * calculate, for example, a team's rank cost or its valoration.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
- * @param <T>
- *            the type of the team of which the valoration will be calculated
  */
-public interface TeamValorationCalculator<T extends Team<?>> {
+public interface CostCalculator<T> {
 
     /**
-     * Returns a {@code Team}'s valoration.
+     * Returns the cost of the received object.
      * 
-     * @param team
-     *            the {@code Team} of which the valoration will be calculated
-     * @return the valoration of the {@code Team}
+     * @param obj
+     *            the object of which the cost will be calculated
+     * @return the cost of the received object
      */
-    public Integer getValoration(final T team);
+    public Integer getCost(final T obj);
 
 }
