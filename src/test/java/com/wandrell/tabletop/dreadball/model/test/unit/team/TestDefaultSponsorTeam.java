@@ -23,8 +23,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
-import com.wandrell.tabletop.dreadball.model.team.calculator.RankCostCalculator;
-import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
@@ -65,16 +64,16 @@ public final class TestDefaultSponsorTeam {
         final Unit player1;     // Mocked player 1
         final Unit player2;     // Mocked player 2
         final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
         // Mocks calculators
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
 
         // Creates team
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
@@ -102,16 +101,16 @@ public final class TestDefaultSponsorTeam {
         final Unit player2;     // Mocked player 2
         final Unit player3;     // Mocked player 3
         final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
         // Mocks calculators
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
 
         // Creates team
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
@@ -142,16 +141,16 @@ public final class TestDefaultSponsorTeam {
         final Unit player2;     // Mocked player 2
         final Unit player3;     // Mocked player 3
         final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
         // Mocks calculators
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
 
         // Creates team
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
@@ -179,16 +178,16 @@ public final class TestDefaultSponsorTeam {
         final Unit player1;     // Mocked player 1
         final Unit player2;     // Mocked player 2
         final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
         // Mocks calculators
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
 
         // Creates team
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
@@ -214,16 +213,16 @@ public final class TestDefaultSponsorTeam {
         final Unit player1;     // Mocked player 1
         final Unit player2;     // Mocked player 2
         final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
         // Mocks calculators
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
 
         // Creates team
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
@@ -253,16 +252,16 @@ public final class TestDefaultSponsorTeam {
         final SponsorTeam team; // Tested team
         final Unit player;      // Mocked player
         final Sponsor sponsor;  // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);
 
         // Mocks calculators
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
 
         // Creates team
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);

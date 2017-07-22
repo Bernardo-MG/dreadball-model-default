@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
 import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
 import com.wandrell.tabletop.dreadball.model.team.DefaultAdvancementTeam;
-import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
@@ -55,10 +55,10 @@ public final class TestExceptionDefaultAdvancementTeam {
         final AdvancementTeam team;   // Tested team
         final AdvancementUnit player; // Mocked player
         final TeamType type;          // Mocked team type
-        final TeamValorationCalculator<AdvancementTeam> calculator;
+        final CostCalculator<AdvancementTeam> calculator;
 
         // Mocks calculator
-        calculator = Mockito.mock(TeamValorationCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
 
         // Mocks team type
         type = Mockito.mock(TeamType.class);

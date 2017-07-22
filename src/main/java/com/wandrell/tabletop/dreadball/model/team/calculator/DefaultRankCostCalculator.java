@@ -23,12 +23,12 @@ import java.io.Serializable;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
 
 /**
- * Rank cost calculator.
+ * Calculates the rank cost of a {@link SponsorTeam}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultRankCostCalculator
-        implements Serializable, RankCostCalculator {
+        implements Serializable, CostCalculator<SponsorTeam> {
 
     /**
      * Serialization id.
@@ -104,8 +104,16 @@ public final class DefaultRankCostCalculator
                 "Received a null pointer as the wager cost");
     }
 
+    /**
+     * Returns a {@code SponsorTeam}'s rank cost.
+     * 
+     * @param team
+     *            the {@code SponsorTeam} of which the rank cost will be
+     *            calculated
+     * @return the rank cost of the {@code SponsorTeam}
+     */
     @Override
-    public final Integer getRankCost(final SponsorTeam team) {
+    public final Integer getCost(final SponsorTeam team) {
         Integer valoration;
 
         checkNotNull(team, "Received a null pointer as the team");

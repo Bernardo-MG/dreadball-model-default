@@ -26,8 +26,7 @@ import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
-import com.wandrell.tabletop.dreadball.model.team.calculator.RankCostCalculator;
-import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AffinityGroup;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
@@ -43,47 +42,47 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     /**
      * Serialization id.
      */
-    private static final long                           serialVersionUID  = -6502596684517851116L;
+    private static final long                 serialVersionUID  = -6502596684517851116L;
 
     /**
      * Additional affinity groups for the next match.
      */
-    private final Collection<AffinityGroup>             affinities        = new ArrayList<>();
+    private final Collection<AffinityGroup>   affinities        = new ArrayList<>();
 
     /**
      * Rank cost calculator.
      */
-    private final RankCostCalculator                    rankCostCalculator;
+    private final CostCalculator<SponsorTeam> rankCostCalculator;
 
     /**
      * Number of Medibots in the team.
      */
-    private Integer                                     teamMedibots      = 0;
+    private Integer                           teamMedibots      = 0;
 
     /**
      * Number of Sabotage Cards in the team.
      */
-    private Integer                                     teamSabotageCards = 0;
+    private Integer                           teamSabotageCards = 0;
 
     /**
      * Number of Special Move Cards.
      */
-    private Integer                                     teamSpMoveCards   = 0;
+    private Integer                           teamSpMoveCards   = 0;
 
     /**
      * Team's sponsor.
      */
-    private final Sponsor                               teamSponsor;
+    private final Sponsor                     teamSponsor;
 
     /**
      * Number of Wagers in the team.
      */
-    private Integer                                     teamWagers        = 0;
+    private Integer                           teamWagers        = 0;
 
     /**
      * Valoration calculator.
      */
-    private final TeamValorationCalculator<SponsorTeam> valorationCalculator;
+    private final CostCalculator<SponsorTeam> valorationCalculator;
 
     /**
      * Constructs a sponsor team with the specified arguments.
@@ -96,8 +95,8 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
      *            rank cost calculator for the team
      */
     public DefaultSponsorTeam(final Sponsor sponsor,
-            final TeamValorationCalculator<SponsorTeam> valorator,
-            final RankCostCalculator rankCoster) {
+            final CostCalculator<SponsorTeam> valorator,
+            final CostCalculator<SponsorTeam> rankCoster) {
         super();
 
         teamSponsor = checkNotNull(sponsor,
@@ -151,7 +150,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
 
     @Override
     public final Integer getRankCost() {
-        return getRankCostCalculator().getRankCost(this);
+        return getRankCostCalculator().getCost(this);
     }
 
     @Override
@@ -171,7 +170,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
 
     @Override
     public final Integer getValoration() {
-        return getValorationCalculator().getValoration(this);
+        return getValorationCalculator().getCost(this);
     }
 
     @Override
@@ -224,7 +223,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
      * 
      * @return the rank cost calculator
      */
-    private final RankCostCalculator getRankCostCalculator() {
+    private final CostCalculator<SponsorTeam> getRankCostCalculator() {
         return rankCostCalculator;
     }
 
@@ -233,8 +232,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
      * 
      * @return the valoration calculator
      */
-    private final TeamValorationCalculator<SponsorTeam>
-            getValorationCalculator() {
+    private final CostCalculator<SponsorTeam> getValorationCalculator() {
         return valorationCalculator;
     }
 

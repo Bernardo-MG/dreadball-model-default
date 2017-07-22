@@ -29,7 +29,7 @@ import com.wandrell.tabletop.dreadball.model.unit.Unit;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class SponsorTeamValorationCalculator
-        implements TeamValorationCalculator<SponsorTeam>, Serializable {
+        implements CostCalculator<SponsorTeam>, Serializable {
 
     /**
      * Serialization id.
@@ -105,8 +105,15 @@ public final class SponsorTeamValorationCalculator
                 "Received a null pointer as the wager cost");
     }
 
+    /**
+     * Returns a team's valoration.
+     * 
+     * @param team
+     *            the team of which the valoration will be calculated
+     * @return the valoration of the team
+     */
     @Override
-    public final Integer getValoration(final SponsorTeam team) {
+    public final Integer getCost(final SponsorTeam team) {
         Integer valoration;
 
         checkNotNull(team, "Received a null pointer as the team");

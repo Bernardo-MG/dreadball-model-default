@@ -22,8 +22,7 @@ import org.testng.annotations.Test;
 import com.wandrell.tabletop.dreadball.model.faction.Sponsor;
 import com.wandrell.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
-import com.wandrell.tabletop.dreadball.model.team.calculator.RankCostCalculator;
-import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
 /**
@@ -57,14 +56,13 @@ public final class TestExceptionDefaultSponsorTeam {
     public void testAddPlayer_NegativePos() {
         final SponsorTeam team;          // Tested team
         final Sponsor sponsor;           // Mocked sponsor
-        final TeamValorationCalculator<SponsorTeam> calculator; // Mocked
-                                                                // calculator
-        final RankCostCalculator ranker; // Mocked rank calculator
+        final CostCalculator<SponsorTeam> calculator; // Mocked calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
         final Unit player;               // Mocked player
 
         // Mocks calculator
-        calculator = Mockito.mock(TeamValorationCalculator.class);
-        ranker = Mockito.mock(RankCostCalculator.class);
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
 
         // Mocks sponsor
         sponsor = Mockito.mock(Sponsor.class);

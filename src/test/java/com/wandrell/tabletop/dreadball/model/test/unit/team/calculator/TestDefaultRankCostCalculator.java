@@ -24,8 +24,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
+import com.wandrell.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.wandrell.tabletop.dreadball.model.team.calculator.DefaultRankCostCalculator;
-import com.wandrell.tabletop.dreadball.model.team.calculator.RankCostCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.wandrell.tabletop.dreadball.model.unit.Unit;
 
@@ -53,7 +53,7 @@ public final class TestDefaultRankCostCalculator {
      */
     @Test
     public final void testRankCost() {
-        final RankCostCalculator calculator; // Tested class
+        final CostCalculator<SponsorTeam> calculator; // Tested class
         final SponsorTeam team;              // Team to valorate
         final Map<Integer, Unit> players;    // Team players
         final Unit player;                   // Mocked player
@@ -77,7 +77,7 @@ public final class TestDefaultRankCostCalculator {
         // Creates calculator
         calculator = new DefaultRankCostCalculator(1, 2, 3, 4, 5, 6);
 
-        Assert.assertEquals(calculator.getRankCost(team), (Integer) 56);
+        Assert.assertEquals(calculator.getCost(team), (Integer) 56);
     }
 
 }

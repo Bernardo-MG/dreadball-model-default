@@ -23,7 +23,7 @@ import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 import com.wandrell.tabletop.dreadball.model.faction.TeamType;
-import com.wandrell.tabletop.dreadball.model.team.calculator.TeamValorationCalculator;
+import com.wandrell.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
@@ -38,47 +38,47 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     /**
      * Serialization id.
      */
-    private static final long                               serialVersionUID = -7832905135406602622L;
+    private static final long                     serialVersionUID = -7832905135406602622L;
 
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
-    private Boolean                                         defensiveCoach   = false;
+    private Boolean                               defensiveCoach   = false;
 
     /**
      * Flag indicating if the team has an Offensive Coaching Staff.
      */
-    private Boolean                                         offensiveCoach   = false;
+    private Boolean                               offensiveCoach   = false;
 
     /**
      * Flag indicating if the team has a Support Coaching Staff.
      */
-    private Boolean                                         supportCoach     = false;
+    private Boolean                               supportCoach     = false;
 
     /**
      * Number of Dreadball Cards in the team.
      */
-    private Integer                                         teamCards        = 0;
+    private Integer                               teamCards        = 0;
 
     /**
      * Team's unspent cash.
      */
-    private Integer                                         teamCash         = 0;
+    private Integer                               teamCash         = 0;
 
     /**
      * Team's name.
      */
-    private String                                          teamName         = "";
+    private String                                teamName         = "";
 
     /**
      * The base type of the team.
      */
-    private final TeamType                                  teamType;
+    private final TeamType                        teamType;
 
     /**
      * Valoration calculator.
      */
-    private final TeamValorationCalculator<AdvancementTeam> valorationCalculator;
+    private final CostCalculator<AdvancementTeam> valorationCalculator;
 
     /**
      * Constructs an advancement team with the specified parameters.
@@ -89,7 +89,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
      *            valoration builder
      */
     public DefaultAdvancementTeam(final TeamType type,
-            final TeamValorationCalculator<AdvancementTeam> valorator) {
+            final CostCalculator<AdvancementTeam> valorator) {
         super();
 
         teamType = checkNotNull(type, "Received a null pointer as type");
@@ -154,7 +154,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
 
     @Override
     public final Integer getValoration() {
-        return getValorationCalculator().getValoration(this);
+        return getValorationCalculator().getCost(this);
     }
 
     @Override
@@ -206,8 +206,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
      * 
      * @return a valoration calculator
      */
-    private final TeamValorationCalculator<AdvancementTeam>
-            getValorationCalculator() {
+    private final CostCalculator<AdvancementTeam> getValorationCalculator() {
         return valorationCalculator;
     }
 
