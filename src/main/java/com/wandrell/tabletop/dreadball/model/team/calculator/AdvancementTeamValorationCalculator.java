@@ -20,13 +20,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
+import com.wandrell.tabletop.dreadball.model.team.AdvancementTeam;
+import com.wandrell.tabletop.dreadball.model.unit.AdvancementUnit;
+
 /**
  * Team valoration calculator for an {@code AdvancementTeam}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class AdvancementTeamValorationCalculator extends
-        AbstractAdvancementTeamValorationCalculator implements Serializable {
+public final class AdvancementTeamValorationCalculator
+        implements TeamValorationCalculator<AdvancementTeam>, Serializable {
 
     /**
      * Serialization id.
@@ -84,21 +87,65 @@ public final class AdvancementTeamValorationCalculator extends
     }
 
     @Override
+    public final Integer getValoration(final AdvancementTeam team) {
+        Integer valoration;
+
+        checkNotNull(team, "Received a null pointer as the team");
+
+        valoration = team.getCash();
+        for (final AdvancementUnit unit : team.getPlayers().values()) {
+            valoration += unit.getValoration();
+        }
+
+        valoration += team.getCoachingDice() * getCostDie();
+        valoration += team.getDreadballCards() * getCostCard();
+        valoration += team.getCheerleaders() * getCostCheerleader();
+
+        if (team.getDefensiveCoachingStaff()) {
+            valoration += getCostCoaching();
+        }
+        if (team.getOffensiveCoachingStaff()) {
+            valoration += getCostCoaching();
+        }
+        if (team.getSupportCoachingStaff()) {
+            valoration += getCostCoaching();
+        }
+
+        return valoration;
+    }
+
+    /**
+     * Returns the cost of a dreadball card.
+     * 
+     * @return the cost of a dreadball card
+     */
     protected final Integer getCostCard() {
         return costCard;
     }
 
-    @Override
+    /**
+     * Returns the cost of a cheerleader.
+     * 
+     * @return the cost of a dreadball card
+     */
     protected final Integer getCostCheerleader() {
         return costCheerleader;
     }
 
-    @Override
+    /**
+     * Returns the cost of coaching staff.
+     * 
+     * @return the cost of coaching staff
+     */
     protected final Integer getCostCoaching() {
         return costCoaching;
     }
 
-    @Override
+    /**
+     * Returns the cost of a Dreadball die.
+     * 
+     * @return the cost of a Dreadball die
+     */
     protected final Integer getCostDie() {
         return costDie;
     }

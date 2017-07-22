@@ -20,13 +20,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
+import com.wandrell.tabletop.dreadball.model.team.SponsorTeam;
+import com.wandrell.tabletop.dreadball.model.unit.Unit;
+
 /**
  * Team valoration calculator for an {@code SponsorTeam}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class SponsorTeamValorationCalculator extends
-        AbstractSponsorTeamValorationCalculator implements Serializable {
+public final class SponsorTeamValorationCalculator
+        implements TeamValorationCalculator<SponsorTeam>, Serializable {
 
     /**
      * Serialization id.
@@ -103,32 +106,77 @@ public final class SponsorTeamValorationCalculator extends
     }
 
     @Override
-    protected final Integer getCheerleaderCost() {
+    public final Integer getValoration(final SponsorTeam team) {
+        Integer valoration;
+
+        checkNotNull(team, "Received a null pointer as the team");
+
+        valoration = 0;
+        for (final Unit unit : team.getPlayers().values()) {
+            valoration += unit.getCost();
+        }
+
+        valoration += team.getCoachingDice() * getDieCost();
+        valoration += team.getSabotageCards() * getSabotageCost();
+        valoration += team.getSpecialMoveCards() * getSpecialMoveCost();
+        valoration += team.getCheerleaders() * getCheerleaderCost();
+        valoration += team.getWagers() * getWagerCost();
+        valoration += team.getMediBots() * getMediBotCost();
+
+        return valoration;
+    }
+
+    /**
+     * Returns the cost of a cheerleader.
+     * 
+     * @return the cost of a cheerleader
+     */
+    private final Integer getCheerleaderCost() {
         return costCheerleader;
     }
 
-    @Override
-    protected final Integer getDieCost() {
+    /**
+     * Returns the cost of a die.
+     * 
+     * @return the cost of a die
+     */
+    private final Integer getDieCost() {
         return costDie;
     }
 
-    @Override
-    protected final Integer getMediBotCost() {
+    /**
+     * Returns the cost of a medibot.
+     * 
+     * @return the cost of a medibot
+     */
+    private final Integer getMediBotCost() {
         return costMediBot;
     }
 
-    @Override
-    protected final Integer getSabotageCost() {
+    /**
+     * Returns the cost of a sabotage card.
+     * 
+     * @return the cost of a sabotage card
+     */
+    private final Integer getSabotageCost() {
         return costSabotage;
     }
 
-    @Override
-    protected final Integer getSpecialMoveCost() {
+    /**
+     * Returns the cost of a special move card.
+     * 
+     * @return the cost of a special move card
+     */
+    private final Integer getSpecialMoveCost() {
         return costSpecialMove;
     }
 
-    @Override
-    protected final Integer getWagerCost() {
+    /**
+     * Returns the cost of a wager.
+     * 
+     * @return the cost of a wager
+     */
+    private final Integer getWagerCost() {
         return costWager;
     }
 
