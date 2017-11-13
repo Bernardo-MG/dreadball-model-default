@@ -60,7 +60,7 @@
 
    <distributionManagement>
       <relocation>
-         <groupId>com.bernardomg.maven</groupId>
+         <groupId>com.bernardomg.tabletop.dreadball</groupId>
       </relocation>
       <repository>
          <uniqueVersion>false</uniqueVersion>
