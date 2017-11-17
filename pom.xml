@@ -11,7 +11,7 @@
    <parent>
       <groupId>com.wandrell.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.1.5</version>
+      <version>1.1.6</version>
    </parent>
 
    <!-- ********************************************** -->
@@ -20,7 +20,7 @@
 
    <groupId>com.wandrell.tabletop.dreadball</groupId>
    <artifactId>dreadball-model-default</artifactId>
-   <version>0.6.0</version>
+   <version>0.6.1</version>
    <packaging>jar</packaging>
 
    <name>Dreadball Default Model Implementation</name>
@@ -59,6 +59,9 @@
    </ciManagement>
 
    <distributionManagement>
+      <relocation>
+         <groupId>com.bernardomg.tabletop.dreadball</groupId>
+      </relocation>
       <repository>
          <uniqueVersion>false</uniqueVersion>
          <id>releases</id>
@@ -123,7 +126,8 @@
             <site>
                <id>site</id>
                <name>Project Documentation Site</name>
-               <url>scp://docs.wandrell.com:2222/home1/duenco/www/maven/dreadball-model-default</url>
+               <!-- The URL should be set externally -->
+               <url>${site.release.url}</url>
             </site>
          </distributionManagement>
       </profile>
@@ -135,7 +139,8 @@
             <site>
                <id>site-development</id>
                <name>Project Development Documentation Site</name>
-               <url>scp://docs.wandrell.com:2222/home1/duenco/www/development/maven/dreadball-model-default</url>
+               <!-- The URL should be set externally -->
+               <url>${site.develop.url}</url>
             </site>
          </distributionManagement>
       </profile>
@@ -189,7 +194,7 @@
       <dreadball.api.version>0.7.3</dreadball.api.version>
       <testng.version>6.10</testng.version>
       <!-- Maven Site -->
-      <site.skin.version>0.6.1</site.skin.version>
+      <site.skin.version>1.2.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view</bintrayURL>
       <mavenURL>http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-default</mavenURL>
    </properties>
@@ -286,7 +291,7 @@
             <dependencies>
                <dependency>
                   <!-- Docs Maven Skin -->
-                  <groupId>com.wandrell.maven.skins</groupId>
+                  <groupId>com.bernardomg.maven.skins</groupId>
                   <artifactId>docs-maven-skin</artifactId>
                   <version>${site.skin.version}</version>
                </dependency>

@@ -16,7 +16,7 @@
 
 package com.wandrell.tabletop.dreadball.model.test.unit.team.calculator;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mockito.Mockito;
@@ -67,7 +67,7 @@ public final class TestSponsorTeamValorationCalculator {
         Mockito.when(team.getMediBots()).thenReturn(3);
 
         // Mocks players
-        players = new LinkedHashMap<>();
+        players = new HashMap<>();
         player = Mockito.mock(Unit.class);
         Mockito.when(player.getCost()).thenReturn(10);
         players.put(1, player);
