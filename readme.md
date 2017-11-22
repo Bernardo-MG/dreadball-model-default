@@ -4,7 +4,7 @@ Default implementation of the [Dreadball Model API][dreadball-model-api] meant f
 
 This covers both the original Dreadball and Dreadball Xtreme, and includes teams, units and the availabilities during team creation.
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.wandrell.tabletop.dreadball/dreadball-model-default.svg)][maven-repo]
+[![Maven Central](https://img.shields.io/maven-central/v/com.bernardomg.tabletop.dreadball/dreadball-model-default.svg)][maven-repo]
 [![Bintray](https://api.bintray.com/packages/bernardo-mg/tabletop-toolkits/dreadball-model-default/images/download.svg)][bintray-repo]
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
@@ -79,11 +79,11 @@ The project has been released under version 2.0 of the [Apache License][license]
 
 [dreadball-model-api]: https://github.com/Bernardo-MG/dreadball-model-api
 [bintray-repo]: https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view
-[maven-repo]: http://mvnrepository.com/artifact/com.wandrell.tabletop.dreadball/dreadball-model-default
+[maven-repo]: http://mvnrepository.com/artifact/com.bernardomg.tabletop.dreadball/dreadball-model-default
 [issues]: https://github.com/bernardo-mg/dreadball-model-default/issues
-[javadoc-develop]: http://docs.wandrell.com/development/maven/dreadball-model-default/apidocs
-[javadoc-release]: http://docs.wandrell.com/maven/dreadball-model-default/apidocs
+[javadoc-develop]: http://docs.bernardomg.com/development/maven/dreadball-model-default/apidocs
+[javadoc-release]: http://docs.bernardomg.com/maven/dreadball-model-default/apidocs
 [license]: http://www.apache.org/licenses/LICENSE-2.0
 [scm]: https://github.com/bernardo-mg/dreadball-model-default
-[site-develop]: http://docs.wandrell.com/development/maven/dreadball-model-default
-[site-release]: http://docs.wandrell.com/maven/dreadball-model-default
+[site-develop]: http://docs.bernardomg.com/development/maven/dreadball-model-default
+[site-release]: http://docs.bernardomg.com/maven/dreadball-model-default
