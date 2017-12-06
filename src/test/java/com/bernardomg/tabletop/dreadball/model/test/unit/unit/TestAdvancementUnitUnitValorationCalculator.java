@@ -17,8 +17,8 @@
 package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
 
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;

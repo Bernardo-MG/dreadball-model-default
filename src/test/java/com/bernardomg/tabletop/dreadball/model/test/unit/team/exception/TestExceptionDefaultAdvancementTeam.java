@@ -17,7 +17,7 @@
 package com.bernardomg.tabletop.dreadball.model.test.unit.team.exception;
 
 import org.mockito.Mockito;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import com.bernardomg.tabletop.dreadball.model.team.DefaultAdvancementTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
@@ -50,7 +50,7 @@ public final class TestExceptionDefaultAdvancementTeam {
      * Tests that adding a player to a negative position raises an exception.
      */
     @SuppressWarnings("unchecked")
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
         final AdvancementTeam team;   // Tested team
         final AdvancementUnit player; // Mocked player

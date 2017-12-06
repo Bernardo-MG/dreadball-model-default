@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;

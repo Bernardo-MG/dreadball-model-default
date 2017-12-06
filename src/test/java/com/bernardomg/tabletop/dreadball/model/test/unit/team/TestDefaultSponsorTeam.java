@@ -17,8 +17,8 @@
 package com.bernardomg.tabletop.dreadball.model.test.unit.team;
 
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import com.bernardomg.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
