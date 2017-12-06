@@ -24,12 +24,10 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
-import com.bernardomg.tabletop.dreadball.model.unit.component.CompositeAdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 

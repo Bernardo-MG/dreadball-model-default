@@ -16,13 +16,13 @@
 
 package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
 
-import org.mockito.Mockito;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
+import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
 
 /**

@@ -23,9 +23,6 @@ import java.util.Collection;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.component.AffinityComponent;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
-import com.bernardomg.tabletop.dreadball.model.unit.component.ComponentLocation;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 

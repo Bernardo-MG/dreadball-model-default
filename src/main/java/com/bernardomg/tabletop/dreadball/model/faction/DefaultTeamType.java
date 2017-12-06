@@ -25,8 +25,6 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
-import com.bernardomg.tabletop.dreadball.model.faction.TeamRule;
-import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 
 /**
  * Team type, which are the Dreadball Original (DBO) factions. They are also

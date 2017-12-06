@@ -24,9 +24,8 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.google.common.base.MoreObjects;
-import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
 import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.google.common.base.MoreObjects;
 
 /**
  * Sponsor, which are the Dreadball Xtreme (DBX) factions.

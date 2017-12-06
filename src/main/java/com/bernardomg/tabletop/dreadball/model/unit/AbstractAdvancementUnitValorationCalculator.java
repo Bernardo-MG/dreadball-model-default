@@ -18,8 +18,6 @@ package com.bernardomg.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
-
 /**
  * Calculates the valoration of an {@link AdvancementUnit}.
  * <p>

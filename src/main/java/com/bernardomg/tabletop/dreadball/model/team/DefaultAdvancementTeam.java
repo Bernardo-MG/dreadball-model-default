@@ -21,11 +21,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
-import com.bernardomg.tabletop.dreadball.model.team.AdvancementTeam;
+import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.google.common.base.MoreObjects;
 
 /**
  * Dreadball Original (DBO) team, composed of units which, along the team
@@ -167,7 +166,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     public final void setCash(final Integer cash) {
         checkNotNull(cash, "Received a null pointer as cash");
 
-        this.teamCash = cash;
+        teamCash = cash;
     }
 
     @Override

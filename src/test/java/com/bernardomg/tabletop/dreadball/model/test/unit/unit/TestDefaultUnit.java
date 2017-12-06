@@ -19,9 +19,9 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.mockito.Mockito;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.Role;

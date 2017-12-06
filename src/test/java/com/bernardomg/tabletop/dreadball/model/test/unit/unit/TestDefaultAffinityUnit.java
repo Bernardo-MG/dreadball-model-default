@@ -19,14 +19,14 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.mockito.Mockito;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.unit.DefaultAffinityUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.DefaultUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.unit.AffinityUnit;
+import com.bernardomg.tabletop.dreadball.model.unit.DefaultAffinityUnit;
+import com.bernardomg.tabletop.dreadball.model.unit.DefaultUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.Role;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;

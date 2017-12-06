@@ -24,11 +24,9 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.google.common.base.MoreObjects;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.google.common.base.MoreObjects;
 
 /**
  * Root for the basic features all the Dreadball units have, no matter if they

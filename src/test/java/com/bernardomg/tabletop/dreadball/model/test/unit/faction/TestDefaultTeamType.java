@@ -19,9 +19,9 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.faction;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.mockito.Mockito;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.faction.DefaultTeamType;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamRule;

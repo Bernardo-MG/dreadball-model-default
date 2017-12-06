@@ -16,14 +16,14 @@
 
 package com.bernardomg.tabletop.dreadball.model.test.unit.team;
 
-import org.mockito.Mockito;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.team.DefaultAdvancementTeam;
-import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 import com.bernardomg.tabletop.dreadball.model.team.AdvancementTeam;
+import com.bernardomg.tabletop.dreadball.model.team.DefaultAdvancementTeam;
+import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
