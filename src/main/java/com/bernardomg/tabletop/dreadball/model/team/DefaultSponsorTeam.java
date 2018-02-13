@@ -144,6 +144,16 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     }
 
     @Override
+    public final Integer getBaseRank() {
+        return getSponsor().getRank();
+    }
+
+    @Override
+    public final Integer getCurrentRank() {
+        return getBaseRank() - getRankCost();
+    }
+
+    @Override
     public final Integer getMediBots() {
         return teamMedibots;
     }
