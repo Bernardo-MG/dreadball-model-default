@@ -16,13 +16,13 @@
 
 package com.bernardomg.tabletop.dreadball.model.test.unit.team.exception;
 
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.testng.annotations.Test;
 
-import com.bernardomg.tabletop.dreadball.model.team.DefaultSponsorTeam;
-import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
+import com.bernardomg.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.SponsorTeam;
+import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 
 /**
@@ -52,7 +52,7 @@ public final class TestExceptionDefaultSponsorTeam {
      * {@code IllegalArgumentException}.
      */
     @SuppressWarnings("unchecked")
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
         final SponsorTeam team;          // Tested team
         final Sponsor sponsor;           // Mocked sponsor

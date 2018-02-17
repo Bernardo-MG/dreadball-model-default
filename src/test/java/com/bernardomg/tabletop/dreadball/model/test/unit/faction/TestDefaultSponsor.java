@@ -19,9 +19,9 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.faction;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.bernardomg.tabletop.dreadball.model.faction.DefaultSponsor;
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;

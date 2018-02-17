@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.bernardomg.tabletop.dreadball.model.team.Team;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 
 /**

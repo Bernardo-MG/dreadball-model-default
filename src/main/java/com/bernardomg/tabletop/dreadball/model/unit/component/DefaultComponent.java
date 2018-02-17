@@ -24,12 +24,10 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
-import com.bernardomg.tabletop.dreadball.model.unit.component.ComponentLocation;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.google.common.base.MoreObjects;
 
 /**
  * Component used for creating a composite unit.

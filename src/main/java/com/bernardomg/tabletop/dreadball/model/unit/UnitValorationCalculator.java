@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.unit;
 
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
-
 /**
  * Calculates the valoration of a {@link Unit}.
  * <p>

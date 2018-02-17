@@ -24,12 +24,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.google.common.base.MoreObjects;
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
-import com.bernardomg.tabletop.dreadball.model.team.SponsorTeam;
+import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.google.common.base.MoreObjects;
 
 /**
  * Dreadball Xtreme (DBX) team, composed of units with affinities, and a Sponsor
@@ -142,6 +141,16 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     public final Iterable<AffinityGroup> getAdditionalAffinityGroups() {
         return Collections
                 .unmodifiableCollection(getAffinityGroupsModifiable());
+    }
+
+    @Override
+    public final Integer getBaseRank() {
+        return getSponsor().getRank();
+    }
+
+    @Override
+    public final Integer getCurrentRank() {
+        return getBaseRank() - getRankCost();
     }
 
     @Override

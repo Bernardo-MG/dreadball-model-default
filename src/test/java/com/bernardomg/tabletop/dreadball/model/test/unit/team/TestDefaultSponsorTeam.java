@@ -16,14 +16,14 @@
 
 package com.bernardomg.tabletop.dreadball.model.test.unit.team;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import com.bernardomg.tabletop.dreadball.model.team.DefaultSponsorTeam;
-import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
+import com.bernardomg.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.SponsorTeam;
+import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 
 /**
@@ -241,6 +241,60 @@ public final class TestDefaultSponsorTeam {
                 team.getPlayers().values().iterator().next() != player1);
         Assert.assertTrue(
                 team.getPlayers().values().iterator().next() == player2);
+    }
+
+    /**
+     * Tests that the base rank is calculated correctly.
+     */
+    @SuppressWarnings("unchecked")
+    @Test
+    public final void testGetBaseRank() {
+        final SponsorTeam team; // Tested team
+        final Sponsor sponsor;  // Mocked sponsor
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
+
+        // Mocks sponsor
+        sponsor = Mockito.mock(Sponsor.class);
+        Mockito.when(sponsor.getRank()).thenReturn(5);
+
+        // Mocks calculators
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
+
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
+
+        Assert.assertEquals(new Integer(5), team.getBaseRank());
+    }
+
+    /**
+     * Tests that the current rank is calculated correctly.
+     */
+    @SuppressWarnings("unchecked")
+    @Test
+    public final void testGetCurrentRank() {
+        final SponsorTeam team; // Tested team
+        final Sponsor sponsor;  // Mocked sponsor
+        final CostCalculator<SponsorTeam> calculator; // Mocked
+                                                      // calculator
+        final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
+
+        // Mocks sponsor
+        sponsor = Mockito.mock(Sponsor.class);
+        Mockito.when(sponsor.getRank()).thenReturn(5);
+
+        // Mocks calculators
+        calculator = Mockito.mock(CostCalculator.class);
+        ranker = Mockito.mock(CostCalculator.class);
+        Mockito.when(ranker.getCost(Mockito.any(SponsorTeam.class)))
+                .thenReturn(3);
+
+        // Creates team
+        team = new DefaultSponsorTeam(sponsor, calculator, ranker);
+
+        Assert.assertEquals(new Integer(2), team.getCurrentRank());
     }
 
     /**

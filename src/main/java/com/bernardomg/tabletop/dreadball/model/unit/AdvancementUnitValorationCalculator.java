@@ -20,8 +20,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
-
 /**
  * Valoration calculator for {@link AdvancementUnit}.
  * 

@@ -21,8 +21,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.availability.asset.SponsorAssetsAvailability;
-
 /**
  * Asset availabilities for a
  * {@link com.bernardomg.tabletop.dreadball.model.faction.Sponsor Sponsors}.

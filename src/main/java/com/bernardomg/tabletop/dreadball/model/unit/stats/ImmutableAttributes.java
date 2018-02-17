@@ -22,7 +22,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Unit attributes.

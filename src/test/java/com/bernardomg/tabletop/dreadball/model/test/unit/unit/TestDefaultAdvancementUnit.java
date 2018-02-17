@@ -19,15 +19,15 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.Role;
 import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 

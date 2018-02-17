@@ -22,7 +22,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
-import com.bernardomg.tabletop.dreadball.model.unit.component.ComponentLocation;
 
 /**
  * Location where a unit component may be applied.

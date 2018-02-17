@@ -19,13 +19,13 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.team.calculator;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.mockito.Mockito;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
+import com.bernardomg.tabletop.dreadball.model.team.AdvancementTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.AdvancementTeamValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.bernardomg.tabletop.dreadball.model.team.AdvancementTeam;
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
