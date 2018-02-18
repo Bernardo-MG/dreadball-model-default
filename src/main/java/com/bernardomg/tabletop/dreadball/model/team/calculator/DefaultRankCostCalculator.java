@@ -53,7 +53,7 @@ public final class DefaultRankCostCalculator
     /**
      * Cost of a Sabotage Card.
      */
-    private final Integer     costSabotage;
+    private final Integer     costNastySurprise;
 
     /**
      * Cost of a Special Move Card.
@@ -73,8 +73,8 @@ public final class DefaultRankCostCalculator
      * 
      * @param dieCost
      *            rank cost of a die
-     * @param sabotageCost
-     *            rank cost of a sabotage card
+     * @param nastySurpriseCardCost
+     *            rank cost of a nasty surprise card
      * @param specialMoveCost
      *            rank cost of a special move card
      * @param cheerleaderCost
@@ -85,15 +85,15 @@ public final class DefaultRankCostCalculator
      *            rank cost of a medibot
      */
     public DefaultRankCostCalculator(final Integer dieCost,
-            final Integer sabotageCost, final Integer specialMoveCost,
+            final Integer nastySurpriseCardCost, final Integer specialMoveCost,
             final Integer cheerleaderCost, final Integer wagerCost,
             final Integer mediBotCost) {
         super();
 
         costDie = checkNotNull(dieCost,
                 "Received a null pointer as the dice cost");
-        costSabotage = checkNotNull(sabotageCost,
-                "Received a null pointer as the sabotage card cost");
+        costNastySurprise = checkNotNull(nastySurpriseCardCost,
+                "Received a null pointer as the nasty surprise card cost");
         costSpecialMove = checkNotNull(specialMoveCost,
                 "Received a null pointer as the special move card cost");
         costCheerleader = checkNotNull(cheerleaderCost,
@@ -121,7 +121,7 @@ public final class DefaultRankCostCalculator
         valoration = 0;
 
         valoration += team.getCoachingDice() * getDieCost();
-        valoration += team.getSabotageCards() * getSabotageCost();
+        valoration += team.getNastySurpriseCards() * getNastySurpriseCardCost();
         valoration += team.getSpecialMoveCards() * getSpecialMoveCost();
         valoration += team.getCheerleaders() * getCheerleaderCost();
         valoration += team.getWagers() * getWagerCost();
@@ -158,12 +158,12 @@ public final class DefaultRankCostCalculator
     }
 
     /**
-     * Returns the cost of a sabotage card.
+     * Returns the cost of a nasty surprise card.
      * 
-     * @return the cost of a sabotage card
+     * @return the cost of a nasty surprise card
      */
-    private final Integer getSabotageCost() {
-        return costSabotage;
+    private final Integer getNastySurpriseCardCost() {
+        return costNastySurprise;
     }
 
     /**

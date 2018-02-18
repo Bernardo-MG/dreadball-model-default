@@ -159,13 +159,13 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     }
 
     @Override
-    public final Integer getRankCost() {
-        return getRankCostCalculator().getCost(this);
+    public final Integer getNastySurpriseCards() {
+        return teamSabotageCards;
     }
 
     @Override
-    public final Integer getSabotageCards() {
-        return teamSabotageCards;
+    public final Integer getRankCost() {
+        return getRankCostCalculator().getCost(this);
     }
 
     @Override

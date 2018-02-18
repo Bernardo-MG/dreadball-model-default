@@ -60,7 +60,7 @@ public final class TestSponsorTeamValorationCalculator {
         // Mocks team
         team = Mockito.mock(SponsorTeam.class);
         Mockito.when(team.getCoachingDice()).thenReturn(2);
-        Mockito.when(team.getSabotageCards()).thenReturn(4);
+        Mockito.when(team.getNastySurpriseCards()).thenReturn(4);
         Mockito.when(team.getSpecialMoveCards()).thenReturn(5);
         Mockito.when(team.getCheerleaders()).thenReturn(1);
         Mockito.when(team.getWagers()).thenReturn(6);

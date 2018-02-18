@@ -124,7 +124,7 @@ public final class SponsorTeamValorationCalculator
         }
 
         valoration += team.getCoachingDice() * getDieCost();
-        valoration += team.getSabotageCards() * getSabotageCost();
+        valoration += team.getNastySurpriseCards() * getSabotageCost();
         valoration += team.getSpecialMoveCards() * getSpecialMoveCost();
         valoration += team.getCheerleaders() * getCheerleaderCost();
         valoration += team.getWagers() * getWagerCost();
