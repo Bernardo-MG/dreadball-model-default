@@ -124,6 +124,53 @@ public final class DefaultUnit implements Unit, Serializable {
         }
     }
 
+    /**
+     * Constructs a unit with the specified arguments.
+     * 
+     * @param name
+     *            the unit's name
+     * @param nameTemplate
+     *            the unit's base template name
+     * @param cost
+     *            cost of the unit
+     * @param role
+     *            team position role of the unit
+     * @param attributes
+     *            unit attributes
+     * @param abilities
+     *            unit abilities
+     * @param mvp
+     *            flag indicating if this is a MVP
+     * @param giant
+     *            flag indicating if this is a giant
+     */
+    public DefaultUnit(final String name, final String nameTemplate,
+            final Integer cost, final Role role, final Attributes attributes,
+            final Collection<Ability> abilities, final Boolean mvp,
+            final Boolean giant) {
+        super();
+
+        unitName = checkNotNull(name,
+                "Received a null pointer as the template name");
+        templateName = checkNotNull(nameTemplate,
+                "Received a null pointer as the template name");
+        unitAttributes = checkNotNull(attributes,
+                "Received a null pointer as attributes");
+        templateRole = checkNotNull(role,
+                "Received a null pointer as position");
+        giantFlag = checkNotNull(giant,
+                "Received a null pointer as giant flag");
+        mvpFlag = checkNotNull(mvp, "Received a null pointer as MVP flag");
+        baseCost = checkNotNull(cost, "Received a null pointer as cost");
+
+        checkNotNull(abilities, "Received a null pointer as abilities");
+
+        for (final Ability ability : abilities) {
+            unitAbilities.add(checkNotNull(ability,
+                    "Received a null pointer as ability"));
+        }
+    }
+
     @Override
     public final boolean equals(final Object obj) {
         if (this == obj) {
