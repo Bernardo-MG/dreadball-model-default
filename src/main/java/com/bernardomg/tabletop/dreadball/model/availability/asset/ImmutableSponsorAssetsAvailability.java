@@ -82,8 +82,6 @@ public final class ImmutableSponsorAssetsAvailability
      *            cost of a Sabotage Card
      * @param specialMove
      *            cost of a Special Move CArd
-     * @param cheerleaderUnlock
-     *            cost of unlocking Cheerleaders
      * @param cheerleader
      *            cost of a Cheerleader
      * @param affinity

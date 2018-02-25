@@ -82,7 +82,7 @@ public final class ImmutableComponent implements Component, Serializable {
      *            location where the component is applied
      * @param componentCost
      *            cost of the component
-     * @param positions
+     * @param componentRoles
      *            team position roles which can have this component
      * @param attr
      *            attributes granted by the component
