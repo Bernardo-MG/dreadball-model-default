@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
+package com.bernardomg.tabletop.dreadball.model.test.unit.player;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,16 +23,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.DefaultAdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.player.DefaultTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Unit tests for {@link DefaultAdvancementTeamPlayer}.
+ * Unit tests for {@link DefaultTeamPlayer}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -41,26 +39,24 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestDefaultAdvancementUnit {
+public final class TestDefaultTeamPlayer {
 
     /**
      * Default constructor.
      */
-    public TestDefaultAdvancementUnit() {
+    public TestDefaultTeamPlayer() {
         super();
     }
 
     /**
      * Tests that abilities are not repeated.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public final void testRepeatAbility_NoRepeats() {
         final TeamPlayer unit;               // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
-        final UnitValorationCalculator<AdvancementTeamPlayer> calculator;
 
         // Mocks abilities
         ability = Mockito.mock(Ability.class);
@@ -71,12 +67,9 @@ public final class TestDefaultAdvancementUnit {
         // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
-        // Mocks calculator
-        calculator = Mockito.mock(UnitValorationCalculator.class);
-
         // Creates unit
-        unit = new DefaultAdvancementUnit("name", 0, Role.GUARD, attributes,
-                abilities, true, true, calculator);
+        unit = new DefaultTeamPlayer("name", 0, Role.GUARD, attributes, abilities,
+                true, true);
 
         Assert.assertEquals(unit.getAbilities().size(), 1);
     }

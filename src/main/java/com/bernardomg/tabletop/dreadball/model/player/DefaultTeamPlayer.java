@@ -36,7 +36,7 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultUnit implements TeamPlayer, Serializable {
+public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
 
     /**
      * Serialization id.
@@ -101,7 +101,7 @@ public final class DefaultUnit implements TeamPlayer, Serializable {
      * @param giant
      *            flag indicating if this is a giant
      */
-    public DefaultUnit(final String nameTemplate, final Integer cost,
+    public DefaultTeamPlayer(final String nameTemplate, final Integer cost,
             final Role role, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant) {
@@ -146,7 +146,7 @@ public final class DefaultUnit implements TeamPlayer, Serializable {
      * @param giant
      *            flag indicating if this is a giant
      */
-    public DefaultUnit(final String name, final String nameTemplate,
+    public DefaultTeamPlayer(final String name, final String nameTemplate,
             final Integer cost, final Role role, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant) {
@@ -187,9 +187,9 @@ public final class DefaultUnit implements TeamPlayer, Serializable {
             return false;
         }
 
-        final DefaultUnit other;
+        final DefaultTeamPlayer other;
 
-        other = (DefaultUnit) obj;
+        other = (DefaultTeamPlayer) obj;
         return Objects.equals(unitName, other.unitName);
     }
 

@@ -24,34 +24,36 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.DefaultAdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.DefaultAffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
-import com.bernardomg.tabletop.dreadball.model.player.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
-import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Composite advancement unit.
+ * Composite affinity unit.
  * <p>
- * It uses composition to inherit from {@link DefaultAdvancementUnit}.
+ * This is an immutable implementation.
+ * <p>
+ * It uses composition to inherit from {@link DefaultAffinityTeamPlayer}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultCompositeAdvancementUnit
-        implements CompositeAdvancementTeamPlayer, Serializable {
+public final class DefaultCompositeAffinityTeamPlayer
+        implements CompositeAffinityTeamPlayer, Serializable {
 
     /**
      * Serialization id.
      */
-    private static final long           serialVersionUID = 6492427235549316354L;
+    private static final long           serialVersionUID = 7289790050324765193L;
 
     /**
-     * {@code AdvancementUnit} used for inheritance through composition.
+     * {@code AffinityUnit} used for inheritance through composition.
      */
-    private final AdvancementTeamPlayer baseUnit;
+    private final AffinityTeamPlayer    baseUnit;
 
     /**
      * Components of the unit.
@@ -59,12 +61,10 @@ public final class DefaultCompositeAdvancementUnit
     private final Collection<Component> unitComponents   = new LinkedHashSet<Component>();
 
     /**
-     * Constructs a composite advancement unit with the specified arguments.
+     * Constructs a composite affinities unit with the specified arguments.
      * 
      * @param nameTemplate
      *            the unit's base template name
-     * @param cost
-     *            cost of the unit
      * @param position
      *            team position role of the unit
      * @param attributes
@@ -75,21 +75,31 @@ public final class DefaultCompositeAdvancementUnit
      *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
-     * @param valorator
-     *            calculator for the valoration
+     * @param affinities
+     *            the unit affinities
+     * @param hated
+     *            the unit hated affinities
+     * @param allyCost
+     *            the unit cost for an ally
+     * @param friendCost
+     *            the unit cost for a friend
+     * @param strangerCost
+     *            the unit cost for a stranger
      * @param components
      *            components which create this unit
      */
-    public DefaultCompositeAdvancementUnit(final String nameTemplate,
-            final Integer cost, final Role position,
-            final Attributes attributes, final Collection<Ability> abilities,
-            final Boolean mvp, final Boolean giant,
-            final UnitValorationCalculator<AdvancementTeamPlayer> valorator,
+    public DefaultCompositeAffinityTeamPlayer(final String nameTemplate,
+            final Role position, final Attributes attributes,
+            final Collection<Ability> abilities, final Boolean mvp,
+            final Boolean giant, final Collection<AffinityGroup> affinities,
+            final Collection<AffinityGroup> hated, final Integer allyCost,
+            final Integer friendCost, final Integer strangerCost,
             final Collection<Component> components) {
         super();
 
-        baseUnit = new DefaultAdvancementUnit(nameTemplate, cost, position,
-                attributes, abilities, mvp, giant, valorator);
+        baseUnit = new DefaultAffinityTeamPlayer(nameTemplate, position, attributes,
+                abilities, mvp, giant, affinities, hated, allyCost, friendCost,
+                strangerCost);
 
         checkNotNull(components,
                 "Received a null pointer as valoration the components");
@@ -100,11 +110,6 @@ public final class DefaultCompositeAdvancementUnit
 
             unitComponents.add(component);
         }
-    }
-
-    @Override
-    public final void addAbility(final Ability ability) {
-        getBaseUnit().addAbility(ability);
     }
 
     @Override
@@ -121,15 +126,25 @@ public final class DefaultCompositeAdvancementUnit
             return false;
         }
 
-        final DefaultCompositeAdvancementUnit other;
+        final DefaultCompositeAffinityTeamPlayer other;
 
-        other = (DefaultCompositeAdvancementUnit) obj;
+        other = (DefaultCompositeAffinityTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit);
     }
 
     @Override
     public final Collection<Ability> getAbilities() {
         return getBaseUnit().getAbilities();
+    }
+
+    @Override
+    public final Collection<AffinityGroup> getAffinityGroups() {
+        return getBaseUnit().getAffinityGroups();
+    }
+
+    @Override
+    public final Integer getAllyCost() {
+        return getBaseUnit().getAllyCost();
     }
 
     @Override
@@ -153,13 +168,18 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
+    public final Integer getFriendCost() {
+        return getBaseUnit().getFriendCost();
+    }
+
+    @Override
     public final Boolean getGiant() {
         return getBaseUnit().getGiant();
     }
 
     @Override
-    public final Component getGraftedImplant() {
-        return getBaseUnit().getGraftedImplant();
+    public final Collection<AffinityGroup> getHatedAffinityGroups() {
+        return getBaseUnit().getAffinityGroups();
     }
 
     @Override
@@ -173,13 +193,13 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
-    public final Integer getRank() {
-        return getBaseUnit().getRank();
+    public final Role getRole() {
+        return getBaseUnit().getRole();
     }
 
     @Override
-    public final Role getRole() {
-        return getBaseUnit().getRole();
+    public final Integer getStrangerCost() {
+        return getBaseUnit().getStrangerCost();
     }
 
     @Override
@@ -188,53 +208,13 @@ public final class DefaultCompositeAdvancementUnit
     }
 
     @Override
-    public final Integer getUnspentExperience() {
-        return getBaseUnit().getUnspentExperience();
-    }
-
-    @Override
-    public final Integer getValoration() {
-        return getBaseUnit().getValoration();
-    }
-
-    @Override
     public final int hashCode() {
         return Objects.hashCode(baseUnit);
     }
 
     @Override
-    public final void removeAbility(final Ability ability) {
-        getBaseUnit().removeAbility(ability);
-    }
-
-    @Override
-    public final void setAbilities(final Collection<Ability> abilities) {
-        getBaseUnit().setAbilities(abilities);
-    }
-
-    @Override
-    public final void setAttributes(final Attributes attributes) {
-        getBaseUnit().setAttributes(attributes);
-    }
-
-    @Override
-    public final void setGraftedImplant(final Component implant) {
-        getBaseUnit().setGraftedImplant(implant);
-    }
-
-    @Override
     public final void setName(final String name) {
         getBaseUnit().setName(name);
-    }
-
-    @Override
-    public final void setRank(final Integer rank) {
-        getBaseUnit().setRank(rank);
-    }
-
-    @Override
-    public final void setUnspentExperience(final Integer experience) {
-        getBaseUnit().setUnspentExperience(experience);
     }
 
     /**
@@ -244,7 +224,7 @@ public final class DefaultCompositeAdvancementUnit
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final AdvancementTeamPlayer getBaseUnit() {
+    private final AffinityTeamPlayer getBaseUnit() {
         return baseUnit;
     }
 

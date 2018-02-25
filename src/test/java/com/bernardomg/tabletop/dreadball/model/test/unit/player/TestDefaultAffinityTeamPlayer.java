@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
+package com.bernardomg.tabletop.dreadball.model.test.unit.player;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,8 +24,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.DefaultAffinityUnit;
-import com.bernardomg.tabletop.dreadball.model.player.DefaultUnit;
+import com.bernardomg.tabletop.dreadball.model.player.DefaultAffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.DefaultTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
@@ -33,7 +33,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Unit tests for {@link DefaultUnit}.
+ * Unit tests for {@link DefaultTeamPlayer}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -44,12 +44,12 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestDefaultAffinityUnit {
+public final class TestDefaultAffinityTeamPlayer {
 
     /**
      * Default constructor.
      */
-    public TestDefaultAffinityUnit() {
+    public TestDefaultAffinityTeamPlayer() {
         super();
     }
 
@@ -73,7 +73,7 @@ public final class TestDefaultAffinityUnit {
         attributes = Mockito.mock(Attributes.class);
 
         // Creates unit
-        unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
+        unit = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
                 abilities, true, true, new ArrayList<AffinityGroup>(),
                 new ArrayList<AffinityGroup>(), 0, 0, 0);
 
@@ -100,7 +100,7 @@ public final class TestDefaultAffinityUnit {
         attributes = Mockito.mock(Attributes.class);
 
         // Creates unit
-        unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
+        unit = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
                 new ArrayList<Ability>(), true, true, affinities,
                 new ArrayList<AffinityGroup>(), 0, 0, 0);
 
@@ -127,7 +127,7 @@ public final class TestDefaultAffinityUnit {
         attributes = Mockito.mock(Attributes.class);
 
         // Creates unit
-        unit = new DefaultAffinityUnit("name", Role.GUARD, attributes,
+        unit = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
                 new ArrayList<Ability>(), true, true,
                 new ArrayList<AffinityGroup>(), affinities, 0, 0, 0);
 

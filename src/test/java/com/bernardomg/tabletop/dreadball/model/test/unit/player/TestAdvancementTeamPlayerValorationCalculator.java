@@ -14,19 +14,19 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.test.unit.unit;
+package com.bernardomg.tabletop.dreadball.model.test.unit.player;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.AdvancementUnitValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.player.UnitValorationCalculator;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayerValorationCalculator;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayerValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 
 /**
- * Unit tests for {@link UnitValorationCalculator} applied to a
+ * Unit tests for {@link TeamPlayerValorationCalculator} applied to a
  * {@link AdvancementTeamPlayer}.
  * <p>
  * Checks the following cases:
@@ -36,12 +36,12 @@ import com.bernardomg.tabletop.dreadball.model.player.component.Component;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestAdvancementUnitUnitValorationCalculator {
+public final class TestAdvancementTeamPlayerValorationCalculator {
 
     /**
      * Default constructor.
      */
-    public TestAdvancementUnitUnitValorationCalculator() {
+    public TestAdvancementTeamPlayerValorationCalculator() {
         super();
     }
 
@@ -50,7 +50,7 @@ public final class TestAdvancementUnitUnitValorationCalculator {
      */
     @Test
     public final void testValoration() {
-        final UnitValorationCalculator<AdvancementTeamPlayer> calculator; // Tested
+        final TeamPlayerValorationCalculator<AdvancementTeamPlayer> calculator; // Tested
         // class
         final AdvancementTeamPlayer unit;     // Unit for the test
         final Component implant;        // Unit's implant
@@ -66,7 +66,7 @@ public final class TestAdvancementUnitUnitValorationCalculator {
         Mockito.when(unit.getGraftedImplant()).thenReturn(implant);
 
         // Creates calculator
-        calculator = new AdvancementUnitValorationCalculator(5);
+        calculator = new AdvancementTeamPlayerValorationCalculator(5);
 
         Assert.assertEquals(calculator.getValoration(unit), (Integer) 30);
     }

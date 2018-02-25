@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.test.unit.unit.component;
+package com.bernardomg.tabletop.dreadball.model.test.unit.player.component;
 
 import java.util.ArrayList;
 import java.util.Collection;

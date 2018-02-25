@@ -33,7 +33,7 @@ import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamTypeUnitAvailability
+public final class DefaultTeamPlayerAvailability
         implements TeamPlayerAvailability, Serializable {
 
     /**
@@ -59,7 +59,7 @@ public final class DefaultTeamTypeUnitAvailability
      * @param unit
      *            {@code Unit} for which the availability applies
      */
-    public DefaultTeamTypeUnitAvailability(final TeamType team,
+    public DefaultTeamPlayerAvailability(final TeamType team,
             final TeamPlayer unit) {
         super();
 
@@ -82,9 +82,9 @@ public final class DefaultTeamTypeUnitAvailability
             return false;
         }
 
-        final DefaultTeamTypeUnitAvailability other;
+        final DefaultTeamPlayerAvailability other;
 
-        other = (DefaultTeamTypeUnitAvailability) obj;
+        other = (DefaultTeamPlayerAvailability) obj;
         return Objects.equals(avaUnit, other.avaUnit);
     }
 

@@ -41,7 +41,7 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAdvancementUnit
+public final class DefaultAdvancementTeamPlayer
         implements AdvancementTeamPlayer, Serializable {
 
     /**
@@ -93,7 +93,7 @@ public final class DefaultAdvancementUnit
     /**
      * Object used for calculating the unit valoration.
      */
-    private final UnitValorationCalculator<AdvancementTeamPlayer> valorationBuilder;
+    private final TeamPlayerValorationCalculator<AdvancementTeamPlayer> valorationBuilder;
 
     /**
      * Constructs an advancement unit with the specified arguments.
@@ -115,14 +115,14 @@ public final class DefaultAdvancementUnit
      * @param valorator
      *            calculator for the valoration
      */
-    public DefaultAdvancementUnit(final String nameTemplate, final Integer cost,
+    public DefaultAdvancementTeamPlayer(final String nameTemplate, final Integer cost,
             final Role role, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant,
-            final UnitValorationCalculator<AdvancementTeamPlayer> valorator) {
+            final TeamPlayerValorationCalculator<AdvancementTeamPlayer> valorator) {
         super();
 
-        baseUnit = new DefaultUnit(nameTemplate, cost, role, attributes,
+        baseUnit = new DefaultTeamPlayer(nameTemplate, cost, role, attributes,
                 abilities, mvp, giant);
 
         unitAbilities.addAll(baseUnit.getAbilities());
@@ -150,9 +150,9 @@ public final class DefaultAdvancementUnit
             return false;
         }
 
-        final DefaultAdvancementUnit other;
+        final DefaultAdvancementTeamPlayer other;
 
-        other = (DefaultAdvancementUnit) obj;
+        other = (DefaultAdvancementTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit)
                 && Objects.equals(unitName, other.unitName);
     }
@@ -291,7 +291,7 @@ public final class DefaultAdvancementUnit
      * 
      * @return the valoration calculator
      */
-    private final UnitValorationCalculator<AdvancementTeamPlayer>
+    private final TeamPlayerValorationCalculator<AdvancementTeamPlayer>
             getValorationCalculator() {
         return valorationBuilder;
     }

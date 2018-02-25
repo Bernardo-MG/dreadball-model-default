@@ -34,13 +34,13 @@ import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public abstract class AbstractAdvancementUnitValorationCalculator
-        implements UnitValorationCalculator<AdvancementTeamPlayer> {
+public abstract class AbstractAdvancementTeamPlayerValorationCalculator
+        implements TeamPlayerValorationCalculator<AdvancementTeamPlayer> {
 
     /**
      * Default constructor.
      */
-    public AbstractAdvancementUnitValorationCalculator() {
+    public AbstractAdvancementTeamPlayerValorationCalculator() {
         super();
     }
 

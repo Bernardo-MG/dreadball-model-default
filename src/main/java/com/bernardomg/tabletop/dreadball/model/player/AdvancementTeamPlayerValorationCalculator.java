@@ -25,8 +25,8 @@ import java.io.Serializable;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class AdvancementUnitValorationCalculator extends
-        AbstractAdvancementUnitValorationCalculator implements Serializable {
+public final class AdvancementTeamPlayerValorationCalculator extends
+        AbstractAdvancementTeamPlayerValorationCalculator implements Serializable {
 
     /**
      * Serialization id.
@@ -47,7 +47,7 @@ public final class AdvancementUnitValorationCalculator extends
      * @param rankCostIncrease
      *            the cost of each rank
      */
-    public AdvancementUnitValorationCalculator(final Integer rankCostIncrease) {
+    public AdvancementTeamPlayerValorationCalculator(final Integer rankCostIncrease) {
         super();
 
         rankValue = checkNotNull(rankCostIncrease,

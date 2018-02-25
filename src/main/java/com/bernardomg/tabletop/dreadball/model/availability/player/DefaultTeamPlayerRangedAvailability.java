@@ -34,7 +34,7 @@ import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamTypeRangedUnitAvailability
+public final class DefaultTeamPlayerRangedAvailability
         implements TeamPlayerRangedAvailability, Serializable {
 
     /**
@@ -74,7 +74,7 @@ public final class DefaultTeamTypeRangedUnitAvailability
      * @param max
      *            maximum number of units of this type
      */
-    public DefaultTeamTypeRangedUnitAvailability(final TeamType team,
+    public DefaultTeamPlayerRangedAvailability(final TeamType team,
             final TeamPlayer unit, final Integer initial, final Integer max) {
         super();
 
@@ -101,9 +101,9 @@ public final class DefaultTeamTypeRangedUnitAvailability
             return false;
         }
 
-        final DefaultTeamTypeRangedUnitAvailability other;
+        final DefaultTeamPlayerRangedAvailability other;
 
-        other = (DefaultTeamTypeRangedUnitAvailability) obj;
+        other = (DefaultTeamPlayerRangedAvailability) obj;
         return Objects.equals(avaUnit, other.avaUnit);
     }
 

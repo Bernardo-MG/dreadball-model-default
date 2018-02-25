@@ -37,7 +37,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAffinityUnit
+public final class DefaultAffinityTeamPlayer
         implements AffinityTeamPlayer, Serializable {
 
     /**
@@ -111,7 +111,7 @@ public final class DefaultAffinityUnit
      * @param strangerCost
      *            the unit cost for a stranger
      */
-    public DefaultAffinityUnit(final String nameTemplate, final Role role,
+    public DefaultAffinityTeamPlayer(final String nameTemplate, final Role role,
             final Attributes attributes, final Collection<Ability> abilities,
             final Boolean mvp, final Boolean giant,
             final Collection<AffinityGroup> affinities,
@@ -119,7 +119,7 @@ public final class DefaultAffinityUnit
             final Integer friendCost, final Integer strangerCost) {
         super();
 
-        baseUnit = new DefaultUnit(nameTemplate, 0, role, attributes, abilities,
+        baseUnit = new DefaultTeamPlayer(nameTemplate, 0, role, attributes, abilities,
                 mvp, giant);
 
         costAlly = checkNotNull(allyCost,
@@ -156,9 +156,9 @@ public final class DefaultAffinityUnit
             return false;
         }
 
-        final DefaultAffinityUnit other;
+        final DefaultAffinityTeamPlayer other;
 
-        other = (DefaultAffinityUnit) obj;
+        other = (DefaultAffinityTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit)
                 && Objects.equals(unitName, other.unitName);
     }
