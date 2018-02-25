@@ -28,8 +28,6 @@ import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.DefaultAdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayerValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.player.component.Component;
-import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
@@ -56,7 +54,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
     /**
      * Components of the player.
      */
-    private final Collection<Component> playerComponents = new LinkedHashSet<Component>();
+    private final Collection<Component> components       = new LinkedHashSet<Component>();
 
     /**
      * Constructs a composite advancement player with the specified arguments.
@@ -98,7 +96,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
-            playerComponents.add(component);
+            components.add(component);
         }
     }
 
@@ -254,7 +252,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
      * @return a modifiable collection with the player components
      */
     private final Collection<Component> getComponentsModifiable() {
-        return playerComponents;
+        return components;
     }
 
 }

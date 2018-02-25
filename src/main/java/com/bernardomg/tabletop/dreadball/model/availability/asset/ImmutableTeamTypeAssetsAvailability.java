@@ -31,7 +31,7 @@ import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamTypeAssetsAvailability
+public final class ImmutableTeamTypeAssetsAvailability
         implements TeamTypeAssetsAvailability, Serializable {
 
     /**
@@ -40,34 +40,54 @@ public final class DefaultTeamTypeAssetsAvailability
     private static final long serialVersionUID = -4292808611392909379L;
 
     /**
-     * Cost of a Dreadball card.
-     */
-    private final Integer     costCard;
-
-    /**
      * Cost of a Cheerleader.
      */
-    private final Integer     costCheerleader;
-
-    /**
-     * Cost of a Coaching Staff.
-     */
-    private final Integer     costCoaching;
-
-    /**
-     * Cost of a Coaching Die.
-     */
-    private final Integer     costDie;
-
-    /**
-     * Initial number of Dreadball Cards for this {@code TeamType}.
-     */
-    private final Integer     initialCard;
+    private final Integer     cheerleaderCost;
 
     /**
      * Initial number of Cheerleaders for this {@code TeamType}.
      */
-    private final Integer     initialCheer;
+    private final Integer     cheerleaderInitial;
+
+    /**
+     * Maximum number of Cheerleaders for this {@code TeamType}.
+     */
+    private final Integer     cheerleaderMax;
+
+    /**
+     * Cost of a Coaching Die.
+     */
+    private final Integer     coachingDieCost;
+
+    /**
+     * Initial number of Coaching Dice for this {@code TeamType}.
+     */
+    private final Integer     coachingDieInitial;
+
+    /**
+     * Maximum number of Coaching Dice for this {@code TeamType}.
+     */
+    private final Integer     coachingDieMax;
+
+    /**
+     * Cost of a Coaching Staff.
+     */
+    private final Integer     coachingStaffCost;
+
+    /**
+     * Cost of a Dreadball card.
+     */
+    private final Integer     dreadballCardCost;
+
+    /**
+     * Initial number of Dreadball Cards for this {@code TeamType}.
+     */
+    private final Integer     dreadballCardInitial;
+
+    /**
+     * Maximum number of Dreadball Cards for this {@code TeamType}.
+     */
+    private final Integer     dreadballCardMax;
 
     /**
      * Flag indicating if this {@code TeamType} begins with a Defensive Coaching
@@ -86,26 +106,6 @@ public final class DefaultTeamTypeAssetsAvailability
      * Staff.
      */
     private final Boolean     initialCoachSup;
-
-    /**
-     * Initial number of Coaching Dice for this {@code TeamType}.
-     */
-    private final Integer     initialDie;
-
-    /**
-     * Maximum number of Dreadball Cards for this {@code TeamType}.
-     */
-    private final Integer     maxCard;
-
-    /**
-     * Maximum number of Cheerleaders for this {@code TeamType}.
-     */
-    private final Integer     maxCheerleader;
-
-    /**
-     * Maximum number of Coaching Dice for this {@code TeamType}.
-     */
-    private final Integer     maxDie;
 
     /**
      * {@code TeamType} to which this availability applies.
@@ -148,7 +148,7 @@ public final class DefaultTeamTypeAssetsAvailability
      *            flag indicating if the {@code TeamType} begins with a Support
      *            Coaching Staff
      */
-    public DefaultTeamTypeAssetsAvailability(final TeamType team,
+    public ImmutableTeamTypeAssetsAvailability(final TeamType team,
             final Integer cheerCost, final Integer cheerInitial,
             final Integer cheerMax, final Integer diceCost,
             final Integer diceInitial, final Integer diceMax,
@@ -161,28 +161,28 @@ public final class DefaultTeamTypeAssetsAvailability
         teamType = checkNotNull(team,
                 "Received a null pointer as the Team Type");
 
-        costCheerleader = checkNotNull(cheerCost,
+        cheerleaderCost = checkNotNull(cheerCost,
                 "Received a null pointer as the Cheerleader cost");
-        initialCheer = checkNotNull(cheerInitial,
+        cheerleaderInitial = checkNotNull(cheerInitial,
                 "Received a null pointer as initial Cheerleaders");
-        maxCheerleader = checkNotNull(cheerMax,
+        cheerleaderMax = checkNotNull(cheerMax,
                 "Received a null pointer as maximum Cheerleaders");
 
-        costDie = checkNotNull(diceCost,
+        coachingDieCost = checkNotNull(diceCost,
                 "Received a null pointer as the Coaching Dice cost");
-        initialDie = checkNotNull(diceInitial,
+        coachingDieInitial = checkNotNull(diceInitial,
                 "Received a null pointer as initial Coaching Dice");
-        maxDie = checkNotNull(diceMax,
+        coachingDieMax = checkNotNull(diceMax,
                 "Received a null pointer as maximum Coaching Dice");
 
-        costCard = checkNotNull(cardCost,
+        dreadballCardCost = checkNotNull(cardCost,
                 "Received a null pointer as the Dreadball Card cost");
-        initialCard = checkNotNull(cardInitial,
+        dreadballCardInitial = checkNotNull(cardInitial,
                 "Received a null pointer as initial Dreadball Cards");
-        maxCard = checkNotNull(cardMax,
+        dreadballCardMax = checkNotNull(cardMax,
                 "Received a null pointer as maximum Dreadball Cards");
 
-        costCoaching = checkNotNull(coachingCost,
+        coachingStaffCost = checkNotNull(coachingCost,
                 "Received a null pointer as the Coaching Staff cost");
         initialCoachOff = checkNotNull(offensiveCoach,
                 "Received a null pointer as the initial Offensive Coach flag");
@@ -206,60 +206,60 @@ public final class DefaultTeamTypeAssetsAvailability
             return false;
         }
 
-        final DefaultTeamTypeAssetsAvailability other;
+        final ImmutableTeamTypeAssetsAvailability other;
 
-        other = (DefaultTeamTypeAssetsAvailability) obj;
+        other = (ImmutableTeamTypeAssetsAvailability) obj;
         return Objects.equals(teamType, other.teamType);
     }
 
     @Override
     public final Integer getCheerleaderCost() {
-        return costCheerleader;
+        return cheerleaderCost;
     }
 
     @Override
     public final Integer getCheerleaderInitial() {
-        return initialCheer;
+        return cheerleaderInitial;
     }
 
     @Override
     public final Integer getCheerleaderMax() {
-        return maxCheerleader;
+        return cheerleaderMax;
     }
 
     @Override
     public final Integer getCoachingDieCost() {
-        return costDie;
+        return coachingDieCost;
     }
 
     @Override
     public final Integer getCoachingDieInitial() {
-        return initialDie;
+        return coachingDieInitial;
     }
 
     @Override
     public final Integer getCoachingDieMax() {
-        return maxDie;
+        return coachingDieMax;
     }
 
     @Override
     public final Integer getCoachingStaffCost() {
-        return costCoaching;
+        return coachingStaffCost;
     }
 
     @Override
     public final Integer getDreadballCardCost() {
-        return costCard;
+        return dreadballCardCost;
     }
 
     @Override
     public final Integer getDreadballCardInitial() {
-        return initialCard;
+        return dreadballCardInitial;
     }
 
     @Override
     public final Integer getDreadballCardMax() {
-        return maxCard;
+        return dreadballCardMax;
     }
 
     @Override

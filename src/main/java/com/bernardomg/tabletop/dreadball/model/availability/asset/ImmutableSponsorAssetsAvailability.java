@@ -29,7 +29,7 @@ import java.util.Objects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultSponsorAssetsAvailability
+public final class ImmutableSponsorAssetsAvailability
         implements SponsorAssetsAvailability, Serializable {
 
     /**
@@ -40,79 +40,78 @@ public final class DefaultSponsorAssetsAvailability
     /**
      * Cost of an Affinity Group.
      */
-    private final Integer     costAffinityGroup;
+    private final Integer     affinityGroupCost;
 
     /**
      * Cost of a Cheerleader.
      */
-    private final Integer     costCheerleader;
+    private final Integer     cheerleaderCost;
 
     /**
      * Cost of a Coaching Die.
      */
-    private final Integer     costDie;
+    private final Integer     dieCost;
 
     /**
      * Cost of a Medibot.
      */
-    private final Integer     costMedibot;
+    private final Integer     medibotCost;
 
     /**
      * Cost of a Sabotage Card.
      */
-    private final Integer     costSabotageCard;
+    private final Integer     nastySurpriseCardCost;
 
     /**
      * Cost of a Special Move Card.
      */
-    private final Integer     costSpMoveCard;
+    private final Integer     specialMoveCardCost;
 
     /**
      * Cost of a Wager.
      */
-    private final Integer     costWager;
+    private final Integer     wagerCost;
 
     /**
      * Constructs assets availability with the specified asset costs and
      * constraints.
      * 
-     * @param diceCost
+     * @param dice
      *            cost of a Coaching Die
-     * @param sabotageCost
+     * @param sabotage
      *            cost of a Sabotage Card
-     * @param specialMoveCost
+     * @param specialMove
      *            cost of a Special Move CArd
      * @param cheerleaderUnlock
      *            cost of unlocking Cheerleaders
-     * @param cheerleaderCost
+     * @param cheerleader
      *            cost of a Cheerleader
-     * @param affinityCost
+     * @param affinity
      *            cost of an Affinity Group
-     * @param medibotCost
+     * @param medibot
      *            cost of a Medibot
-     * @param wagerCost
+     * @param wager
      *            cost of a Wager
      */
-    public DefaultSponsorAssetsAvailability(final Integer diceCost,
-            final Integer sabotageCost, final Integer specialMoveCost,
-            final Integer cheerleaderUnlock, final Integer cheerleaderCost,
-            final Integer affinityCost, final Integer medibotCost,
-            final Integer wagerCost) {
+    public ImmutableSponsorAssetsAvailability(final Integer dice,
+            final Integer sabotage, final Integer specialMove,
+            final Integer cheerleader, final Integer affinity,
+            final Integer medibot, final Integer wager) {
         super();
 
-        costDie = checkNotNull(diceCost,
+        dieCost = checkNotNull(dice,
                 "Received a null pointer as Coaching Dice cost");
-        costSabotageCard = checkNotNull(sabotageCost,
+        nastySurpriseCardCost = checkNotNull(sabotage,
                 "Received a null pointer as Sabotage Card cost");
-        costSpMoveCard = checkNotNull(specialMoveCost,
+        specialMoveCardCost = checkNotNull(specialMove,
                 "Received a null pointer as Special Move Card cost");
-        costCheerleader = checkNotNull(cheerleaderCost,
+        cheerleaderCost = checkNotNull(cheerleader,
                 "Received a null pointer as Cheerleader cost");
-        costAffinityGroup = checkNotNull(affinityCost,
+        affinityGroupCost = checkNotNull(affinity,
                 "Received a null pointer as Affinity Group cost");
-        costMedibot = checkNotNull(medibotCost,
+        medibotCost = checkNotNull(medibot,
                 "Received a null pointer as Medibot cost");
-        costWager = checkNotNull(wagerCost,
+        wagerCost = checkNotNull(wager,
                 "Received a null pointer as the Wager cost");
     }
 
@@ -130,57 +129,60 @@ public final class DefaultSponsorAssetsAvailability
             return false;
         }
 
-        final DefaultSponsorAssetsAvailability other;
+        final ImmutableSponsorAssetsAvailability other;
 
-        other = (DefaultSponsorAssetsAvailability) obj;
-        return Objects.equals(costAffinityGroup, other.costAffinityGroup)
-                && Objects.equals(costCheerleader, other.costCheerleader)
-                && Objects.equals(costDie, other.costDie)
-                && Objects.equals(costMedibot, other.costMedibot)
-                && Objects.equals(costSabotageCard, other.costSabotageCard)
-                && Objects.equals(costSpMoveCard, other.costSpMoveCard)
-                && Objects.equals(costWager, other.costWager);
+        other = (ImmutableSponsorAssetsAvailability) obj;
+        return Objects.equals(affinityGroupCost, other.affinityGroupCost)
+                && Objects.equals(cheerleaderCost, other.cheerleaderCost)
+                && Objects.equals(dieCost, other.dieCost)
+                && Objects.equals(medibotCost, other.medibotCost)
+                && Objects.equals(nastySurpriseCardCost,
+                        other.nastySurpriseCardCost)
+                && Objects.equals(specialMoveCardCost,
+                        other.specialMoveCardCost)
+                && Objects.equals(wagerCost, other.wagerCost);
     }
 
     @Override
     public final Integer getAffinityGroupCost() {
-        return costAffinityGroup;
+        return affinityGroupCost;
     }
 
     @Override
     public final Integer getCheerleaderCost() {
-        return costCheerleader;
+        return cheerleaderCost;
     }
 
     @Override
     public final Integer getCoachingDieCost() {
-        return costDie;
+        return dieCost;
     }
 
     @Override
-    public Integer getMediBotCost() {
-        return costMedibot;
+    public final Integer getMediBotCost() {
+        return medibotCost;
     }
 
     @Override
     public final Integer getNastySurpriseCardCost() {
-        return costSabotageCard;
+        return nastySurpriseCardCost;
     }
 
     @Override
     public final Integer getSpecialMoveCardCost() {
-        return costSpMoveCard;
+        return specialMoveCardCost;
     }
 
     @Override
     public final Integer getWagerCost() {
-        return costWager;
+        return wagerCost;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(costAffinityGroup, costCheerleader, costDie,
-                costMedibot, costSabotageCard, costSpMoveCard, costWager);
+        return Objects.hash(affinityGroupCost, cheerleaderCost, dieCost,
+                medibotCost, nastySurpriseCardCost, specialMoveCardCost,
+                wagerCost);
     }
 
 }

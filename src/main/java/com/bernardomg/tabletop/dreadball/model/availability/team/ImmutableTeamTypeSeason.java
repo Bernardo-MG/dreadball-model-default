@@ -31,7 +31,7 @@ import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamTypeSeason
+public final class ImmutableTeamTypeSeason
         implements TeamTypeSeason, Serializable {
 
     /**
@@ -57,7 +57,7 @@ public final class DefaultTeamTypeSeason
      * @param season
      *            season in which the team appeared
      */
-    public DefaultTeamTypeSeason(final TeamType teamType,
+    public ImmutableTeamTypeSeason(final TeamType teamType,
             final Integer season) {
         super();
 
@@ -80,9 +80,9 @@ public final class DefaultTeamTypeSeason
             return false;
         }
 
-        final DefaultTeamTypeSeason other;
+        final ImmutableTeamTypeSeason other;
 
-        other = (DefaultTeamTypeSeason) obj;
+        other = (ImmutableTeamTypeSeason) obj;
         return Objects.equals(team, other.team)
                 && Objects.equals(seasonNumber, other.seasonNumber);
     }

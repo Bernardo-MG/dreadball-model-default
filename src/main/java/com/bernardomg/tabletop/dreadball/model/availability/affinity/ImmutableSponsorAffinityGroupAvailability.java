@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.availability.affinity.SponsorAffinityGroupAvailability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 
 /**
@@ -36,7 +35,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultSponsorAffinityGroupAvailability
+public final class ImmutableSponsorAffinityGroupAvailability
         implements SponsorAffinityGroupAvailability, Serializable {
 
     /**
@@ -47,7 +46,7 @@ public final class DefaultSponsorAffinityGroupAvailability
     /**
      * Available affinities groups.
      */
-    private final Collection<AffinityGroup> avaAffinities    = new LinkedHashSet<AffinityGroup>();
+    private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<AffinityGroup>();
 
     /**
      * Name of the affinities.
@@ -69,7 +68,7 @@ public final class DefaultSponsorAffinityGroupAvailability
      * @param rankIncrease
      *            flag indicating if a rank increase is available
      */
-    public DefaultSponsorAffinityGroupAvailability(final String name,
+    public ImmutableSponsorAffinityGroupAvailability(final String name,
             final Collection<AffinityGroup> affinities,
             final Boolean rankIncrease) {
         super();
@@ -86,7 +85,7 @@ public final class DefaultSponsorAffinityGroupAvailability
             checkNotNull(affinity,
                     "Received a null pointer as an affinity group");
 
-            avaAffinities.add(affinity);
+            affinityGroups.add(affinity);
         }
     }
 
@@ -104,9 +103,9 @@ public final class DefaultSponsorAffinityGroupAvailability
             return false;
         }
 
-        final DefaultSponsorAffinityGroupAvailability other;
+        final ImmutableSponsorAffinityGroupAvailability other;
 
-        other = (DefaultSponsorAffinityGroupAvailability) obj;
+        other = (ImmutableSponsorAffinityGroupAvailability) obj;
         return Objects.equals(avaName, other.avaName);
     }
 
@@ -137,7 +136,7 @@ public final class DefaultSponsorAffinityGroupAvailability
      * @return a modifiable collection with the available affinities
      */
     private final Collection<AffinityGroup> getAffinityGroupsModifiable() {
-        return avaAffinities;
+        return affinityGroups;
     }
 
 }

@@ -21,7 +21,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -31,7 +30,7 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAbility implements Ability, Serializable {
+public final class ImmutableAbility implements Ability, Serializable {
 
     /**
      * Serialization id.
@@ -41,18 +40,18 @@ public final class DefaultAbility implements Ability, Serializable {
     /**
      * Ability's name.
      */
-    private final String      abilityName;
+    private final String      name;
 
     /**
      * Constructs an ability with the specified parameters.
      * 
-     * @param name
+     * @param abilityName
      *            ability's name
      */
-    public DefaultAbility(final String name) {
+    public ImmutableAbility(final String abilityName) {
         super();
 
-        abilityName = checkNotNull(name, "Received a null pointer as name");
+        name = checkNotNull(abilityName, "Received a null pointer as name");
     }
 
     @Override
@@ -69,26 +68,25 @@ public final class DefaultAbility implements Ability, Serializable {
             return false;
         }
 
-        final DefaultAbility other;
+        final ImmutableAbility other;
 
-        other = (DefaultAbility) obj;
-        return Objects.equals(abilityName, other.abilityName);
+        other = (ImmutableAbility) obj;
+        return Objects.equals(name, other.name);
     }
 
     @Override
     public final String getName() {
-        return abilityName;
+        return name;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(abilityName);
+        return Objects.hashCode(name);
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", abilityName)
-                .toString();
+        return MoreObjects.toStringHelper(this).add("name", name).toString();
     }
 
 }

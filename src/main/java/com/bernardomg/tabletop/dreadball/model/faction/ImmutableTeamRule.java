@@ -14,45 +14,44 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.player;
+package com.bernardomg.tabletop.dreadball.model.faction;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.google.common.base.MoreObjects;
 
 /**
- * Affinity group.
+ * Special rule for teams.
  * <p>
  * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAffinityGroup implements AffinityGroup, Serializable {
+public final class ImmutableTeamRule implements TeamRule, Serializable {
 
     /**
      * Serialization id.
      */
-    private static final long serialVersionUID = 9008556689033158827L;
+    private static final long serialVersionUID = 3441674928267205572L;
 
     /**
-     * Group's name.
+     * Rule's name.
      */
-    private final String      groupName;
+    private final String      name;
 
     /**
-     * Constructs an affinity group with the specified arguments.
+     * Constructs a team rule with the specified parameters.
      * 
-     * @param name
-     *            the name of the group
+     * @param ruleName
+     *            the team's name
      */
-    public DefaultAffinityGroup(final String name) {
+    public ImmutableTeamRule(final String ruleName) {
         super();
 
-        groupName = checkNotNull(name, "Received a null pointer as name");
+        name = checkNotNull(ruleName, "Received a null pointer as name");
     }
 
     @Override
@@ -69,26 +68,25 @@ public final class DefaultAffinityGroup implements AffinityGroup, Serializable {
             return false;
         }
 
-        final DefaultAffinityGroup other;
+        final ImmutableTeamRule other;
 
-        other = (DefaultAffinityGroup) obj;
-        return Objects.equals(groupName, other.groupName);
+        other = (ImmutableTeamRule) obj;
+        return Objects.equals(name, other.name);
     }
 
     @Override
     public final String getName() {
-        return groupName;
+        return name;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(groupName);
+        return Objects.hashCode(name);
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", groupName)
-                .toString();
+        return MoreObjects.toStringHelper(this).add("name", name).toString();
     }
 
 }

@@ -34,7 +34,7 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamType implements TeamType, Serializable {
+public final class ImmutableTeamType implements TeamType, Serializable {
 
     /**
      * Serialization id.
@@ -44,7 +44,7 @@ public final class DefaultTeamType implements TeamType, Serializable {
     /**
      * Team type's name.
      */
-    private final String               teamName;
+    private final String               name;
 
     /**
      * Team type's rules.
@@ -54,16 +54,16 @@ public final class DefaultTeamType implements TeamType, Serializable {
     /**
      * Constructs a team type with the specified parameters.
      * 
-     * @param name
+     * @param teamName
      *            team type's name
      * @param rules
      *            team type's rules
      */
-    public DefaultTeamType(final String name,
+    public ImmutableTeamType(final String teamName,
             final Collection<TeamRule> rules) {
         super();
 
-        teamName = checkNotNull(name, "Received a null pointer as name");
+        name = checkNotNull(teamName, "Received a null pointer as name");
         checkNotNull(rules, "Received a null pointer as rules");
 
         for (final TeamRule rule : rules) {
@@ -86,15 +86,15 @@ public final class DefaultTeamType implements TeamType, Serializable {
             return false;
         }
 
-        final DefaultTeamType other;
+        final ImmutableTeamType other;
 
-        other = (DefaultTeamType) obj;
-        return Objects.equals(teamName, other.teamName);
+        other = (ImmutableTeamType) obj;
+        return Objects.equals(name, other.name);
     }
 
     @Override
     public final String getName() {
-        return teamName;
+        return name;
     }
 
     @Override
@@ -104,12 +104,12 @@ public final class DefaultTeamType implements TeamType, Serializable {
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(teamName);
+        return Objects.hashCode(name);
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", teamName)
+        return MoreObjects.toStringHelper(this).add("name", name)
                 .add("rules", teamRules).toString();
     }
 

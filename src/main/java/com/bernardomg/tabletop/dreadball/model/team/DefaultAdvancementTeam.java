@@ -39,37 +39,37 @@ public final class DefaultAdvancementTeam
     /**
      * Serialization id.
      */
-    private static final long                     serialVersionUID = -7832905135406602622L;
+    private static final long                     serialVersionUID       = -7832905135406602622L;
 
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
-    private Boolean                               defensiveCoach   = false;
-
-    /**
-     * Flag indicating if the team has an Offensive Coaching Staff.
-     */
-    private Boolean                               offensiveCoach   = false;
-
-    /**
-     * Flag indicating if the team has a Support Coaching Staff.
-     */
-    private Boolean                               supportCoach     = false;
+    private Boolean                               defensiveCoachingStaff = false;
 
     /**
      * Number of Dreadball Cards in the team.
      */
-    private Integer                               teamCards        = 0;
-
-    /**
-     * Team's unspent cash.
-     */
-    private Integer                               teamCash         = 0;
+    private Integer                               dreadballCards         = 0;
 
     /**
      * Team's name.
      */
-    private String                                teamName         = "";
+    private String                                name                   = "";
+
+    /**
+     * Flag indicating if the team has an Offensive Coaching Staff.
+     */
+    private Boolean                               offensiveCoachingStaff = false;
+
+    /**
+     * Flag indicating if the team has a Support Coaching Staff.
+     */
+    private Boolean                               supportCoachingStaff   = false;
+
+    /**
+     * Team's unspent cash.
+     */
+    private Integer                               teamCash               = 0;
 
     /**
      * The base type of the team.
@@ -115,7 +115,7 @@ public final class DefaultAdvancementTeam
         final DefaultAdvancementTeam other;
 
         other = (DefaultAdvancementTeam) obj;
-        return Objects.equals(teamName, other.teamName);
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -125,27 +125,27 @@ public final class DefaultAdvancementTeam
 
     @Override
     public final Boolean getDefensiveCoachingStaff() {
-        return defensiveCoach;
+        return defensiveCoachingStaff;
     }
 
     @Override
     public final Integer getDreadballCards() {
-        return teamCards;
+        return dreadballCards;
     }
 
     @Override
     public final String getName() {
-        return teamName;
+        return name;
     }
 
     @Override
     public final Boolean getOffensiveCoachingStaff() {
-        return offensiveCoach;
+        return offensiveCoachingStaff;
     }
 
     @Override
     public final Boolean getSupportCoachingStaff() {
-        return supportCoach;
+        return supportCoachingStaff;
     }
 
     @Override
@@ -160,7 +160,7 @@ public final class DefaultAdvancementTeam
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(teamName);
+        return Objects.hashCode(name);
     }
 
     @Override
@@ -172,32 +172,32 @@ public final class DefaultAdvancementTeam
 
     @Override
     public final void setDefensiveCoachingStaff(final Boolean coach) {
-        defensiveCoach = coach;
+        defensiveCoachingStaff = coach;
     }
 
     @Override
     public final void setDreadballCards(final Integer cards) {
-        teamCards = cards;
+        dreadballCards = cards;
     }
 
     @Override
-    public final void setName(final String name) {
-        teamName = name;
+    public final void setName(final String teamName) {
+        name = teamName;
     }
 
     @Override
     public final void setOffensiveCoachingStaff(final Boolean coach) {
-        offensiveCoach = coach;
+        offensiveCoachingStaff = coach;
     }
 
     @Override
     public final void setSupportCoachingStaff(final Boolean coach) {
-        supportCoach = coach;
+        supportCoachingStaff = coach;
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", teamName)
+        return MoreObjects.toStringHelper(this).add("name", name)
                 .add("type", teamType).add("cash", getCash())
                 .add("players", getPlayers()).toString();
     }

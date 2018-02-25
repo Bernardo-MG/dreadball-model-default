@@ -16,8 +16,6 @@
 
 package com.bernardomg.tabletop.dreadball.model.player;
 
-import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
-
 /**
  * Calculates the valoration of a {@link TeamPlayer}.
  * <p>

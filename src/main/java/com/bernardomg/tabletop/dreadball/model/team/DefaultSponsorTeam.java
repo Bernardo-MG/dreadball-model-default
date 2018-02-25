@@ -42,12 +42,22 @@ public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
     /**
      * Serialization id.
      */
-    private static final long                 serialVersionUID  = -6502596684517851116L;
+    private static final long                 serialVersionUID   = -6502596684517851116L;
 
     /**
      * Additional affinity groups for the next match.
      */
-    private final Collection<AffinityGroup>   affinities        = new ArrayList<>();
+    private final Collection<AffinityGroup>   affinities         = new ArrayList<>();
+
+    /**
+     * Number of Medibots in the team.
+     */
+    private Integer                           mediBots           = 0;
+
+    /**
+     * Number of Sabotage Cards in the team.
+     */
+    private Integer                           nastySurpriseCards = 0;
 
     /**
      * Rank cost calculator.
@@ -55,29 +65,14 @@ public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
     private final CostCalculator<SponsorTeam> rankCostCalculator;
 
     /**
-     * Number of Medibots in the team.
-     */
-    private Integer                           teamMedibots      = 0;
-
-    /**
-     * Number of Sabotage Cards in the team.
-     */
-    private Integer                           teamSabotageCards = 0;
-
-    /**
      * Number of Special Move Cards.
      */
-    private Integer                           teamSpMoveCards   = 0;
+    private Integer                           specialMoveCards   = 0;
 
     /**
      * Team's sponsor.
      */
-    private final Sponsor                     teamSponsor;
-
-    /**
-     * Number of Wagers in the team.
-     */
-    private Integer                           teamWagers        = 0;
+    private final Sponsor                     sponsor;
 
     /**
      * Valoration calculator.
@@ -85,21 +80,26 @@ public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
     private final CostCalculator<SponsorTeam> valorationCalculator;
 
     /**
+     * Number of Wagers in the team.
+     */
+    private Integer                           wagers             = 0;
+
+    /**
      * Constructs a sponsor team with the specified arguments.
      * 
-     * @param sponsor
+     * @param teamSponsor
      *            the team's sponsor
      * @param valorator
      *            valoration calculator for the team
      * @param rankCoster
      *            rank cost calculator for the team
      */
-    public DefaultSponsorTeam(final Sponsor sponsor,
+    public DefaultSponsorTeam(final Sponsor teamSponsor,
             final CostCalculator<SponsorTeam> valorator,
             final CostCalculator<SponsorTeam> rankCoster) {
         super();
 
-        teamSponsor = checkNotNull(sponsor,
+        sponsor = checkNotNull(teamSponsor,
                 "Received a null pointer as sponsor");
         valorationCalculator = checkNotNull(valorator,
                 "Received a null pointer as valoration calculator");
@@ -134,7 +134,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
         final DefaultSponsorTeam other;
 
         other = (DefaultSponsorTeam) obj;
-        return Objects.equals(teamSponsor, other.teamSponsor);
+        return Objects.equals(sponsor, other.sponsor);
     }
 
     @Override
@@ -155,12 +155,12 @@ public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
 
     @Override
     public final Integer getMediBots() {
-        return teamMedibots;
+        return mediBots;
     }
 
     @Override
     public final Integer getNastySurpriseCards() {
-        return teamSabotageCards;
+        return nastySurpriseCards;
     }
 
     @Override
@@ -170,12 +170,12 @@ public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
 
     @Override
     public final Integer getSpecialMoveCards() {
-        return teamSpMoveCards;
+        return specialMoveCards;
     }
 
     @Override
     public final Sponsor getSponsor() {
-        return teamSponsor;
+        return sponsor;
     }
 
     @Override
@@ -185,37 +185,37 @@ public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
 
     @Override
     public final Integer getWagers() {
-        return teamWagers;
+        return wagers;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(teamSponsor);
+        return Objects.hashCode(sponsor);
     }
 
     @Override
     public final void setMediBots(final Integer medibots) {
-        teamMedibots = medibots;
+        mediBots = medibots;
     }
 
     @Override
     public final void setNastySurpriseCards(final Integer cards) {
-        teamSabotageCards = cards;
+        nastySurpriseCards = cards;
     }
 
     @Override
     public final void setSpecialMoveCards(final Integer cards) {
-        teamSpMoveCards = cards;
+        specialMoveCards = cards;
     }
 
     @Override
-    public final void setWagers(final Integer wagers) {
-        teamWagers = wagers;
+    public final void setWagers(final Integer teamWagers) {
+        wagers = teamWagers;
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("sponsor", teamSponsor)
+        return MoreObjects.toStringHelper(this).add("sponsor", sponsor)
                 .add("players", getPlayers()).toString();
     }
 

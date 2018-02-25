@@ -23,9 +23,6 @@ import java.util.Collection;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.Role;
-import com.bernardomg.tabletop.dreadball.model.player.component.AffinityComponent;
-import com.bernardomg.tabletop.dreadball.model.player.component.Component;
-import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
@@ -33,17 +30,22 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * Component with affinity groups, and various costs which will depend on how
  * many of such affinities are shared.
  * <p>
- * It uses composition to inherit from {@link DefaultComponent}.
+ * It uses composition to inherit from {@link ImmutableComponent}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAffinityComponent
+public final class ImmutableAffinityComponent
         implements AffinityComponent, Serializable {
 
     /**
      * Serialization id.
      */
     private static final long serialVersionUID = -8763313281233982534L;
+
+    /**
+     * Component cost for an ally.
+     */
+    private final Integer     allyCost;
 
     /**
      * {@code Component} used for inheritance through composition.
@@ -53,22 +55,17 @@ public final class DefaultAffinityComponent
     /**
      * The actual cost of the component.
      */
-    private Integer           costActual       = 0;
-
-    /**
-     * Component cost for an ally.
-     */
-    private final Integer     costAlly;
+    private Integer           cost             = 0;
 
     /**
      * Component cost for a friend.
      */
-    private final Integer     costFriend;
+    private final Integer     friendCost;
 
     /**
      * Component cost for a stranger.
      */
-    private final Integer     costStranger;
+    private final Integer     strangerCost;
 
     /**
      * Constructs an affinities component with the specified arguments.
@@ -77,11 +74,13 @@ public final class DefaultAffinityComponent
      *            name of the component
      * @param location
      *            location where the component is applied
-     * @param allyCost
+     * @param currentCost
+     *            actual cost of the component
+     * @param costAlly
      *            cost of the component for an ally
-     * @param friendCost
+     * @param costFriend
      *            cost of the component for a friend
-     * @param strangerCost
+     * @param costStranger
      *            cost of the component for a stranger
      * @param positions
      *            team position roles which can have this component
@@ -90,23 +89,23 @@ public final class DefaultAffinityComponent
      * @param abilities
      *            abilities granted by the component
      */
-    public DefaultAffinityComponent(final String name,
-            final ComponentLocation location, final Integer allyCost,
-            final Integer friendCost, final Integer strangerCost,
-            final Collection<Role> positions, final Attributes attributes,
-            final Collection<Ability> abilities) {
+    public ImmutableAffinityComponent(final String name,
+            final ComponentLocation location, final Integer currentCost,
+            final Integer costAlly, final Integer costFriend,
+            final Integer costStranger, final Collection<Role> positions,
+            final Attributes attributes, final Collection<Ability> abilities) {
         super();
 
-        costAlly = checkNotNull(allyCost,
+        allyCost = checkNotNull(costAlly,
                 "Received a null pointer as ally cost");
-        costFriend = checkNotNull(friendCost,
+        friendCost = checkNotNull(costFriend,
                 "Received a null pointer as friend cost");
-        costStranger = checkNotNull(strangerCost,
+        strangerCost = checkNotNull(costStranger,
                 "Received a null pointer as stranger cost");
 
-        costActual = costStranger;
+        cost = currentCost;
 
-        baseComponent = new DefaultComponent(name, location, 0, positions,
+        baseComponent = new ImmutableComponent(name, location, 0, positions,
                 attributes, abilities);
     }
 
@@ -124,9 +123,9 @@ public final class DefaultAffinityComponent
             return false;
         }
 
-        final DefaultAffinityComponent other;
+        final ImmutableAffinityComponent other;
 
-        other = (DefaultAffinityComponent) obj;
+        other = (ImmutableAffinityComponent) obj;
         return Objects.equals(baseComponent, other.baseComponent);
     }
 
@@ -137,7 +136,7 @@ public final class DefaultAffinityComponent
 
     @Override
     public final Integer getAllyCost() {
-        return costAlly;
+        return allyCost;
     }
 
     @Override
@@ -147,12 +146,12 @@ public final class DefaultAffinityComponent
 
     @Override
     public final Integer getCost() {
-        return costActual;
+        return cost;
     }
 
     @Override
     public final Integer getFriendCost() {
-        return costFriend;
+        return friendCost;
     }
 
     @Override
@@ -172,33 +171,12 @@ public final class DefaultAffinityComponent
 
     @Override
     public final Integer getStrangerCost() {
-        return costStranger;
+        return strangerCost;
     }
 
     @Override
     public final int hashCode() {
         return Objects.hashCode(baseComponent);
-    }
-
-    /**
-     * Sets the cost as the ally cost.
-     */
-    public final void setCostForAlly() {
-        costActual = getAllyCost();
-    }
-
-    /**
-     * Sets the cost as the friend cost.
-     */
-    public final void setCostForFriend() {
-        costActual = getFriendCost();
-    }
-
-    /**
-     * Sets the cost as the stranger cost.
-     */
-    public final void setCostForStranger() {
-        costActual = getStrangerCost();
     }
 
     /**

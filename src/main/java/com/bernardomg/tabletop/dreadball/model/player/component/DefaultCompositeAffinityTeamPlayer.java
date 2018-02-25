@@ -27,8 +27,6 @@ import java.util.Objects;
 import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.DefaultAffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
-import com.bernardomg.tabletop.dreadball.model.player.component.Component;
-import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
@@ -58,7 +56,7 @@ public final class DefaultCompositeAffinityTeamPlayer
     /**
      * Components of the player.
      */
-    private final Collection<Component> playerComponents = new LinkedHashSet<Component>();
+    private final Collection<Component> components       = new LinkedHashSet<Component>();
 
     /**
      * Constructs a composite affinities player with the specified arguments.
@@ -108,7 +106,7 @@ public final class DefaultCompositeAffinityTeamPlayer
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
-            playerComponents.add(component);
+            components.add(component);
         }
     }
 
@@ -234,7 +232,7 @@ public final class DefaultCompositeAffinityTeamPlayer
      * @return a modifiable collection with the player components
      */
     private final Collection<Component> getComponentsModifiable() {
-        return playerComponents;
+        return components;
     }
 
 }

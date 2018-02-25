@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.faction;
+package com.bernardomg.tabletop.dreadball.model.player.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -24,34 +24,35 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Special rule for teams.
+ * Location where a player component may be applied.
  * <p>
  * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultTeamRule implements TeamRule, Serializable {
+public final class ImmutableComponentLocation
+        implements ComponentLocation, Serializable {
 
     /**
      * Serialization id.
      */
-    private static final long serialVersionUID = 3441674928267205572L;
+    private static final long serialVersionUID = -536133663097252772L;
 
     /**
-     * Rule's name.
+     * Location name.
      */
-    private final String      ruleName;
+    private final String      name;
 
     /**
-     * Constructs a team rule with the specified parameters.
+     * Constructs a component location.
      * 
-     * @param name
-     *            the team's name
+     * @param locationName
+     *            name of the location
      */
-    public DefaultTeamRule(final String name) {
+    public ImmutableComponentLocation(final String locationName) {
         super();
 
-        ruleName = checkNotNull(name, "Received a null pointer as name");
+        name = checkNotNull(locationName, "Received a null pointer as name");
     }
 
     @Override
@@ -68,26 +69,25 @@ public final class DefaultTeamRule implements TeamRule, Serializable {
             return false;
         }
 
-        final DefaultTeamRule other;
+        final ImmutableComponentLocation other;
 
-        other = (DefaultTeamRule) obj;
-        return Objects.equals(ruleName, other.ruleName);
+        other = (ImmutableComponentLocation) obj;
+        return Objects.equals(name, other.name);
     }
 
     @Override
     public final String getName() {
-        return ruleName;
+        return name;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(ruleName);
+        return Objects.hashCode(name);
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", ruleName)
-                .toString();
+        return MoreObjects.toStringHelper(this).add("name", name).toString();
     }
 
 }

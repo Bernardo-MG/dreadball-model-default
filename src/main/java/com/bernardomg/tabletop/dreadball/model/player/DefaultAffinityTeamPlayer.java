@@ -24,9 +24,6 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.Role;
-import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
@@ -51,6 +48,11 @@ public final class DefaultAffinityTeamPlayer
     private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<AffinityGroup>();
 
     /**
+     * Unit cost for an ally.
+     */
+    private final Integer                   allyCost;
+
+    /**
      * {@code Unit} used for inheritance through composition.
      */
     private final TeamPlayer                baseUnit;
@@ -58,22 +60,12 @@ public final class DefaultAffinityTeamPlayer
     /**
      * The actual cost of the player.
      */
-    private Integer                         costActual       = 0;
-
-    /**
-     * Unit cost for an ally.
-     */
-    private final Integer                   costAlly;
+    private Integer                         cost             = 0;
 
     /**
      * Unit cost for a friend.
      */
-    private final Integer                   costFriend;
-
-    /**
-     * Unit cost for a stranger.
-     */
-    private final Integer                   costStranger;
+    private final Integer                   friendCost;
 
     /**
      * The affinities hated by the player.
@@ -83,7 +75,12 @@ public final class DefaultAffinityTeamPlayer
     /**
      * Name given to the player.
      */
-    private String                          playerName       = "";
+    private String                          name             = "";
+
+    /**
+     * Unit cost for a stranger.
+     */
+    private final Integer                   strangerCost;
 
     /**
      * Constructs an affinity player with the specified arguments.
@@ -104,29 +101,29 @@ public final class DefaultAffinityTeamPlayer
      *            the player affinities
      * @param hated
      *            the player hated affinities
-     * @param allyCost
+     * @param costAlly
      *            the player cost for an ally
-     * @param friendCost
+     * @param costFriend
      *            the player cost for a friend
-     * @param strangerCost
+     * @param costStranger
      *            the player cost for a stranger
      */
     public DefaultAffinityTeamPlayer(final String nameTemplate, final Role role,
             final Attributes attributes, final Collection<Ability> abilities,
             final Boolean mvp, final Boolean giant,
             final Collection<AffinityGroup> affinities,
-            final Collection<AffinityGroup> hated, final Integer allyCost,
-            final Integer friendCost, final Integer strangerCost) {
+            final Collection<AffinityGroup> hated, final Integer costAlly,
+            final Integer costFriend, final Integer costStranger) {
         super();
 
         baseUnit = new DefaultTeamPlayer(nameTemplate, 0, role, attributes,
                 abilities, mvp, giant);
 
-        costAlly = checkNotNull(allyCost,
+        allyCost = checkNotNull(costAlly,
                 "Received a null pointer as ally cost");
-        costFriend = checkNotNull(friendCost,
+        friendCost = checkNotNull(costFriend,
                 "Received a null pointer as friend cost");
-        costStranger = checkNotNull(strangerCost,
+        strangerCost = checkNotNull(costStranger,
                 "Received a null pointer as stranger cost");
         checkNotNull(affinities, "Received a null pointer as affinities");
         checkNotNull(hated, "Received a null pointer as hated affinities");
@@ -160,7 +157,7 @@ public final class DefaultAffinityTeamPlayer
 
         other = (DefaultAffinityTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit)
-                && Objects.equals(playerName, other.playerName);
+                && Objects.equals(name, other.name);
     }
 
     @Override
@@ -176,7 +173,7 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final Integer getAllyCost() {
-        return costAlly;
+        return allyCost;
     }
 
     @Override
@@ -186,12 +183,12 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final Integer getCost() {
-        return costActual;
+        return cost;
     }
 
     @Override
     public final Integer getFriendCost() {
-        return costFriend;
+        return friendCost;
     }
 
     @Override
@@ -212,7 +209,7 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final String getName() {
-        return playerName;
+        return name;
     }
 
     @Override
@@ -222,7 +219,7 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final Integer getStrangerCost() {
-        return costStranger;
+        return strangerCost;
     }
 
     @Override
@@ -232,33 +229,33 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final int hashCode() {
-        return Objects.hash(baseUnit, playerName);
+        return Objects.hash(baseUnit, name);
     }
 
     /**
      * Sets the cost as the ally cost.
      */
     public final void setCostForAlly() {
-        costActual = getAllyCost();
+        cost = getAllyCost();
     }
 
     /**
      * Sets the cost as the friend cost.
      */
     public final void setCostForFriend() {
-        costActual = getFriendCost();
+        cost = getFriendCost();
     }
 
     /**
      * Sets the cost as the stranger cost.
      */
     public final void setCostForStranger() {
-        costActual = getStrangerCost();
+        cost = getStrangerCost();
     }
 
     @Override
-    public final void setName(final String name) {
-        playerName = name;
+    public final void setName(final String playerName) {
+        name = playerName;
     }
 
     /**

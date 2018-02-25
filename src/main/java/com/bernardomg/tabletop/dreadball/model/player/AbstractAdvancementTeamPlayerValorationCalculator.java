@@ -18,8 +18,6 @@ package com.bernardomg.tabletop.dreadball.model.player;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
-
 /**
  * Calculates the valoration of an {@link AdvancementTeamPlayer}.
  * <p>

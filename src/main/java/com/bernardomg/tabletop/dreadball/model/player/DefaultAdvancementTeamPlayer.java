@@ -25,12 +25,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.Role;
-import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
-import com.bernardomg.tabletop.dreadball.model.player.component.DefaultComponent;
-import com.bernardomg.tabletop.dreadball.model.player.component.DefaultComponentLocation;
+import com.bernardomg.tabletop.dreadball.model.player.component.ImmutableComponent;
+import com.bernardomg.tabletop.dreadball.model.player.component.ImmutableComponentLocation;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.player.stats.ImmutableAttributes;
@@ -50,14 +47,14 @@ public final class DefaultAdvancementTeamPlayer
     private static final long                                           serialVersionUID = -9100853601667992893L;
 
     /**
+     * Unit's attributes.
+     */
+    private Attributes                                                  attributes;
+
+    /**
      * {@code Unit} used for inheritance through composition.
      */
     private final TeamPlayer                                            baseUnit;
-
-    /**
-     * The unspent experience.
-     */
-    private Integer                                                     experienceValue;
 
     /**
      * Implant grafted to the player. This is a {@code Unit}, the same objects
@@ -65,15 +62,15 @@ public final class DefaultAdvancementTeamPlayer
      * <p>
      * Be default it will be a stub component.
      */
-    private Component                                                   graftedImplant   = new DefaultComponent(
-            "none", new DefaultComponentLocation("none"), 0,
+    private Component                                                   graftedImplant   = new ImmutableComponent(
+            "none", new ImmutableComponentLocation("none"), 0,
             new ArrayList<Role>(), new ImmutableAttributes(0, 0, 0, 0, 0),
             new ArrayList<Ability>());
 
     /**
-     * The player's current rank.
+     * Name given to the player.
      */
-    private Integer                                                     rankValue;
+    private String                                                      name             = "";
 
     /**
      * The player's abilities.
@@ -81,14 +78,14 @@ public final class DefaultAdvancementTeamPlayer
     private final Collection<Ability>                                   playerAbilities  = new HashSet<>();
 
     /**
-     * Unit's attributes.
+     * The player's current rank.
      */
-    private Attributes                                                  playerAttributes;
+    private Integer                                                     rank;
 
     /**
-     * Name given to the player.
+     * The unspent experience.
      */
-    private String                                                      playerName       = "";
+    private Integer                                                     unspentExperience;
 
     /**
      * Object used for calculating the player valoration.
@@ -154,7 +151,7 @@ public final class DefaultAdvancementTeamPlayer
 
         other = (DefaultAdvancementTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit)
-                && Objects.equals(playerName, other.playerName);
+                && Objects.equals(name, other.name);
     }
 
     @Override
@@ -164,7 +161,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final Attributes getAttributes() {
-        return playerAttributes;
+        return attributes;
     }
 
     @Override
@@ -189,12 +186,12 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final String getName() {
-        return playerName;
+        return name;
     }
 
     @Override
     public final Integer getRank() {
-        return rankValue;
+        return rank;
     }
 
     @Override
@@ -209,7 +206,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final Integer getUnspentExperience() {
-        return experienceValue;
+        return unspentExperience;
     }
 
     @Override
@@ -219,7 +216,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final int hashCode() {
-        return Objects.hash(baseUnit, playerName);
+        return Objects.hash(baseUnit, name);
     }
 
     @Override
@@ -234,8 +231,8 @@ public final class DefaultAdvancementTeamPlayer
     }
 
     @Override
-    public final void setAttributes(final Attributes attributes) {
-        playerAttributes = attributes;
+    public final void setAttributes(final Attributes attrs) {
+        attributes = attrs;
     }
 
     @Override
@@ -244,25 +241,25 @@ public final class DefaultAdvancementTeamPlayer
     }
 
     @Override
-    public final void setName(final String name) {
-        playerName = name;
+    public final void setName(final String playerName) {
+        name = playerName;
     }
 
     @Override
-    public final void setRank(final Integer rank) {
-        rankValue = checkNotNull(rank, "Received a null pointer as rank");
+    public final void setRank(final Integer rankValue) {
+        rank = checkNotNull(rankValue, "Received a null pointer as rank");
     }
 
     @Override
-    public final void setUnspentExperience(final Integer experience) {
-        experienceValue = checkNotNull(experience,
+    public final void setUnspentExperience(final Integer exp) {
+        unspentExperience = checkNotNull(exp,
                 "Received a null pointer as experience");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("rank", rankValue)
-                .add("experience", experienceValue).add("role", getRole())
+        return MoreObjects.toStringHelper(this).add("rank", rank)
+                .add("experience", unspentExperience).add("role", getRole())
                 .add("mvp", getMvp()).add("giant", getGiant()).toString();
     }
 

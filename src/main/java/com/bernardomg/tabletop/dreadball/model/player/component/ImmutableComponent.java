@@ -25,8 +25,6 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.Role;
-import com.bernardomg.tabletop.dreadball.model.player.component.Component;
-import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
@@ -38,7 +36,7 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultComponent implements Component, Serializable {
+public final class ImmutableComponent implements Component, Serializable {
 
     /**
      * Serialization id.
@@ -53,65 +51,66 @@ public final class DefaultComponent implements Component, Serializable {
     /**
      * Attributes given by this component.
      */
-    private final Attributes          attributesGiven;
+    private final Attributes          attributes;
 
     /**
      * Cost of the component.
      */
-    private final Integer             componentCost;
+    private final Integer             cost;
 
     /**
      * Location where this component is applied.
      */
-    private final ComponentLocation   componentLocation;
+    private final ComponentLocation   location;
 
     /**
      * Component's name.
      */
-    private final String              componentName;
+    private final String              name;
 
     /**
      * Team position roles which can have this component.
      */
-    private final Collection<Role>    componentPos     = new LinkedHashSet<Role>();
+    private final Collection<Role>    roles            = new LinkedHashSet<Role>();
 
     /**
      * Constructs a component with the specified arguments.
      * 
-     * @param name
+     * @param componentName
      *            name of the component
-     * @param location
+     * @param componentLocation
      *            location where the component is applied
-     * @param cost
+     * @param componentCost
      *            cost of the component
      * @param positions
      *            team position roles which can have this component
-     * @param attributes
+     * @param attr
      *            attributes granted by the component
      * @param abilities
      *            abilities granted by the component
      */
-    public DefaultComponent(final String name, final ComponentLocation location,
-            final Integer cost, final Collection<Role> positions,
-            final Attributes attributes, final Collection<Ability> abilities) {
+    public ImmutableComponent(final String componentName,
+            final ComponentLocation componentLocation,
+            final Integer componentCost, final Collection<Role> componentRoles,
+            final Attributes attr, final Collection<Ability> abilities) {
         super();
 
-        componentName = checkNotNull(name, "Received a null pointer as name");
-        componentLocation = checkNotNull(location,
+        name = checkNotNull(componentName, "Received a null pointer as name");
+        location = checkNotNull(componentLocation,
                 "Received a null pointer as location");
-        componentCost = checkNotNull(cost, "Received a null pointer as cost");
-        attributesGiven = checkNotNull(attributes,
+        cost = checkNotNull(componentCost, "Received a null pointer as cost");
+        attributes = checkNotNull(attr,
                 "Received a null pointer as attributes");
         checkNotNull(abilities, "Received a null pointer as abilities");
-        checkNotNull(positions, "Received a null pointer as positions");
+        checkNotNull(componentRoles, "Received a null pointer as positions");
 
         for (final Ability ability : abilities) {
             abilitiesGiven.add(checkNotNull(ability,
                     "Received a null pointer as ability"));
         }
 
-        for (final Role position : positions) {
-            componentPos.add(checkNotNull(position,
+        for (final Role position : componentRoles) {
+            roles.add(checkNotNull(position,
                     "Received a null pointer as position"));
         }
     }
@@ -130,10 +129,10 @@ public final class DefaultComponent implements Component, Serializable {
             return false;
         }
 
-        final DefaultComponent other;
+        final ImmutableComponent other;
 
-        other = (DefaultComponent) obj;
-        return Objects.equals(componentName, other.componentName);
+        other = (ImmutableComponent) obj;
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -143,39 +142,39 @@ public final class DefaultComponent implements Component, Serializable {
 
     @Override
     public final Attributes getAttributes() {
-        return attributesGiven;
+        return attributes;
     }
 
     @Override
     public final Integer getCost() {
-        return componentCost;
+        return cost;
     }
 
     @Override
     public final ComponentLocation getLocation() {
-        return componentLocation;
+        return location;
     }
 
     @Override
     public final String getName() {
-        return componentName;
+        return name;
     }
 
     @Override
     public final Collection<Role> getRoles() {
-        return componentPos;
+        return roles;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(componentName);
+        return Objects.hashCode(name);
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", componentName)
-                .add("attributes", attributesGiven)
-                .add("abilities", abilitiesGiven).toString();
+        return MoreObjects.toStringHelper(this).add("name", name)
+                .add("attributes", attributes).add("abilities", abilitiesGiven)
+                .toString();
     }
 
     /**

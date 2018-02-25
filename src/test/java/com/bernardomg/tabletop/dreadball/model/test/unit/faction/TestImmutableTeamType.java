@@ -23,21 +23,21 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.faction.DefaultTeamType;
+import com.bernardomg.tabletop.dreadball.model.faction.ImmutableTeamType;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamRule;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 
 /**
- * Unit tests for {@link DefaultTeamType}.
+ * Unit tests for {@link ImmutableTeamType}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestDefaultTeamType {
+public final class TestImmutableTeamType {
 
     /**
      * Default constructor.
      */
-    public TestDefaultTeamType() {
+    public TestImmutableTeamType() {
         super();
     }
 
@@ -57,7 +57,7 @@ public final class TestDefaultTeamType {
         rules.add(rule);
 
         // Creates team
-        team = new DefaultTeamType("name", rules);
+        team = new ImmutableTeamType("name", rules);
 
         Assert.assertEquals(team.getTeamRules().size(), 1);
     }

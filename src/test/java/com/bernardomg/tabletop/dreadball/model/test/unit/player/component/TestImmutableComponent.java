@@ -26,21 +26,21 @@ import org.mockito.Mockito;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
-import com.bernardomg.tabletop.dreadball.model.player.component.DefaultComponent;
+import com.bernardomg.tabletop.dreadball.model.player.component.ImmutableComponent;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Unit tests for {@link DefaultComponent}.
+ * Unit tests for {@link ImmutableComponent}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestDefaultComponent {
+public final class TestImmutableComponent {
 
     /**
      * Default constructor.
      */
-    public TestDefaultComponent() {
+    public TestImmutableComponent() {
         super();
     }
 
@@ -68,7 +68,7 @@ public final class TestDefaultComponent {
         location = Mockito.mock(ComponentLocation.class);
 
         // Creates component
-        component = new DefaultComponent("name", location, 0,
+        component = new ImmutableComponent("name", location, 0,
                 new ArrayList<Role>(), attributes, abilities);
 
         Assert.assertEquals(component.getAbilities().size(), 1);
@@ -96,8 +96,8 @@ public final class TestDefaultComponent {
         location = Mockito.mock(ComponentLocation.class);
 
         // Creates component
-        component = new DefaultComponent("name", location, 0, roles, attributes,
-                new ArrayList<Ability>());
+        component = new ImmutableComponent("name", location, 0, roles,
+                attributes, new ArrayList<Ability>());
 
         Assert.assertEquals(component.getRoles().size(), 1);
     }

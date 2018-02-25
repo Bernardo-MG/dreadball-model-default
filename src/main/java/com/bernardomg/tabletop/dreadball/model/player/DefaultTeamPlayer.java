@@ -24,8 +24,6 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.player.Role;
-import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
@@ -44,29 +42,29 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     private static final long         serialVersionUID = 2114193062568651459L;
 
     /**
+     * Unit's attributes.
+     */
+    private final Attributes          attributes;
+
+    /**
      * Base cost of the player.
      */
-    private final Integer             baseCost;
+    private final Integer             cost;
 
     /**
      * Indicates if the player is a giant.
      */
-    private final Boolean             giantFlag;
+    private final Boolean             giant;
 
     /**
      * Indicates if the player is a MVP.
      */
-    private final Boolean             mvpFlag;
+    private final Boolean             mvp;
 
     /**
-     * Name of the template from which this player has been created.
+     * Unit's name.
      */
-    private final String              templateName;
-
-    /**
-     * The player's team position.
-     */
-    private final Role                templateRole;
+    private String                    name             = "";
 
     /**
      * The player's abilities.
@@ -74,49 +72,48 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     private final Collection<Ability> playerAbilities  = new LinkedHashSet<>();
 
     /**
-     * Unit's attributes.
+     * The player's team position.
      */
-    private final Attributes          playerAttributes;
+    private final Role                role;
 
     /**
-     * Unit's name.
+     * Name of the template from which this player has been created.
      */
-    private String                    playerName       = "";
+    private final String              templateName;
 
     /**
      * Constructs a player with the specified arguments.
      * 
      * @param nameTemplate
      *            the player's base template name
-     * @param cost
+     * @param playerCost
      *            cost of the player
-     * @param role
+     * @param playerRole
      *            team position role of the player
-     * @param attributes
+     * @param attrs
      *            player attributes
      * @param abilities
      *            player abilities
-     * @param mvp
+     * @param mvpFlag
      *            flag indicating if this is a MVP
-     * @param giant
+     * @param giantFlag
      *            flag indicating if this is a giant
      */
-    public DefaultTeamPlayer(final String nameTemplate, final Integer cost,
-            final Role role, final Attributes attributes,
-            final Collection<Ability> abilities, final Boolean mvp,
-            final Boolean giant) {
+    public DefaultTeamPlayer(final String nameTemplate,
+            final Integer playerCost, final Role playerRole,
+            final Attributes attrs, final Collection<Ability> abilities,
+            final Boolean mvpFlag, final Boolean giantFlag) {
         super();
 
         templateName = checkNotNull(nameTemplate,
                 "Received a null pointer as the template name");
-        playerAttributes = checkNotNull(attributes,
+        attributes = checkNotNull(attrs,
                 "Received a null pointer as attributes");
-        templateRole = checkNotNull(role,
-                "Received a null pointer as position");
-        giantFlag = checkNotNull(giant,
+        role = checkNotNull(playerRole, "Received a null pointer as position");
+        giant = checkNotNull(giantFlag,
                 "Received a null pointer as giant flag");
-        mvpFlag = checkNotNull(mvp, "Received a null pointer as MVP flag");
-        baseCost = checkNotNull(cost, "Received a null pointer as cost");
+        mvp = checkNotNull(mvpFlag, "Received a null pointer as MVP flag");
+        cost = checkNotNull(playerCost, "Received a null pointer as cost");
 
         checkNotNull(abilities, "Received a null pointer as abilities");
 
@@ -129,41 +126,40 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     /**
      * Constructs a player with the specified arguments.
      * 
-     * @param name
+     * @param playerName
      *            the player's name
      * @param nameTemplate
      *            the player's base template name
-     * @param cost
+     * @param playerCost
      *            cost of the player
-     * @param role
+     * @param playerRole
      *            team position role of the player
-     * @param attributes
+     * @param attrs
      *            player attributes
      * @param abilities
      *            player abilities
-     * @param mvp
+     * @param mvpFlag
      *            flag indicating if this is a MVP
-     * @param giant
+     * @param giantFlag
      *            flag indicating if this is a giant
      */
-    public DefaultTeamPlayer(final String name, final String nameTemplate,
-            final Integer cost, final Role role, final Attributes attributes,
-            final Collection<Ability> abilities, final Boolean mvp,
-            final Boolean giant) {
+    public DefaultTeamPlayer(final String playerName, final String nameTemplate,
+            final Integer playerCost, final Role playerRole,
+            final Attributes attrs, final Collection<Ability> abilities,
+            final Boolean mvpFlag, final Boolean giantFlag) {
         super();
 
-        playerName = checkNotNull(name,
+        name = checkNotNull(playerName,
                 "Received a null pointer as the template name");
         templateName = checkNotNull(nameTemplate,
                 "Received a null pointer as the template name");
-        playerAttributes = checkNotNull(attributes,
+        attributes = checkNotNull(attrs,
                 "Received a null pointer as attributes");
-        templateRole = checkNotNull(role,
-                "Received a null pointer as position");
-        giantFlag = checkNotNull(giant,
+        role = checkNotNull(playerRole, "Received a null pointer as position");
+        giant = checkNotNull(giantFlag,
                 "Received a null pointer as giant flag");
-        mvpFlag = checkNotNull(mvp, "Received a null pointer as MVP flag");
-        baseCost = checkNotNull(cost, "Received a null pointer as cost");
+        mvp = checkNotNull(mvpFlag, "Received a null pointer as MVP flag");
+        cost = checkNotNull(playerCost, "Received a null pointer as cost");
 
         checkNotNull(abilities, "Received a null pointer as abilities");
 
@@ -190,7 +186,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
         final DefaultTeamPlayer other;
 
         other = (DefaultTeamPlayer) obj;
-        return Objects.equals(playerName, other.playerName);
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -200,32 +196,32 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
 
     @Override
     public final Attributes getAttributes() {
-        return playerAttributes;
+        return attributes;
     }
 
     @Override
     public final Integer getCost() {
-        return baseCost;
+        return cost;
     }
 
     @Override
     public final Boolean getGiant() {
-        return giantFlag;
+        return giant;
     }
 
     @Override
     public final Boolean getMvp() {
-        return mvpFlag;
+        return mvp;
     }
 
     @Override
     public final String getName() {
-        return playerName;
+        return name;
     }
 
     @Override
     public final Role getRole() {
-        return templateRole;
+        return role;
     }
 
     @Override
@@ -235,17 +231,17 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(playerName);
+        return Objects.hashCode(name);
     }
 
     /**
      * Sets the player name.
      * 
-     * @param name
+     * @param playerName
      *            the player name
      */
-    public final void setName(final String name) {
-        playerName = name;
+    public final void setName(final String playerName) {
+        name = playerName;
     }
 
     @Override
