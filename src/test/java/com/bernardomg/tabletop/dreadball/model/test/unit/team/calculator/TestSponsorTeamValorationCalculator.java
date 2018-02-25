@@ -30,11 +30,6 @@ import com.bernardomg.tabletop.dreadball.model.team.calculator.SponsorTeamValora
 
 /**
  * Unit tests for {@link SponsorTeamValorationCalculator}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Valoration is calculated correctly</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

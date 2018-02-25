@@ -28,17 +28,6 @@ import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 
 /**
  * Unit tests for {@link AdvancementTeam}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Adding units to an empty team work as expected</li>
- * <li>Adding a unit to an existing position overwrites the unit</li>
- * <li>Adding a unit without giving a position uses the first empty position
- * </li>
- * <li>Adding a unit without giving a position works when there are no units
- * </li>
- * <li>Removing a unit works as expected</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -52,8 +41,8 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
-     * Tests that adding a unit without giving a position works when there are
-     * no units.
+     * Tests that adding a player without giving a position works when there are
+     * no players.
      */
     @SuppressWarnings("unchecked")
     @Test
@@ -83,7 +72,7 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
-     * Tests that adding a unit without giving a position uses the first empty
+     * Tests that adding a player without giving a position uses the first empty
      * position.
      */
     @SuppressWarnings("unchecked")
@@ -120,8 +109,8 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
-     * Tests that adding a unit without giving a position adds correctly to the
-     * last position.
+     * Tests that adding a player without giving a position adds correctly to
+     * the last position.
      */
     @SuppressWarnings("unchecked")
     @Test
@@ -157,7 +146,7 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
-     * Tests that adding units to an empty team work as expected.
+     * Tests that adding players to an empty team work as expected.
      */
     @SuppressWarnings("unchecked")
     @Test
@@ -189,7 +178,7 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
-     * Tests that adding a unit to an existing position overwrites the unit.
+     * Tests that adding a player to an existing position overwrites the player.
      */
     @SuppressWarnings("unchecked")
     @Test
@@ -226,7 +215,7 @@ public final class TestDefaultAdvancementTeam {
     }
 
     /**
-     * Tests that removing a unit works as expected.
+     * Tests that removing a player works as expected.
      */
     @SuppressWarnings("unchecked")
     @Test

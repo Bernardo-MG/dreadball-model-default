@@ -28,13 +28,6 @@ import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 /**
  * Unit tests for {@link DefaultSponsorTeam} checking that exceptions are
  * thrown.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Adding an existing player raises an {@code IllegalArgumentException}</li>
- * <li>Adding a player to a negative position raises an
- * {@code IllegalArgumentException}</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

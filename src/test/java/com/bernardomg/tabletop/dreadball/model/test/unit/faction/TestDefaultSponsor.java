@@ -29,11 +29,6 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 
 /**
  * Unit tests for {@link DefaultSponsor}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Affinities are not repeated</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

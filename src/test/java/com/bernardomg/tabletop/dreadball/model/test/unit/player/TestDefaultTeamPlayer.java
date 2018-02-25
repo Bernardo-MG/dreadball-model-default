@@ -31,11 +31,6 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultTeamPlayer}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Abilities are not repeated</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -53,7 +48,7 @@ public final class TestDefaultTeamPlayer {
      */
     @Test
     public final void testRepeatAbility_NoRepeats() {
-        final TeamPlayer unit;               // Tested unit
+        final TeamPlayer player;             // Tested player
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
@@ -67,11 +62,11 @@ public final class TestDefaultTeamPlayer {
         // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
-        // Creates unit
-        unit = new DefaultTeamPlayer("name", 0, Role.GUARD, attributes, abilities,
-                true, true);
+        // Creates player
+        player = new DefaultTeamPlayer("name", 0, Role.GUARD, attributes,
+                abilities, true, true);
 
-        Assert.assertEquals(unit.getAbilities().size(), 1);
+        Assert.assertEquals(player.getAbilities().size(), 1);
     }
 
 }

@@ -34,13 +34,6 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultTeamPlayer}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Abilities are not repeated</li>
- * <li>Affinities are not repeated</li>
- * <li>Hated affinities are not repeated</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -58,7 +51,7 @@ public final class TestDefaultAffinityTeamPlayer {
      */
     @Test
     public final void testRepeatAbility_NoRepeats() {
-        final TeamPlayer unit;               // Tested unit
+        final TeamPlayer player;             // Tested player
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
@@ -72,12 +65,12 @@ public final class TestDefaultAffinityTeamPlayer {
         // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
-        // Creates unit
-        unit = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
+        // Creates player
+        player = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
                 abilities, true, true, new ArrayList<AffinityGroup>(),
                 new ArrayList<AffinityGroup>(), 0, 0, 0);
 
-        Assert.assertEquals(unit.getAbilities().size(), 1);
+        Assert.assertEquals(player.getAbilities().size(), 1);
     }
 
     /**
@@ -85,7 +78,7 @@ public final class TestDefaultAffinityTeamPlayer {
      */
     @Test
     public final void testRepeatAffinity_NoRepeats() {
-        final AffinityTeamPlayer unit;              // Tested unit
+        final AffinityTeamPlayer player;            // Tested player
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
         final Attributes attributes;                // Mocked attributes
@@ -99,12 +92,12 @@ public final class TestDefaultAffinityTeamPlayer {
         // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
-        // Creates unit
-        unit = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
+        // Creates player
+        player = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
                 new ArrayList<Ability>(), true, true, affinities,
                 new ArrayList<AffinityGroup>(), 0, 0, 0);
 
-        Assert.assertEquals(unit.getAffinityGroups().size(), 1);
+        Assert.assertEquals(player.getAffinityGroups().size(), 1);
     }
 
     /**
@@ -112,7 +105,7 @@ public final class TestDefaultAffinityTeamPlayer {
      */
     @Test
     public final void testRepeatHatedAffinity_NoRepeats() {
-        final AffinityTeamPlayer unit;              // Tested unit
+        final AffinityTeamPlayer player;            // Tested player
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
         final Attributes attributes;                // Mocked attributes
@@ -126,12 +119,12 @@ public final class TestDefaultAffinityTeamPlayer {
         // Mocks attributes
         attributes = Mockito.mock(Attributes.class);
 
-        // Creates unit
-        unit = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
+        // Creates player
+        player = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
                 new ArrayList<Ability>(), true, true,
                 new ArrayList<AffinityGroup>(), affinities, 0, 0, 0);
 
-        Assert.assertEquals(unit.getHatedAffinityGroups().size(), 1);
+        Assert.assertEquals(player.getHatedAffinityGroups().size(), 1);
     }
 
 }

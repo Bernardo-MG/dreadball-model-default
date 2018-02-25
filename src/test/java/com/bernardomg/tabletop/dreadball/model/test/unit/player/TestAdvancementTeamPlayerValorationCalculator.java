@@ -28,11 +28,6 @@ import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 /**
  * Unit tests for {@link TeamPlayerValorationCalculator} applied to a
  * {@link AdvancementTeamPlayer}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Valoration is calculated correctly</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -52,23 +47,23 @@ public final class TestAdvancementTeamPlayerValorationCalculator {
     public final void testValoration() {
         final TeamPlayerValorationCalculator<AdvancementTeamPlayer> calculator; // Tested
         // class
-        final AdvancementTeamPlayer unit;     // Unit for the test
+        final AdvancementTeamPlayer player;     // Unit for the test
         final Component implant;        // Unit's implant
 
         // Mocks implant
         implant = Mockito.mock(Component.class);
         Mockito.when(implant.getCost()).thenReturn(5);
 
-        // Mocks unit
-        unit = Mockito.mock(AdvancementTeamPlayer.class);
-        Mockito.when(unit.getCost()).thenReturn(10);
-        Mockito.when(unit.getRank()).thenReturn(3);
-        Mockito.when(unit.getGraftedImplant()).thenReturn(implant);
+        // Mocks player
+        player = Mockito.mock(AdvancementTeamPlayer.class);
+        Mockito.when(player.getCost()).thenReturn(10);
+        Mockito.when(player.getRank()).thenReturn(3);
+        Mockito.when(player.getGraftedImplant()).thenReturn(implant);
 
         // Creates calculator
         calculator = new AdvancementTeamPlayerValorationCalculator(5);
 
-        Assert.assertEquals(calculator.getValoration(unit), (Integer) 30);
+        Assert.assertEquals(calculator.getValoration(player), (Integer) 30);
     }
 
 }

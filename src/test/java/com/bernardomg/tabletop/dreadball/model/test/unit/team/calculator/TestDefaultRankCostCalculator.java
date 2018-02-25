@@ -31,11 +31,6 @@ import com.bernardomg.tabletop.dreadball.model.team.calculator.DefaultRankCostCa
 
 /**
  * Unit tests for {@link DefaultRankCostCalculator}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Rank cost is calculated correctly</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

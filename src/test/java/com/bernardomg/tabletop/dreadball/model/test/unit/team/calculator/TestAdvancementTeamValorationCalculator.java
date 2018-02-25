@@ -31,11 +31,6 @@ import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 /**
  * Unit tests for {@link TeamValorationCalculator} applied to a
  * {@link AdvancementTeam}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Valoration is calculated correctly</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

@@ -29,11 +29,6 @@ import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 
 /**
  * Unit tests for {@link DefaultTeamType}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Team rules are not repeated</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

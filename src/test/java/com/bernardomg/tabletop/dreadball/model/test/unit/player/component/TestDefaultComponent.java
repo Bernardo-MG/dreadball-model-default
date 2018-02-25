@@ -32,12 +32,6 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultComponent}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Abilities are not repeated</li>
- * <li>Team roles are not repeated</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
