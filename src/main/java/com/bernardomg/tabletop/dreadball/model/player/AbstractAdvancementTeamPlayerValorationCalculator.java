@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 
 /**
- * Calculates the valoration of an {@link AdvancementUnit}.
+ * Calculates the valoration of an {@link AdvancementTeamPlayer}.
  * <p>
  * It uses the DBO's valoration formula, which consists on: [unit cost] + [unit
  * rank]*[rank value] + [implant cost].

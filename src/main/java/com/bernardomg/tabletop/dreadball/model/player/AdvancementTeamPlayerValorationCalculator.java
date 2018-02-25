@@ -21,12 +21,13 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 
 /**
- * Valoration calculator for {@link AdvancementUnit}.
+ * Valoration calculator for {@link AdvancementTeamPlayer}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class AdvancementTeamPlayerValorationCalculator extends
-        AbstractAdvancementTeamPlayerValorationCalculator implements Serializable {
+public final class AdvancementTeamPlayerValorationCalculator
+        extends AbstractAdvancementTeamPlayerValorationCalculator
+        implements Serializable {
 
     /**
      * Serialization id.
@@ -47,7 +48,8 @@ public final class AdvancementTeamPlayerValorationCalculator extends
      * @param rankCostIncrease
      *            the cost of each rank
      */
-    public AdvancementTeamPlayerValorationCalculator(final Integer rankCostIncrease) {
+    public AdvancementTeamPlayerValorationCalculator(
+            final Integer rankCostIncrease) {
         super();
 
         rankValue = checkNotNull(rankCostIncrease,

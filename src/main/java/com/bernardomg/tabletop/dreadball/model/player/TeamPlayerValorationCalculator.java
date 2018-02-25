@@ -19,7 +19,7 @@ package com.bernardomg.tabletop.dreadball.model.player;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 
 /**
- * Calculates the valoration of a {@link Unit}.
+ * Calculates the valoration of a {@link TeamPlayer}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
  * calculate a unit's valoration.

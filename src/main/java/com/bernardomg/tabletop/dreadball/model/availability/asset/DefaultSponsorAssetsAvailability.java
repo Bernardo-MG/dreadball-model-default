@@ -73,11 +73,6 @@ public final class DefaultSponsorAssetsAvailability
     private final Integer     costWager;
 
     /**
-     * Maximum number of Wagers allowed.
-     */
-    private final Integer     maxWagerCount;
-
-    /**
      * Constructs assets availability with the specified asset costs and
      * constraints.
      * 
@@ -97,16 +92,12 @@ public final class DefaultSponsorAssetsAvailability
      *            cost of a Medibot
      * @param wagerCost
      *            cost of a Wager
-     * @param teamMinCost
-     *            minimum cost for a team
-     * @param maxWagers
-     *            maximum number of Wagers allowed
      */
     public DefaultSponsorAssetsAvailability(final Integer diceCost,
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderUnlock, final Integer cheerleaderCost,
             final Integer affinityCost, final Integer medibotCost,
-            final Integer wagerCost, final Integer maxWagers) {
+            final Integer wagerCost) {
         super();
 
         costDie = checkNotNull(diceCost,
@@ -123,8 +114,6 @@ public final class DefaultSponsorAssetsAvailability
                 "Received a null pointer as Medibot cost");
         costWager = checkNotNull(wagerCost,
                 "Received a null pointer as the Wager cost");
-        maxWagerCount = checkNotNull(maxWagers,
-                "Received a null pointer as the maximum allowed number of Wagers");
     }
 
     @Override
@@ -150,8 +139,7 @@ public final class DefaultSponsorAssetsAvailability
                 && Objects.equals(costMedibot, other.costMedibot)
                 && Objects.equals(costSabotageCard, other.costSabotageCard)
                 && Objects.equals(costSpMoveCard, other.costSpMoveCard)
-                && Objects.equals(costWager, other.costWager)
-                && Objects.equals(maxWagerCount, other.maxWagerCount);
+                && Objects.equals(costWager, other.costWager);
     }
 
     @Override
@@ -192,8 +180,7 @@ public final class DefaultSponsorAssetsAvailability
     @Override
     public final int hashCode() {
         return Objects.hash(costAffinityGroup, costCheerleader, costDie,
-                costMedibot, costSabotageCard, costSpMoveCard, costWager,
-                maxWagerCount);
+                costMedibot, costSabotageCard, costSpMoveCard, costWager);
     }
 
 }
