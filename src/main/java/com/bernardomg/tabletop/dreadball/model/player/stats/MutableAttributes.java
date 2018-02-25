@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.unit.stats;
+package com.bernardomg.tabletop.dreadball.model.player.stats;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -27,67 +27,47 @@ import com.google.common.base.MoreObjects;
 /**
  * Unit attributes.
  * <p>
- * This is an immutable implementation.
+ * This is a mutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ImmutableAttributes implements Attributes, Serializable {
+public final class MutableAttributes implements Attributes, Serializable {
 
     /**
      * Serialization id.
      */
-    private static final long serialVersionUID = 5432386510717307041L;
+    private static final long serialVersionUID = -4043649412211375530L;
 
     /**
      * Armor value.
      */
-    private final Integer     armorValue;
+    private Integer           armorValue       = 0;
 
     /**
      * Movement value.
      */
-    private final Integer     movementValue;
+    private Integer           movementValue    = 0;
 
     /**
      * Skill value.
      */
-    private final Integer     skillValue;
+    private Integer           skillValue       = 0;
 
     /**
      * Speed value.
      */
-    private final Integer     speedValue;
+    private Integer           speedValue       = 0;
 
     /**
      * Strength value.
      */
-    private final Integer     strengthValue;
+    private Integer           strengthValue    = 0;
 
     /**
-     * Constructs attributes with the specified values.
-     * 
-     * @param armor
-     *            armor value
-     * @param movement
-     *            movement value
-     * @param skill
-     *            skill value
-     * @param speed
-     *            speed value
-     * @param strength
-     *            strength value
+     * Default constructor.
      */
-    public ImmutableAttributes(final Integer armor, final Integer movement,
-            final Integer skill, final Integer speed, final Integer strength) {
+    public MutableAttributes() {
         super();
-
-        armorValue = checkNotNull(armor, "Received a null pointer as armor");
-        movementValue = checkNotNull(movement,
-                "Received a null pointer as movement");
-        skillValue = checkNotNull(skill, "Received a null pointer as skill");
-        speedValue = checkNotNull(speed, "Received a null pointer as speed");
-        strengthValue = checkNotNull(strength,
-                "Received a null pointer as strength");
     }
 
     @Override
@@ -104,9 +84,9 @@ public final class ImmutableAttributes implements Attributes, Serializable {
             return false;
         }
 
-        final ImmutableAttributes other;
+        final MutableAttributes other;
 
-        other = (ImmutableAttributes) obj;
+        other = (MutableAttributes) obj;
         return Objects.equals(armorValue, other.armorValue)
                 && Objects.equals(movementValue, other.movementValue)
                 && Objects.equals(skillValue, other.skillValue)
@@ -143,6 +123,58 @@ public final class ImmutableAttributes implements Attributes, Serializable {
     public final int hashCode() {
         return Objects.hash(armorValue, movementValue, skillValue, speedValue,
                 strengthValue);
+    }
+
+    /**
+     * Sets the armor value.
+     * 
+     * @param armor
+     *            the new armor value
+     */
+    public final void setArmor(final Integer armor) {
+        armorValue = checkNotNull(armor, "Received a null pointer as armor");
+    }
+
+    /**
+     * Sets the movement value.
+     * 
+     * @param movement
+     *            the new movement value
+     */
+    public final void setMovement(final Integer movement) {
+        movementValue = checkNotNull(movement,
+                "Received a null pointer as movement");
+    }
+
+    /**
+     * Sets the skill value.
+     * 
+     * @param skill
+     *            the new skill value
+     */
+    public final void setSkill(final Integer skill) {
+        skillValue = checkNotNull(skill, "Received a null pointer as skill");
+    }
+
+    /**
+     * Sets the speed value.
+     * 
+     * @param speed
+     *            the new speed value
+     */
+    public final void setSpeed(final Integer speed) {
+        speedValue = checkNotNull(speed, "Received a null pointer as speed");
+    }
+
+    /**
+     * Sets the strength value.
+     * 
+     * @param strength
+     *            the new strength value
+     */
+    public final void setStrength(final Integer strength) {
+        strengthValue = checkNotNull(strength,
+                "Received a null pointer as strength");
     }
 
     @Override

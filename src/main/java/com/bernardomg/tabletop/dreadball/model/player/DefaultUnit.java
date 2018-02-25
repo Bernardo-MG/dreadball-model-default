@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.unit;
+package com.bernardomg.tabletop.dreadball.model.player;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

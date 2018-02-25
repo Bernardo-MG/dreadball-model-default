@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.availability.unit;
+package com.bernardomg.tabletop.dreadball.model.availability.affinity;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.unit;
+package com.bernardomg.tabletop.dreadball.model.player;
 
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 

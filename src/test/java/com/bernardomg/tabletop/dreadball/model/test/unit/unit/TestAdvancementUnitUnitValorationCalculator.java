@@ -21,9 +21,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementUnitValorationCalculator;
+import com.bernardomg.tabletop.dreadball.model.player.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnitValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
 
 /**
  * Unit tests for {@link UnitValorationCalculator} applied to a

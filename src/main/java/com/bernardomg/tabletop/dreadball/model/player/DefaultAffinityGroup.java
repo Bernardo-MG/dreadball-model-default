@@ -14,46 +14,45 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.unit.component;
+package com.bernardomg.tabletop.dreadball.model.player;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.google.common.base.MoreObjects;
 
 /**
- * Location where a unit component may be applied.
+ * Affinity group.
  * <p>
  * This is an immutable implementation.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultComponentLocation
-        implements ComponentLocation, Serializable {
+public final class DefaultAffinityGroup implements AffinityGroup, Serializable {
 
     /**
      * Serialization id.
      */
-    private static final long serialVersionUID = -536133663097252772L;
+    private static final long serialVersionUID = 9008556689033158827L;
 
     /**
-     * Location name.
+     * Group's name.
      */
-    private final String      locationName;
+    private final String      groupName;
 
     /**
-     * Constructs a component location.
+     * Constructs an affinity group with the specified arguments.
      * 
      * @param name
-     *            name of the location
+     *            the name of the group
      */
-    public DefaultComponentLocation(final String name) {
+    public DefaultAffinityGroup(final String name) {
         super();
 
-        locationName = checkNotNull(name, "Received a null pointer as name");
+        groupName = checkNotNull(name, "Received a null pointer as name");
     }
 
     @Override
@@ -70,25 +69,25 @@ public final class DefaultComponentLocation
             return false;
         }
 
-        final DefaultComponentLocation other;
+        final DefaultAffinityGroup other;
 
-        other = (DefaultComponentLocation) obj;
-        return Objects.equals(locationName, other.locationName);
+        other = (DefaultAffinityGroup) obj;
+        return Objects.equals(groupName, other.groupName);
     }
 
     @Override
     public final String getName() {
-        return locationName;
+        return groupName;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(locationName);
+        return Objects.hashCode(groupName);
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", locationName)
+        return MoreObjects.toStringHelper(this).add("name", groupName)
                 .toString();
     }
 

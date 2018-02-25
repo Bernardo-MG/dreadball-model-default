@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.unit;
+package com.bernardomg.tabletop.dreadball.model.player;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -29,11 +29,11 @@ import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.component.DefaultComponent;
+import com.bernardomg.tabletop.dreadball.model.player.component.DefaultComponentLocation;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
-import com.bernardomg.tabletop.dreadball.model.unit.component.DefaultComponent;
-import com.bernardomg.tabletop.dreadball.model.unit.component.DefaultComponentLocation;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.ImmutableAttributes;
+import com.bernardomg.tabletop.dreadball.model.player.stats.ImmutableAttributes;
 import com.google.common.base.MoreObjects;
 
 /**

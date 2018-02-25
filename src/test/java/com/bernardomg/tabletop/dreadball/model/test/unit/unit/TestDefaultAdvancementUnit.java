@@ -24,12 +24,12 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.DefaultAdvancementUnit;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.UnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
-import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
 
 /**
  * Unit tests for {@link DefaultAdvancementTeamPlayer}.

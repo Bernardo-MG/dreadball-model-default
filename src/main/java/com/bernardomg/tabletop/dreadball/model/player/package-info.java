@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Unit availabilities.
+ * Units.
  */
 
-package com.bernardomg.tabletop.dreadball.model.availability.unit;
+package com.bernardomg.tabletop.dreadball.model.player;

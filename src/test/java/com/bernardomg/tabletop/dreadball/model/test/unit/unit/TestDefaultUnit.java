@@ -23,11 +23,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import com.bernardomg.tabletop.dreadball.model.player.DefaultUnit;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
-import com.bernardomg.tabletop.dreadball.model.unit.DefaultUnit;
 
 /**
  * Unit tests for {@link DefaultUnit}.

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.unit.component;
+package com.bernardomg.tabletop.dreadball.model.player.component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -25,13 +25,13 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.DefaultAffinityUnit;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
-import com.bernardomg.tabletop.dreadball.model.unit.DefaultAffinityUnit;
 
 /**
  * Composite affinity unit.

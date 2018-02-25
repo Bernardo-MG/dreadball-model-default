@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Units.
+ * Unit statistics.
  */
 
-package com.bernardomg.tabletop.dreadball.model.unit;
+package com.bernardomg.tabletop.dreadball.model.player.stats;
