@@ -16,6 +16,8 @@
 
 package com.bernardomg.tabletop.dreadball.model.faction;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
@@ -123,23 +125,25 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     @Override
     public final void
             setAffinityGroups(final Collection<AffinityGroup> affinities) {
+        checkNotNull(affinities, "Received a null pointer as the affinities");
+
         getAffinityGroupsModifiable().clear();
         getAffinityGroupsModifiable().addAll(affinities);
     }
 
     @Override
     public final void setCash(final Integer value) {
-        cash = value;
+        cash = checkNotNull(value, "Received a null pointer as the cash");
     }
 
     @Override
     public final void setName(final String sponsorName) {
-        name = sponsorName;
+        name = checkNotNull(sponsorName, "Received a null pointer as the name");
     }
 
     @Override
     public final void setRank(final Integer sponsorRank) {
-        rank = sponsorRank;
+        rank = checkNotNull(sponsorRank, "Received a null pointer as the eank");
     }
 
     @Override

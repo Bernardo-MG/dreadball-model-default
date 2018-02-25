@@ -241,7 +241,8 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
      *            the player name
      */
     public final void setName(final String playerName) {
-        name = playerName;
+        name = checkNotNull(playerName,
+                "Received a null pointer as the template name");
     }
 
     @Override

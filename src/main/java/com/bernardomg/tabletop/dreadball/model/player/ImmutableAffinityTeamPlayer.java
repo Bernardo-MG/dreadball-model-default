@@ -34,7 +34,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAffinityTeamPlayer
+public final class ImmutableAffinityTeamPlayer
         implements AffinityTeamPlayer, Serializable {
 
     /**
@@ -60,7 +60,7 @@ public final class DefaultAffinityTeamPlayer
     /**
      * The actual cost of the player.
      */
-    private Integer                         cost             = 0;
+    private final Integer                   cost;
 
     /**
      * Unit cost for a friend.
@@ -101,6 +101,8 @@ public final class DefaultAffinityTeamPlayer
      *            the player affinities
      * @param hated
      *            the player hated affinities
+     * @param currentCost
+     *            actual cost of the player
      * @param costAlly
      *            the player cost for an ally
      * @param costFriend
@@ -108,16 +110,19 @@ public final class DefaultAffinityTeamPlayer
      * @param costStranger
      *            the player cost for a stranger
      */
-    public DefaultAffinityTeamPlayer(final String nameTemplate, final Role role,
+    public ImmutableAffinityTeamPlayer(final String nameTemplate, final Role role,
             final Attributes attributes, final Collection<Ability> abilities,
             final Boolean mvp, final Boolean giant,
             final Collection<AffinityGroup> affinities,
-            final Collection<AffinityGroup> hated, final Integer costAlly,
-            final Integer costFriend, final Integer costStranger) {
+            final Collection<AffinityGroup> hated, final Integer currentCost,
+            final Integer costAlly, final Integer costFriend,
+            final Integer costStranger) {
         super();
 
         baseUnit = new DefaultTeamPlayer(nameTemplate, 0, role, attributes,
                 abilities, mvp, giant);
+
+        cost = checkNotNull(currentCost, "Received a null pointer as cost");
 
         allyCost = checkNotNull(costAlly,
                 "Received a null pointer as ally cost");
@@ -153,9 +158,9 @@ public final class DefaultAffinityTeamPlayer
             return false;
         }
 
-        final DefaultAffinityTeamPlayer other;
+        final ImmutableAffinityTeamPlayer other;
 
-        other = (DefaultAffinityTeamPlayer) obj;
+        other = (ImmutableAffinityTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit)
                 && Objects.equals(name, other.name);
     }
@@ -230,27 +235,6 @@ public final class DefaultAffinityTeamPlayer
     @Override
     public final int hashCode() {
         return Objects.hash(baseUnit, name);
-    }
-
-    /**
-     * Sets the cost as the ally cost.
-     */
-    public final void setCostForAlly() {
-        cost = getAllyCost();
-    }
-
-    /**
-     * Sets the cost as the friend cost.
-     */
-    public final void setCostForFriend() {
-        cost = getFriendCost();
-    }
-
-    /**
-     * Sets the cost as the stranger cost.
-     */
-    public final void setCostForStranger() {
-        cost = getStrangerCost();
     }
 
     @Override

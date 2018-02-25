@@ -96,14 +96,14 @@ public final class ImmutableAffinityComponent
             final Attributes attributes, final Collection<Ability> abilities) {
         super();
 
+        cost = checkNotNull(currentCost, "Received a null pointer as cost");
+
         allyCost = checkNotNull(costAlly,
                 "Received a null pointer as ally cost");
         friendCost = checkNotNull(costFriend,
                 "Received a null pointer as friend cost");
         strangerCost = checkNotNull(costStranger,
                 "Received a null pointer as stranger cost");
-
-        cost = currentCost;
 
         baseComponent = new ImmutableComponent(name, location, 0, positions,
                 attributes, abilities);

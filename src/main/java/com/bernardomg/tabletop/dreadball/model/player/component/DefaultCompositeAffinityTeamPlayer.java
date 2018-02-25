@@ -25,7 +25,7 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.DefaultAffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.ImmutableAffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
@@ -36,7 +36,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * <p>
  * This is an immutable implementation.
  * <p>
- * It uses composition to inherit from {@link DefaultAffinityTeamPlayer}.
+ * It uses composition to inherit from {@link ImmutableAffinityTeamPlayer}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -77,6 +77,8 @@ public final class DefaultCompositeAffinityTeamPlayer
      *            the player affinities
      * @param hated
      *            the player hated affinities
+     * @param currentCost
+     *            actual cost of the player
      * @param allyCost
      *            the player cost for an ally
      * @param friendCost
@@ -90,14 +92,15 @@ public final class DefaultCompositeAffinityTeamPlayer
             final Role position, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant, final Collection<AffinityGroup> affinities,
-            final Collection<AffinityGroup> hated, final Integer allyCost,
-            final Integer friendCost, final Integer strangerCost,
+            final Collection<AffinityGroup> hated, final Integer currentCost,
+            final Integer allyCost, final Integer friendCost,
+            final Integer strangerCost,
             final Collection<Component> components) {
         super();
 
-        baseUnit = new DefaultAffinityTeamPlayer(nameTemplate, position,
-                attributes, abilities, mvp, giant, affinities, hated, allyCost,
-                friendCost, strangerCost);
+        baseUnit = new ImmutableAffinityTeamPlayer(nameTemplate, position,
+                attributes, abilities, mvp, giant, affinities, hated,
+                currentCost, allyCost, friendCost, strangerCost);
 
         checkNotNull(components,
                 "Received a null pointer as valoration the components");

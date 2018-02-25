@@ -226,23 +226,27 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final void setAbilities(final Collection<Ability> abilities) {
+        checkNotNull(abilities, "Received a null pointer as abilities");
+
         getAbilitiesModifiable().clear();
         getAbilitiesModifiable().addAll(abilities);
     }
 
     @Override
     public final void setAttributes(final Attributes attrs) {
-        attributes = attrs;
+        attributes = checkNotNull(attrs,
+                "Received a null pointer as attributes");
     }
 
     @Override
     public final void setGraftedImplant(final Component implant) {
-        graftedImplant = implant;
+        graftedImplant = checkNotNull(implant,
+                "Received a null pointer as implant");
     }
 
     @Override
     public final void setName(final String playerName) {
-        name = playerName;
+        name = checkNotNull(playerName, "Received a null pointer as name");
     }
 
     @Override

@@ -24,7 +24,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
-import com.bernardomg.tabletop.dreadball.model.player.DefaultAffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.ImmutableAffinityTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.DefaultTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
@@ -37,12 +37,12 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestDefaultAffinityTeamPlayer {
+public final class TestImmutableAffinityTeamPlayer {
 
     /**
      * Default constructor.
      */
-    public TestDefaultAffinityTeamPlayer() {
+    public TestImmutableAffinityTeamPlayer() {
         super();
     }
 
@@ -66,9 +66,9 @@ public final class TestDefaultAffinityTeamPlayer {
         attributes = Mockito.mock(Attributes.class);
 
         // Creates player
-        player = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
+        player = new ImmutableAffinityTeamPlayer("name", Role.GUARD, attributes,
                 abilities, true, true, new ArrayList<AffinityGroup>(),
-                new ArrayList<AffinityGroup>(), 0, 0, 0);
+                new ArrayList<AffinityGroup>(), 0, 0, 0, 0);
 
         Assert.assertEquals(player.getAbilities().size(), 1);
     }
@@ -93,9 +93,9 @@ public final class TestDefaultAffinityTeamPlayer {
         attributes = Mockito.mock(Attributes.class);
 
         // Creates player
-        player = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
+        player = new ImmutableAffinityTeamPlayer("name", Role.GUARD, attributes,
                 new ArrayList<Ability>(), true, true, affinities,
-                new ArrayList<AffinityGroup>(), 0, 0, 0);
+                new ArrayList<AffinityGroup>(), 0, 0, 0, 0);
 
         Assert.assertEquals(player.getAffinityGroups().size(), 1);
     }
@@ -120,9 +120,9 @@ public final class TestDefaultAffinityTeamPlayer {
         attributes = Mockito.mock(Attributes.class);
 
         // Creates player
-        player = new DefaultAffinityTeamPlayer("name", Role.GUARD, attributes,
+        player = new ImmutableAffinityTeamPlayer("name", Role.GUARD, attributes,
                 new ArrayList<Ability>(), true, true,
-                new ArrayList<AffinityGroup>(), affinities, 0, 0, 0);
+                new ArrayList<AffinityGroup>(), affinities, 0, 0, 0, 0);
 
         Assert.assertEquals(player.getHatedAffinityGroups().size(), 1);
     }
