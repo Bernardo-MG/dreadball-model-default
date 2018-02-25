@@ -47,67 +47,67 @@ public final class DefaultAdvancementTeamPlayer
     /**
      * Serialization id.
      */
-    private static final long                                     serialVersionUID = -9100853601667992893L;
+    private static final long                                           serialVersionUID = -9100853601667992893L;
 
     /**
      * {@code Unit} used for inheritance through composition.
      */
-    private final TeamPlayer                                      baseUnit;
+    private final TeamPlayer                                            baseUnit;
 
     /**
      * The unspent experience.
      */
-    private Integer                                               experienceValue;
+    private Integer                                                     experienceValue;
 
     /**
-     * Implant grafted to the unit. This is a {@code Unit}, the same objects
-     * used for composite units.
+     * Implant grafted to the player. This is a {@code Unit}, the same objects
+     * used for composite players.
      * <p>
      * Be default it will be a stub component.
      */
-    private Component                                             graftedImplant   = new DefaultComponent(
+    private Component                                                   graftedImplant   = new DefaultComponent(
             "none", new DefaultComponentLocation("none"), 0,
             new ArrayList<Role>(), new ImmutableAttributes(0, 0, 0, 0, 0),
             new ArrayList<Ability>());
 
     /**
-     * The unit's current rank.
+     * The player's current rank.
      */
-    private Integer                                               rankValue;
+    private Integer                                                     rankValue;
 
     /**
-     * The unit's abilities.
+     * The player's abilities.
      */
-    private final Collection<Ability>                             unitAbilities    = new HashSet<>();
+    private final Collection<Ability>                                   playerAbilities  = new HashSet<>();
 
     /**
      * Unit's attributes.
      */
-    private Attributes                                            unitAttributes;
+    private Attributes                                                  playerAttributes;
 
     /**
-     * Name given to the unit.
+     * Name given to the player.
      */
-    private String                                                unitName         = "";
+    private String                                                      playerName       = "";
 
     /**
-     * Object used for calculating the unit valoration.
+     * Object used for calculating the player valoration.
      */
     private final TeamPlayerValorationCalculator<AdvancementTeamPlayer> valorationBuilder;
 
     /**
-     * Constructs an advancement unit with the specified arguments.
+     * Constructs an advancement player with the specified arguments.
      * 
      * @param nameTemplate
-     *            the unit's base template name
+     *            the player's base template name
      * @param cost
-     *            cost of the unit
+     *            cost of the player
      * @param role
-     *            team position role of the unit
+     *            team position role of the player
      * @param attributes
-     *            unit attributes
+     *            player attributes
      * @param abilities
-     *            unit abilities
+     *            player abilities
      * @param mvp
      *            flag indicating if this is a MVP
      * @param giant
@@ -115,8 +115,8 @@ public final class DefaultAdvancementTeamPlayer
      * @param valorator
      *            calculator for the valoration
      */
-    public DefaultAdvancementTeamPlayer(final String nameTemplate, final Integer cost,
-            final Role role, final Attributes attributes,
+    public DefaultAdvancementTeamPlayer(final String nameTemplate,
+            final Integer cost, final Role role, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant,
             final TeamPlayerValorationCalculator<AdvancementTeamPlayer> valorator) {
@@ -125,7 +125,7 @@ public final class DefaultAdvancementTeamPlayer
         baseUnit = new DefaultTeamPlayer(nameTemplate, cost, role, attributes,
                 abilities, mvp, giant);
 
-        unitAbilities.addAll(baseUnit.getAbilities());
+        playerAbilities.addAll(baseUnit.getAbilities());
 
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");
@@ -154,7 +154,7 @@ public final class DefaultAdvancementTeamPlayer
 
         other = (DefaultAdvancementTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit)
-                && Objects.equals(unitName, other.unitName);
+                && Objects.equals(playerName, other.playerName);
     }
 
     @Override
@@ -164,7 +164,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final Attributes getAttributes() {
-        return unitAttributes;
+        return playerAttributes;
     }
 
     @Override
@@ -189,7 +189,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final String getName() {
-        return unitName;
+        return playerName;
     }
 
     @Override
@@ -219,7 +219,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final int hashCode() {
-        return Objects.hash(baseUnit, unitName);
+        return Objects.hash(baseUnit, playerName);
     }
 
     @Override
@@ -235,7 +235,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final void setAttributes(final Attributes attributes) {
-        unitAttributes = attributes;
+        playerAttributes = attributes;
     }
 
     @Override
@@ -245,7 +245,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final void setName(final String name) {
-        unitName = name;
+        playerName = name;
     }
 
     @Override
@@ -267,19 +267,19 @@ public final class DefaultAdvancementTeamPlayer
     }
 
     /**
-     * Returns the modifiable list of the unit's abilities.
+     * Returns the modifiable list of the player's abilities.
      * 
-     * @return the modifiable list of the unit's abilities
+     * @return the modifiable list of the player's abilities
      */
     private final Collection<Ability> getAbilitiesModifiable() {
-        return unitAbilities;
+        return playerAbilities;
     }
 
     /**
-     * Returns the base unit class being used for inheritance through
+     * Returns the base player class being used for inheritance through
      * composition.
      * 
-     * @return the base unit class being used for inheritance through
+     * @return the base player class being used for inheritance through
      *         composition
      */
     private final TeamPlayer getBaseUnit() {

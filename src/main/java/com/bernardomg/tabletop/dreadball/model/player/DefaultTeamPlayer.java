@@ -31,7 +31,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
 
 /**
- * Root for the basic features all the Dreadball units have, no matter if they
+ * Root for the basic features all the Dreadball players have, no matter if they
  * come from Dreadball Original (DBO) or Dreadball Xtreme (DBX).
  * 
  * @author Bernardo Mart&iacute;nez Garrido
@@ -44,58 +44,58 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     private static final long         serialVersionUID = 2114193062568651459L;
 
     /**
-     * Base cost of the unit.
+     * Base cost of the player.
      */
     private final Integer             baseCost;
 
     /**
-     * Indicates if the unit is a giant.
+     * Indicates if the player is a giant.
      */
     private final Boolean             giantFlag;
 
     /**
-     * Indicates if the unit is a MVP.
+     * Indicates if the player is a MVP.
      */
     private final Boolean             mvpFlag;
 
     /**
-     * Name of the template from which this unit has been created.
+     * Name of the template from which this player has been created.
      */
     private final String              templateName;
 
     /**
-     * The unit's team position.
+     * The player's team position.
      */
     private final Role                templateRole;
 
     /**
-     * The unit's abilities.
+     * The player's abilities.
      */
-    private final Collection<Ability> unitAbilities    = new LinkedHashSet<>();
+    private final Collection<Ability> playerAbilities  = new LinkedHashSet<>();
 
     /**
      * Unit's attributes.
      */
-    private final Attributes          unitAttributes;
+    private final Attributes          playerAttributes;
 
     /**
      * Unit's name.
      */
-    private String                    unitName         = "";
+    private String                    playerName       = "";
 
     /**
-     * Constructs a unit with the specified arguments.
+     * Constructs a player with the specified arguments.
      * 
      * @param nameTemplate
-     *            the unit's base template name
+     *            the player's base template name
      * @param cost
-     *            cost of the unit
+     *            cost of the player
      * @param role
-     *            team position role of the unit
+     *            team position role of the player
      * @param attributes
-     *            unit attributes
+     *            player attributes
      * @param abilities
-     *            unit abilities
+     *            player abilities
      * @param mvp
      *            flag indicating if this is a MVP
      * @param giant
@@ -109,7 +109,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
 
         templateName = checkNotNull(nameTemplate,
                 "Received a null pointer as the template name");
-        unitAttributes = checkNotNull(attributes,
+        playerAttributes = checkNotNull(attributes,
                 "Received a null pointer as attributes");
         templateRole = checkNotNull(role,
                 "Received a null pointer as position");
@@ -121,26 +121,26 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
         checkNotNull(abilities, "Received a null pointer as abilities");
 
         for (final Ability ability : abilities) {
-            unitAbilities.add(checkNotNull(ability,
+            playerAbilities.add(checkNotNull(ability,
                     "Received a null pointer as ability"));
         }
     }
 
     /**
-     * Constructs a unit with the specified arguments.
+     * Constructs a player with the specified arguments.
      * 
      * @param name
-     *            the unit's name
+     *            the player's name
      * @param nameTemplate
-     *            the unit's base template name
+     *            the player's base template name
      * @param cost
-     *            cost of the unit
+     *            cost of the player
      * @param role
-     *            team position role of the unit
+     *            team position role of the player
      * @param attributes
-     *            unit attributes
+     *            player attributes
      * @param abilities
-     *            unit abilities
+     *            player abilities
      * @param mvp
      *            flag indicating if this is a MVP
      * @param giant
@@ -152,11 +152,11 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
             final Boolean giant) {
         super();
 
-        unitName = checkNotNull(name,
+        playerName = checkNotNull(name,
                 "Received a null pointer as the template name");
         templateName = checkNotNull(nameTemplate,
                 "Received a null pointer as the template name");
-        unitAttributes = checkNotNull(attributes,
+        playerAttributes = checkNotNull(attributes,
                 "Received a null pointer as attributes");
         templateRole = checkNotNull(role,
                 "Received a null pointer as position");
@@ -168,7 +168,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
         checkNotNull(abilities, "Received a null pointer as abilities");
 
         for (final Ability ability : abilities) {
-            unitAbilities.add(checkNotNull(ability,
+            playerAbilities.add(checkNotNull(ability,
                     "Received a null pointer as ability"));
         }
     }
@@ -190,7 +190,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
         final DefaultTeamPlayer other;
 
         other = (DefaultTeamPlayer) obj;
-        return Objects.equals(unitName, other.unitName);
+        return Objects.equals(playerName, other.playerName);
     }
 
     @Override
@@ -200,7 +200,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
 
     @Override
     public final Attributes getAttributes() {
-        return unitAttributes;
+        return playerAttributes;
     }
 
     @Override
@@ -220,7 +220,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
 
     @Override
     public final String getName() {
-        return unitName;
+        return playerName;
     }
 
     @Override
@@ -235,17 +235,17 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(unitName);
+        return Objects.hashCode(playerName);
     }
 
     /**
-     * Sets the unit name.
+     * Sets the player name.
      * 
      * @param name
-     *            the unit name
+     *            the player name
      */
     public final void setName(final String name) {
-        unitName = name;
+        playerName = name;
     }
 
     @Override
@@ -256,12 +256,12 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     }
 
     /**
-     * Returns the modifiable collection of the unit's abilities.
+     * Returns the modifiable collection of the player's abilities.
      * 
-     * @return the modifiable collection of the unit's abilities
+     * @return the modifiable collection of the player's abilities
      */
     private final Collection<Ability> getAbilitiesModifiable() {
-        return unitAbilities;
+        return playerAbilities;
     }
 
 }

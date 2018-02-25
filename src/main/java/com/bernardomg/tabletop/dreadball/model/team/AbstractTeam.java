@@ -35,7 +35,7 @@ import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
  * @author Bernardo Mart&iacute;nez Garrido
  *
  * @param <U>
- *            the type of unit the team is composed of
+ *            the type of player the team is composed of
  */
 public abstract class AbstractTeam<U extends TeamPlayer> implements Team<U> {
 

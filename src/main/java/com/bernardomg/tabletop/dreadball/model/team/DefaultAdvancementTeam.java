@@ -27,7 +27,7 @@ import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.google.common.base.MoreObjects;
 
 /**
- * Dreadball Original (DBO) team, composed of units which, along the team
+ * Dreadball Original (DBO) team, composed of players which, along the team
  * itself, are capable of changing from game to game.
  * 
  * @author Bernardo Mart&iacute;nez Garrido

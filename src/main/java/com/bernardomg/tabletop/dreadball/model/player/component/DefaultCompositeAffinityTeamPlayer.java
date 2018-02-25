@@ -34,7 +34,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Composite affinity unit.
+ * Composite affinity player.
  * <p>
  * This is an immutable implementation.
  * <p>
@@ -56,37 +56,37 @@ public final class DefaultCompositeAffinityTeamPlayer
     private final AffinityTeamPlayer    baseUnit;
 
     /**
-     * Components of the unit.
+     * Components of the player.
      */
-    private final Collection<Component> unitComponents   = new LinkedHashSet<Component>();
+    private final Collection<Component> playerComponents = new LinkedHashSet<Component>();
 
     /**
-     * Constructs a composite affinities unit with the specified arguments.
+     * Constructs a composite affinities player with the specified arguments.
      * 
      * @param nameTemplate
-     *            the unit's base template name
+     *            the player's base template name
      * @param position
-     *            team position role of the unit
+     *            team position role of the player
      * @param attributes
-     *            unit attributes
+     *            player attributes
      * @param abilities
-     *            unit abilities
+     *            player abilities
      * @param mvp
      *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
      * @param affinities
-     *            the unit affinities
+     *            the player affinities
      * @param hated
-     *            the unit hated affinities
+     *            the player hated affinities
      * @param allyCost
-     *            the unit cost for an ally
+     *            the player cost for an ally
      * @param friendCost
-     *            the unit cost for a friend
+     *            the player cost for a friend
      * @param strangerCost
-     *            the unit cost for a stranger
+     *            the player cost for a stranger
      * @param components
-     *            components which create this unit
+     *            components which create this player
      */
     public DefaultCompositeAffinityTeamPlayer(final String nameTemplate,
             final Role position, final Attributes attributes,
@@ -97,9 +97,9 @@ public final class DefaultCompositeAffinityTeamPlayer
             final Collection<Component> components) {
         super();
 
-        baseUnit = new DefaultAffinityTeamPlayer(nameTemplate, position, attributes,
-                abilities, mvp, giant, affinities, hated, allyCost, friendCost,
-                strangerCost);
+        baseUnit = new DefaultAffinityTeamPlayer(nameTemplate, position,
+                attributes, abilities, mvp, giant, affinities, hated, allyCost,
+                friendCost, strangerCost);
 
         checkNotNull(components,
                 "Received a null pointer as valoration the components");
@@ -108,7 +108,7 @@ public final class DefaultCompositeAffinityTeamPlayer
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
-            unitComponents.add(component);
+            playerComponents.add(component);
         }
     }
 
@@ -153,9 +153,9 @@ public final class DefaultCompositeAffinityTeamPlayer
     }
 
     /**
-     * Returns the components which make up the unit.
+     * Returns the components which make up the player.
      * 
-     * @return the components which make up the unit
+     * @return the components which make up the player
      */
     @Override
     public final Collection<Component> getComponents() {
@@ -218,10 +218,10 @@ public final class DefaultCompositeAffinityTeamPlayer
     }
 
     /**
-     * Returns the base unit class being used for inheritance through
+     * Returns the base player class being used for inheritance through
      * composition.
      * 
-     * @return the base unit class being used for inheritance through
+     * @return the base player class being used for inheritance through
      *         composition
      */
     private final AffinityTeamPlayer getBaseUnit() {
@@ -229,12 +229,12 @@ public final class DefaultCompositeAffinityTeamPlayer
     }
 
     /**
-     * Returns a modifiable collection with the unit components.
+     * Returns a modifiable collection with the player components.
      * 
-     * @return a modifiable collection with the unit components
+     * @return a modifiable collection with the player components
      */
     private final Collection<Component> getComponentsModifiable() {
-        return unitComponents;
+        return playerComponents;
     }
 
 }

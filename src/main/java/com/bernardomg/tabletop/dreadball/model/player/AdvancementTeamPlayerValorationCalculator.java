@@ -37,12 +37,12 @@ public final class AdvancementTeamPlayerValorationCalculator
     /**
      * Value of each rank.
      * <p>
-     * A unit's rank will be multiplied by this number to find its value.
+     * A player's rank will be multiplied by this number to find its value.
      */
     private final Integer     rankValue;
 
     /**
-     * Constructs an advancement unit valoration calculator with the specified
+     * Constructs an advancement player valoration calculator with the specified
      * arguments.
      * 
      * @param rankCostIncrease
@@ -59,8 +59,8 @@ public final class AdvancementTeamPlayerValorationCalculator
     /**
      * Returns the cost of each rank.
      * <p>
-     * This value will be multiplied by the unit's rank to find the actual rank
-     * value.
+     * This value will be multiplied by the player's rank to find the actual
+     * rank value.
      * 
      * @return the cost of each rank
      */

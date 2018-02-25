@@ -34,7 +34,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Composite advancement unit.
+ * Composite advancement player.
  * <p>
  * It uses composition to inherit from {@link DefaultAdvancementTeamPlayer}.
  * 
@@ -54,23 +54,23 @@ public final class DefaultCompositeAdvancementTeamPlayer
     private final AdvancementTeamPlayer baseUnit;
 
     /**
-     * Components of the unit.
+     * Components of the player.
      */
-    private final Collection<Component> unitComponents   = new LinkedHashSet<Component>();
+    private final Collection<Component> playerComponents = new LinkedHashSet<Component>();
 
     /**
-     * Constructs a composite advancement unit with the specified arguments.
+     * Constructs a composite advancement player with the specified arguments.
      * 
      * @param nameTemplate
-     *            the unit's base template name
+     *            the player's base template name
      * @param cost
-     *            cost of the unit
+     *            cost of the player
      * @param position
-     *            team position role of the unit
+     *            team position role of the player
      * @param attributes
-     *            unit attributes
+     *            player attributes
      * @param abilities
-     *            unit abilities
+     *            player abilities
      * @param mvp
      *            flag indicating if this is a MVP
      * @param giant
@@ -78,7 +78,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
      * @param valorator
      *            calculator for the valoration
      * @param components
-     *            components which create this unit
+     *            components which create this player
      */
     public DefaultCompositeAdvancementTeamPlayer(final String nameTemplate,
             final Integer cost, final Role position,
@@ -88,8 +88,8 @@ public final class DefaultCompositeAdvancementTeamPlayer
             final Collection<Component> components) {
         super();
 
-        baseUnit = new DefaultAdvancementTeamPlayer(nameTemplate, cost, position,
-                attributes, abilities, mvp, giant, valorator);
+        baseUnit = new DefaultAdvancementTeamPlayer(nameTemplate, cost,
+                position, attributes, abilities, mvp, giant, valorator);
 
         checkNotNull(components,
                 "Received a null pointer as valoration the components");
@@ -98,7 +98,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
-            unitComponents.add(component);
+            playerComponents.add(component);
         }
     }
 
@@ -138,9 +138,9 @@ public final class DefaultCompositeAdvancementTeamPlayer
     }
 
     /**
-     * Returns the components which make up the unit.
+     * Returns the components which make up the player.
      * 
-     * @return the components which make up the unit
+     * @return the components which make up the player
      */
     @Override
     public final Collection<Component> getComponents() {
@@ -238,10 +238,10 @@ public final class DefaultCompositeAdvancementTeamPlayer
     }
 
     /**
-     * Returns the base unit class being used for inheritance through
+     * Returns the base player class being used for inheritance through
      * composition.
      * 
-     * @return the base unit class being used for inheritance through
+     * @return the base player class being used for inheritance through
      *         composition
      */
     private final AdvancementTeamPlayer getBaseUnit() {
@@ -249,12 +249,12 @@ public final class DefaultCompositeAdvancementTeamPlayer
     }
 
     /**
-     * Returns a modifiable collection with the unit components.
+     * Returns a modifiable collection with the player components.
      * 
-     * @return a modifiable collection with the unit components
+     * @return a modifiable collection with the player components
      */
     private final Collection<Component> getComponentsModifiable() {
-        return unitComponents;
+        return playerComponents;
     }
 
 }

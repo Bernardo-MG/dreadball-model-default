@@ -23,10 +23,10 @@ import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 /**
  * Calculates the valoration of an {@link AdvancementTeamPlayer}.
  * <p>
- * It uses the DBO's valoration formula, which consists on: [unit cost] + [unit
- * rank]*[rank value] + [implant cost].
+ * It uses the DBO's valoration formula, which consists on: [player cost] +
+ * [player rank]*[rank value] + [implant cost].
  * <p>
- * This means that the unit should have been grafted an implant, or have a
+ * This means that the player should have been grafted an implant, or have a
  * working stub, for this formula to work.
  * <p>
  * This abstract class encapsulates the calculation algorithm, letting the
@@ -45,15 +45,15 @@ public abstract class AbstractAdvancementTeamPlayerValorationCalculator
     }
 
     @Override
-    public final Integer getValoration(final AdvancementTeamPlayer unit) {
+    public final Integer getValoration(final AdvancementTeamPlayer player) {
         Integer valoration;
 
-        checkNotNull(unit, "Received a null pointer as the unit");
+        checkNotNull(player, "Received a null pointer as the player");
 
-        valoration = unit.getCost();
+        valoration = player.getCost();
 
-        valoration += unit.getGraftedImplant().getCost();
-        valoration += unit.getRank() * getRankCostIncrease();
+        valoration += player.getGraftedImplant().getCost();
+        valoration += player.getRank() * getRankCostIncrease();
 
         return valoration;
     }
@@ -61,8 +61,8 @@ public abstract class AbstractAdvancementTeamPlayerValorationCalculator
     /**
      * Returns the cost of each rank.
      * <p>
-     * This value will be multiplied by the unit's rank to find the actual rank
-     * value.
+     * This value will be multiplied by the player's rank to find the actual
+     * rank value.
      * 
      * @return the cost of each rank
      */

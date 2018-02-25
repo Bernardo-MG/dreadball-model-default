@@ -25,7 +25,7 @@ import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocatio
 import com.google.common.base.MoreObjects;
 
 /**
- * Location where a unit component may be applied.
+ * Location where a player component may be applied.
  * <p>
  * This is an immutable implementation.
  * 

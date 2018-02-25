@@ -100,8 +100,8 @@ public final class AdvancementTeamValorationCalculator
         checkNotNull(team, "Received a null pointer as the team");
 
         valoration = team.getCash();
-        for (final AdvancementTeamPlayer unit : team.getPlayers().values()) {
-            valoration += unit.getValoration();
+        for (final AdvancementTeamPlayer player : team.getPlayers().values()) {
+            valoration += player.getValoration();
         }
 
         valoration += team.getCoachingDice() * getCostDie();

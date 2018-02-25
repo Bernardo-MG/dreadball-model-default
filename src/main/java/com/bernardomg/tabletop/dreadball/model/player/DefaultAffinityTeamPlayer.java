@@ -46,7 +46,7 @@ public final class DefaultAffinityTeamPlayer
     private static final long               serialVersionUID = 7590874136661141233L;
 
     /**
-     * The affinities of the unit.
+     * The affinities of the player.
      */
     private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<AffinityGroup>();
 
@@ -56,7 +56,7 @@ public final class DefaultAffinityTeamPlayer
     private final TeamPlayer                baseUnit;
 
     /**
-     * The actual cost of the unit.
+     * The actual cost of the player.
      */
     private Integer                         costActual       = 0;
 
@@ -76,40 +76,40 @@ public final class DefaultAffinityTeamPlayer
     private final Integer                   costStranger;
 
     /**
-     * The affinities hated by the unit.
+     * The affinities hated by the player.
      */
     private final Collection<AffinityGroup> hatedAffinities  = new LinkedHashSet<AffinityGroup>();
 
     /**
-     * Name given to the unit.
+     * Name given to the player.
      */
-    private String                          unitName         = "";
+    private String                          playerName       = "";
 
     /**
-     * Constructs an affinity unit with the specified arguments.
+     * Constructs an affinity player with the specified arguments.
      * 
      * @param nameTemplate
-     *            the unit's base template name
+     *            the player's base template name
      * @param role
-     *            team position role of the unit
+     *            team position role of the player
      * @param attributes
-     *            unit attributes
+     *            player attributes
      * @param abilities
-     *            unit abilities
+     *            player abilities
      * @param mvp
      *            flag indicating if this is a MVP
      * @param giant
      *            flag indicating if this is a giant
      * @param affinities
-     *            the unit affinities
+     *            the player affinities
      * @param hated
-     *            the unit hated affinities
+     *            the player hated affinities
      * @param allyCost
-     *            the unit cost for an ally
+     *            the player cost for an ally
      * @param friendCost
-     *            the unit cost for a friend
+     *            the player cost for a friend
      * @param strangerCost
-     *            the unit cost for a stranger
+     *            the player cost for a stranger
      */
     public DefaultAffinityTeamPlayer(final String nameTemplate, final Role role,
             final Attributes attributes, final Collection<Ability> abilities,
@@ -119,8 +119,8 @@ public final class DefaultAffinityTeamPlayer
             final Integer friendCost, final Integer strangerCost) {
         super();
 
-        baseUnit = new DefaultTeamPlayer(nameTemplate, 0, role, attributes, abilities,
-                mvp, giant);
+        baseUnit = new DefaultTeamPlayer(nameTemplate, 0, role, attributes,
+                abilities, mvp, giant);
 
         costAlly = checkNotNull(allyCost,
                 "Received a null pointer as ally cost");
@@ -160,7 +160,7 @@ public final class DefaultAffinityTeamPlayer
 
         other = (DefaultAffinityTeamPlayer) obj;
         return Objects.equals(baseUnit, other.baseUnit)
-                && Objects.equals(unitName, other.unitName);
+                && Objects.equals(playerName, other.playerName);
     }
 
     @Override
@@ -212,7 +212,7 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final String getName() {
-        return unitName;
+        return playerName;
     }
 
     @Override
@@ -232,7 +232,7 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final int hashCode() {
-        return Objects.hash(baseUnit, unitName);
+        return Objects.hash(baseUnit, playerName);
     }
 
     /**
@@ -258,23 +258,23 @@ public final class DefaultAffinityTeamPlayer
 
     @Override
     public final void setName(final String name) {
-        unitName = name;
+        playerName = name;
     }
 
     /**
-     * Returns the modifiable collection of the unit's affinity groups.
+     * Returns the modifiable collection of the player's affinity groups.
      * 
-     * @return the modifiable collection of the unit's affinity groups
+     * @return the modifiable collection of the player's affinity groups
      */
     private final Collection<AffinityGroup> getAffinityGroupsModifiable() {
         return affinityGroups;
     }
 
     /**
-     * Returns the base unit class being used for inheritance through
+     * Returns the base player class being used for inheritance through
      * composition.
      * 
-     * @return the base unit class being used for inheritance through
+     * @return the base player class being used for inheritance through
      *         composition
      */
     private final TeamPlayer getBaseUnit() {
@@ -282,9 +282,9 @@ public final class DefaultAffinityTeamPlayer
     }
 
     /**
-     * Returns the modifiable collection of the unit's hated affinity groups.
+     * Returns the modifiable collection of the player's hated affinity groups.
      * 
-     * @return the modifiable collection of the unit's hated affinity groups
+     * @return the modifiable collection of the player's hated affinity groups
      */
     private final Collection<AffinityGroup> getHatedAffinityGroupsModifiable() {
         return hatedAffinities;

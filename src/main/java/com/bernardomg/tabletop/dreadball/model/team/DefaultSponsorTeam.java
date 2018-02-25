@@ -31,8 +31,8 @@ import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.google.common.base.MoreObjects;
 
 /**
- * Dreadball Xtreme (DBX) team, composed of units with affinities, and a Sponsor
- * which changes over time.
+ * Dreadball Xtreme (DBX) team, composed of players with affinities, and a
+ * Sponsor which changes over time.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

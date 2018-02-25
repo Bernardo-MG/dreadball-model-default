@@ -22,21 +22,21 @@ import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
  * Calculates the valoration of a {@link TeamPlayer}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
- * calculate a unit's valoration.
+ * calculate a player's valoration.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  * @param <U>
- *            the type of the unit of which the valoration will be calculated
+ *            the type of the player of which the valoration will be calculated
  */
 public interface TeamPlayerValorationCalculator<U extends TeamPlayer> {
 
     /**
      * Returns a {@code Unit}'s valoration.
      * 
-     * @param unit
+     * @param player
      *            the {@code Unit} of which the valoration will be calculated
      * @return the valoration of the {@code Unit}
      */
-    public Integer getValoration(final U unit);
+    public Integer getValoration(final U player);
 
 }

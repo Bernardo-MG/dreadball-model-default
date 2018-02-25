@@ -26,7 +26,7 @@ import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 
 /**
- * Unit availabilities for a {@link TeamType}, to be used for both Dreadball
+ * Player availabilities for a {@link TeamType}, to be used for both Dreadball
  * Original (DBO) and Dreadball Xtreme (DBX).
  * <p>
  * This is an immutable implementation.
@@ -44,7 +44,7 @@ public final class DefaultTeamPlayerAvailability
     /**
      * {@code TeamPlayer} for which the availability applies.
      */
-    private final TeamPlayer  avaUnit;
+    private final TeamPlayer  teamPlayer;
 
     /**
      * {@code TeamType} for which the availability applies.
@@ -52,20 +52,21 @@ public final class DefaultTeamPlayerAvailability
     private final TeamType    teamType;
 
     /**
-     * Constructs a unit availability for the specified team and unit.
+     * Constructs a player availability for the specified team and player.
      * 
      * @param team
      *            {@code TeamType} for which the availability applies
-     * @param unit
-     *            {@code Unit} for which the availability applies
+     * @param player
+     *            {@code TeamPlayer} for which the availability applies
      */
     public DefaultTeamPlayerAvailability(final TeamType team,
-            final TeamPlayer unit) {
+            final TeamPlayer player) {
         super();
 
         teamType = checkNotNull(team,
                 "Received a null pointer as the team type");
-        avaUnit = checkNotNull(unit, "Received a null pointer as the unit");
+        teamPlayer = checkNotNull(player,
+                "Received a null pointer as the player");
     }
 
     @Override
@@ -85,7 +86,8 @@ public final class DefaultTeamPlayerAvailability
         final DefaultTeamPlayerAvailability other;
 
         other = (DefaultTeamPlayerAvailability) obj;
-        return Objects.equals(avaUnit, other.avaUnit);
+        return Objects.equals(teamPlayer, other.teamPlayer)
+                && Objects.equals(teamType, other.teamType);
     }
 
     @Override
@@ -95,12 +97,12 @@ public final class DefaultTeamPlayerAvailability
 
     @Override
     public final TeamPlayer getTeamPlayer() {
-        return avaUnit;
+        return teamPlayer;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(avaUnit);
+        return Objects.hash(teamPlayer, teamType);
     }
 
 }

@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Units.
+ * Team players.
  */
 
 package com.bernardomg.tabletop.dreadball.model.player;

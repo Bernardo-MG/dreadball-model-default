@@ -32,7 +32,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
 
 /**
- * Component used for creating a composite unit.
+ * Component used for creating a composite player.
  * <p>
  * This is an immutable implementation.
  * 

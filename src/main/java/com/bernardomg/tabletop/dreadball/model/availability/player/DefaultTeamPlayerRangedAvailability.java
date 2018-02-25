@@ -26,7 +26,7 @@ import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 
 /**
- * Unit availabilities for a
+ * Player availabilities for a
  * {@link com.bernardomg.tabletop.dreadball.model.faction.TeamType TeamType},
  * where there is a range of how many times it can be acquired.
  * <p>
@@ -43,19 +43,19 @@ public final class DefaultTeamPlayerRangedAvailability
     private static final long serialVersionUID = 1431974307074955982L;
 
     /**
-     * Initial number of units of this type for the team type.
+     * Initial number of players of this type for the team type.
      */
     private final Integer     avaInitial;
 
     /**
-     * Maximum number of units of this type for the team type.
+     * Maximum number of players of this type for the team type.
      */
     private final Integer     avaMax;
 
     /**
      * {@code TeamPlayer} for which the availability applies.
      */
-    private final TeamPlayer  avaUnit;
+    private final TeamPlayer  teamPlayer;
 
     /**
      * {@code TeamType} for which the availability applies.
@@ -63,28 +63,30 @@ public final class DefaultTeamPlayerRangedAvailability
     private final TeamType    teamType;
 
     /**
-     * Constructs a ranged unit availability for the specified team and unit.
+     * Constructs a ranged player availability for the specified team and
+     * player.
      * 
      * @param team
      *            {@code TeamType} for which the availability applies
-     * @param unit
-     *            {@code Unit} for which the availability applies
+     * @param player
+     *            {@code TeamPlayer} for which the availability applies
      * @param initial
-     *            initial number of units of this type
+     *            initial number of players of this type
      * @param max
-     *            maximum number of units of this type
+     *            maximum number of players of this type
      */
     public DefaultTeamPlayerRangedAvailability(final TeamType team,
-            final TeamPlayer unit, final Integer initial, final Integer max) {
+            final TeamPlayer player, final Integer initial, final Integer max) {
         super();
 
         teamType = checkNotNull(team,
                 "Received a null pointer as the team type");
-        avaUnit = checkNotNull(unit, "Received a null pointer as the unit");
+        teamPlayer = checkNotNull(player,
+                "Received a null pointer as the player");
         avaInitial = checkNotNull(initial,
-                "Received a null pointer as the initial number of units");
+                "Received a null pointer as the initial number of players");
         avaMax = checkNotNull(max,
-                "Received a null pointer as the maximum number of units");
+                "Received a null pointer as the maximum number of players");
     }
 
     @Override
@@ -104,7 +106,8 @@ public final class DefaultTeamPlayerRangedAvailability
         final DefaultTeamPlayerRangedAvailability other;
 
         other = (DefaultTeamPlayerRangedAvailability) obj;
-        return Objects.equals(avaUnit, other.avaUnit);
+        return Objects.equals(teamPlayer, other.teamPlayer)
+                && Objects.equals(teamType, other.teamType);
     }
 
     @Override
@@ -124,12 +127,12 @@ public final class DefaultTeamPlayerRangedAvailability
 
     @Override
     public final TeamPlayer getTeamPlayer() {
-        return avaUnit;
+        return teamPlayer;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(avaUnit);
+        return Objects.hash(teamPlayer, teamType);
     }
 
 }
