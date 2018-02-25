@@ -23,11 +23,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultUnit}.
@@ -53,7 +53,7 @@ public final class TestDefaultUnit {
      */
     @Test
     public final void testRepeatAbility_NoRepeats() {
-        final Unit unit;                     // Tested unit
+        final TeamPlayer unit;               // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes

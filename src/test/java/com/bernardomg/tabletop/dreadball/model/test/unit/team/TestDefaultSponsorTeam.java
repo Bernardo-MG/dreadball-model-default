@@ -18,13 +18,14 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.team;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.SponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Unit tests for {@link SponsorTeam}.
@@ -61,8 +62,8 @@ public final class TestDefaultSponsorTeam {
     @Test
     public final void testAddPlayer_AutoPos_Empty() {
         final SponsorTeam team; // Tested team
-        final Unit player1;     // Mocked player 1
-        final Unit player2;     // Mocked player 2
+        final TeamPlayer player1;     // Mocked player 1
+        final TeamPlayer player2;     // Mocked player 2
         final Sponsor sponsor;  // Mocked sponsor
         final CostCalculator<SponsorTeam> calculator; // Mocked
                                                       // calculator
@@ -79,8 +80,8 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(Unit.class);
-        player2 = Mockito.mock(Unit.class);
+        player1 = Mockito.mock(TeamPlayer.class);
+        player2 = Mockito.mock(TeamPlayer.class);
 
         // Adds player
         team.addPlayer(player1);
@@ -97,9 +98,9 @@ public final class TestDefaultSponsorTeam {
     @Test
     public final void testAddPlayer_AutoPos_FirstEmpty() {
         final SponsorTeam team; // Tested team
-        final Unit player1;     // Mocked player 1
-        final Unit player2;     // Mocked player 2
-        final Unit player3;     // Mocked player 3
+        final TeamPlayer player1;     // Mocked player 1
+        final TeamPlayer player2;     // Mocked player 2
+        final TeamPlayer player3;     // Mocked player 3
         final Sponsor sponsor;  // Mocked sponsor
         final CostCalculator<SponsorTeam> calculator; // Mocked
                                                       // calculator
@@ -116,9 +117,9 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(Unit.class);
-        player2 = Mockito.mock(Unit.class);
-        player3 = Mockito.mock(Unit.class);
+        player1 = Mockito.mock(TeamPlayer.class);
+        player2 = Mockito.mock(TeamPlayer.class);
+        player3 = Mockito.mock(TeamPlayer.class);
 
         // Adds players
         team.addPlayer(player1, 1);
@@ -137,9 +138,9 @@ public final class TestDefaultSponsorTeam {
     @Test
     public final void testAddPlayer_AutoPos_LastPos() {
         final SponsorTeam team; // Tested team
-        final Unit player1;     // Mocked player 1
-        final Unit player2;     // Mocked player 2
-        final Unit player3;     // Mocked player 3
+        final TeamPlayer player1;     // Mocked player 1
+        final TeamPlayer player2;     // Mocked player 2
+        final TeamPlayer player3;     // Mocked player 3
         final Sponsor sponsor;  // Mocked sponsor
         final CostCalculator<SponsorTeam> calculator; // Mocked
                                                       // calculator
@@ -156,9 +157,9 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(Unit.class);
-        player2 = Mockito.mock(Unit.class);
-        player3 = Mockito.mock(Unit.class);
+        player1 = Mockito.mock(TeamPlayer.class);
+        player2 = Mockito.mock(TeamPlayer.class);
+        player3 = Mockito.mock(TeamPlayer.class);
 
         // Adds player
         team.addPlayer(player1);
@@ -175,8 +176,8 @@ public final class TestDefaultSponsorTeam {
     @Test
     public final void testAddPlayer_Position_Empty() {
         final SponsorTeam team; // Tested team
-        final Unit player1;     // Mocked player 1
-        final Unit player2;     // Mocked player 2
+        final TeamPlayer player1;     // Mocked player 1
+        final TeamPlayer player2;     // Mocked player 2
         final Sponsor sponsor;  // Mocked sponsor
         final CostCalculator<SponsorTeam> calculator; // Mocked
                                                       // calculator
@@ -193,8 +194,8 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(Unit.class);
-        player2 = Mockito.mock(Unit.class);
+        player1 = Mockito.mock(TeamPlayer.class);
+        player2 = Mockito.mock(TeamPlayer.class);
 
         // Adds players
         team.addPlayer(player1, 1);
@@ -210,8 +211,8 @@ public final class TestDefaultSponsorTeam {
     @Test
     public final void testAddPlayer_Position_Overwrite() {
         final SponsorTeam team; // Tested team
-        final Unit player1;     // Mocked player 1
-        final Unit player2;     // Mocked player 2
+        final TeamPlayer player1;     // Mocked player 1
+        final TeamPlayer player2;     // Mocked player 2
         final Sponsor sponsor;  // Mocked sponsor
         final CostCalculator<SponsorTeam> calculator; // Mocked
                                                       // calculator
@@ -228,8 +229,8 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks players
-        player1 = Mockito.mock(Unit.class);
-        player2 = Mockito.mock(Unit.class);
+        player1 = Mockito.mock(TeamPlayer.class);
+        player2 = Mockito.mock(TeamPlayer.class);
 
         // Adds players
         team.addPlayer(player1, 1);
@@ -288,7 +289,7 @@ public final class TestDefaultSponsorTeam {
         // Mocks calculators
         calculator = Mockito.mock(CostCalculator.class);
         ranker = Mockito.mock(CostCalculator.class);
-        Mockito.when(ranker.getCost(Mockito.any(SponsorTeam.class)))
+        Mockito.when(ranker.getCost(Matchers.any(SponsorTeam.class)))
                 .thenReturn(3);
 
         // Creates team
@@ -304,7 +305,7 @@ public final class TestDefaultSponsorTeam {
     @Test
     public final void testRemovePlayer() {
         final SponsorTeam team; // Tested team
-        final Unit player;      // Mocked player
+        final TeamPlayer player;      // Mocked player
         final Sponsor sponsor;  // Mocked sponsor
         final CostCalculator<SponsorTeam> calculator; // Mocked
                                                       // calculator
@@ -321,7 +322,7 @@ public final class TestDefaultSponsorTeam {
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);
 
         // Mocks player
-        player = Mockito.mock(Unit.class);
+        player = Mockito.mock(TeamPlayer.class);
         team.addPlayer(player, 1);
 
         team.removePlayer(1);

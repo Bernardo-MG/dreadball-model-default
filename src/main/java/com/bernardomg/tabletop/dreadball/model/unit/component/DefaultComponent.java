@@ -24,9 +24,11 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
 
 /**

@@ -20,8 +20,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.AdvancementTeam;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
  * Team valoration calculator for an {@code AdvancementTeam}.
@@ -100,7 +100,7 @@ public final class AdvancementTeamValorationCalculator
         checkNotNull(team, "Received a null pointer as the team");
 
         valoration = team.getCash();
-        for (final AdvancementUnit unit : team.getPlayers().values()) {
+        for (final AdvancementTeamPlayer unit : team.getPlayers().values()) {
             valoration += unit.getValoration();
         }
 

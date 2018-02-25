@@ -23,14 +23,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultAffinityUnit;
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Unit tests for {@link DefaultUnit}.
@@ -58,7 +58,7 @@ public final class TestDefaultAffinityUnit {
      */
     @Test
     public final void testRepeatAbility_NoRepeats() {
-        final Unit unit;                     // Tested unit
+        final TeamPlayer unit;               // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
@@ -85,7 +85,7 @@ public final class TestDefaultAffinityUnit {
      */
     @Test
     public final void testRepeatAffinity_NoRepeats() {
-        final AffinityUnit unit;                    // Tested unit
+        final AffinityTeamPlayer unit;              // Tested unit
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
         final Attributes attributes;                // Mocked attributes
@@ -112,7 +112,7 @@ public final class TestDefaultAffinityUnit {
      */
     @Test
     public final void testRepeatHatedAffinity_NoRepeats() {
-        final AffinityUnit unit;                    // Tested unit
+        final AffinityTeamPlayer unit;              // Tested unit
         final Collection<AffinityGroup> affinities; // Initial affinities
         final AffinityGroup affinity;               // Mocked ability
         final Attributes attributes;                // Mocked attributes

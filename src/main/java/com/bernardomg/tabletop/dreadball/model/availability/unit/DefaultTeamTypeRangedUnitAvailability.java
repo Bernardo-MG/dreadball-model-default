@@ -21,8 +21,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.bernardomg.tabletop.dreadball.model.availability.player.TeamPlayerRangedAvailability;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 
 /**
  * Unit availabilities for a
@@ -34,7 +35,7 @@ import com.bernardomg.tabletop.dreadball.model.unit.Unit;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultTeamTypeRangedUnitAvailability
-        implements TeamTypeRangedUnitAvailability, Serializable {
+        implements TeamPlayerRangedAvailability, Serializable {
 
     /**
      * Serialization id.
@@ -52,9 +53,9 @@ public final class DefaultTeamTypeRangedUnitAvailability
     private final Integer     avaMax;
 
     /**
-     * {@code Unit} for which the availability applies.
+     * {@code TeamPlayer} for which the availability applies.
      */
-    private final Unit        avaUnit;
+    private final TeamPlayer  avaUnit;
 
     /**
      * {@code TeamType} for which the availability applies.
@@ -74,7 +75,7 @@ public final class DefaultTeamTypeRangedUnitAvailability
      *            maximum number of units of this type
      */
     public DefaultTeamTypeRangedUnitAvailability(final TeamType team,
-            final Unit unit, final Integer initial, final Integer max) {
+            final TeamPlayer unit, final Integer initial, final Integer max) {
         super();
 
         teamType = checkNotNull(team,
@@ -122,7 +123,7 @@ public final class DefaultTeamTypeRangedUnitAvailability
     }
 
     @Override
-    public final Unit getUnit() {
+    public final TeamPlayer getTeamPlayer() {
         return avaUnit;
     }
 

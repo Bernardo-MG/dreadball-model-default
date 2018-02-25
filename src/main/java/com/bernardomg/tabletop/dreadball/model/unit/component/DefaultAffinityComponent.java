@@ -22,9 +22,12 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.component.AffinityComponent;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.component.ComponentLocation;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
  * Component with affinity groups, and various costs which will depend on how

@@ -25,7 +25,7 @@ import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.faction.DefaultSponsor;
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 
 /**
  * Unit tests for {@link DefaultSponsor}.

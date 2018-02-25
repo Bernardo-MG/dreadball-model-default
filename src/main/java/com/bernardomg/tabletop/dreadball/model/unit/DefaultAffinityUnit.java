@@ -24,8 +24,12 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
+import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
  * Unit with affinity groups, and various costs which will depend on how many of
@@ -33,7 +37,8 @@ import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAffinityUnit implements AffinityUnit, Serializable {
+public final class DefaultAffinityUnit
+        implements AffinityTeamPlayer, Serializable {
 
     /**
      * Serialization id.
@@ -48,7 +53,7 @@ public final class DefaultAffinityUnit implements AffinityUnit, Serializable {
     /**
      * {@code Unit} used for inheritance through composition.
      */
-    private final Unit                      baseUnit;
+    private final TeamPlayer                baseUnit;
 
     /**
      * The actual cost of the unit.
@@ -272,7 +277,7 @@ public final class DefaultAffinityUnit implements AffinityUnit, Serializable {
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final Unit getBaseUnit() {
+    private final TeamPlayer getBaseUnit() {
         return baseUnit;
     }
 

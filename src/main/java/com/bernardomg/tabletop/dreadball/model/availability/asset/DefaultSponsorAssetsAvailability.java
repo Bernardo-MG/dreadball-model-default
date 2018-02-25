@@ -68,11 +68,6 @@ public final class DefaultSponsorAssetsAvailability
     private final Integer     costSpMoveCard;
 
     /**
-     * Cost for unlocking a Cheerleader.
-     */
-    private final Integer     costUnlockCheer;
-
-    /**
      * Cost of a Wager.
      */
     private final Integer     costWager;
@@ -81,11 +76,6 @@ public final class DefaultSponsorAssetsAvailability
      * Maximum number of Wagers allowed.
      */
     private final Integer     maxWagerCount;
-
-    /**
-     * Minimum allowed cost for a team.
-     */
-    private final Integer     minTeamCost;
 
     /**
      * Constructs assets availability with the specified asset costs and
@@ -116,8 +106,7 @@ public final class DefaultSponsorAssetsAvailability
             final Integer sabotageCost, final Integer specialMoveCost,
             final Integer cheerleaderUnlock, final Integer cheerleaderCost,
             final Integer affinityCost, final Integer medibotCost,
-            final Integer wagerCost, final Integer teamMinCost,
-            final Integer maxWagers) {
+            final Integer wagerCost, final Integer maxWagers) {
         super();
 
         costDie = checkNotNull(diceCost,
@@ -126,16 +115,12 @@ public final class DefaultSponsorAssetsAvailability
                 "Received a null pointer as Sabotage Card cost");
         costSpMoveCard = checkNotNull(specialMoveCost,
                 "Received a null pointer as Special Move Card cost");
-        costUnlockCheer = checkNotNull(cheerleaderUnlock,
-                "Received a null pointer as Cheerleader unlocking cost");
         costCheerleader = checkNotNull(cheerleaderCost,
                 "Received a null pointer as Cheerleader cost");
         costAffinityGroup = checkNotNull(affinityCost,
                 "Received a null pointer as Affinity Group cost");
         costMedibot = checkNotNull(medibotCost,
                 "Received a null pointer as Medibot cost");
-        minTeamCost = checkNotNull(teamMinCost,
-                "Received a null pointer as the team minimum cost cost");
         costWager = checkNotNull(wagerCost,
                 "Received a null pointer as the Wager cost");
         maxWagerCount = checkNotNull(maxWagers,
@@ -165,10 +150,8 @@ public final class DefaultSponsorAssetsAvailability
                 && Objects.equals(costMedibot, other.costMedibot)
                 && Objects.equals(costSabotageCard, other.costSabotageCard)
                 && Objects.equals(costSpMoveCard, other.costSpMoveCard)
-                && Objects.equals(costUnlockCheer, other.costUnlockCheer)
                 && Objects.equals(costWager, other.costWager)
-                && Objects.equals(maxWagerCount, other.maxWagerCount)
-                && Objects.equals(minTeamCost, other.minTeamCost);
+                && Objects.equals(maxWagerCount, other.maxWagerCount);
     }
 
     @Override
@@ -182,11 +165,6 @@ public final class DefaultSponsorAssetsAvailability
     }
 
     @Override
-    public final Integer getCheerleaderUnlockCost() {
-        return costUnlockCheer;
-    }
-
-    @Override
     public final Integer getCoachingDieCost() {
         return costDie;
     }
@@ -197,18 +175,13 @@ public final class DefaultSponsorAssetsAvailability
     }
 
     @Override
-    public final Integer getSabotageCardCost() {
+    public final Integer getNastySurpriseCardCost() {
         return costSabotageCard;
     }
 
     @Override
-    public final Integer getSpecialMovementCardCost() {
+    public final Integer getSpecialMoveCardCost() {
         return costSpMoveCard;
-    }
-
-    @Override
-    public final Integer getTeamCostMin() {
-        return minTeamCost;
     }
 
     @Override
@@ -217,15 +190,10 @@ public final class DefaultSponsorAssetsAvailability
     }
 
     @Override
-    public final Integer getWagerMaxCount() {
-        return maxWagerCount;
-    }
-
-    @Override
     public final int hashCode() {
         return Objects.hash(costAffinityGroup, costCheerleader, costDie,
-                costMedibot, costSabotageCard, costSpMoveCard, costUnlockCheer,
-                costWager, maxWagerCount, minTeamCost);
+                costMedibot, costSabotageCard, costSpMoveCard, costWager,
+                maxWagerCount);
     }
 
 }

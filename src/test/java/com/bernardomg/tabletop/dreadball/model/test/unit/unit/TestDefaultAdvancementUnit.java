@@ -23,16 +23,16 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
- * Unit tests for {@link DefaultAdvancementUnit}.
+ * Unit tests for {@link DefaultAdvancementTeamPlayer}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -56,11 +56,11 @@ public final class TestDefaultAdvancementUnit {
     @SuppressWarnings("unchecked")
     @Test
     public final void testRepeatAbility_NoRepeats() {
-        final Unit unit;                     // Tested unit
+        final TeamPlayer unit;               // Tested unit
         final Collection<Ability> abilities; // Initial abilities
         final Ability ability;               // Mocked ability
         final Attributes attributes;         // Mocked attributes
-        final UnitValorationCalculator<AdvancementUnit> calculator;
+        final UnitValorationCalculator<AdvancementTeamPlayer> calculator;
 
         // Mocks abilities
         ability = Mockito.mock(Ability.class);

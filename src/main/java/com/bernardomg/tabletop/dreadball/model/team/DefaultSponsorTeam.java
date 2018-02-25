@@ -25,9 +25,9 @@ import java.util.Collections;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -36,7 +36,7 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultSponsorTeam extends AbstractTeam<Unit>
+public final class DefaultSponsorTeam extends AbstractTeam<TeamPlayer>
         implements SponsorTeam, Serializable {
 
     /**
@@ -179,7 +179,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     }
 
     @Override
-    public final Integer getValoration() {
+    public final Integer getTotalCost() {
         return getValorationCalculator().getCost(this);
     }
 
@@ -199,7 +199,7 @@ public final class DefaultSponsorTeam extends AbstractTeam<Unit>
     }
 
     @Override
-    public final void setSabotageCards(final Integer cards) {
+    public final void setNastySurpriseCards(final Integer cards) {
         teamSabotageCards = cards;
     }
 

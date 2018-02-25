@@ -24,12 +24,14 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAffinityTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultAffinityUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Composite affinity unit.
@@ -41,7 +43,7 @@ import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultCompositeAffinityUnit
-        implements CompositeAffinityUnit, Serializable {
+        implements CompositeAffinityTeamPlayer, Serializable {
 
     /**
      * Serialization id.
@@ -51,7 +53,7 @@ public final class DefaultCompositeAffinityUnit
     /**
      * {@code AffinityUnit} used for inheritance through composition.
      */
-    private final AffinityUnit          baseUnit;
+    private final AffinityTeamPlayer    baseUnit;
 
     /**
      * Components of the unit.
@@ -222,7 +224,7 @@ public final class DefaultCompositeAffinityUnit
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final AffinityUnit getBaseUnit() {
+    private final AffinityTeamPlayer getBaseUnit() {
         return baseUnit;
     }
 

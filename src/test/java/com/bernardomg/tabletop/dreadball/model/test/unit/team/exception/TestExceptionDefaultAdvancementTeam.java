@@ -20,10 +20,10 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.AdvancementTeam;
 import com.bernardomg.tabletop.dreadball.model.team.DefaultAdvancementTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 
 /**
  * Unit tests for {@link DefaultAdvancementTeam} checking that exceptions are
@@ -53,7 +53,7 @@ public final class TestExceptionDefaultAdvancementTeam {
     @Test(expected = IllegalArgumentException.class)
     public void testAddPlayer_NegativePos() {
         final AdvancementTeam team;   // Tested team
-        final AdvancementUnit player; // Mocked player
+        final AdvancementTeamPlayer player; // Mocked player
         final TeamType type;          // Mocked team type
         final CostCalculator<AdvancementTeam> calculator;
 
@@ -64,7 +64,7 @@ public final class TestExceptionDefaultAdvancementTeam {
         type = Mockito.mock(TeamType.class);
 
         // Mocks player
-        player = Mockito.mock(AdvancementUnit.class);
+        player = Mockito.mock(AdvancementTeamPlayer.class);
 
         // Creates team
         team = new DefaultAdvancementTeam(type, calculator);

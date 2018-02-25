@@ -18,6 +18,8 @@ package com.bernardomg.tabletop.dreadball.model.unit;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+
 /**
  * Calculates the valoration of an {@link AdvancementUnit}.
  * <p>
@@ -33,7 +35,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public abstract class AbstractAdvancementUnitValorationCalculator
-        implements UnitValorationCalculator<AdvancementUnit> {
+        implements UnitValorationCalculator<AdvancementTeamPlayer> {
 
     /**
      * Default constructor.
@@ -43,7 +45,7 @@ public abstract class AbstractAdvancementUnitValorationCalculator
     }
 
     @Override
-    public final Integer getValoration(final AdvancementUnit unit) {
+    public final Integer getValoration(final AdvancementTeamPlayer unit) {
         Integer valoration;
 
         checkNotNull(unit, "Received a null pointer as the unit");

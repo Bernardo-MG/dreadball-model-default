@@ -21,8 +21,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.bernardomg.tabletop.dreadball.model.availability.player.TeamPlayerAvailability;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 
 /**
  * Unit availabilities for a {@link TeamType}, to be used for both Dreadball
@@ -33,7 +34,7 @@ import com.bernardomg.tabletop.dreadball.model.unit.Unit;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultTeamTypeUnitAvailability
-        implements TeamTypeUnitAvailability, Serializable {
+        implements TeamPlayerAvailability, Serializable {
 
     /**
      * Serialization id.
@@ -41,9 +42,9 @@ public final class DefaultTeamTypeUnitAvailability
     private static final long serialVersionUID = 4392033429541594390L;
 
     /**
-     * {@code Unit} for which the availability applies.
+     * {@code TeamPlayer} for which the availability applies.
      */
-    private final Unit        avaUnit;
+    private final TeamPlayer  avaUnit;
 
     /**
      * {@code TeamType} for which the availability applies.
@@ -59,7 +60,7 @@ public final class DefaultTeamTypeUnitAvailability
      *            {@code Unit} for which the availability applies
      */
     public DefaultTeamTypeUnitAvailability(final TeamType team,
-            final Unit unit) {
+            final TeamPlayer unit) {
         super();
 
         teamType = checkNotNull(team,
@@ -93,7 +94,7 @@ public final class DefaultTeamTypeUnitAvailability
     }
 
     @Override
-    public final Unit getUnit() {
+    public final TeamPlayer getTeamPlayer() {
         return avaUnit;
     }
 

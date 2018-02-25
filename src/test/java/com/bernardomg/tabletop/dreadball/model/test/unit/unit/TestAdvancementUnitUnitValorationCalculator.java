@@ -20,14 +20,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
 import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnitValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
 
 /**
  * Unit tests for {@link UnitValorationCalculator} applied to a
- * {@link AdvancementUnit}.
+ * {@link AdvancementTeamPlayer}.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -50,9 +50,9 @@ public final class TestAdvancementUnitUnitValorationCalculator {
      */
     @Test
     public final void testValoration() {
-        final UnitValorationCalculator<AdvancementUnit> calculator; // Tested
-                                                                    // class
-        final AdvancementUnit unit;     // Unit for the test
+        final UnitValorationCalculator<AdvancementTeamPlayer> calculator; // Tested
+        // class
+        final AdvancementTeamPlayer unit;     // Unit for the test
         final Component implant;        // Unit's implant
 
         // Mocks implant
@@ -60,7 +60,7 @@ public final class TestAdvancementUnitUnitValorationCalculator {
         Mockito.when(implant.getCost()).thenReturn(5);
 
         // Mocks unit
-        unit = Mockito.mock(AdvancementUnit.class);
+        unit = Mockito.mock(AdvancementTeamPlayer.class);
         Mockito.when(unit.getCost()).thenReturn(10);
         Mockito.when(unit.getRank()).thenReturn(3);
         Mockito.when(unit.getGraftedImplant()).thenReturn(implant);

@@ -21,6 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.google.common.base.MoreObjects;
 
 /**

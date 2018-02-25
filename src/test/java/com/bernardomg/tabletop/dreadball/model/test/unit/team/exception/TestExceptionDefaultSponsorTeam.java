@@ -20,10 +20,10 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.DefaultSponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.SponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Unit tests for {@link DefaultSponsorTeam} checking that exceptions are
@@ -58,7 +58,7 @@ public final class TestExceptionDefaultSponsorTeam {
         final Sponsor sponsor;           // Mocked sponsor
         final CostCalculator<SponsorTeam> calculator; // Mocked calculator
         final CostCalculator<SponsorTeam> ranker; // Mocked rank calculator
-        final Unit player;               // Mocked player
+        final TeamPlayer player;               // Mocked player
 
         // Mocks calculator
         calculator = Mockito.mock(CostCalculator.class);
@@ -68,7 +68,7 @@ public final class TestExceptionDefaultSponsorTeam {
         sponsor = Mockito.mock(Sponsor.class);
 
         // Mocks player
-        player = Mockito.mock(Unit.class);
+        player = Mockito.mock(TeamPlayer.class);
 
         // Creates team
         team = new DefaultSponsorTeam(sponsor, calculator, ranker);

@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.google.common.base.MoreObjects;
 
 /**

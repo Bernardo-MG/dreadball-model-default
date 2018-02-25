@@ -189,7 +189,7 @@
       <junit.version>4.12</junit.version>
       <log4j.version>2.8</log4j.version>
       <mockito.version>1.10.19</mockito.version>
-      <dreadball.api.version>0.8.3</dreadball.api.version>
+      <dreadball.api.version>0.9.0</dreadball.api.version>
       <!-- Maven Site -->
       <site.skin.version>1.2.0</site.skin.version>
       <bintrayURL>https://bintray.com/bernardo-mg/tabletop-toolkits/dreadball-model-default/view</bintrayURL>

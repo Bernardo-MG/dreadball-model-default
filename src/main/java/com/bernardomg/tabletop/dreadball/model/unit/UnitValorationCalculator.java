@@ -16,6 +16,8 @@
 
 package com.bernardomg.tabletop.dreadball.model.unit;
 
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+
 /**
  * Calculates the valoration of a {@link Unit}.
  * <p>
@@ -26,7 +28,7 @@ package com.bernardomg.tabletop.dreadball.model.unit;
  * @param <U>
  *            the type of the unit of which the valoration will be calculated
  */
-public interface UnitValorationCalculator<U extends Unit> {
+public interface UnitValorationCalculator<U extends TeamPlayer> {
 
     /**
      * Returns a {@code Unit}'s valoration.

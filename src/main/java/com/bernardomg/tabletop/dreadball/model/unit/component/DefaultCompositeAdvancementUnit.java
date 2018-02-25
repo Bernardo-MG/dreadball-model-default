@@ -24,12 +24,14 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.component.CompositeAdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.unit.DefaultAdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Role;
 import com.bernardomg.tabletop.dreadball.model.unit.UnitValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 
 /**
  * Composite advancement unit.
@@ -39,7 +41,7 @@ import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultCompositeAdvancementUnit
-        implements CompositeAdvancementUnit, Serializable {
+        implements CompositeAdvancementTeamPlayer, Serializable {
 
     /**
      * Serialization id.
@@ -49,7 +51,7 @@ public final class DefaultCompositeAdvancementUnit
     /**
      * {@code AdvancementUnit} used for inheritance through composition.
      */
-    private final AdvancementUnit       baseUnit;
+    private final AdvancementTeamPlayer baseUnit;
 
     /**
      * Components of the unit.
@@ -82,7 +84,7 @@ public final class DefaultCompositeAdvancementUnit
             final Integer cost, final Role position,
             final Attributes attributes, final Collection<Ability> abilities,
             final Boolean mvp, final Boolean giant,
-            final UnitValorationCalculator<AdvancementUnit> valorator,
+            final UnitValorationCalculator<AdvancementTeamPlayer> valorator,
             final Collection<Component> components) {
         super();
 
@@ -242,7 +244,7 @@ public final class DefaultCompositeAdvancementUnit
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final AdvancementUnit getBaseUnit() {
+    private final AdvancementTeamPlayer getBaseUnit() {
         return baseUnit;
     }
 

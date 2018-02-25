@@ -22,8 +22,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -32,7 +32,8 @@ import com.google.common.base.MoreObjects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
+public final class DefaultAdvancementTeam
+        extends AbstractTeam<AdvancementTeamPlayer>
         implements AdvancementTeam, Serializable {
 
     /**
@@ -153,7 +154,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     }
 
     @Override
-    public final Integer getValoration() {
+    public final Integer getTotalCost() {
         return getValorationCalculator().getCost(this);
     }
 

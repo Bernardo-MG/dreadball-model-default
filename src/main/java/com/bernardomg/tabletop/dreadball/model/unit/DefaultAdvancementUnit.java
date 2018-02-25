@@ -25,11 +25,14 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.Role;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.component.Component;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
+import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.unit.component.DefaultComponent;
 import com.bernardomg.tabletop.dreadball.model.unit.component.DefaultComponentLocation;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Ability;
-import com.bernardomg.tabletop.dreadball.model.unit.stats.Attributes;
 import com.bernardomg.tabletop.dreadball.model.unit.stats.ImmutableAttributes;
 import com.google.common.base.MoreObjects;
 
@@ -39,22 +42,22 @@ import com.google.common.base.MoreObjects;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class DefaultAdvancementUnit
-        implements AdvancementUnit, Serializable {
+        implements AdvancementTeamPlayer, Serializable {
 
     /**
      * Serialization id.
      */
-    private static final long                               serialVersionUID = -9100853601667992893L;
+    private static final long                                     serialVersionUID = -9100853601667992893L;
 
     /**
      * {@code Unit} used for inheritance through composition.
      */
-    private final Unit                                      baseUnit;
+    private final TeamPlayer                                      baseUnit;
 
     /**
      * The unspent experience.
      */
-    private Integer                                         experienceValue;
+    private Integer                                               experienceValue;
 
     /**
      * Implant grafted to the unit. This is a {@code Unit}, the same objects
@@ -62,7 +65,7 @@ public final class DefaultAdvancementUnit
      * <p>
      * Be default it will be a stub component.
      */
-    private Component                                       graftedImplant   = new DefaultComponent(
+    private Component                                             graftedImplant   = new DefaultComponent(
             "none", new DefaultComponentLocation("none"), 0,
             new ArrayList<Role>(), new ImmutableAttributes(0, 0, 0, 0, 0),
             new ArrayList<Ability>());
@@ -70,27 +73,27 @@ public final class DefaultAdvancementUnit
     /**
      * The unit's current rank.
      */
-    private Integer                                         rankValue;
+    private Integer                                               rankValue;
 
     /**
      * The unit's abilities.
      */
-    private final Collection<Ability>                       unitAbilities    = new HashSet<>();
+    private final Collection<Ability>                             unitAbilities    = new HashSet<>();
 
     /**
      * Unit's attributes.
      */
-    private Attributes                                      unitAttributes;
+    private Attributes                                            unitAttributes;
 
     /**
      * Name given to the unit.
      */
-    private String                                          unitName         = "";
+    private String                                                unitName         = "";
 
     /**
      * Object used for calculating the unit valoration.
      */
-    private final UnitValorationCalculator<AdvancementUnit> valorationBuilder;
+    private final UnitValorationCalculator<AdvancementTeamPlayer> valorationBuilder;
 
     /**
      * Constructs an advancement unit with the specified arguments.
@@ -116,7 +119,7 @@ public final class DefaultAdvancementUnit
             final Role role, final Attributes attributes,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant,
-            final UnitValorationCalculator<AdvancementUnit> valorator) {
+            final UnitValorationCalculator<AdvancementTeamPlayer> valorator) {
         super();
 
         baseUnit = new DefaultUnit(nameTemplate, cost, role, attributes,
@@ -279,7 +282,7 @@ public final class DefaultAdvancementUnit
      * @return the base unit class being used for inheritance through
      *         composition
      */
-    private final Unit getBaseUnit() {
+    private final TeamPlayer getBaseUnit() {
         return baseUnit;
     }
 
@@ -288,7 +291,7 @@ public final class DefaultAdvancementUnit
      * 
      * @return the valoration calculator
      */
-    private final UnitValorationCalculator<AdvancementUnit>
+    private final UnitValorationCalculator<AdvancementTeamPlayer>
             getValorationCalculator() {
         return valorationBuilder;
     }

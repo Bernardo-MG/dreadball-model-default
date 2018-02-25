@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 
 /**
  * Abstract root team representing the basic features all the Dreadball teams
@@ -37,7 +37,7 @@ import com.bernardomg.tabletop.dreadball.model.unit.Unit;
  * @param <U>
  *            the type of unit the team is composed of
  */
-public abstract class AbstractTeam<U extends Unit> implements Team<U> {
+public abstract class AbstractTeam<U extends TeamPlayer> implements Team<U> {
 
     /**
      * Team's players.
