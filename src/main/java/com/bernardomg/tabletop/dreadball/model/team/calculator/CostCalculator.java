@@ -23,6 +23,9 @@ package com.bernardomg.tabletop.dreadball.model.team.calculator;
  * calculate, for example, a team's rank cost or its valoration.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
+ * 
+ * @param <T>
+ *            the type of object for calculating costs
  */
 public interface CostCalculator<T> {
 
