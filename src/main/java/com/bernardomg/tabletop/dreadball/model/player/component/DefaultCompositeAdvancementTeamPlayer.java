@@ -75,7 +75,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
      *            flag indicating if this is a giant
      * @param valorator
      *            calculator for the valoration
-     * @param components
+     * @param comps
      *            components which create this player
      */
     public DefaultCompositeAdvancementTeamPlayer(final String nameTemplate,
@@ -83,16 +83,17 @@ public final class DefaultCompositeAdvancementTeamPlayer
             final Attributes attributes, final Collection<Ability> abilities,
             final Boolean mvp, final Boolean giant,
             final TeamPlayerValorationCalculator<AdvancementTeamPlayer> valorator,
-            final Collection<Component> components) {
+            final Collection<Component> comps) {
+
         super();
 
         baseTeamPlayer = new DefaultAdvancementTeamPlayer(nameTemplate, cost,
                 position, attributes, abilities, mvp, giant, valorator);
 
-        checkNotNull(components,
+        checkNotNull(comps,
                 "Received a null pointer as valoration the components");
 
-        for (final Component component : components) {
+        for (final Component component : comps) {
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
