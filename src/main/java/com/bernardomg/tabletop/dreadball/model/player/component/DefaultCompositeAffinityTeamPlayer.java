@@ -85,7 +85,7 @@ public final class DefaultCompositeAffinityTeamPlayer
      *            the player cost for a friend
      * @param strangerCost
      *            the player cost for a stranger
-     * @param components
+     * @param comps
      *            components which create this player
      */
     public DefaultCompositeAffinityTeamPlayer(final String nameTemplate,
@@ -94,18 +94,17 @@ public final class DefaultCompositeAffinityTeamPlayer
             final Boolean giant, final Collection<AffinityGroup> affinities,
             final Collection<AffinityGroup> hated, final Integer currentCost,
             final Integer allyCost, final Integer friendCost,
-            final Integer strangerCost,
-            final Collection<Component> components) {
+            final Integer strangerCost, final Collection<Component> comps) {
         super();
 
         baseTeamPlayer = new ImmutableAffinityTeamPlayer(nameTemplate, position,
                 attributes, abilities, mvp, giant, affinities, hated,
                 currentCost, allyCost, friendCost, strangerCost);
 
-        checkNotNull(components,
+        checkNotNull(comps,
                 "Received a null pointer as valoration the components");
 
-        for (final Component component : components) {
+        for (final Component component : comps) {
             checkNotNull(component,
                     "Received a null pointer as valoration a component");
 
