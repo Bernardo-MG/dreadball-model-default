@@ -23,19 +23,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.SponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.DefaultRankCostCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Unit tests for {@link DefaultRankCostCalculator}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Rank cost is calculated correctly</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -55,8 +50,8 @@ public final class TestDefaultRankCostCalculator {
     public final void testRankCost() {
         final CostCalculator<SponsorTeam> calculator; // Tested class
         final SponsorTeam team;              // Team to valorate
-        final Map<Integer, Unit> players;    // Team players
-        final Unit player;                   // Mocked player
+        final Map<Integer, TeamPlayer> players;    // Team players
+        final TeamPlayer player;                   // Mocked player
 
         // Mocks team
         team = Mockito.mock(SponsorTeam.class);
@@ -69,7 +64,7 @@ public final class TestDefaultRankCostCalculator {
 
         // Mocks players
         players = new HashMap<>();
-        player = Mockito.mock(AdvancementUnit.class);
+        player = Mockito.mock(AdvancementTeamPlayer.class);
         players.put(1, player);
 
         Mockito.when(team.getPlayers()).thenReturn(players);

@@ -14,28 +14,28 @@
  * the License.
  */
 
-package com.bernardomg.tabletop.dreadball.model.team.calculator;
+package com.bernardomg.tabletop.dreadball.model.player;
 
 /**
- * Calculates the rank cost of an object.
+ * Calculates the valoration of a {@link TeamPlayer}.
  * <p>
  * It is a version of the strategy pattern, allowing to create different ways to
- * calculate, for example, a team's rank cost or its valoration.
+ * calculate a player's valoration.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
- * 
- * @param <T>
- *            the type of object for calculating costs
+ * @param <U>
+ *            the type of the player of which the valoration will be calculated
  */
-public interface CostCalculator<T> {
+public interface TeamPlayerValorationCalculator<U extends TeamPlayer> {
 
     /**
-     * Returns the cost of the received object.
+     * Returns a {@code TeamPlayer}'s valoration.
      * 
-     * @param obj
-     *            the object of which the cost will be calculated
-     * @return the cost of the received object
+     * @param player
+     *            the {@code TeamPlayer} of which the valoration will be
+     *            calculated
+     * @return the valoration of the {@code TeamPlayer}
      */
-    public Integer getCost(final T obj);
+    public Integer getValoration(final U player);
 
 }

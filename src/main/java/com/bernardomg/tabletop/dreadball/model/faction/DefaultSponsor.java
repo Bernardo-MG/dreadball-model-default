@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
-import com.bernardomg.tabletop.dreadball.model.unit.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -47,17 +47,17 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     /**
      * Sponsor's unspent cash.
      */
-    private Integer                         sponsorCash      = 0;
+    private Integer                         cash             = 0;
 
     /**
      * Sponsor's name.
      */
-    private String                          sponsorName      = "";
+    private String                          name             = "";
 
     /**
      * Sponsor's rank.
      */
-    private Integer                         sponsorRank      = 0;
+    private Integer                         rank             = 0;
 
     /**
      * Default constructor.
@@ -88,7 +88,7 @@ public final class DefaultSponsor implements Sponsor, Serializable {
         final DefaultSponsor other;
 
         other = (DefaultSponsor) obj;
-        return Objects.equals(sponsorName, other.sponsorName);
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -99,22 +99,22 @@ public final class DefaultSponsor implements Sponsor, Serializable {
 
     @Override
     public final Integer getCash() {
-        return sponsorCash;
+        return cash;
     }
 
     @Override
     public final String getName() {
-        return sponsorName;
+        return name;
     }
 
     @Override
     public final Integer getRank() {
-        return sponsorRank;
+        return rank;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(sponsorName);
+        return Objects.hashCode(name);
     }
 
     @Override
@@ -125,29 +125,31 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     @Override
     public final void
             setAffinityGroups(final Collection<AffinityGroup> affinities) {
+        checkNotNull(affinities, "Received a null pointer as the affinities");
+
         getAffinityGroupsModifiable().clear();
         getAffinityGroupsModifiable().addAll(affinities);
     }
 
     @Override
-    public final void setCash(final Integer cash) {
-        sponsorCash = cash;
+    public final void setCash(final Integer value) {
+        cash = checkNotNull(value, "Received a null pointer as the cash");
     }
 
     @Override
-    public final void setName(final String name) {
-        sponsorName = name;
+    public final void setName(final String sponsorName) {
+        name = checkNotNull(sponsorName, "Received a null pointer as the name");
     }
 
     @Override
-    public final void setRank(final Integer rank) {
-        sponsorRank = checkNotNull(rank, "Received a null pointer as rank");
+    public final void setRank(final Integer sponsorRank) {
+        rank = checkNotNull(sponsorRank, "Received a null pointer as the eank");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", sponsorName)
-                .add("rank", sponsorRank).toString();
+        return MoreObjects.toStringHelper(this).add("name", name)
+                .add("rank", rank).toString();
     }
 
     /**

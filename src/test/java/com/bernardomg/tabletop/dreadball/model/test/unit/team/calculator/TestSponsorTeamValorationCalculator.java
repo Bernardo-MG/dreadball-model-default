@@ -23,18 +23,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.SponsorTeam;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.SponsorTeamValorationCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.Unit;
 
 /**
  * Unit tests for {@link SponsorTeamValorationCalculator}.
- * <p>
- * Checks the following cases:
- * <ol>
- * <li>Valoration is calculated correctly</li>
- * </ol>
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -54,8 +49,8 @@ public final class TestSponsorTeamValorationCalculator {
     public final void testValoration() {
         final CostCalculator<SponsorTeam> calculator; // Tested class
         final SponsorTeam team;           // Team to valorate
-        final Map<Integer, Unit> players; // Team players
-        final Unit player;                // Mocked player
+        final Map<Integer, TeamPlayer> players; // Team players
+        final TeamPlayer player;                // Mocked player
 
         // Mocks team
         team = Mockito.mock(SponsorTeam.class);
@@ -68,7 +63,7 @@ public final class TestSponsorTeamValorationCalculator {
 
         // Mocks players
         players = new HashMap<>();
-        player = Mockito.mock(Unit.class);
+        player = Mockito.mock(TeamPlayer.class);
         Mockito.when(player.getCost()).thenReturn(10);
         players.put(1, player);
 

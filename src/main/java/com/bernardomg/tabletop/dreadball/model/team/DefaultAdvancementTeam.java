@@ -22,53 +22,54 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
+import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
 import com.bernardomg.tabletop.dreadball.model.team.calculator.CostCalculator;
-import com.bernardomg.tabletop.dreadball.model.unit.AdvancementUnit;
 import com.google.common.base.MoreObjects;
 
 /**
- * Dreadball Original (DBO) team, composed of units which, along the team
+ * Dreadball Original (DBO) team, composed of players which, along the team
  * itself, are capable of changing from game to game.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
+public final class DefaultAdvancementTeam
+        extends AbstractTeam<AdvancementTeamPlayer>
         implements AdvancementTeam, Serializable {
 
     /**
      * Serialization id.
      */
-    private static final long                     serialVersionUID = -7832905135406602622L;
+    private static final long                     serialVersionUID       = -7832905135406602622L;
 
     /**
      * Flag indicating if the team has a Defensive Coaching Staff.
      */
-    private Boolean                               defensiveCoach   = false;
-
-    /**
-     * Flag indicating if the team has an Offensive Coaching Staff.
-     */
-    private Boolean                               offensiveCoach   = false;
-
-    /**
-     * Flag indicating if the team has a Support Coaching Staff.
-     */
-    private Boolean                               supportCoach     = false;
+    private Boolean                               defensiveCoachingStaff = false;
 
     /**
      * Number of Dreadball Cards in the team.
      */
-    private Integer                               teamCards        = 0;
-
-    /**
-     * Team's unspent cash.
-     */
-    private Integer                               teamCash         = 0;
+    private Integer                               dreadballCards         = 0;
 
     /**
      * Team's name.
      */
-    private String                                teamName         = "";
+    private String                                name                   = "";
+
+    /**
+     * Flag indicating if the team has an Offensive Coaching Staff.
+     */
+    private Boolean                               offensiveCoachingStaff = false;
+
+    /**
+     * Flag indicating if the team has a Support Coaching Staff.
+     */
+    private Boolean                               supportCoachingStaff   = false;
+
+    /**
+     * Team's unspent cash.
+     */
+    private Integer                               teamCash               = 0;
 
     /**
      * The base type of the team.
@@ -114,7 +115,7 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
         final DefaultAdvancementTeam other;
 
         other = (DefaultAdvancementTeam) obj;
-        return Objects.equals(teamName, other.teamName);
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -124,27 +125,27 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
 
     @Override
     public final Boolean getDefensiveCoachingStaff() {
-        return defensiveCoach;
+        return defensiveCoachingStaff;
     }
 
     @Override
     public final Integer getDreadballCards() {
-        return teamCards;
+        return dreadballCards;
     }
 
     @Override
     public final String getName() {
-        return teamName;
+        return name;
     }
 
     @Override
     public final Boolean getOffensiveCoachingStaff() {
-        return offensiveCoach;
+        return offensiveCoachingStaff;
     }
 
     @Override
     public final Boolean getSupportCoachingStaff() {
-        return supportCoach;
+        return supportCoachingStaff;
     }
 
     @Override
@@ -153,13 +154,13 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
     }
 
     @Override
-    public final Integer getValoration() {
+    public final Integer getTotalCost() {
         return getValorationCalculator().getCost(this);
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(teamName);
+        return Objects.hashCode(name);
     }
 
     @Override
@@ -171,32 +172,32 @@ public final class DefaultAdvancementTeam extends AbstractTeam<AdvancementUnit>
 
     @Override
     public final void setDefensiveCoachingStaff(final Boolean coach) {
-        defensiveCoach = coach;
+        defensiveCoachingStaff = coach;
     }
 
     @Override
     public final void setDreadballCards(final Integer cards) {
-        teamCards = cards;
+        dreadballCards = cards;
     }
 
     @Override
-    public final void setName(final String name) {
-        teamName = name;
+    public final void setName(final String teamName) {
+        name = teamName;
     }
 
     @Override
     public final void setOffensiveCoachingStaff(final Boolean coach) {
-        offensiveCoach = coach;
+        offensiveCoachingStaff = coach;
     }
 
     @Override
     public final void setSupportCoachingStaff(final Boolean coach) {
-        supportCoach = coach;
+        supportCoachingStaff = coach;
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("name", teamName)
+        return MoreObjects.toStringHelper(this).add("name", name)
                 .add("type", teamType).add("cash", getCash())
                 .add("players", getPlayers()).toString();
     }

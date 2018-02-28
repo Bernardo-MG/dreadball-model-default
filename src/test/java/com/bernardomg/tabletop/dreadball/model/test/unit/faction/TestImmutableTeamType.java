@@ -23,45 +23,43 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.bernardomg.tabletop.dreadball.model.faction.DefaultSponsor;
-import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
-import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
+import com.bernardomg.tabletop.dreadball.model.faction.ImmutableTeamType;
+import com.bernardomg.tabletop.dreadball.model.faction.TeamRule;
+import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 
 /**
- * Unit tests for {@link DefaultSponsor}.
+ * Unit tests for {@link ImmutableTeamType}.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestDefaultSponsor {
+public final class TestImmutableTeamType {
 
     /**
      * Default constructor.
      */
-    public TestDefaultSponsor() {
+    public TestImmutableTeamType() {
         super();
     }
 
     /**
-     * Tests that affinities are not repeated.
+     * Tests that team rules are not repeated.
      */
     @Test
-    public final void testRepeatAffinity_NoRepeats() {
-        final Sponsor sponsor;     // Tested sponsor
-        final Collection<AffinityGroup> groups; // Sponsor affinities
-        final AffinityGroup group; // Mocked affinity group
+    public final void test_RepeatTeamRule_NoRepeats() {
+        final TeamType team; // Tested team type
+        final Collection<TeamRule> rules; // Team type rules
+        final TeamRule rule; // Mocked rule
 
-        // Mocks affinities
-        group = Mockito.mock(AffinityGroup.class);
-        groups = new ArrayList<>();
-        groups.add(group);
-        groups.add(group);
+        // Mocks rules
+        rule = Mockito.mock(TeamRule.class);
+        rules = new ArrayList<>();
+        rules.add(rule);
+        rules.add(rule);
 
-        // Creates sponsor
-        sponsor = new DefaultSponsor();
+        // Creates team
+        team = new ImmutableTeamType("name", rules);
 
-        sponsor.setAffinityGroups(groups);
-
-        Assert.assertEquals(sponsor.getAffinityGroups().size(), 1);
+        Assert.assertEquals(team.getTeamRules().size(), 1);
     }
 
 }
