@@ -34,7 +34,7 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.ImmutableAttributes;
 import com.google.common.base.MoreObjects;
 
 /**
- * Unit which may change and evolve over time, usually between matches.
+ * TeamPlayer which may change and evolve over time, usually between matches.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -47,18 +47,18 @@ public final class DefaultAdvancementTeamPlayer
     private static final long                                           serialVersionUID = -9100853601667992893L;
 
     /**
-     * Unit's attributes.
+     * TeamPlayer's attributes.
      */
     private Attributes                                                  attributes;
 
     /**
-     * {@code Unit} used for inheritance through composition.
+     * {@code TeamPlayer} used for inheritance through composition.
      */
-    private final TeamPlayer                                            baseUnit;
+    private final TeamPlayer                                            baseTeamPlayer;
 
     /**
-     * Implant grafted to the player. This is a {@code Unit}, the same objects
-     * used for composite players.
+     * Implant grafted to the player. This is a {@code TeamPlayer}, the same
+     * objects used for composite players.
      * <p>
      * Be default it will be a stub component.
      */
@@ -101,7 +101,7 @@ public final class DefaultAdvancementTeamPlayer
      *            cost of the player
      * @param role
      *            team position role of the player
-     * @param attributes
+     * @param attrs
      *            player attributes
      * @param abilities
      *            player abilities
@@ -113,19 +113,21 @@ public final class DefaultAdvancementTeamPlayer
      *            calculator for the valoration
      */
     public DefaultAdvancementTeamPlayer(final String nameTemplate,
-            final Integer cost, final Role role, final Attributes attributes,
+            final Integer cost, final Role role, final Attributes attrs,
             final Collection<Ability> abilities, final Boolean mvp,
             final Boolean giant,
             final TeamPlayerValorationCalculator<AdvancementTeamPlayer> valorator) {
         super();
 
-        baseUnit = new DefaultTeamPlayer(nameTemplate, cost, role, attributes,
+        baseTeamPlayer = new DefaultTeamPlayer(nameTemplate, cost, role, attrs,
                 abilities, mvp, giant);
 
-        playerAbilities.addAll(baseUnit.getAbilities());
+        playerAbilities.addAll(baseTeamPlayer.getAbilities());
 
         valorationBuilder = checkNotNull(valorator,
                 "Received a null pointer as valoration builder");
+        attributes = checkNotNull(attrs,
+                "Received a null pointer as attributes");
     }
 
     @Override
@@ -150,7 +152,7 @@ public final class DefaultAdvancementTeamPlayer
         final DefaultAdvancementTeamPlayer other;
 
         other = (DefaultAdvancementTeamPlayer) obj;
-        return Objects.equals(baseUnit, other.baseUnit)
+        return Objects.equals(baseTeamPlayer, other.baseTeamPlayer)
                 && Objects.equals(name, other.name);
     }
 
@@ -166,12 +168,12 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final Integer getCost() {
-        return getBaseUnit().getCost();
+        return getBaseTeamPlayer().getCost();
     }
 
     @Override
     public final Boolean getGiant() {
-        return getBaseUnit().getGiant();
+        return getBaseTeamPlayer().getGiant();
     }
 
     @Override
@@ -181,7 +183,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final Boolean getMvp() {
-        return getBaseUnit().getMvp();
+        return getBaseTeamPlayer().getMvp();
     }
 
     @Override
@@ -196,12 +198,12 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final Role getRole() {
-        return getBaseUnit().getRole();
+        return getBaseTeamPlayer().getRole();
     }
 
     @Override
     public final String getTemplateName() {
-        return getBaseUnit().getTemplateName();
+        return getBaseTeamPlayer().getTemplateName();
     }
 
     @Override
@@ -216,7 +218,7 @@ public final class DefaultAdvancementTeamPlayer
 
     @Override
     public final int hashCode() {
-        return Objects.hash(baseUnit, name);
+        return Objects.hash(baseTeamPlayer, name);
     }
 
     @Override
@@ -283,8 +285,8 @@ public final class DefaultAdvancementTeamPlayer
      * @return the base player class being used for inheritance through
      *         composition
      */
-    private final TeamPlayer getBaseUnit() {
-        return baseUnit;
+    private final TeamPlayer getBaseTeamPlayer() {
+        return baseTeamPlayer;
     }
 
     /**

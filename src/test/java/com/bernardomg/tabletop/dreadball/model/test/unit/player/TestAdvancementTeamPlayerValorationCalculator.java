@@ -47,8 +47,8 @@ public final class TestAdvancementTeamPlayerValorationCalculator {
     public final void testValoration() {
         final TeamPlayerValorationCalculator<AdvancementTeamPlayer> calculator; // Tested
         // class
-        final AdvancementTeamPlayer player;     // Unit for the test
-        final Component implant;        // Unit's implant
+        final AdvancementTeamPlayer player; // TeamPlayer for the test
+        final Component implant;            // TeamPlayer's implant
 
         // Mocks implant
         implant = Mockito.mock(Component.class);

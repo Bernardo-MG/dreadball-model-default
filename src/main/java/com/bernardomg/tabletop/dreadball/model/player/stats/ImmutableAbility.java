@@ -24,7 +24,7 @@ import java.util.Objects;
 import com.google.common.base.MoreObjects;
 
 /**
- * Unit ability.
+ * TeamPlayer ability.
  * <p>
  * This is an immutable implementation.
  * 

@@ -47,9 +47,9 @@ public final class DefaultCompositeAdvancementTeamPlayer
     private static final long           serialVersionUID = 6492427235549316354L;
 
     /**
-     * {@code AdvancementUnit} used for inheritance through composition.
+     * {@code AdvancementTeamPlayer} used for inheritance through composition.
      */
-    private final AdvancementTeamPlayer baseUnit;
+    private final AdvancementTeamPlayer baseTeamPlayer;
 
     /**
      * Components of the player.
@@ -86,7 +86,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
             final Collection<Component> components) {
         super();
 
-        baseUnit = new DefaultAdvancementTeamPlayer(nameTemplate, cost,
+        baseTeamPlayer = new DefaultAdvancementTeamPlayer(nameTemplate, cost,
                 position, attributes, abilities, mvp, giant, valorator);
 
         checkNotNull(components,
@@ -102,7 +102,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
 
     @Override
     public final void addAbility(final Ability ability) {
-        getBaseUnit().addAbility(ability);
+        getBaseTeamPlayer().addAbility(ability);
     }
 
     @Override
@@ -122,17 +122,17 @@ public final class DefaultCompositeAdvancementTeamPlayer
         final DefaultCompositeAdvancementTeamPlayer other;
 
         other = (DefaultCompositeAdvancementTeamPlayer) obj;
-        return Objects.equals(baseUnit, other.baseUnit);
+        return Objects.equals(baseTeamPlayer, other.baseTeamPlayer);
     }
 
     @Override
     public final Collection<Ability> getAbilities() {
-        return getBaseUnit().getAbilities();
+        return getBaseTeamPlayer().getAbilities();
     }
 
     @Override
     public final Attributes getAttributes() {
-        return getBaseUnit().getAttributes();
+        return getBaseTeamPlayer().getAttributes();
     }
 
     /**
@@ -147,92 +147,92 @@ public final class DefaultCompositeAdvancementTeamPlayer
 
     @Override
     public final Integer getCost() {
-        return getBaseUnit().getCost();
+        return getBaseTeamPlayer().getCost();
     }
 
     @Override
     public final Boolean getGiant() {
-        return getBaseUnit().getGiant();
+        return getBaseTeamPlayer().getGiant();
     }
 
     @Override
     public final Component getGraftedImplant() {
-        return getBaseUnit().getGraftedImplant();
+        return getBaseTeamPlayer().getGraftedImplant();
     }
 
     @Override
     public final Boolean getMvp() {
-        return getBaseUnit().getMvp();
+        return getBaseTeamPlayer().getMvp();
     }
 
     @Override
     public final String getName() {
-        return getBaseUnit().getName();
+        return getBaseTeamPlayer().getName();
     }
 
     @Override
     public final Integer getRank() {
-        return getBaseUnit().getRank();
+        return getBaseTeamPlayer().getRank();
     }
 
     @Override
     public final Role getRole() {
-        return getBaseUnit().getRole();
+        return getBaseTeamPlayer().getRole();
     }
 
     @Override
     public final String getTemplateName() {
-        return getBaseUnit().getTemplateName();
+        return getBaseTeamPlayer().getTemplateName();
     }
 
     @Override
     public final Integer getUnspentExperience() {
-        return getBaseUnit().getUnspentExperience();
+        return getBaseTeamPlayer().getUnspentExperience();
     }
 
     @Override
     public final Integer getValoration() {
-        return getBaseUnit().getValoration();
+        return getBaseTeamPlayer().getValoration();
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(baseUnit);
+        return Objects.hashCode(baseTeamPlayer);
     }
 
     @Override
     public final void removeAbility(final Ability ability) {
-        getBaseUnit().removeAbility(ability);
+        getBaseTeamPlayer().removeAbility(ability);
     }
 
     @Override
     public final void setAbilities(final Collection<Ability> abilities) {
-        getBaseUnit().setAbilities(abilities);
+        getBaseTeamPlayer().setAbilities(abilities);
     }
 
     @Override
     public final void setAttributes(final Attributes attributes) {
-        getBaseUnit().setAttributes(attributes);
+        getBaseTeamPlayer().setAttributes(attributes);
     }
 
     @Override
     public final void setGraftedImplant(final Component implant) {
-        getBaseUnit().setGraftedImplant(implant);
+        getBaseTeamPlayer().setGraftedImplant(implant);
     }
 
     @Override
     public final void setName(final String name) {
-        getBaseUnit().setName(name);
+        getBaseTeamPlayer().setName(name);
     }
 
     @Override
     public final void setRank(final Integer rank) {
-        getBaseUnit().setRank(rank);
+        getBaseTeamPlayer().setRank(rank);
     }
 
     @Override
     public final void setUnspentExperience(final Integer experience) {
-        getBaseUnit().setUnspentExperience(experience);
+        getBaseTeamPlayer().setUnspentExperience(experience);
     }
 
     /**
@@ -242,8 +242,8 @@ public final class DefaultCompositeAdvancementTeamPlayer
      * @return the base player class being used for inheritance through
      *         composition
      */
-    private final AdvancementTeamPlayer getBaseUnit() {
-        return baseUnit;
+    private final AdvancementTeamPlayer getBaseTeamPlayer() {
+        return baseTeamPlayer;
     }
 
     /**

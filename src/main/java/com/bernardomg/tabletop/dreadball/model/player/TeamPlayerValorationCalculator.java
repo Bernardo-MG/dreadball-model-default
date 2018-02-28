@@ -29,11 +29,12 @@ package com.bernardomg.tabletop.dreadball.model.player;
 public interface TeamPlayerValorationCalculator<U extends TeamPlayer> {
 
     /**
-     * Returns a {@code Unit}'s valoration.
+     * Returns a {@code TeamPlayer}'s valoration.
      * 
      * @param player
-     *            the {@code Unit} of which the valoration will be calculated
-     * @return the valoration of the {@code Unit}
+     *            the {@code TeamPlayer} of which the valoration will be
+     *            calculated
+     * @return the valoration of the {@code TeamPlayer}
      */
     public Integer getValoration(final U player);
 

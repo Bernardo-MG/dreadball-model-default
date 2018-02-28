@@ -49,9 +49,9 @@ public final class DefaultCompositeAffinityTeamPlayer
     private static final long           serialVersionUID = 7289790050324765193L;
 
     /**
-     * {@code AffinityUnit} used for inheritance through composition.
+     * {@code AffinityTeamPlayer} used for inheritance through composition.
      */
-    private final AffinityTeamPlayer    baseUnit;
+    private final AffinityTeamPlayer    baseTeamPlayer;
 
     /**
      * Components of the player.
@@ -98,7 +98,7 @@ public final class DefaultCompositeAffinityTeamPlayer
             final Collection<Component> components) {
         super();
 
-        baseUnit = new ImmutableAffinityTeamPlayer(nameTemplate, position,
+        baseTeamPlayer = new ImmutableAffinityTeamPlayer(nameTemplate, position,
                 attributes, abilities, mvp, giant, affinities, hated,
                 currentCost, allyCost, friendCost, strangerCost);
 
@@ -130,27 +130,27 @@ public final class DefaultCompositeAffinityTeamPlayer
         final DefaultCompositeAffinityTeamPlayer other;
 
         other = (DefaultCompositeAffinityTeamPlayer) obj;
-        return Objects.equals(baseUnit, other.baseUnit);
+        return Objects.equals(baseTeamPlayer, other.baseTeamPlayer);
     }
 
     @Override
     public final Collection<Ability> getAbilities() {
-        return getBaseUnit().getAbilities();
+        return getBaseTeamPlayer().getAbilities();
     }
 
     @Override
     public final Collection<AffinityGroup> getAffinityGroups() {
-        return getBaseUnit().getAffinityGroups();
+        return getBaseTeamPlayer().getAffinityGroups();
     }
 
     @Override
     public final Integer getAllyCost() {
-        return getBaseUnit().getAllyCost();
+        return getBaseTeamPlayer().getAllyCost();
     }
 
     @Override
     public final Attributes getAttributes() {
-        return getBaseUnit().getAttributes();
+        return getBaseTeamPlayer().getAttributes();
     }
 
     /**
@@ -165,57 +165,57 @@ public final class DefaultCompositeAffinityTeamPlayer
 
     @Override
     public final Integer getCost() {
-        return getBaseUnit().getCost();
+        return getBaseTeamPlayer().getCost();
     }
 
     @Override
     public final Integer getFriendCost() {
-        return getBaseUnit().getFriendCost();
+        return getBaseTeamPlayer().getFriendCost();
     }
 
     @Override
     public final Boolean getGiant() {
-        return getBaseUnit().getGiant();
+        return getBaseTeamPlayer().getGiant();
     }
 
     @Override
     public final Collection<AffinityGroup> getHatedAffinityGroups() {
-        return getBaseUnit().getAffinityGroups();
+        return getBaseTeamPlayer().getAffinityGroups();
     }
 
     @Override
     public final Boolean getMvp() {
-        return getBaseUnit().getMvp();
+        return getBaseTeamPlayer().getMvp();
     }
 
     @Override
     public final String getName() {
-        return getBaseUnit().getName();
+        return getBaseTeamPlayer().getName();
     }
 
     @Override
     public final Role getRole() {
-        return getBaseUnit().getRole();
+        return getBaseTeamPlayer().getRole();
     }
 
     @Override
     public final Integer getStrangerCost() {
-        return getBaseUnit().getStrangerCost();
+        return getBaseTeamPlayer().getStrangerCost();
     }
 
     @Override
     public final String getTemplateName() {
-        return getBaseUnit().getTemplateName();
+        return getBaseTeamPlayer().getTemplateName();
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(baseUnit);
+        return Objects.hashCode(baseTeamPlayer);
     }
 
     @Override
     public final void setName(final String name) {
-        getBaseUnit().setName(name);
+        getBaseTeamPlayer().setName(name);
     }
 
     /**
@@ -225,8 +225,8 @@ public final class DefaultCompositeAffinityTeamPlayer
      * @return the base player class being used for inheritance through
      *         composition
      */
-    private final AffinityTeamPlayer getBaseUnit() {
-        return baseUnit;
+    private final AffinityTeamPlayer getBaseTeamPlayer() {
+        return baseTeamPlayer;
     }
 
     /**

@@ -29,8 +29,8 @@ import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
 
 /**
- * Unit with affinity groups, and various costs which will depend on how many of
- * such affinities are shared.
+ * TeamPlayer with affinity groups, and various costs which will depend on how
+ * many of such affinities are shared.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -48,14 +48,14 @@ public final class ImmutableAffinityTeamPlayer
     private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<AffinityGroup>();
 
     /**
-     * Unit cost for an ally.
+     * TeamPlayer cost for an ally.
      */
     private final Integer                   allyCost;
 
     /**
-     * {@code Unit} used for inheritance through composition.
+     * {@code TeamPlayer} used for inheritance through composition.
      */
-    private final TeamPlayer                baseUnit;
+    private final TeamPlayer                baseTeamPlayer;
 
     /**
      * The actual cost of the player.
@@ -63,7 +63,7 @@ public final class ImmutableAffinityTeamPlayer
     private final Integer                   cost;
 
     /**
-     * Unit cost for a friend.
+     * TeamPlayer cost for a friend.
      */
     private final Integer                   friendCost;
 
@@ -78,7 +78,7 @@ public final class ImmutableAffinityTeamPlayer
     private String                          name             = "";
 
     /**
-     * Unit cost for a stranger.
+     * TeamPlayer cost for a stranger.
      */
     private final Integer                   strangerCost;
 
@@ -110,17 +110,17 @@ public final class ImmutableAffinityTeamPlayer
      * @param costStranger
      *            the player cost for a stranger
      */
-    public ImmutableAffinityTeamPlayer(final String nameTemplate, final Role role,
-            final Attributes attributes, final Collection<Ability> abilities,
-            final Boolean mvp, final Boolean giant,
-            final Collection<AffinityGroup> affinities,
+    public ImmutableAffinityTeamPlayer(final String nameTemplate,
+            final Role role, final Attributes attributes,
+            final Collection<Ability> abilities, final Boolean mvp,
+            final Boolean giant, final Collection<AffinityGroup> affinities,
             final Collection<AffinityGroup> hated, final Integer currentCost,
             final Integer costAlly, final Integer costFriend,
             final Integer costStranger) {
         super();
 
-        baseUnit = new DefaultTeamPlayer(nameTemplate, 0, role, attributes,
-                abilities, mvp, giant);
+        baseTeamPlayer = new DefaultTeamPlayer(nameTemplate, 0, role,
+                attributes, abilities, mvp, giant);
 
         cost = checkNotNull(currentCost, "Received a null pointer as cost");
 
@@ -161,13 +161,13 @@ public final class ImmutableAffinityTeamPlayer
         final ImmutableAffinityTeamPlayer other;
 
         other = (ImmutableAffinityTeamPlayer) obj;
-        return Objects.equals(baseUnit, other.baseUnit)
+        return Objects.equals(baseTeamPlayer, other.baseTeamPlayer)
                 && Objects.equals(name, other.name);
     }
 
     @Override
     public final Collection<Ability> getAbilities() {
-        return getBaseUnit().getAbilities();
+        return getBaseTeamPlayer().getAbilities();
     }
 
     @Override
@@ -183,7 +183,7 @@ public final class ImmutableAffinityTeamPlayer
 
     @Override
     public final Attributes getAttributes() {
-        return getBaseUnit().getAttributes();
+        return getBaseTeamPlayer().getAttributes();
     }
 
     @Override
@@ -198,7 +198,7 @@ public final class ImmutableAffinityTeamPlayer
 
     @Override
     public final Boolean getGiant() {
-        return getBaseUnit().getGiant();
+        return getBaseTeamPlayer().getGiant();
     }
 
     @Override
@@ -209,7 +209,7 @@ public final class ImmutableAffinityTeamPlayer
 
     @Override
     public final Boolean getMvp() {
-        return getBaseUnit().getMvp();
+        return getBaseTeamPlayer().getMvp();
     }
 
     @Override
@@ -219,7 +219,7 @@ public final class ImmutableAffinityTeamPlayer
 
     @Override
     public final Role getRole() {
-        return getBaseUnit().getRole();
+        return getBaseTeamPlayer().getRole();
     }
 
     @Override
@@ -229,12 +229,12 @@ public final class ImmutableAffinityTeamPlayer
 
     @Override
     public final String getTemplateName() {
-        return getBaseUnit().getTemplateName();
+        return getBaseTeamPlayer().getTemplateName();
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(baseUnit, name);
+        return Objects.hash(baseTeamPlayer, name);
     }
 
     @Override
@@ -258,8 +258,8 @@ public final class ImmutableAffinityTeamPlayer
      * @return the base player class being used for inheritance through
      *         composition
      */
-    private final TeamPlayer getBaseUnit() {
-        return baseUnit;
+    private final TeamPlayer getBaseTeamPlayer() {
+        return baseTeamPlayer;
     }
 
     /**

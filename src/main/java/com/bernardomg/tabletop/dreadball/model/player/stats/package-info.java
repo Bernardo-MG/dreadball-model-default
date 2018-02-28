@@ -14,7 +14,7 @@
  * the License.
  */
 /**
- * Unit statistics.
+ * TeamPlayer statistics.
  */
 
 package com.bernardomg.tabletop.dreadball.model.player.stats;

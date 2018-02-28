@@ -42,7 +42,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     private static final long         serialVersionUID = 2114193062568651459L;
 
     /**
-     * Unit's attributes.
+     * TeamPlayer's attributes.
      */
     private final Attributes          attributes;
 
@@ -62,7 +62,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     private final Boolean             mvp;
 
     /**
-     * Unit's name.
+     * TeamPlayer's name.
      */
     private String                    name             = "";
 
