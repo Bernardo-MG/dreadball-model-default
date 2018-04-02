@@ -29,8 +29,8 @@ import java.util.Objects;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ImmutableSponsorAssetsAvailability
-        implements SponsorAssetsAvailability, Serializable {
+public final class ImmutableSponsorAssetsCosts
+        implements SponsorAssetsCosts, Serializable {
 
     /**
      * Serialization id.
@@ -91,7 +91,7 @@ public final class ImmutableSponsorAssetsAvailability
      * @param wager
      *            cost of a Wager
      */
-    public ImmutableSponsorAssetsAvailability(final Integer dice,
+    public ImmutableSponsorAssetsCosts(final Integer dice,
             final Integer sabotage, final Integer specialMove,
             final Integer cheerleader, final Integer affinity,
             final Integer medibot, final Integer wager) {
@@ -127,9 +127,9 @@ public final class ImmutableSponsorAssetsAvailability
             return false;
         }
 
-        final ImmutableSponsorAssetsAvailability other;
+        final ImmutableSponsorAssetsCosts other;
 
-        other = (ImmutableSponsorAssetsAvailability) obj;
+        other = (ImmutableSponsorAssetsCosts) obj;
         return Objects.equals(affinityGroupCost, other.affinityGroupCost)
                 && Objects.equals(cheerleaderCost, other.cheerleaderCost)
                 && Objects.equals(dieCost, other.dieCost)

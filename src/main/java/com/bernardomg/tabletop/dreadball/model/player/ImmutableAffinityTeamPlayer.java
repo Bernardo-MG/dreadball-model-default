@@ -237,7 +237,6 @@ public final class ImmutableAffinityTeamPlayer
         return Objects.hash(baseTeamPlayer, name);
     }
 
-    @Override
     public final void setName(final String playerName) {
         name = playerName;
     }
