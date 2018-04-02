@@ -212,11 +212,6 @@ public final class DefaultCompositeAffinityTeamPlayer
         return Objects.hashCode(baseTeamPlayer);
     }
 
-    @Override
-    public final void setName(final String name) {
-        getBaseTeamPlayer().setName(name);
-    }
-
     /**
      * Returns the base player class being used for inheritance through
      * composition.
