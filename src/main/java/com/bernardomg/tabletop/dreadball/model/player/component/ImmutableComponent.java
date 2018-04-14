@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.Role;
@@ -46,7 +46,7 @@ public final class ImmutableComponent implements Component, Serializable {
     /**
      * Abilities given by this component.
      */
-    private final Collection<Ability> abilitiesGiven   = new LinkedHashSet<Ability>();
+    private final Collection<Ability> abilitiesGiven   = new HashSet<Ability>();
 
     /**
      * Attributes given by this component.
@@ -71,7 +71,7 @@ public final class ImmutableComponent implements Component, Serializable {
     /**
      * Team position roles which can have this component.
      */
-    private final Collection<Role>    roles            = new LinkedHashSet<Role>();
+    private final Collection<Role>    roles            = new HashSet<Role>();
 
     /**
      * Constructs a component with the specified arguments.

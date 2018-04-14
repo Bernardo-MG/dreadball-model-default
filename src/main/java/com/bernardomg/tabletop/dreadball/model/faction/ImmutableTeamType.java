@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
@@ -49,7 +49,7 @@ public final class ImmutableTeamType implements TeamType, Serializable {
     /**
      * Team type's rules.
      */
-    private final Collection<TeamRule> teamRules        = new LinkedHashSet<>();
+    private final Collection<TeamRule> teamRules        = new HashSet<>();
 
     /**
      * Constructs a team type with the specified parameters.

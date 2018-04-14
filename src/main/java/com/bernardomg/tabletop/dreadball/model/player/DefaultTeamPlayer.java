@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
@@ -69,7 +69,7 @@ public final class DefaultTeamPlayer implements TeamPlayer, Serializable {
     /**
      * The player's abilities.
      */
-    private final Collection<Ability> playerAbilities  = new LinkedHashSet<>();
+    private final Collection<Ability> playerAbilities  = new HashSet<>();
 
     /**
      * The player's team position.

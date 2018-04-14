@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.AdvancementTeamPlayer;
@@ -54,7 +54,7 @@ public final class DefaultCompositeAdvancementTeamPlayer
     /**
      * Components of the player.
      */
-    private final Collection<Component> components       = new LinkedHashSet<Component>();
+    private final Collection<Component> components       = new HashSet<Component>();
 
     /**
      * Constructs a composite advancement player with the specified arguments.

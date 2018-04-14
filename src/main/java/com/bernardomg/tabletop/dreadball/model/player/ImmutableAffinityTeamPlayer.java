@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
@@ -45,7 +45,7 @@ public final class ImmutableAffinityTeamPlayer
     /**
      * The affinities of the player.
      */
-    private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<AffinityGroup>();
+    private final Collection<AffinityGroup> affinityGroups   = new HashSet<AffinityGroup>();
 
     /**
      * TeamPlayer cost for an ally.
@@ -70,7 +70,7 @@ public final class ImmutableAffinityTeamPlayer
     /**
      * The affinities hated by the player.
      */
-    private final Collection<AffinityGroup> hatedAffinities  = new LinkedHashSet<AffinityGroup>();
+    private final Collection<AffinityGroup> hatedAffinities  = new HashSet<AffinityGroup>();
 
     /**
      * Name given to the player.

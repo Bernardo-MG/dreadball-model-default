@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.AffinityTeamPlayer;
@@ -56,7 +56,7 @@ public final class DefaultCompositeAffinityTeamPlayer
     /**
      * Components of the player.
      */
-    private final Collection<Component> components       = new LinkedHashSet<Component>();
+    private final Collection<Component> components       = new HashSet<Component>();
 
     /**
      * Constructs a composite affinities player with the specified arguments.

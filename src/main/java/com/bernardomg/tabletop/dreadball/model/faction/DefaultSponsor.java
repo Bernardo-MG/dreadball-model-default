@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
@@ -42,7 +42,7 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     /**
      * Sponsor's player groups.
      */
-    private final Collection<AffinityGroup> affinityGroups   = new LinkedHashSet<>();
+    private final Collection<AffinityGroup> affinityGroups   = new HashSet<>();
 
     /**
      * Sponsor's unspent cash.
