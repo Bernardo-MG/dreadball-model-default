@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.availability.faction.TeamTypeSeason;
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
+import com.google.common.base.MoreObjects;
 
 /**
  * Season in which a team appeared.
@@ -100,6 +101,12 @@ public final class ImmutableTeamTypeSeason
     @Override
     public final int hashCode() {
         return Objects.hash(team, seasonNumber);
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("team", team)
+                .add("seasonNumber", seasonNumber).toString();
     }
 
 }

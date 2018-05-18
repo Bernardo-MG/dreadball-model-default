@@ -30,6 +30,7 @@ import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
+import com.google.common.base.MoreObjects;
 
 /**
  * Composite affinity player.
@@ -210,6 +211,13 @@ public final class DefaultCompositeAffinityTeamPlayer
     @Override
     public final int hashCode() {
         return Objects.hashCode(baseTeamPlayer);
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("baseTeamPlayer", baseTeamPlayer)
+                .add("components", components).toString();
     }
 
     /**

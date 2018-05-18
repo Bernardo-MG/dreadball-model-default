@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
+import com.google.common.base.MoreObjects;
 
 /**
  * Affinity group availabilities for a
@@ -51,31 +52,30 @@ public final class ImmutableSponsorAffinityGroupAvailability
     /**
      * Name of the affinities.
      */
-    private final String                    avaName;
+    private final String                    name;
 
     /**
      * Flag indicating if the availability allows increasing the rank.
      */
-    private final Boolean                   hasRankInc;
+    private final Boolean                   rankIncrease;
 
     /**
      * Constructs a set of affinity groups availabilities for sponsors.
      * 
-     * @param name
+     * @param avaName
      *            name of the availability
      * @param affinities
      *            available affinities
-     * @param rankIncrease
+     * @param rank
      *            flag indicating if a rank increase is available
      */
-    public ImmutableSponsorAffinityGroupAvailability(final String name,
-            final Collection<AffinityGroup> affinities,
-            final Boolean rankIncrease) {
+    public ImmutableSponsorAffinityGroupAvailability(final String avaName,
+            final Collection<AffinityGroup> affinities, final Boolean rank) {
         super();
 
-        avaName = checkNotNull(name,
+        name = checkNotNull(avaName,
                 "Received a null pointer as the availability name");
-        hasRankInc = checkNotNull(rankIncrease,
+        rankIncrease = checkNotNull(rank,
                 "Received a null pointer as the rank increase flag");
 
         checkNotNull(affinities,
@@ -106,7 +106,7 @@ public final class ImmutableSponsorAffinityGroupAvailability
         final ImmutableSponsorAffinityGroupAvailability other;
 
         other = (ImmutableSponsorAffinityGroupAvailability) obj;
-        return Objects.equals(avaName, other.avaName);
+        return Objects.equals(name, other.name);
     }
 
     @Override
@@ -117,17 +117,24 @@ public final class ImmutableSponsorAffinityGroupAvailability
 
     @Override
     public final String getName() {
-        return avaName;
+        return name;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(avaName);
+        return Objects.hashCode(name);
     }
 
     @Override
     public final Boolean isIncludingRankIncrease() {
-        return hasRankInc;
+        return rankIncrease;
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("name", name)
+                .add("affinityGroups", affinityGroups)
+                .add("rankIncrease", rankIncrease).toString();
     }
 
     /**

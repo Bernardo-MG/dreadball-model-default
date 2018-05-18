@@ -46,7 +46,7 @@ public final class ImmutableComponent implements Component, Serializable {
     /**
      * Abilities given by this component.
      */
-    private final Collection<Ability> abilitiesGiven   = new HashSet<Ability>();
+    private final Collection<Ability> abilities        = new HashSet<Ability>();
 
     /**
      * Attributes given by this component.
@@ -86,13 +86,13 @@ public final class ImmutableComponent implements Component, Serializable {
      *            team position roles which can have this component
      * @param attr
      *            attributes granted by the component
-     * @param abilities
+     * @param abls
      *            abilities granted by the component
      */
     public ImmutableComponent(final String componentName,
             final ComponentLocation componentLocation,
             final Integer componentCost, final Collection<Role> componentRoles,
-            final Attributes attr, final Collection<Ability> abilities) {
+            final Attributes attr, final Collection<Ability> abls) {
         super();
 
         name = checkNotNull(componentName, "Received a null pointer as name");
@@ -101,11 +101,11 @@ public final class ImmutableComponent implements Component, Serializable {
         cost = checkNotNull(componentCost, "Received a null pointer as cost");
         attributes = checkNotNull(attr,
                 "Received a null pointer as attributes");
-        checkNotNull(abilities, "Received a null pointer as abilities");
+        checkNotNull(abls, "Received a null pointer as abilities");
         checkNotNull(componentRoles, "Received a null pointer as positions");
 
-        for (final Ability ability : abilities) {
-            abilitiesGiven.add(checkNotNull(ability,
+        for (final Ability ability : abls) {
+            abilities.add(checkNotNull(ability,
                     "Received a null pointer as ability"));
         }
 
@@ -173,7 +173,8 @@ public final class ImmutableComponent implements Component, Serializable {
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("name", name)
-                .add("attributes", attributes).add("abilities", abilitiesGiven)
+                .add("cost", cost).add("location", location)
+                .add("attributes", attributes).add("abilities", abilities)
                 .toString();
     }
 
@@ -183,7 +184,7 @@ public final class ImmutableComponent implements Component, Serializable {
      * @return the modifiable list of the component's abilities
      */
     private final Collection<Ability> getAbilitiesModifiable() {
-        return abilitiesGiven;
+        return abilities;
     }
 
 }

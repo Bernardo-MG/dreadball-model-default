@@ -149,7 +149,8 @@ public final class DefaultSponsor implements Sponsor, Serializable {
     @Override
     public final String toString() {
         return MoreObjects.toStringHelper(this).add("name", name)
-                .add("rank", rank).toString();
+                .add("rank", rank).add("cash", cash)
+                .add("affinityGroups", affinityGroups).toString();
     }
 
     /**

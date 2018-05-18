@@ -21,6 +21,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.google.common.base.MoreObjects;
+
 /**
  * Asset availabilities for a
  * {@link com.bernardomg.tabletop.dreadball.model.faction.Sponsor Sponsors}.
@@ -181,6 +183,17 @@ public final class ImmutableSponsorAssetsCosts
         return Objects.hash(affinityGroupCost, cheerleaderCost, dieCost,
                 medibotCost, nastySurpriseCardCost, specialMoveCardCost,
                 wagerCost);
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("affinityGroupCost", affinityGroupCost)
+                .add("cheerleaderCost", cheerleaderCost).add("dieCost", dieCost)
+                .add("medibotCost", medibotCost)
+                .add("nastySurpriseCardCost", nastySurpriseCardCost)
+                .add("specialMoveCardCost", specialMoveCardCost)
+                .add("wagerCost", wagerCost).toString();
     }
 
 }

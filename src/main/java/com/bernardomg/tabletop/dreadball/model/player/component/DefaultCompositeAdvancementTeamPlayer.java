@@ -30,6 +30,7 @@ import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayerValorationCalculator;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
+import com.google.common.base.MoreObjects;
 
 /**
  * Composite advancement player.
@@ -234,6 +235,13 @@ public final class DefaultCompositeAdvancementTeamPlayer
     @Override
     public final void setUnspentExperience(final Integer experience) {
         getBaseTeamPlayer().setUnspentExperience(experience);
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("baseTeamPlayer", baseTeamPlayer)
+                .add("components", components).toString();
     }
 
     /**

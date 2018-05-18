@@ -40,53 +40,51 @@ public final class ImmutableAttributes implements Attributes, Serializable {
     /**
      * Armor value.
      */
-    private final Integer     armorValue;
+    private final Integer     armor;
 
     /**
      * Movement value.
      */
-    private final Integer     movementValue;
+    private final Integer     movement;
 
     /**
      * Skill value.
      */
-    private final Integer     skillValue;
+    private final Integer     skill;
 
     /**
      * Speed value.
      */
-    private final Integer     speedValue;
+    private final Integer     speed;
 
     /**
      * Strength value.
      */
-    private final Integer     strengthValue;
+    private final Integer     strength;
 
     /**
      * Constructs attributes with the specified values.
      * 
-     * @param armor
+     * @param arm
      *            armor value
-     * @param movement
+     * @param move
      *            movement value
-     * @param skill
+     * @param skl
      *            skill value
-     * @param speed
+     * @param spd
      *            speed value
-     * @param strength
+     * @param str
      *            strength value
      */
-    public ImmutableAttributes(final Integer armor, final Integer movement,
-            final Integer skill, final Integer speed, final Integer strength) {
+    public ImmutableAttributes(final Integer arm, final Integer move,
+            final Integer skl, final Integer spd, final Integer str) {
         super();
 
-        armorValue = checkNotNull(armor, "Received a null pointer as armor");
-        movementValue = checkNotNull(movement,
-                "Received a null pointer as movement");
-        skillValue = checkNotNull(skill, "Received a null pointer as skill");
-        speedValue = checkNotNull(speed, "Received a null pointer as speed");
-        strengthValue = checkNotNull(strength,
-                "Received a null pointer as strength");
+        armor = checkNotNull(arm, "Received a null pointer as armor");
+        movement = checkNotNull(move, "Received a null pointer as movement");
+        skill = checkNotNull(skl, "Received a null pointer as skill");
+        speed = checkNotNull(spd, "Received a null pointer as speed");
+        strength = checkNotNull(str, "Received a null pointer as strength");
     }
 
     @Override
@@ -106,50 +104,48 @@ public final class ImmutableAttributes implements Attributes, Serializable {
         final ImmutableAttributes other;
 
         other = (ImmutableAttributes) obj;
-        return Objects.equals(armorValue, other.armorValue)
-                && Objects.equals(movementValue, other.movementValue)
-                && Objects.equals(skillValue, other.skillValue)
-                && Objects.equals(speedValue, other.speedValue)
-                && Objects.equals(strengthValue, other.strengthValue);
+        return Objects.equals(armor, other.armor)
+                && Objects.equals(movement, other.movement)
+                && Objects.equals(skill, other.skill)
+                && Objects.equals(speed, other.speed)
+                && Objects.equals(strength, other.strength);
     }
 
     @Override
     public final Integer getArmor() {
-        return armorValue;
+        return armor;
     }
 
     @Override
     public final Integer getMovement() {
-        return movementValue;
+        return movement;
     }
 
     @Override
     public final Integer getSkill() {
-        return skillValue;
+        return skill;
     }
 
     @Override
     public final Integer getSpeed() {
-        return speedValue;
+        return speed;
     }
 
     @Override
     public final Integer getStrength() {
-        return strengthValue;
+        return strength;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(armorValue, movementValue, skillValue, speedValue,
-                strengthValue);
+        return Objects.hash(armor, movement, skill, speed, strength);
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("armor", armorValue)
-                .add("movement", movementValue).add("skill", skillValue)
-                .add("speed", speedValue).add("strength", strengthValue)
-                .toString();
+        return MoreObjects.toStringHelper(this).add("armor", armor)
+                .add("movement", movement).add("skill", skill)
+                .add("speed", speed).add("strength", strength).toString();
     }
 
 }

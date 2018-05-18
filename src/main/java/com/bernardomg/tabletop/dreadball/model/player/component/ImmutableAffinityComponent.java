@@ -25,6 +25,7 @@ import java.util.Objects;
 import com.bernardomg.tabletop.dreadball.model.player.Role;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
+import com.google.common.base.MoreObjects;
 
 /**
  * Component with affinity groups, and various costs which will depend on how
@@ -177,6 +178,14 @@ public final class ImmutableAffinityComponent
     @Override
     public final int hashCode() {
         return Objects.hashCode(baseComponent);
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("baseComponent", baseComponent)
+                .add("strangerCost", strangerCost).add("allyCost", allyCost)
+                .add("friendCost", friendCost).add("cost", cost).toString();
     }
 
     /**

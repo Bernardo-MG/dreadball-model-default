@@ -27,6 +27,7 @@ import java.util.Objects;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Ability;
 import com.bernardomg.tabletop.dreadball.model.player.stats.AffinityGroup;
 import com.bernardomg.tabletop.dreadball.model.player.stats.Attributes;
+import com.google.common.base.MoreObjects;
 
 /**
  * TeamPlayer with affinity groups, and various costs which will depend on how
@@ -239,6 +240,13 @@ public final class ImmutableAffinityTeamPlayer
 
     public final void setName(final String playerName) {
         name = playerName;
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("name", getTemplateName())
+                .add("role", getRole()).add("mvp", getMvp())
+                .add("giant", getGiant()).toString();
     }
 
     /**

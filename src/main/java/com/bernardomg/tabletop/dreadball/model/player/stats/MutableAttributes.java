@@ -40,27 +40,27 @@ public final class MutableAttributes implements Attributes, Serializable {
     /**
      * Armor value.
      */
-    private Integer           armorValue       = 0;
+    private Integer           armor       = 0;
 
     /**
      * Movement value.
      */
-    private Integer           movementValue    = 0;
+    private Integer           movement    = 0;
 
     /**
      * Skill value.
      */
-    private Integer           skillValue       = 0;
+    private Integer           skill       = 0;
 
     /**
      * Speed value.
      */
-    private Integer           speedValue       = 0;
+    private Integer           speed       = 0;
 
     /**
      * Strength value.
      */
-    private Integer           strengthValue    = 0;
+    private Integer           strength    = 0;
 
     /**
      * Default constructor.
@@ -86,101 +86,101 @@ public final class MutableAttributes implements Attributes, Serializable {
         final MutableAttributes other;
 
         other = (MutableAttributes) obj;
-        return Objects.equals(armorValue, other.armorValue)
-                && Objects.equals(movementValue, other.movementValue)
-                && Objects.equals(skillValue, other.skillValue)
-                && Objects.equals(speedValue, other.speedValue)
-                && Objects.equals(strengthValue, other.strengthValue);
+        return Objects.equals(armor, other.armor)
+                && Objects.equals(movement, other.movement)
+                && Objects.equals(skill, other.skill)
+                && Objects.equals(speed, other.speed)
+                && Objects.equals(strength, other.strength);
     }
 
     @Override
     public final Integer getArmor() {
-        return armorValue;
+        return armor;
     }
 
     @Override
     public final Integer getMovement() {
-        return movementValue;
+        return movement;
     }
 
     @Override
     public final Integer getSkill() {
-        return skillValue;
+        return skill;
     }
 
     @Override
     public final Integer getSpeed() {
-        return speedValue;
+        return speed;
     }
 
     @Override
     public final Integer getStrength() {
-        return strengthValue;
+        return strength;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(armorValue, movementValue, skillValue, speedValue,
-                strengthValue);
+        return Objects.hash(armor, movement, skill, speed,
+                strength);
     }
 
     /**
      * Sets the armor value.
      * 
-     * @param armor
+     * @param value
      *            the new armor value
      */
-    public final void setArmor(final Integer armor) {
-        armorValue = checkNotNull(armor, "Received a null pointer as armor");
+    public final void setArmor(final Integer value) {
+        armor = checkNotNull(value, "Received a null pointer as armor");
     }
 
     /**
      * Sets the movement value.
      * 
-     * @param movement
+     * @param value
      *            the new movement value
      */
-    public final void setMovement(final Integer movement) {
-        movementValue = checkNotNull(movement,
+    public final void setMovement(final Integer value) {
+        movement = checkNotNull(value,
                 "Received a null pointer as movement");
     }
 
     /**
      * Sets the skill value.
      * 
-     * @param skill
+     * @param value
      *            the new skill value
      */
-    public final void setSkill(final Integer skill) {
-        skillValue = checkNotNull(skill, "Received a null pointer as skill");
+    public final void setSkill(final Integer value) {
+        skill = checkNotNull(value, "Received a null pointer as skill");
     }
 
     /**
      * Sets the speed value.
      * 
-     * @param speed
+     * @param value
      *            the new speed value
      */
-    public final void setSpeed(final Integer speed) {
-        speedValue = checkNotNull(speed, "Received a null pointer as speed");
+    public final void setSpeed(final Integer value) {
+        speed = checkNotNull(value, "Received a null pointer as speed");
     }
 
     /**
      * Sets the strength value.
      * 
-     * @param strength
+     * @param value
      *            the new strength value
      */
-    public final void setStrength(final Integer strength) {
-        strengthValue = checkNotNull(strength,
+    public final void setStrength(final Integer value) {
+        strength = checkNotNull(value,
                 "Received a null pointer as strength");
     }
 
     @Override
     public final String toString() {
-        return MoreObjects.toStringHelper(this).add("armor", armorValue)
-                .add("movement", movementValue).add("skill", skillValue)
-                .add("speed", speedValue).add("strength", strengthValue)
+        return MoreObjects.toStringHelper(this).add("armor", armor)
+                .add("movement", movement).add("skill", skill)
+                .add("speed", speed).add("strength", strength)
                 .toString();
     }
 

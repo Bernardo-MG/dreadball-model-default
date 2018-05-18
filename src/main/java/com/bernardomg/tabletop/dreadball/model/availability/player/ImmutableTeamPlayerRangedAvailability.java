@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
 import com.bernardomg.tabletop.dreadball.model.player.TeamPlayer;
+import com.google.common.base.MoreObjects;
 
 /**
  * Player availabilities for a
@@ -132,6 +133,14 @@ public final class ImmutableTeamPlayerRangedAvailability
     @Override
     public final int hashCode() {
         return Objects.hash(teamPlayer, teamType);
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("teamType", teamType)
+                .add("teamPlayer", teamPlayer)
+                .add("initialNumber", initialNumber).add("maxNumber", maxNumber)
+                .toString();
     }
 
 }

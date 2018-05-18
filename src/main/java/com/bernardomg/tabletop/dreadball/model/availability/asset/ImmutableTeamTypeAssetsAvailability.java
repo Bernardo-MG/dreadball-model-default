@@ -22,6 +22,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.bernardomg.tabletop.dreadball.model.faction.TeamType;
+import com.google.common.base.MoreObjects;
 
 /**
  * Assets availabilities for a {@link TeamType}, which are the Dreadball
@@ -93,19 +94,19 @@ public final class ImmutableTeamTypeAssetsAvailability
      * Flag indicating if this {@code TeamType} begins with a Defensive Coaching
      * Staff.
      */
-    private final Boolean     initialCoachDef;
+    private final Boolean     startingWithDefensiveCoachingStaff;
 
     /**
      * Flag indicating if this {@code TeamType} begins with an Offensive
      * Coaching Staff.
      */
-    private final Boolean     initialCoachOff;
+    private final Boolean     startingWithOffensiveCoachingStaff;
 
     /**
      * Flag indicating if this {@code TeamType} begins with a Support Coaching
      * Staff.
      */
-    private final Boolean     initialCoachSup;
+    private final Boolean     startingWithSupportCoachingStaff;
 
     /**
      * {@code TeamType} to which this availability applies.
@@ -184,11 +185,11 @@ public final class ImmutableTeamTypeAssetsAvailability
 
         coachingStaffCost = checkNotNull(coachingCost,
                 "Received a null pointer as the Coaching Staff cost");
-        initialCoachOff = checkNotNull(offensiveCoach,
+        startingWithOffensiveCoachingStaff = checkNotNull(offensiveCoach,
                 "Received a null pointer as the initial Offensive Coach flag");
-        initialCoachDef = checkNotNull(defensiveCoach,
+        startingWithDefensiveCoachingStaff = checkNotNull(defensiveCoach,
                 "Received a null pointer as the initial Defensive Coach flag");
-        initialCoachSup = checkNotNull(supportCoach,
+        startingWithSupportCoachingStaff = checkNotNull(supportCoach,
                 "Received a null pointer as the initial Support Coach flag");
     }
 
@@ -264,17 +265,17 @@ public final class ImmutableTeamTypeAssetsAvailability
 
     @Override
     public final Boolean getStartingWithDefensiveCoachingStaff() {
-        return initialCoachDef;
+        return startingWithDefensiveCoachingStaff;
     }
 
     @Override
     public final Boolean getStartingWithOffensiveCoachingStaff() {
-        return initialCoachOff;
+        return startingWithOffensiveCoachingStaff;
     }
 
     @Override
     public final Boolean getStartingWithSupportCoachingStaff() {
-        return initialCoachSup;
+        return startingWithSupportCoachingStaff;
     }
 
     @Override
@@ -285,6 +286,28 @@ public final class ImmutableTeamTypeAssetsAvailability
     @Override
     public final int hashCode() {
         return Objects.hashCode(teamType);
+    }
+
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("teamType", teamType)
+                .add("cheerleaderCost", cheerleaderCost)
+                .add("cheerleaderInitial", cheerleaderInitial)
+                .add("cheerleaderMax", cheerleaderMax)
+                .add("coachingDieCost", coachingDieCost)
+                .add("coachingDieInitial", coachingDieInitial)
+                .add("coachingDieMax", coachingDieMax)
+                .add("coachingStaffCost", coachingStaffCost)
+                .add("dreadballCardCost", dreadballCardCost)
+                .add("dreadballCardInitial", dreadballCardInitial)
+                .add("dreadballCardMax", dreadballCardMax)
+                .add("startingWithDefensiveCoachingStaff",
+                        startingWithDefensiveCoachingStaff)
+                .add("startingWithOffensiveCoachingStaff",
+                        startingWithOffensiveCoachingStaff)
+                .add("startingWithSupportCoachingStaff",
+                        startingWithSupportCoachingStaff)
+                .toString();
     }
 
 }
