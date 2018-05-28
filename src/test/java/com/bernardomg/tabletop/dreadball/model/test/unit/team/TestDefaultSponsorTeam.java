@@ -18,7 +18,6 @@ package com.bernardomg.tabletop.dreadball.model.test.unit.team;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Matchers;
 import org.mockito.Mockito;
 
 import com.bernardomg.tabletop.dreadball.model.faction.Sponsor;
@@ -276,7 +275,7 @@ public final class TestDefaultSponsorTeam {
         // Mocks calculators
         calculator = Mockito.mock(CostCalculator.class);
         ranker = Mockito.mock(CostCalculator.class);
-        Mockito.when(ranker.getCost(Matchers.any(SponsorTeam.class)))
+        Mockito.when(ranker.getCost(Mockito.any(SponsorTeam.class)))
                 .thenReturn(3);
 
         // Creates team
